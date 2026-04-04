@@ -1,0 +1,153 @@
+CESSNA MODEL 172N SKYHAWK
+PILOT'S OPERATING HANDBOOK — SECTION 2: LIMITATIONS
+1978 Edition (FAA Approved)
+
+Aircraft: N4798E  Serial: 17270798  Engine: Lycoming O-320-H2AD
+
+================================================================================
+AIRSPEED LIMITATIONS
+================================================================================
+
+Vne — Never Exceed Speed:                163 KIAS
+  Do not exceed this speed in any operation.
+
+Vno — Maximum Structural Cruising Speed: 128 KIAS
+  Do not exceed this speed except in smooth air and then only with caution.
+
+Va — Maneuvering Speed:                   99 KIAS (at 2300 lbs gross weight)
+  Do not make full or abrupt control inputs above this speed.
+  Decrease Va with decreasing gross weight.
+
+Vfe — Maximum Flap Extended Speed:        85 KIAS
+  Do not exceed this speed with flaps extended.
+
+Vlo — Maximum Landing Gear Speed:         N/A (fixed gear)
+
+================================================================================
+POWERPLANT LIMITATIONS
+================================================================================
+
+Engine Model:       Lycoming O-320-H2AD
+Maximum Horsepower: 160 HP at 2700 RPM
+Maximum RPM:        2700 RPM
+Oil Temperature:    245°F maximum
+                     75°F minimum for takeoff
+Oil Pressure:       25 psi minimum (at idle)
+                     60–90 psi normal operating range
+                     115 psi maximum (cold starts only, transient)
+Cylinder Head Temp: 500°F maximum
+EGT:                No redline; monitor for mixture management
+
+Fuel Grade:         100LL (Aviation Grade 100 Low Lead, colored blue)
+                    100 Octane Aviation Gasoline (colored green) also approved
+                    NOTE: automotive fuel (mogas) is NOT approved for this aircraft
+
+Oil Grade:          SAE 50 or SAE 40 (above 16°C)
+                    SAE 30 or SAE 40 (between 0°C and 16°C)
+                    SAE 30 (below 0°C)
+                    Multiviscosity 15W-50 aviation oil approved per Lycoming SB 480F
+                    Lycoming LW-16702 anti-wear additive required per AD 80-04-03 R2
+                    (unless using pre-additized AeroShell W 15W-50 or AeroShell W 100 Plus)
+
+Oil Capacity:       8 quarts maximum
+                    6 quarts minimum for flight
+
+Engine TBO:         2000 hours (Lycoming recommended, not FAA mandatory for non-commercial ops)
+
+================================================================================
+WEIGHT LIMITS
+================================================================================
+
+Maximum Gross Weight:           2300 lbs
+Maximum Ramp Weight:            2308 lbs
+Maximum Zero Fuel Weight:       No limit
+Baggage Area Weight (aft):      120 lbs maximum
+Baggage Area Moment:            See weight and balance section
+
+================================================================================
+CENTER OF GRAVITY LIMITS
+================================================================================
+
+Forward CG Limit:  35.0 inches aft of datum (at gross weight)
+                   36.5 inches aft of datum (at 1950 lbs)
+Aft CG Limit:      47.3 inches aft of datum (all weights)
+Reference Datum:   Leading edge of firewall
+
+================================================================================
+MANEUVER LIMITS
+================================================================================
+
+Category:    Normal
+             This aircraft is certificated in the Normal category only.
+             All aerobatic maneuvers including spins are PROHIBITED.
+             Intentional spins are prohibited.
+
+Load Factor: +3.8g to -1.52g (Normal category at gross weight)
+             Reduced with flaps extended.
+
+================================================================================
+FUEL LIMITS
+================================================================================
+
+Total Fuel Capacity:   43 gallons usable (two wing tanks, 21.5 gal each)
+                       45 gallons total (1 gal unusable per tank)
+Minimum Fuel for IFR:  Per 14 CFR 91.151 and 91.167
+
+Unusable Fuel (each tank): 1 gallon
+
+Approved Fuel Grades: Aviation Grade 100LL (blue)
+                      Aviation Grade 100 (green)
+
+================================================================================
+FLIGHT CREW
+================================================================================
+
+Minimum Crew:   1 pilot
+                Dual control capable — co-pilot controls fully functional
+
+================================================================================
+KINDS OF OPERATION
+================================================================================
+
+Day VFR:       Approved
+Night VFR:     Approved (with required equipment per 14 CFR 91.205)
+Day IFR:       Approved (with required equipment per 14 CFR 91.205)
+Night IFR:     Approved (with required equipment per 14 CFR 91.205)
+Icing:         NOT approved for flight into known icing conditions
+
+================================================================================
+SYSTEM LIMITATIONS
+================================================================================
+
+Vacuum System (gyros):
+  Minimum vacuum for gyro operation: 4.5 in. Hg
+  Normal vacuum range: 4.5–5.4 in. Hg
+
+Electrical System:
+  28-volt DC system
+  60-amp alternator
+  24-volt battery
+
+Transponder:
+  24-month inspection required per 14 CFR 91.413
+
+ELT:
+  Battery replacement/inspection required per 14 CFR 91.207
+  (12 months from date of last inspection, or after activation, or at 50% battery life)
+
+Pitot-Static System:
+  24-month inspection required for IFR flight per 14 CFR 91.411
+
+================================================================================
+PLACARDS (REQUIRED IN-COCKPIT)
+================================================================================
+
+  "THIS AIRPLANE IS APPROVED FOR THE FOLLOWING OPERATIONS WHEN EQUIPPED
+   PER THE APPLICABLE FAR: DAY VFR, NIGHT VFR, DAY IFR, NIGHT IFR"
+
+  "NO ACROBATIC MANEUVERS INCLUDING SPINS APPROVED"
+
+  "FUEL SELECTOR VALVE: LEFT — BOTH — RIGHT — OFF"
+  (RIGHT tank fuel must be used with LEFT tank to prevent asymmetric loading)
+
+  "IN EMERGENCY, PULL TO UNLOCK" (door placard)

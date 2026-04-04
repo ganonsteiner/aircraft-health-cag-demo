@@ -1,0 +1,97 @@
+FEDERAL AVIATION ADMINISTRATION
+AIRWORTHINESS DIRECTIVE
+
+AD Number:    2001-23-03
+Amendment:    39-12500
+Docket:       2000-CE-26-AD
+Supersedes:   AD 80-04-08
+
+APPLICABILITY: Cessna Aircraft Company Models 172N, 172P, R172K, 172RG,
+               F172N, F172P, FR172J, and FR172K airplanes.
+
+               Cessna 172N serial numbers: 17267585 through 17274009
+               (plus specific additional S/Ns: 17261445, 17261578, 17270050)
+
+               N4798E Serial 17270798 IS within the affected range.
+
+EFFECTIVE DATE: December 27, 2001
+
+SUBJECT: Forward Door Post Map Light Switch and Fuel Line
+
+REFERENCE: Cessna Service Bulletin SEB00-1, dated January 17, 2000
+
+================================================================================
+BACKGROUND
+================================================================================
+
+The left forward door post (A-pillar) on affected Cessna 172 variants contains
+both a map light switch (P/N 0511080-1) and an adjacent fuel line. The switch
+uses a two-hole plastic insulator over its terminals to prevent contact with
+adjacent structure and wiring.
+
+In service, the plastic insulator deteriorates from heat and UV exposure. As the
+insulator degrades, its mounting holes elongate, allowing the switch body and
+exposed terminals to contact the nearby fuel line. When the switch is actuated,
+the resulting electrical arc can burn through the fuel line, spraying fuel into
+the cabin door post area and potentially igniting a fire.
+
+AD 80-04-08 required a one-time inspection. Post-compliance incidents continued
+occurring as insulators degraded over time. This revised AD establishes a
+recurring annual inspection to catch deterioration before it poses a fire hazard.
+
+================================================================================
+COMPLIANCE REQUIREMENTS
+================================================================================
+
+INITIAL COMPLIANCE:
+Within the first to occur of:
+  - 100 hours time-in-service (TIS) after December 27, 2001, OR
+  - 12 calendar months after December 27, 2001
+
+REPETITIVE COMPLIANCE:
+Thereafter, at intervals not to exceed 12 calendar months.
+
+REQUIRED ACTIONS:
+
+  1. MAP LIGHT SWITCH INSULATOR INSPECTION:
+     Inspect the plastic insulator on the map light switch (P/N 0511080-1) in
+     the left forward door post for the following:
+       a. Presence — insulator must be installed
+       b. Condition — insulator must not be cracked, brittle, elongated at
+          mounting holes, or deformed
+
+  2. IF INSULATOR IS MISSING OR UNAIRWORTHY:
+     Before further flight, install a new insulator per Cessna SEB00-1.
+     Verify switch cannot contact fuel line when insulator is installed.
+
+  3. FUEL LINE INSPECTION:
+     Inspect the fuel line in the left forward door post area for:
+       a. Chafing, cuts, or abrasion from contact with switch or structure
+       b. Evidence of heat damage or discoloration
+       c. Leaking fuel
+
+  4. IF FUEL LINE IS DAMAGED:
+     Before further flight, replace the damaged fuel line section per
+     Cessna Maintenance Manual and Service Bulletin SEB00-1.
+
+================================================================================
+COMPLIANCE DOCUMENTATION
+================================================================================
+
+Each annual inspection maintenance entry must include:
+  1. Statement that door post map light switch insulator was inspected
+  2. Condition of insulator (satisfactory / replaced)
+  3. Condition of door post fuel line (satisfactory / replaced)
+  4. AD number (2001-23-03), compliance date, hobbs/tach
+  5. Inspector signature, certificate number, IA endorsement
+
+================================================================================
+NOTES FOR N4798E
+================================================================================
+
+N4798E is specifically within the affected serial number range (17270798).
+This AD must be complied with annually. Compliance is typically accomplished
+as part of the annual inspection by the inspecting IA.
+
+Maps light switches on aircraft of this vintage often have faded or cracked
+insulators. Allow extra inspection time in the door post area during annuals.

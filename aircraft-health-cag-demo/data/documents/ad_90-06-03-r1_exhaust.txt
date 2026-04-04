@@ -1,0 +1,121 @@
+FEDERAL AVIATION ADMINISTRATION
+AIRWORTHINESS DIRECTIVE
+
+AD Number:    90-06-03 R1
+Amendment:    39-6966 (Revision 1; effective March 27, 1991)
+
+APPLICABILITY: Cessna Aircraft Company Models 172, 172RG, R172K, 182, 182RG,
+               T182, R182, 185, 188, 206, T206, 207, 210, T210, and others
+               equipped with Continental or Lycoming engine exhaust heater/muffler
+               assemblies manufactured by Cessna or approved manufacturers.
+
+               N4798E (Cessna 172N with Lycoming O-320-H2AD) IS affected.
+
+EFFECTIVE DATE: March 27, 1991
+
+SUBJECT: Exhaust Heater/Muffler Assembly — Cracks and Carbon Monoxide Intrusion
+
+================================================================================
+BACKGROUND
+================================================================================
+
+Cessna singles use a "heat muff" or exhaust heat exchanger (muffler/heater
+assembly) that routes outside air over the exhaust system to produce cabin heat.
+This system relies on the integrity of the exhaust collector and muffler assembly
+to prevent combustion gases (including carbon monoxide, CO) from entering the
+heated air stream delivered to the cockpit.
+
+In service, Cessna identified cracking in the exhaust heater/muffler assembly
+from thermal cycling fatigue. Cracks in the inner walls of the heat exchanger
+allow CO to contaminate cabin heat air. CO is colorless, odorless, and highly
+toxic; CO poisoning is subtle and has caused fatal accidents in GA aircraft.
+
+Factors accelerating cracking:
+  - High-time exhaust systems (typical life 800–1,200 hours)
+  - Excessive heat (high CHT/EGT operations)
+  - Deferred maintenance on exhaust gaskets (leaks cause hot spots)
+  - Operation with cabin heat on high for extended periods
+
+================================================================================
+COMPLIANCE REQUIREMENTS
+================================================================================
+
+COMPLIANCE INTERVAL:
+  Initial: Within 100 hours TIS from effective date, or next annual inspection,
+           whichever occurs first.
+  Recurring: At each annual inspection, AND at each 100-hour inspection if
+             performed, AND any time new exhaust system components are installed.
+
+REQUIRED ACTIONS:
+
+  1. VISUAL INSPECTION — EXTERIOR:
+     Inspect all accessible exterior surfaces of the exhaust system including:
+       a. Exhaust stacks (risers) at each cylinder for cracks, especially at welds
+       b. Exhaust collector ring for cracks, corrosion, and loose joints
+       c. Muffler body for cracks, dents, or corrosion
+       d. Heat exchanger shroud for cracks and deformation
+       e. All clamps, hangers, and baffles for security and condition
+
+  2. INTERNAL INSPECTION — MUFFLER:
+     With exhaust inlet plugged (to illuminate interior), visually inspect
+     inside the muffler/heat exchanger for cracks in the inner wall separating
+     exhaust gases from heated outside air.
+
+     Method: Insert a bright light source into the exhaust outlet; inspect
+     for light transmission through inner wall cracks from outside.
+     Alternative: Conduct pressure test per Cessna Maintenance Manual.
+
+  3. CRACK CRITERIA:
+     Any crack found in:
+       a. Exhaust riser welds or walls: REPLACE before further flight
+       b. Collector ring: REPLACE before further flight
+       c. Muffler inner wall: REPLACE muffler/heat exchanger before further flight
+       d. Exterior muffler body: REPAIR or REPLACE before further flight
+       (cracks through exterior wall are less critical but must still be addressed)
+
+  4. CARBON MONOXIDE DETECTOR:
+     It is strongly recommended (but not required by this AD) to install a
+     CO detector in the cockpit. A properly functioning CO detector provides
+     early warning if the exhaust system develops a crack between annuals.
+
+================================================================================
+ADDITIONAL REQUIREMENTS
+================================================================================
+
+If any exhaust component is replaced, the replacement must be:
+  - FAA-approved (PMA-approved or manufactured under TC data)
+  - Installed per Cessna Maintenance Manual and applicable STC if applicable
+  - Leak-tested after installation per Cessna maintenance procedures
+
+Exhaust system component service life:
+  Lycoming O-320 exhaust risers and muffler: no hard TBO, but typically
+  800–1,200 hours. Inspect condition annually and replace proactively.
+
+================================================================================
+COMPLIANCE DOCUMENTATION
+================================================================================
+
+Each compliance entry must include:
+  1. Description of inspection performed (exterior visual, interior visual,
+     pressure test if performed)
+  2. Condition findings — pass or any discrepancies found
+  3. Parts replaced (if any) with part numbers and traceability
+  4. AD number (90-06-03 R1), compliance date, hobbs/tach at service
+  5. Mechanic signature, certificate number, IA endorsement (for annual)
+
+================================================================================
+NOTES FOR N4798E
+================================================================================
+
+N4798E exhaust system history:
+  - Exhaust riser at #2 cylinder was replaced during engine overhaul (~2009) when
+    cracking was found
+  - Full muffler/heat exchanger assembly was replaced at major overhaul
+  - Recurring annual inspection per this AD is maintained
+
+CO detector: A CO Guardian brand detector is affixed to the left cabin sidewall.
+  Replace per manufacturer recommendation (typically annual or at low battery).
+
+At 1,450 SMOH, the current exhaust components are at moderate age. Visual
+inspection at each annual is critical; proactive replacement at ~1,800–2,000 SMOH
+is recommended.

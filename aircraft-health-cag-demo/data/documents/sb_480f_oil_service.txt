@@ -1,0 +1,171 @@
+LYCOMING ENGINES
+SERVICE BULLETIN
+
+SB Number:    480F (supersedes 480E, 480D, 480C, 480B, 480A, 480)
+Date Issued:  May 25, 2017
+Classification: MANDATORY
+Subject:      Oil Servicing — All Direct-Drive Lycoming Engines
+
+Applicability: All Lycoming direct-drive aircraft engines including:
+               O-320, IO-320, AIO-320, LIO-320
+               O-360, HO-360, IO-360, AIO-360, HIO-360, TIO-360
+               O-540, IO-540, TIO-540, LTIO-540
+               And all other direct-drive Lycoming models
+               INCLUDING O-320-H2AD (N4798E engine)
+
+================================================================================
+PURPOSE
+================================================================================
+
+This service bulletin establishes oil change intervals and oil servicing
+procedures to maintain proper engine lubrication and early detection of
+internal wear through metallic particle inspection. Compliance with this
+bulletin, combined with AD 80-04-03 R2 for H series engines, is the primary
+defense against undetected internal wear.
+
+================================================================================
+OIL CHANGE INTERVALS
+================================================================================
+
+NEW OR RECENTLY OVERHAULED ENGINE:
+  First oil change: Within 25 hours TIS or 4 calendar months after initial
+  run-in, whichever occurs first.
+  
+  Note: New and overhauled engines have a "run-in" period where manufacturing
+  residue, initial wear particles, and assembly compounds are present in the oil.
+  Early oil changes remove this contamination and establish baseline for subsequent
+  oil analysis.
+
+ESTABLISHED ENGINE (after first oil change):
+  With full-flow oil filter installed:
+    Every 50 hours TIS OR 4 calendar months, whichever occurs first.
+  
+  Without full-flow filter (screen only):
+    Every 25 hours TIS OR 4 calendar months, whichever occurs first.
+
+O-320-H2AD NOTE: The H2AD has a full-flow spin-on filter. The 50-hour/4-month
+interval applies. However, per AD 80-04-03 R2, the oil filter must be CUT OPEN
+and inspected at every oil change.
+
+================================================================================
+OIL TYPE AND GRADE
+================================================================================
+
+Approved Oil Types:
+  1. Ashless Dispersant (AD) mineral aviation oil — preferred
+     SAE grade based on OAT:
+       Above 16°C (60°F):    SAE 50 or SAE 40
+       0°C to 16°C:           SAE 40 or SAE 30
+       Below 0°C:             SAE 30 (preheat may be needed)
+
+  2. Multiviscosity Aviation Oil (approved per this SB):
+     - AeroShell W 15W-50 (pre-additized, AMOC for AD 80-04-03 R2)
+     - AeroShell W 100 Plus (pre-additized)
+     - Phillips X/C 20W-50
+     - Exxon Elite 20W-50 (pre-additized, AMOC for AD 80-04-03 R2)
+     - Castrol Aviation Oil W 80, W 100, W 120
+
+  NOT APPROVED: Automotive engine oil (even if same viscosity grade)
+                Synthetic automotive oil
+                Non-aviation mineral oil
+
+  BREAK-IN OIL: Use straight mineral oil (non-ashless dispersant) for first
+  50 hours on new or overhauled engine. This is required to allow proper ring
+  seating. Switch to AD oil after 50-hour initial oil change.
+
+================================================================================
+OIL FILTER AND SCREEN INSPECTION
+================================================================================
+
+AT EACH OIL CHANGE — MANDATORY:
+
+  STEP 1 — DRAIN OIL:
+    Drain oil with engine warm (better particle suspension).
+    Allow full drain; sump plug safety-wired after installation.
+
+  STEP 2 — REMOVE AND CUT OPEN OIL FILTER:
+    Using an oil filter cutter tool, cut the full-flow filter element.
+    Spread the filter media and inspect for metallic particles.
+    Use a magnet (rare earth magnet preferred) to separate:
+      FERROUS particles (magnetic): iron, steel — from gears, cam, lifters,
+                                    crankshaft components
+      NON-FERROUS particles (non-magnetic): bronze, aluminum, lead —
+                                    from bearings, bushings
+
+  STEP 3 — INSPECT OIL SUCTION SCREEN:
+    Remove the engine oil sump suction screen.
+    Inspect for metallic particles and debris.
+    Clean screen with solvent; blow dry with compressed air.
+    Reinstall with new gasket if required.
+
+  STEP 4 — PARTICLE ASSESSMENT TABLE:
+
+    NO SIGNIFICANT PARTICLES:
+      Fine gray metallic "paste" on magnet (normal wear products):
+        — Normal. Document as "no significant metal." Continue operation.
+      
+      Fine non-ferrous dust:
+        — Normal bearing material. Document. Monitor trend.
+
+    FERROUS PARTICLES (steel/iron chips, flakes, or fragments):
+      Quantity: Any recognizable chip or flake >1mm:
+        — GROUND AIRCRAFT. Perform internal inspection:
+          a. Remove rocker covers; inspect rockers, push rod tips, lifters
+          b. Remove oil sump screen: look for ferrous debris accumulation
+          c. Inspect accessible cam lobes via pushrod tubes (if possible)
+          d. If source not identified: engine teardown required
+        — For O-320-H series: Specifically inspect cam lobes and all 8 lifters
+          per AD 80-04-03 R2 requirements.
+
+    LARGE METAL PARTICLES (any material, >3mm):
+      — GROUND AIRCRAFT immediately. Internal inspection required before flight.
+      — Consult Lycoming Service Center.
+
+    BEARING MATERIAL (bronze material, significant quantity):
+      — Consult Lycoming Service Center regarding bearing replacement.
+
+================================================================================
+OIL ANALYSIS (RECOMMENDED)
+================================================================================
+
+Lycoming recommends periodic spectrographic oil analysis (send-out sample):
+  Recommended: Every other oil change (every 100 hours)
+  Send to: Blackstone Laboratories, Oil Analyzers Inc., or equivalent
+  Report provides: Parts-per-million of wear metals — trend analysis is more
+                   valuable than single samples. Establish baseline after overhaul.
+
+Key wear metals to watch (O-320-H2AD specific):
+  Iron (Fe): Cam lobes, lifters, crankshaft, cylinder walls, rings
+  Chromium (Cr): Piston rings (chrome-faced)
+  Copper (Cu): Wrist pin bushings, thrust washers
+  Lead (Pb): Main and rod bearings (lead-tin alloy)
+  Aluminum (Al): Pistons, engine case
+  Silicon (Si): Dirt ingestion (air filter condition indicator)
+
+================================================================================
+DOCUMENTATION
+================================================================================
+
+Required logbook entry format (suggested):
+  "Oil change performed. Drained [X] qts [oil brand/weight]. Installed new
+   [filter P/N]. Oil filter element cut and inspected — [findings]. Oil suction
+   screen removed, inspected, reinstalled — [findings]. One 6-oz can Lycoming
+   LW-16702 additive added [OR: AeroShell 15W-50 used per AMOC to AD 80-04-03 R2].
+   Lycoming SB 480F complied with. AD 80-04-03 R2 complied with.
+   Tach: [X], Hobbs: [X]. [Mechanic name], A&P #[cert number]"
+
+================================================================================
+NOTES FOR N4798E (O-320-H2AD)
+================================================================================
+
+Current Engine Status (2026): ~1,450 hours SMOH
+Recommended: Oil samples sent to Blackstone every other oil change
+             Next oil change due: 50 hours from last or 4 months from last
+             (whichever first)
+
+At 1,450 SMOH, the engine is well into the middle third of its TBO period.
+Oil analysis trends should be watched carefully for rising iron levels,
+which could indicate cam/lifter wear resuming on the replacement components.
+
+Proactive: If iron trend shows consistent rise over 3+ consecutive samples,
+schedule cam/lifter borescope inspection before next oil change.

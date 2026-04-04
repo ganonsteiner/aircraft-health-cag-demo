@@ -1,0 +1,128 @@
+[
+  {
+    "id": 101,
+    "externalId": "aircraft.hobbs",
+    "name": "Aircraft Hobbs Time",
+    "description": null,
+    "assetId": 1,
+    "unit": "hours",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "N4798E"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  },
+  {
+    "id": 102,
+    "externalId": "aircraft.tach",
+    "name": "Aircraft Tach Time",
+    "description": null,
+    "assetId": 1,
+    "unit": "hours",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "N4798E"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  },
+  {
+    "id": 103,
+    "externalId": "aircraft.cycles",
+    "name": "Aircraft Landing Cycles",
+    "description": null,
+    "assetId": 1,
+    "unit": "cycles",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "N4798E"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  },
+  {
+    "id": 104,
+    "externalId": "aircraft.fuel_used",
+    "name": "Fuel Used Per Flight",
+    "description": null,
+    "assetId": 1,
+    "unit": "gal",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "N4798E"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  },
+  {
+    "id": 105,
+    "externalId": "engine.oil_pressure_min",
+    "name": "Engine Oil Pressure Min",
+    "description": null,
+    "assetId": 2,
+    "unit": "psi",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "ENGINE-1"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  },
+  {
+    "id": 106,
+    "externalId": "engine.oil_pressure_max",
+    "name": "Engine Oil Pressure Max",
+    "description": null,
+    "assetId": 2,
+    "unit": "psi",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "ENGINE-1"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  },
+  {
+    "id": 107,
+    "externalId": "engine.oil_temp_max",
+    "name": "Engine Oil Temp Max",
+    "description": null,
+    "assetId": 2,
+    "unit": "\u00b0F",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "ENGINE-1"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  },
+  {
+    "id": 108,
+    "externalId": "engine.cht_max",
+    "name": "Engine CHT Max",
+    "description": null,
+    "assetId": 2,
+    "unit": "\u00b0F",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "ENGINE-1"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  },
+  {
+    "id": 109,
+    "externalId": "engine.egt_max",
+    "name": "Engine EGT Max",
+    "description": null,
+    "assetId": 2,
+    "unit": "\u00b0F",
+    "isString": false,
+    "metadata": {
+      "assetExternalId": "ENGINE-1"
+    },
+    "createdTime": 1775286521446,
+    "lastUpdatedTime": 1775286521446
+  }
+]

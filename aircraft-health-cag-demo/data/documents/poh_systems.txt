@@ -1,0 +1,226 @@
+CESSNA MODEL 172N SKYHAWK
+PILOT'S OPERATING HANDBOOK — SECTION 7: AIRPLANE AND SYSTEMS DESCRIPTION
+1978 Edition (FAA Approved)
+
+Aircraft: N4798E  Serial: 17270798  Engine: Lycoming O-320-H2AD
+
+================================================================================
+ENGINE
+================================================================================
+
+Model:          Lycoming O-320-H2AD
+Type:           Four-cylinder, horizontally opposed, direct-drive, air-cooled,
+                fuel-injected (NOTE: H2AD is carbureted via Marvel-Schebler MA-4SPA)
+Displacement:   319.8 cubic inches
+Bore x Stroke:  5.125" x 3.875"
+Horsepower:     160 HP at 2700 RPM (maximum continuous)
+Compression:    8.5:1
+
+H2AD Variant Note:
+The O-320-H2AD uses barrel-shaped (cylindrical) hydraulic lifters and a matching
+wide-lobe camshaft, designed to allow tappet servicing without splitting the
+crankcase. In service, this design proved susceptible to cam lobe spalling under
+normal operating loads, prompting Lycoming to issue multiple service bulletins and
+FAA to issue AD 80-04-03 R2 requiring recurring inspection. Many operators have
+since converted to the O-320-D2J configuration. N4798E retains the original H2AD
+variant. Compliance with AD 80-04-03 R2 is mandatory and tracked at each oil change.
+
+================================================================================
+FUEL SYSTEM
+================================================================================
+
+Type:           Gravity-feed, non-pressurized
+Fuel Tanks:     Two integral aluminum wing tanks
+  Left tank:    21.5 gallons usable (22.5 total)
+  Right tank:   21.5 gallons usable (22.5 total)
+  Total:        43 gallons usable (45 total)
+
+Flow Path:      Each wing tank drains through fuel caps and vented through NACA
+                flush vents on top of each wing. Fuel flows by gravity from the
+                selected tank through the selector valve in the cockpit, through
+                the gascolator (main fuel strainer/sediment bowl) on the firewall,
+                through the electric primer, into the Marvel-Schebler MA-4SPA float-
+                type carburetor, and into the intake manifold.
+
+Selector Valve: Four positions: LEFT, BOTH, RIGHT, OFF
+  Normal ops:   BOTH (allows cross-feed and balances tanks)
+  Best practice: Avoid running on one tank to less than 1/4 remaining;
+                 always check both tanks for takeoff.
+
+Gascolator:     Located low on firewall. Contains 60-mesh screen and water trap.
+                Should be drained at each preflight to check for water/debris.
+                Covered by AD 2000-06-01 (fuel strainer inspection).
+
+Primer:         Engine-driven priming system draws fuel from left tank.
+
+IMPORTANT (AD 2001-23-03): The left forward doorpost contains a map light switch
+and a fuel line in close proximity. Inspect the plastic insulator on the map light
+switch terminals annually per AD 2001-23-03. A deteriorated insulator can allow
+electrical arcing to burn through the adjacent fuel line.
+
+================================================================================
+OIL SYSTEM
+================================================================================
+
+Type:           Wet sump, pressure-fed
+Capacity:       8 quarts maximum (6 quarts minimum for flight)
+Oil Pump:       Engine-driven gear-type pump
+Pressure Relief: Set at 90 psi
+Full-flow Filter: Spin-on filter (Lycoming-approved) — cut open and inspect at
+                  every oil change per AD 80-04-03 R2 for metallic particles
+
+Oil Cooler:     Air-cooled, mounted to engine mount structure
+  Oil Temp:     Normal range 160–220°F; maximum 245°F
+
+Oil Change Interval: 50 hours or 4 calendar months, whichever occurs first
+  (per Lycoming SB 480F and FAA-accepted practice)
+
+Anti-wear Additive: One 6-oz can Lycoming LW-16702 at each oil change required
+  per AD 80-04-03 R2 UNLESS using pre-additized oils (AeroShell W 15W-50,
+  AeroShell W 100 Plus, Exxon Elite 20W-50) which incorporate equivalent chemistry.
+
+Oil Consumption: Normal: up to 1 quart per 5 hours
+                 Investigate if exceeding 1 quart per 3 hours
+                 Excessive consumption may indicate worn rings, valve seals,
+                 or cam/lifter wear (specific H2AD concern)
+
+================================================================================
+ELECTRICAL SYSTEM
+================================================================================
+
+System Voltage:  28-volt DC (nominal)
+Alternator:      Engine-driven, 60-amp output
+Battery:         24-volt lead-acid, 14.5 amp-hour (minimum)
+                 Located in left rear of fuselage, accessible from baggage area
+
+Bus Architecture:
+  Main Bus:      Powered by alternator and battery in parallel when master switch ON
+  Essential Bus: Subset of main bus; avionics master switch controls separately
+
+Circuit Protection: Combination of circuit breakers (push-to-reset) and fuses.
+  Most avionics protected by pull-type circuit breakers on instrument panel.
+
+Ammeter:         Shows alternator output current (positive = charging)
+  Normal:        Slight positive deflection after engine start and during cruise
+  Zero:          Alternator may have failed; run on battery only
+  Negative:      Battery discharging; alternator not charging
+
+External Power:  Ground power receptacle on left side of fuselage (AD 77-12-08
+                 compliance required — inspection of ground power socket wiring)
+
+================================================================================
+VACUUM SYSTEM
+================================================================================
+
+Vacuum Pump:    Engine-driven, dry-type (Rapco/Weldon or equivalent)
+                NOTE: Dry vacuum pumps have limited service life (~500-800 hours)
+                      and can fail without warning. Covered by AD 2006-03-08.
+
+Vacuum Gauge:   In-cockpit indicator, should read 4.5–5.4 in. Hg in cruise
+Suction Relief: Calibrated spring-loaded valve on firewall
+
+Gyro Instruments driven by vacuum:
+  Attitude Indicator (AI): Erects to vertical within 5 minutes
+  Directional Gyro (DG/HI): Must be aligned to compass periodically (15-min max)
+
+NOTE: If vacuum gauge drops below 4.5 in. Hg in flight, gyro instruments become
+unreliable. Transition to partial-panel flying using turn coordinator (electric)
+and magnetic compass.
+
+================================================================================
+PITOT-STATIC SYSTEM
+================================================================================
+
+Pitot Tube:     Left wing leading edge (heated pitot tube, electric)
+Static Ports:   Two flush-mount ports on left and right fuselage sides (cross-
+                connected to cancel yaw errors)
+Alternate Static: Knob below instrument panel; opens to cabin static pressure
+                  (slightly higher than ambient; expect slight altimeter error)
+
+Instruments Fed:
+  Airspeed Indicator (ASI)
+  Altimeter
+  Vertical Speed Indicator (VSI)
+
+IFR Certification Inspection: Required every 24 calendar months per 14 CFR 91.411.
+  Includes encoder altimeter inspection.
+
+================================================================================
+LANDING GEAR
+================================================================================
+
+Type:           Fixed tricycle gear (non-retractable)
+
+Nose Gear:      Steerable via rudder pedals through 30° each side
+                Oleo (air/oil) shock strut — service with MIL-H-5606 hydraulic
+                fluid and compressed air (60 psi fully extended with no weight)
+                Shimmy damper: Installed on nose gear; replace if shimmy noted
+
+Main Gear:      Tubular steel spring gear; no oleos or shock absorbers
+                Main gear tubes occasionally crack — inspect at annual
+
+Tires:
+  Nose:         15×6.0–6 (6-ply rating), 26 psi
+  Main:         6.00–6 (6-ply rating), 35 psi
+
+Brakes:         Hydraulic single-disc brakes, left and right
+                Operated by top portion of rudder pedals (toe brakes)
+                Parking brake: Pull knob between seats, press toe brakes, release pedals
+                
+  Brake Fluid:  MIL-H-5606 red hydraulic fluid
+  Master Cyl:   One per pedal, mounted to rudder pedal assembly
+  Caliper:      Single-piston sliding caliper type
+
+================================================================================
+FLIGHT CONTROLS
+================================================================================
+
+Primary Controls: Conventional three-axis (aileron, elevator, rudder)
+                  All cable-actuated from dual yokes and rudder pedals
+
+Ailerons:       Differential — down aileron travels less than up aileron to
+                reduce adverse yaw. Cable-driven from yoke.
+                Aileron balance weights required — see AD 83-17-06.
+
+Elevator:       Cable-driven from yoke (push/pull)
+Rudder:         Cable-driven from pedals (push-pull tubes aft)
+
+Trim:           Elevator trim via large wheel on center console; cable-driven
+                No aileron or rudder trim installed
+
+Flaps:          Manual "Johnson bar" lever on floor between seats
+                Electric flap systems NOT installed on 172N
+                Positions: 0°, 10°, 20°, 30° (full)
+                Limited to 85 KIAS (Vfe)
+
+Control Cables: 7×7 galvanized aircraft cable; inspect annually for wear,
+                fraying, and correct tension. See cable tension table in
+                Maintenance Manual Chapter 27.
+
+================================================================================
+AVIONICS (AS CURRENTLY INSTALLED IN N4798E)
+================================================================================
+
+Comm Radio:     Installed in stack (see avionics panel)
+Nav Radio:      VOR/ILS receiver with CDI
+Transponder:    Mode C transponder; 24-month inspection per 14 CFR 91.413
+                (AD 98-14-03 and 2005-01-19 may apply depending on installed unit)
+ELT:            Fixed ELT; battery replacement per 14 CFR 91.207
+                Encoder:    Blind encoder for Mode C altitude reporting
+
+================================================================================
+SEATS AND BELTS
+================================================================================
+
+Seats:          Two front bucket seats, manually adjustable fore-and-aft on
+                floor rails using a springloaded locking pin.
+                Two rear bench seats (fixed position)
+
+Seat Rails:     Subject to recurring inspection per AD 2011-10-09 (every 100 hr
+                or 12 calendar months). Seat slippage on takeoff is a known fatal
+                accident cause in Cessna singles.
+
+Seat Belts:     Lap belts: Required for all occupants
+                Shoulder Harnesses: Installed in front seats (required for IFR)
+                Rear shoulder harnesses: May or may not be installed
+                See AD 2004-19-01 (upper shoulder harness adjuster inspection)
