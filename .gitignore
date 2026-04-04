@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+mock-cdf/store/assets.json
+mock-cdf/store/timeseries.json
+mock-cdf/store/datapoints.json
+mock-cdf/store/events.json
+mock-cdf/store/relationships.json
+mock-cdf/store/files.json

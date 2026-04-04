@@ -1,0 +1,36 @@
+ N4798E Aircraft Health Assistant
+# Portfolio project for Cognite Senior Field AI Engineer interview
+
+## Project purpose
+Demonstrate understanding of Cognite Data Fusion (CDF) architecture:
+- IT/OT/ET data ingestion and contextualization
+- Industrial Knowledge Graph
+- CAG (Context Augmented Generation) — NOT RAG
+- AI agent with function calling over knowledge graph
+
+## Architecture — never deviate from these decisions
+- Mock CDF server: Express implementing real CDF REST API endpoints
+- Knowledge graph queries: always via @cognite/sdk, never direct JSON reads
+- Context assembly: graph traversal only, no vector store, no semantic search
+- Agent pattern: ReAct loop with explicit tool calls
+- CAG not RAG: context comes from traversing connected graph nodes
+
+## Code standards
+- TypeScript strict mode always
+- Explicit error handling — no silent failures
+- No placeholder functions or TODO comments — implement fully
+- Every function must have a JSDoc comment explaining what CDF concept it mirrors
+- Log which graph nodes were traversed for every agent query
+
+## Domain knowledge
+- Aircraft: 1978 Cessna 172N, N4798E, Lycoming O-320-H2AD engine
+- Engine TBO: 2000 hours, currently 1100 SMOH
+- Annual inspection required every 12 calendar months
+- Oil change interval: 50 hours or 4 months
+- Based at KPRC (Prescott, AZ)
+
+## File ownership
+- mock-cdf/: Express server implementing CDF API — do not modify architecture
+- src/agent/: CAG context assembly and agent loop — core of the project
+- src/ingest/: Data pipeline from CSVs to mock CDF
+- data/: Generated sample data — do not manually edit
