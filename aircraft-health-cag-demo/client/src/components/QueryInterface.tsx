@@ -8,6 +8,12 @@ import GraphTraversalPanel from "./GraphTraversalPanel";
 
 interface Props {
   apiKeyMissing: boolean;
+  /** When false (e.g. Knowledge Graph popup), chat only — no traversal list. Default true for AI Assistant tab. */
+  showTraversalSidebar?: boolean;
+  /** When false (floating chat), hide suggested-question chips. */
+  showSuggestedQuestions?: boolean;
+  /** When true (floating chat on single-aircraft tabs), Fleet is disabled and grayed out. */
+  fleetOptionDisabled?: boolean;
 }
 
 // Context-aware suggestions based on selected aircraft
@@ -45,18 +51,36 @@ const TAIL_SUGGESTIONS: Record<string, string[]> = {
   ],
 };
 
-function AircraftSelector({ value, onChange }: { value: TailNumber | null; onChange: (t: TailNumber | null) => void }) {
+function AircraftSelector({
+  value,
+  onChange,
+  fleetDisabled = false,
+}: {
+  value: TailNumber | null;
+  onChange: (t: TailNumber | null) => void;
+  fleetDisabled?: boolean;
+}) {
   return (
     <div className="flex items-center gap-2 px-3 py-2 border-b border-zinc-800 bg-zinc-900/50">
       <span className="text-xs text-zinc-500 shrink-0">Aircraft:</span>
       <div className="flex gap-1 flex-wrap">
         <button
-          onClick={() => onChange(null)}
+          type="button"
+          disabled={fleetDisabled}
+          onClick={() => {
+            if (!fleetDisabled) onChange(null);
+          }}
+          title={fleetDisabled ? "Fleet scope not available on this page" : undefined}
           className={cn(
             "px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors border",
-            value === null
-              ? "bg-sky-600 text-white border-sky-500"
-              : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
+            fleetDisabled &&
+              "opacity-45 cursor-not-allowed text-zinc-600 border-zinc-800 bg-zinc-900/80 pointer-events-none",
+            !fleetDisabled &&
+              value === null &&
+              "bg-sky-600 text-white border-sky-500",
+            !fleetDisabled &&
+              value !== null &&
+              "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
           )}
         >
           Fleet
@@ -64,6 +88,7 @@ function AircraftSelector({ value, onChange }: { value: TailNumber | null; onCha
         {TAILS.map((t) => (
           <button
             key={t}
+            type="button"
             onClick={() => onChange(t)}
             className={cn(
               "px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors border",
@@ -80,7 +105,12 @@ function AircraftSelector({ value, onChange }: { value: TailNumber | null; onCha
   );
 }
 
-export default function QueryInterface({ apiKeyMissing }: Props) {
+export default function QueryInterface({
+  apiKeyMissing,
+  showTraversalSidebar = true,
+  showSuggestedQuestions = true,
+  fleetOptionDisabled = false,
+}: Props) {
   const {
     selectedAircraft,
     setSelectedAircraft,
@@ -226,14 +256,28 @@ export default function QueryInterface({ apiKeyMissing }: Props) {
     : "Ask about the fleet...";
 
   return (
-    <div className="h-full flex flex-col lg:flex-row gap-0 overflow-hidden">
+    <div
+      className={cn(
+        "h-full gap-0 overflow-hidden flex",
+        showTraversalSidebar ? "flex-col lg:flex-row" : "flex-col"
+      )}
+    >
       {/* Chat panel */}
-      <div className="flex-1 flex flex-col min-w-0 bg-zinc-900 border-r border-zinc-800 overflow-hidden">
+      <div
+        className={cn(
+          "flex-1 flex flex-col min-w-0 bg-zinc-900 overflow-hidden",
+          showTraversalSidebar && "border-r border-zinc-800"
+        )}
+      >
         {/* Aircraft selector */}
-        <AircraftSelector value={selectedAircraft} onChange={setSelectedAircraft} />
+        <AircraftSelector
+          value={selectedAircraft}
+          onChange={setSelectedAircraft}
+          fleetDisabled={fleetOptionDisabled}
+        />
 
-        {/* Suggested questions — only when empty */}
-        {chatMessages.length === 0 && (
+        {/* Suggested questions — full AI Assistant tab only, when empty */}
+        {showSuggestedQuestions && chatMessages.length === 0 && (
           <div className="shrink-0 h-36 flex flex-col min-h-0 p-4 pt-3 pb-3 border-b border-zinc-800">
             <p className="text-xs text-zinc-500 mb-2 font-medium uppercase tracking-wide shrink-0">
               Suggested questions {selectedAircraft ? `— ${selectedAircraft}` : "— Fleet"}
@@ -301,7 +345,7 @@ export default function QueryInterface({ apiKeyMissing }: Props) {
           {apiKeyMissing && (
             <div className="flex items-center gap-2 text-xs text-yellow-500 mb-2">
               <AlertCircle className="w-3.5 h-3.5" />
-              Add ANTHROPIC_API_KEY to backend/.env to enable queries
+              Add ANTHROPIC_API_KEY to .env in the project root to enable queries
             </div>
           )}
           <form onSubmit={handleSubmit} className="flex gap-2 items-end">
@@ -330,20 +374,21 @@ export default function QueryInterface({ apiKeyMissing }: Props) {
         </div>
       </div>
 
-      {/* Traversal panel */}
-      <div className="lg:w-80 xl:w-96 shrink-0 flex flex-col overflow-hidden">
-        <GraphTraversalPanel
-          events={displayEvents}
-          isStreaming={isQuerying}
-          canReplay={canReplay}
-          onReplay={() => {
-            if (lastAssistantMsg?.traversalEvents) {
-              startReplay(lastAssistantMsg.traversalEvents);
-            }
-          }}
-          isReplaying={isReplaying}
-        />
-      </div>
+      {showTraversalSidebar && (
+        <div className="lg:w-80 xl:w-96 shrink-0 flex flex-col overflow-hidden">
+          <GraphTraversalPanel
+            events={displayEvents}
+            isStreaming={isQuerying}
+            canReplay={canReplay}
+            onReplay={() => {
+              if (lastAssistantMsg?.traversalEvents) {
+                startReplay(lastAssistantMsg.traversalEvents);
+              }
+            }}
+            isReplaying={isReplaying}
+          />
+        </div>
+      )}
     </div>
   );
 }

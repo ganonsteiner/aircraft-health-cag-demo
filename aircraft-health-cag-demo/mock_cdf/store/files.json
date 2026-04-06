@@ -1,0 +1,196 @@
+[
+  {
+    "id": 500,
+    "externalId": "DOC-POH-LIMITATIONS",
+    "name": "POH \u2014 Section 2: Limitations",
+    "mimeType": "text/plain",
+    "assetIds": [
+      1,
+      11,
+      21,
+      31
+    ],
+    "metadata": {
+      "type": "poh",
+      "section": "limitations",
+      "filename": "poh_limitations.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  },
+  {
+    "id": 501,
+    "externalId": "DOC-POH-EMERGENCY",
+    "name": "POH \u2014 Section 3: Emergency Procedures",
+    "mimeType": "text/plain",
+    "assetIds": [
+      1,
+      11,
+      21,
+      31
+    ],
+    "metadata": {
+      "type": "poh",
+      "section": "emergency",
+      "filename": "poh_emergency.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  },
+  {
+    "id": 502,
+    "externalId": "DOC-POH-SYSTEMS",
+    "name": "POH \u2014 Section 7: Aircraft Systems",
+    "mimeType": "text/plain",
+    "assetIds": [
+      1,
+      2,
+      11,
+      12,
+      21,
+      22,
+      31,
+      32
+    ],
+    "metadata": {
+      "type": "poh",
+      "section": "systems",
+      "filename": "poh_systems.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  },
+  {
+    "id": 503,
+    "externalId": "DOC-POH-PERFORMANCE",
+    "name": "POH \u2014 Section 5: Performance",
+    "mimeType": "text/plain",
+    "assetIds": [
+      1,
+      11,
+      21,
+      31
+    ],
+    "metadata": {
+      "type": "poh",
+      "section": "performance",
+      "filename": "poh_performance.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  },
+  {
+    "id": 504,
+    "externalId": "DOC-AD-80-04-03-R2",
+    "name": "AD 80-04-03 R2 \u2014 Lycoming Cam/Lifter Inspection",
+    "mimeType": "text/plain",
+    "assetIds": [
+      2,
+      3,
+      12,
+      13,
+      22,
+      23,
+      32,
+      33
+    ],
+    "metadata": {
+      "type": "ad",
+      "ad_number": "80-04-03 R2",
+      "aircraft": "Lycoming O-320-H2AD",
+      "filename": "ad_80-04-03-r2_cam_lifter.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  },
+  {
+    "id": 505,
+    "externalId": "DOC-AD-2001-23-03",
+    "name": "AD 2001-23-03 \u2014 Cessna 172 Door Post Wiring Inspection",
+    "mimeType": "text/plain",
+    "assetIds": [
+      6,
+      16,
+      26,
+      36
+    ],
+    "metadata": {
+      "type": "ad",
+      "ad_number": "2001-23-03",
+      "filename": "ad_2001-23-03_doorpost.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  },
+  {
+    "id": 506,
+    "externalId": "DOC-AD-2011-10-09",
+    "name": "AD 2011-10-09 \u2014 Cessna Seat Rail/Lock Inspection",
+    "mimeType": "text/plain",
+    "assetIds": [
+      6,
+      16,
+      26,
+      36
+    ],
+    "metadata": {
+      "type": "ad",
+      "ad_number": "2011-10-09",
+      "filename": "ad_2011-10-09_seat_rail.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  },
+  {
+    "id": 507,
+    "externalId": "DOC-AD-90-06-03-R1",
+    "name": "AD 90-06-03 R1 \u2014 Cessna 172 Exhaust Muffler/Heat Exchanger Inspection",
+    "mimeType": "text/plain",
+    "assetIds": [
+      2,
+      12,
+      22,
+      32
+    ],
+    "metadata": {
+      "type": "ad",
+      "ad_number": "90-06-03 R1",
+      "filename": "ad_90-06-03-r1_exhaust.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  },
+  {
+    "id": 508,
+    "externalId": "DOC-SB-480F",
+    "name": "Lycoming SB 480F \u2014 Oil Servicing Recommendations",
+    "mimeType": "text/plain",
+    "assetIds": [
+      2,
+      4,
+      12,
+      14,
+      22,
+      24,
+      32,
+      34
+    ],
+    "metadata": {
+      "type": "sb",
+      "sb_number": "480F",
+      "manufacturer": "Lycoming",
+      "filename": "sb_480f_oil_service.txt"
+    },
+    "uploaded": true,
+    "createdTime": 1775447062344,
+    "lastUpdatedTime": 1775447062344
+  }
+]

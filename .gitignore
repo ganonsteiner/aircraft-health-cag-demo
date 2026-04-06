@@ -1,9 +1,15 @@
-node_modules/
-dist/
-.env
-mock-cdf/store/assets.json
-mock-cdf/store/timeseries.json
-mock-cdf/store/datapoints.json
-mock-cdf/store/events.json
-mock-cdf/store/relationships.json
-mock-cdf/store/files.json
+# Python
+aircraft-health-cag-demo/.venv/
+aircraft-health-cag-demo/venv/
+aircraft-health-cag-demo/**/__pycache__/
+aircraft-health-cag-demo/**/*.py[cod]
+aircraft-health-cag-demo/**/*.egg-info/
+
+# Build / frontend
+aircraft-health-cag-demo/dist/
+aircraft-health-cag-demo/client/dist/
+aircraft-health-cag-demo/node_modules/
+aircraft-health-cag-demo/client/node_modules/
+
+# Secrets
+aircraft-health-cag-demo/.env

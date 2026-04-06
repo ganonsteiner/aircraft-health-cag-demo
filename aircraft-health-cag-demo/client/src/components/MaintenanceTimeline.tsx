@@ -7,7 +7,14 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { cn, formatDate, formatTimestamp, urgencyColor } from "../lib/utils";
+import {
+  cn,
+  formatDate,
+  formatTimestamp,
+  urgencyColor,
+  formatMaintenanceTypeLabel,
+  formatAdReferenceLine,
+} from "../lib/utils";
 import { api } from "../lib/api";
 import { useStore, TAILS } from "../lib/store";
 import type { MaintenanceItem, MaintenanceRecord } from "../lib/types";
@@ -87,12 +94,21 @@ export default function MaintenanceTimeline({ active }: Props) {
       {/* Aircraft selector */}
       <div className="flex items-center gap-2">
         <span className="text-xs text-zinc-500">Aircraft:</span>
-        <div className="flex gap-1">
+        <div className="flex gap-1 flex-wrap">
           {TAILS.map((t) => (
-            <button key={t} onClick={() => setSelectedAircraft(t)}
-              className={`px-2.5 py-0.5 rounded-full text-xs font-medium border transition-colors ${
-                t === tail ? "bg-sky-600 text-white border-sky-500" : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
-              }`}>{t}</button>
+            <button
+              key={t}
+              type="button"
+              onClick={() => setSelectedAircraft(t)}
+              className={cn(
+                "px-2.5 py-0.5 rounded-full text-xs font-medium border transition-colors",
+                tail === t
+                  ? "bg-sky-600 text-white border-sky-500"
+                  : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
+              )}
+            >
+              {t}
+            </button>
           ))}
         </div>
       </div>
@@ -104,25 +120,53 @@ export default function MaintenanceTimeline({ active }: Props) {
         </h2>
 
         {upcomingLoading ? (
-          <div className="space-y-2 animate-pulse">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="h-16 bg-zinc-800 rounded-xl" />
+          <div className="space-y-2" aria-busy="true">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-4 p-4 rounded-xl border border-zinc-800/50 bg-zinc-900/30"
+              >
+                <div className="shrink-0 w-20 flex flex-col items-center gap-1.5 animate-pulse">
+                  <div className="h-7 bg-zinc-800 rounded w-14" />
+                  <div className="h-3 bg-zinc-800/80 rounded w-8" />
+                </div>
+                <div className="flex-1 min-w-0 space-y-2 animate-pulse">
+                  <div className="h-4 bg-zinc-800 rounded max-w-lg w-full" />
+                  <div className="h-3 bg-zinc-800/80 rounded max-w-md w-3/4" />
+                </div>
+                <div className="shrink-0 animate-pulse">
+                  <div className="h-7 w-[4.5rem] bg-zinc-800 rounded-full" />
+                </div>
+              </div>
             ))}
           </div>
         ) : upcoming.length === 0 ? (
           <div className="flex items-center gap-3 p-4 rounded-xl bg-emerald-950/20 border border-emerald-800/30 text-emerald-400">
             <CheckCircle className="w-5 h-5 shrink-0" />
-            <p className="text-sm">No maintenance due in the next 250 hobbs hours</p>
+            <p className="text-sm">No maintenance due in the next 250 hr (or annual calendar window)</p>
           </div>
         ) : (
           <div className="space-y-2">
             {upcoming.map((item, idx) => {
-              const hoursColor = item.isOverdue
-                ? "text-red-400"
-                : urgencyColor(item.hoursUntilDue, "hours");
+              const hu = item.hoursUntilDue;
+              const dd = item.daysUntilDue;
+              const tachUrgent =
+                hu !== null && (item.isOverdue ? true : hu <= 50);
+              const dayUrgent =
+                dd !== null && (dd < 0 ? true : dd <= 30);
+              const hoursColor =
+                hu !== null
+                  ? item.isOverdue
+                    ? "text-red-400"
+                    : urgencyColor(hu, "hours")
+                  : dd !== null
+                    ? item.isOverdue
+                      ? "text-red-400"
+                      : urgencyColor(dd, "days")
+                    : "text-zinc-400";
               const urgencyBg = item.isOverdue
                 ? "bg-red-950/20 border-red-700/40"
-                : item.hoursUntilDue <= 50
+                : tachUrgent || dayUrgent
                 ? "bg-yellow-950/20 border-yellow-800/30"
                 : "bg-zinc-900 border-zinc-800";
 
@@ -132,34 +176,59 @@ export default function MaintenanceTimeline({ active }: Props) {
                   className={cn("flex items-center gap-4 p-4 rounded-xl border", urgencyBg)}
                 >
                   <div className="shrink-0 text-center w-20">
-                    {item.isOverdue ? (
-                      <>
-                        <p className={cn("text-lg font-bold tabular-nums", hoursColor)}>
-                          {Math.abs(item.hoursUntilDue).toFixed(0)}hr
-                        </p>
-                        <p className="text-xs text-red-600 font-semibold">OVERDUE</p>
-                      </>
+                    {hu !== null ? (
+                      item.isOverdue ? (
+                        <>
+                          <p className={cn("text-lg font-bold tabular-nums", hoursColor)}>
+                            {Math.abs(hu).toFixed(1)}
+                          </p>
+                          <p className="text-xs text-red-600 font-semibold">OVERDUE</p>
+                          <p className="text-[10px] text-zinc-600">hr</p>
+                        </>
+                      ) : (
+                        <>
+                          <p className={cn("text-xl font-bold tabular-nums", hoursColor)}>
+                            {hu.toFixed(1)}
+                          </p>
+                          <p className="text-xs text-zinc-600">hr</p>
+                        </>
+                      )
+                    ) : dd !== null ? (
+                      item.isOverdue ? (
+                        <>
+                          <p className={cn("text-lg font-bold tabular-nums", hoursColor)}>
+                            {Math.abs(dd)}
+                          </p>
+                          <p className="text-xs text-red-600 font-semibold">OVERDUE</p>
+                          <p className="text-[10px] text-zinc-600">d</p>
+                        </>
+                      ) : (
+                        <>
+                          <p className={cn("text-xl font-bold tabular-nums", hoursColor)}>
+                            {dd}
+                          </p>
+                          <p className="text-xs text-zinc-600">d</p>
+                        </>
+                      )
                     ) : (
-                      <>
-                        <p className={cn("text-xl font-bold tabular-nums", hoursColor)}>
-                          {item.hoursUntilDue.toFixed(1)}
-                        </p>
-                        <p className="text-xs text-zinc-600">hrs</p>
-                      </>
+                      <p className="text-xs text-zinc-500">—</p>
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-zinc-200 leading-snug">
-                      {item.description}
+                      {item.summary || item.description}
                     </p>
                     <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1">
                       <span className="text-xs text-zinc-600">{item.component}</span>
-                      <span className="text-xs text-zinc-600">
-                        Due @ {item.nextDueHobbs.toFixed(1)} hr
-                      </span>
+                      {item.nextDueTach != null && (
+                        <span className="text-xs text-zinc-600">
+                          Due @ {item.nextDueTach.toFixed(1)}
+                        </span>
+                      )}
                       {item.nextDueDate && (
                         <span className="text-xs text-zinc-600">
-                          or {formatDate(item.nextDueDate)}
+                          {item.nextDueTach != null ? "or " : ""}
+                          {formatDate(item.nextDueDate)}
                         </span>
                       )}
                     </div>
@@ -170,12 +239,12 @@ export default function MaintenanceTimeline({ active }: Props) {
                         "text-xs px-2 py-1 rounded-full border font-medium",
                         item.isOverdue
                           ? "text-red-400 bg-red-950/40 border-red-800/50"
-                          : item.hoursUntilDue <= 50
+                          : tachUrgent || dayUrgent
                           ? "text-yellow-400 bg-yellow-950/40 border-yellow-800/50"
                           : "text-zinc-400 bg-zinc-800 border-zinc-700"
                       )}
                     >
-                      {item.maintenanceType}
+                      {formatMaintenanceTypeLabel(item.maintenanceType)}
                     </span>
                   </div>
                 </div>
@@ -232,10 +301,29 @@ export default function MaintenanceTimeline({ active }: Props) {
         </div>
 
         {loading ? (
-          <div className="space-y-2 animate-pulse">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="h-16 bg-zinc-800 rounded-xl" />
-            ))}
+          <div className="relative min-h-[260px]" aria-busy="true">
+            <div className="absolute left-5 top-2 bottom-2 w-px bg-zinc-800" />
+            <div className="space-y-1">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="flex gap-4 relative pl-2">
+                  <div
+                    className={cn(
+                      "shrink-0 w-6 h-6 rounded-full border-2 z-10 mt-2",
+                      "border-zinc-700 bg-zinc-900 flex items-center justify-center"
+                    )}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-zinc-800 animate-pulse" />
+                  </div>
+                  <div className="flex-1 bg-zinc-900 rounded-xl border border-zinc-800 p-3 mb-2 min-h-[3.75rem] animate-pulse">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="h-4 bg-zinc-800 rounded flex-1 max-w-xl" />
+                      <div className="h-3 bg-zinc-800 rounded w-14 shrink-0" />
+                    </div>
+                    <div className="h-3 bg-zinc-800/80 rounded w-40 mt-2" />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ) : error ? (
           <div className="flex items-center gap-3 p-4 rounded-xl bg-red-950/20 border border-red-800/30">
@@ -308,7 +396,7 @@ export default function MaintenanceTimeline({ active }: Props) {
                           )}
                           {record.metadata?.ad_reference && (
                             <span className="text-xs text-violet-600 font-mono">
-                              AD {record.metadata.ad_reference}
+                              {formatAdReferenceLine(record.metadata.ad_reference)}
                             </span>
                           )}
                         </div>

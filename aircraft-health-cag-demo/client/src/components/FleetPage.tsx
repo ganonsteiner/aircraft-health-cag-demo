@@ -60,8 +60,25 @@ function AircraftCard({
   const smoh = Number(aircraft.smoh) || 0;
   const smohPct = Math.min(100, Number(aircraft.smohPercent) || 0);
   const hobbs = Number(aircraft.hobbs) || 0;
-  const oilOver = Number(aircraft.oilHoursOverdue) || 0;
+  const oilOver =
+    Number(aircraft.oilTachHoursOverdue ?? aircraft.oilHoursOverdue) || 0;
+  const oilUntil = Number(aircraft.oilTachHoursUntilDue) || 0;
+  const oilDays = aircraft.oilDaysUntilDue;
   const loadErr = aircraft.metadata?.load_error;
+
+  const oilLine = () => {
+    if (oilOver > 0) {
+      const d = oilDays;
+      if (d !== null && d < 0) return `${oilOver.toFixed(1)} hr overdue · ${Math.abs(d)} d`;
+      return `${oilOver.toFixed(1)} hr overdue`;
+    }
+    if (oilUntil > 0) {
+      const hr = `${oilUntil.toFixed(1)} hr`;
+      if (oilDays !== null && oilDays >= 0) return `${hr} · ${oilDays} d`;
+      return hr;
+    }
+    return "Current";
+  };
 
   return (
     <button
@@ -124,9 +141,14 @@ function AircraftCard({
           </div>
         </div>
         <div className="bg-zinc-800/50 rounded-lg px-3 py-2">
-          <div className="text-zinc-500 mb-0.5">Oil Overdue</div>
-          <div className={cn("font-medium", oilOver > 0 ? "text-red-400" : "text-emerald-400")}>
-            {oilOver > 0 ? `${oilOver.toFixed(1)} hrs` : "Current"}
+          <div className="text-zinc-500 mb-0.5">Oil Life</div>
+          <div
+            className={cn(
+              "font-medium",
+              oilOver > 0 ? "text-red-400" : oilUntil > 0 && oilUntil <= 10 ? "text-yellow-400" : "text-emerald-400"
+            )}
+          >
+            {oilLine()}
           </div>
         </div>
       </div>
@@ -206,13 +228,45 @@ export default function FleetPage({ onNavigate }: FleetPageProps) {
           </div>
         )}
 
-        {/* Loading */}
         {loading && (
-          <div className="grid grid-cols-2 gap-4">
-            {TAILS.map((t) => (
-              <div key={t} className="h-52 rounded-xl border border-zinc-800 bg-zinc-900/40 animate-pulse" />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-4 gap-3 mb-6 animate-pulse" aria-busy="true">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-4 h-[5.25rem]"
+                >
+                  <div className="h-8 bg-zinc-800 rounded mx-auto w-10 mb-2" />
+                  <div className="h-3 bg-zinc-800/80 rounded mx-auto w-20" />
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {TAILS.map((t) => (
+                <div
+                  key={t}
+                  className="min-h-[300px] rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 flex flex-col animate-pulse"
+                >
+                  <div className="flex justify-between gap-3 mb-4">
+                    <div className="flex gap-3 min-w-0">
+                      <div className="w-10 h-10 rounded-lg bg-zinc-800 shrink-0" />
+                      <div className="space-y-2 min-w-0 pt-0.5">
+                        <div className="h-5 bg-zinc-800 rounded w-24" />
+                        <div className="h-3 bg-zinc-800/80 rounded w-36 max-w-full" />
+                      </div>
+                    </div>
+                    <div className="h-7 w-28 rounded-full bg-zinc-800 shrink-0" />
+                  </div>
+                  <div className="h-2 bg-zinc-800 rounded-full mb-4" />
+                  <div className="grid grid-cols-2 gap-2 flex-1 content-start">
+                    {Array.from({ length: 4 }).map((_, j) => (
+                      <div key={j} className="h-14 rounded-lg bg-zinc-800/60" />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
         )}
 
         {/* Error */}

@@ -2,7 +2,7 @@ CESSNA MODEL 172N SKYHAWK
 PILOT'S OPERATING HANDBOOK — SECTION 3: EMERGENCY PROCEDURES
 1978 Edition (FAA Approved)
 
-Aircraft: N4798E  Serial: 17270798  Engine: Lycoming O-320-H2AD
+Type: Cessna 172N (1978) · Engine: Lycoming O-320-H2AD
 
 WARNING: Emergency procedures in this section are the recommended procedures for
 coping with the emergencies listed. It is the pilot's responsibility to be familiar
@@ -211,5 +211,6 @@ LOSS OF OIL PRESSURE
 
 WARNING: O-320-H2AD engines are particularly sensitive to oil system anomalies
 due to the barrel lifter design. Any oil pressure indication below 60 psi in
-cruise should prompt immediate descent and precautionary landing. Refer to
-AD 80-04-03 R2 compliance status and last oil filter inspection results.
+cruise should prompt immediate descent and precautionary landing. Consult
+maintenance records for AD 80-04-03 R2 compliance and recent oil filter
+inspection results.

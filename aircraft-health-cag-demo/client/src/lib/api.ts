@@ -66,7 +66,14 @@ export const api = {
 
   flights: (
     tail: string,
-    opts: { page?: number; per_page?: number; route?: string; year?: number } = {}
+    opts: {
+      page?: number;
+      per_page?: number;
+      route?: string;
+      year?: number;
+      sort?: string;
+      order?: "asc" | "desc";
+    } = {}
   ) =>
     get<FlightHistoryPage>(
       withTail("/flights", tail, {
@@ -74,6 +81,8 @@ export const api = {
         per_page: opts.per_page,
         route: opts.route,
         year: opts.year,
+        sort: opts.sort,
+        order: opts.order,
       })
     ),
 

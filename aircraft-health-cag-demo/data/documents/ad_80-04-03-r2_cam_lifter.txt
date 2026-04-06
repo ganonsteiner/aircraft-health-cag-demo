@@ -47,9 +47,9 @@ the following per Lycoming Service Bulletin No. 435 (dated March 17, 1979):
   1. Replace upper exhaust valve spring seats with P/N LW-16475-KLI
   2. Replace exhaust hydraulic lifters with P/N LW-16586
 
-NOTE: N4798E engine serial number range (L-XXXXX-76 vintage) — verify whether
-Part (a) applies based on actual engine logbook S/N. If the engine was overhauled
-after March 19, 1979, Part (a) is N/A; Part (b) is still required.
+NOTE: For each engine, verify whether Part (a) applies from the engine logbook
+serial number (L-XXXXX-76 vintage) and overhaul history. If the engine was
+overhauled after March 19, 1979, Part (a) is N/A; Part (b) is still required.
 
 PART (b) — RECURRING COMPLIANCE:
 
@@ -108,16 +108,29 @@ Each oil change maintenance entry must document:
   6. Mechanic signature, certificate number
 
 ================================================================================
-NOTES FOR N4798E OPERATORS
+DESERT SKY AVIATION — FLEET REGISTRY (KPHX)
 ================================================================================
 
-N4798E Engine: Lycoming O-320-H2AD, approximately 1,450 hours SMOH as of 2026.
-  Current oil change interval: 50 hours per Lycoming SB 480F
-  AD compliance frequency: Every oil change
-  
-  The aircraft's major overhaul (approximately 2009) included replacement of
-  the camshaft and all hydraulic lifters with new/serviceable parts. Compliance
-  with this AD is maintained at every 50-hour oil change.
+Operator: Desert Sky Aviation. Four 1978 Cessna 172N aircraft, Lycoming O-320-H2AD.
 
-  Compliance with this AD is required at EVERY OIL CHANGE regardless of flight
-  hours since last change when the 4-month calendar interval triggers an oil change.
+  Tail     Cessna S/N   (engine per logbooks)
+  ------   ----------
+  N4798E   17270798
+  N2251K   17270822
+  N8834Q   17270856
+  N1156P   17270891
+
+All listed airframes operate under this operator. Engine S/N and overhaul
+status are recorded in each aircraft's maintenance records.
+
+================================================================================
+NOTES FOR DESERT SKY AVIATION OPERATORS
+================================================================================
+
+  • Engine model: Lycoming O-320-H2AD on all four aircraft.
+  • Oil change interval: 50 hours or 4 calendar months per Lycoming SB 480F
+    (whichever occurs first).
+  • AD 80-04-03 R2 Part (b): suction screen, filter cut-open inspection, and
+    additive or AMOC oil at every oil change.
+  • Compliance with Part (b) is required at every oil change, including when the
+    4-month calendar interval occurs before 50 flight hours.

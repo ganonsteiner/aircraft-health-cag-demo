@@ -21,20 +21,36 @@ import AircraftComponents from "./components/AircraftComponents";
 import FlightHistory from "./components/FlightHistory";
 import KnowledgeGraph from "./components/KnowledgeGraph";
 import FleetPage from "./components/FleetPage";
+import FloatingChatDock from "./components/FloatingChatDock";
 
 type Tab = "fleet" | "dashboard" | "query" | "maintenance" | "aircraft" | "flights" | "graph";
+
+/** Tabs where UI is single-aircraft only — no Fleet scope in page strip or floating chat. */
+const TABS_WITHOUT_FLEET_SCOPE: Tab[] = ["dashboard", "maintenance", "aircraft", "flights"];
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>("fleet");
   const [health, setHealth] = useState<HealthStatus | null>(null);
   const [healthError, setHealthError] = useState(false);
-  const { isQuerying, selectedAircraft, setSelectedAircraft } = useStore();
+  const { isQuerying, selectedAircraft, setSelectedAircraft, setFloatingChatOpen } = useStore();
 
   useEffect(() => {
     api.health()
       .then(setHealth)
       .catch(() => setHealthError(true));
   }, []);
+
+  useEffect(() => {
+    if (activeTab === "query") {
+      setFloatingChatOpen(false);
+    }
+  }, [activeTab, setFloatingChatOpen]);
+
+  useEffect(() => {
+    if (TABS_WITHOUT_FLEET_SCOPE.includes(activeTab) && selectedAircraft === null) {
+      setSelectedAircraft("N4798E");
+    }
+  }, [activeTab, selectedAircraft, setSelectedAircraft]);
 
   const handleNavigate = (tab: Tab, tail?: TailNumber) => {
     if (tail) setSelectedAircraft(tail);
@@ -43,6 +59,9 @@ export default function App() {
 
   const apiKeyMissing = health ? !health.anthropic_api_key_configured : false;
   const mockCdfOffline = health ? !health.mock_cdf_reachable : false;
+  const mockCdfNoFleetData =
+    health?.mock_cdf_reachable === true &&
+    health.mock_cdf_fleet_ready === false;
 
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
     { id: "fleet", label: "Fleet", icon: <Users className="w-4 h-4 shrink-0" /> },
@@ -89,8 +108,14 @@ export default function App() {
                 />
                 <StatusDot
                   label="KG"
-                  ok={health.mock_cdf_reachable}
-                  tooltip={health.mock_cdf_reachable ? `Knowledge graph online — ${(health.store?.assets ?? 0)} assets` : "Mock CDF offline"}
+                  ok={health.mock_cdf_reachable && (health.mock_cdf_fleet_ready ?? true)}
+                  tooltip={
+                    !health.mock_cdf_reachable
+                      ? "Mock CDF offline"
+                      : health.mock_cdf_fleet_ready === false
+                        ? "Port 4000 responds but fleet data missing — free port 4000 and restart npm run dev"
+                        : `Knowledge graph online — ${(health.store?.assets ?? 0)} assets`
+                  }
                 />
                 <StatusDot
                   label="API"
@@ -125,10 +150,11 @@ export default function App() {
       </div>
 
       {/* Setup banners */}
-      {(apiKeyMissing || mockCdfOffline || healthError) && (
+      {(apiKeyMissing || mockCdfOffline || mockCdfNoFleetData || healthError) && (
         <SetupBanner
           apiKeyMissing={apiKeyMissing}
           mockCdfOffline={mockCdfOffline}
+          mockCdfNoFleetData={mockCdfNoFleetData}
           connectionError={healthError}
         />
       )}
@@ -154,13 +180,20 @@ export default function App() {
         <div className={cn("h-full", activeTab === "aircraft" ? "block" : "hidden")}>
           <AircraftComponents active={activeTab === "aircraft"} />
         </div>
-        <div className={cn("h-full", activeTab === "flights" ? "block" : "hidden")}>
+        <div className={cn("h-full min-h-0 min-w-0", activeTab === "flights" ? "block" : "hidden")}>
           <FlightHistory active={activeTab === "flights"} />
         </div>
         <div className={cn("h-full", activeTab === "graph" ? "block" : "hidden")}>
           <KnowledgeGraph active={activeTab === "graph"} />
         </div>
       </main>
+
+      <FloatingChatDock
+        visible={activeTab !== "query"}
+        apiKeyMissing={apiKeyMissing}
+        graphContext={activeTab === "graph"}
+        fleetOptionDisabled={TABS_WITHOUT_FLEET_SCOPE.includes(activeTab)}
+      />
     </div>
   );
 }

@@ -1,0 +1,9 @@
+.env
+
+aircraft-health-cag-demo/node_modules/
+aircraft-health-cag-demo/client/node_modules/
+aircraft-health-cag-demo/**/dist/
+aircraft-health-cag-demo/**/__pycache__/
+aircraft-health-cag-demo/**/*.egg-info/
+aircraft-health-cag-demo/.venv/
+aircraft-health-cag-demo/venv/

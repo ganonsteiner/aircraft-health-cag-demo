@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Plane, ChevronRight, CheckCircle, AlertTriangle, XCircle, Wrench } from "lucide-react";
 import { cn, formatDate } from "../lib/utils";
 import { api } from "../lib/api";
@@ -43,11 +43,16 @@ export default function AircraftComponents({ active }: Props) {
   const [compHistory, setCompHistory] = useState<MaintenanceRecord[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!active) return;
     setLoading(true);
     setError(null);
     setSelectedId(null);
+    setComponents([]);
+  }, [active, tail]);
+
+  useEffect(() => {
+    if (!active) return;
     api
       .components(tail)
       .then(setComponents)
@@ -114,68 +119,86 @@ export default function AircraftComponents({ active }: Props) {
     });
   }
 
-  if (loading)
-    return (
-      <div className="space-y-2 animate-pulse">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className="h-12 bg-zinc-800 rounded-xl" style={{ marginLeft: `${(i % 4) * 16}px` }} />
-        ))}
-      </div>
-    );
-
-  if (error)
-    return (
-      <div className="flex items-center gap-3 p-4 rounded-xl bg-red-950/20 border border-red-800/30">
-        <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
-        <p className="text-sm text-red-300">{error}</p>
-      </div>
-    );
-
   const selectedComp = components.find((c) => c.externalId === selectedId);
+
+  const treeSkeletonMargins = [0, 0, 20, 20, 40, 20, 20, 0];
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
-      {/* Aircraft selector */}
       <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800 shrink-0">
         <span className="text-xs text-zinc-500">Aircraft:</span>
-        <div className="flex gap-1">
+        <div className="flex gap-1 flex-wrap">
           {TAILS.map((t) => (
-            <button key={t} onClick={() => setSelectedAircraft(t)}
-              className={`px-2.5 py-0.5 rounded-full text-xs font-medium border transition-colors ${
-                t === tail ? "bg-sky-600 text-white border-sky-500" : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
-              }`}>{t}</button>
+            <button
+              key={t}
+              type="button"
+              onClick={() => setSelectedAircraft(t)}
+              className={cn(
+                "px-2.5 py-0.5 rounded-full text-xs font-medium border transition-colors",
+                tail === t
+                  ? "bg-sky-600 text-white border-sky-500"
+                  : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
+              )}
+            >
+              {t}
+            </button>
           ))}
         </div>
       </div>
 
-    <div className="flex-1 flex gap-4 overflow-hidden p-4">
-      {/* Component tree */}
-      <div className="flex-1 min-w-0 bg-zinc-900 rounded-xl border border-zinc-800 overflow-y-auto">
-        <div className="px-4 py-3 border-b border-zinc-800 flex items-center gap-2">
-          <Plane className="w-4 h-4 text-sky-400" />
-          <span className="text-sm font-semibold text-zinc-300">{tail} — Component Hierarchy</span>
-          <span className="text-xs text-zinc-600 ml-auto">{components.length} nodes</span>
-        </div>
-
-        {/* Legend */}
-        <div className="px-4 py-2 border-b border-zinc-800/50 flex gap-4">
-          {[
-            { label: "OK", color: "bg-emerald-500" },
-            { label: "Due soon", color: "bg-yellow-400" },
-            { label: "Overdue", color: "bg-red-500" },
-          ].map((l) => (
-            <span key={l.label} className="flex items-center gap-1.5 text-xs text-zinc-500">
-              <span className={cn("w-2 h-2 rounded-full shrink-0", l.color)} />
-              {l.label}
+      <div className="flex-1 flex gap-4 overflow-hidden p-4 min-h-0">
+        <div className="flex-1 min-w-0 bg-zinc-900 rounded-xl border border-zinc-800 overflow-y-auto">
+          <div className="px-4 py-3 border-b border-zinc-800 flex items-center gap-2">
+            <Plane className="w-4 h-4 text-sky-400" />
+            <span className="text-sm font-semibold text-zinc-300">{tail} — Component Hierarchy</span>
+            <span className="text-xs text-zinc-600 ml-auto">
+              {loading ? "…" : `${components.length} nodes`}
             </span>
-          ))}
+          </div>
+
+          <div className="px-4 py-2 border-b border-zinc-800/50 flex gap-4">
+            {[
+              { label: "OK", color: "bg-emerald-500" },
+              { label: "Due soon", color: "bg-yellow-400" },
+              { label: "Overdue", color: "bg-red-500" },
+            ].map((l) => (
+              <span key={l.label} className="flex items-center gap-1.5 text-xs text-zinc-500">
+                <span className={cn("w-2 h-2 rounded-full shrink-0", l.color)} />
+                {l.label}
+              </span>
+            ))}
+          </div>
+
+          <div className="p-2 space-y-0.5">
+            {loading ? (
+              <div className="space-y-0.5" aria-busy="true">
+                {treeSkeletonMargins.map((ml, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-lg animate-pulse"
+                    style={{ marginLeft: ml }}
+                  >
+                    <div className="w-2 h-2 rounded-full bg-zinc-800 shrink-0" />
+                    <div className="flex-1 space-y-1.5 min-w-0">
+                      <div className="h-3.5 bg-zinc-800 rounded w-32 max-w-[70%]" />
+                      <div className="h-3 bg-zinc-800/80 rounded w-28 max-w-[55%]" />
+                    </div>
+                    <div className="w-3.5 h-3.5 rounded bg-zinc-800 shrink-0" />
+                  </div>
+                ))}
+              </div>
+            ) : error ? (
+              <div className="flex items-center gap-3 p-4 m-2 rounded-xl bg-red-950/20 border border-red-800/30">
+                <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
+                <p className="text-sm text-red-300">{error}</p>
+              </div>
+            ) : (
+              renderTree(null, 0)
+            )}
+          </div>
         </div>
 
-        <div className="p-2 space-y-0.5">{renderTree(null, 0)}</div>
-      </div>
-
-      {/* Side panel — component detail */}
-      <div className="w-80 shrink-0 flex flex-col gap-4">
+        <div className="w-80 shrink-0 flex flex-col gap-4 min-h-0">
         {selectedComp ? (
           <>
             {/* Component card */}
@@ -198,13 +221,21 @@ export default function AircraftComponents({ active }: Props) {
                   value={`${selectedComp.currentHobbs.toFixed(1)} hr`}
                 />
                 <DetailRow
+                  label="Current tach"
+                  value={`${(selectedComp.currentTach ?? 0).toFixed(1)} hr`}
+                />
+                <DetailRow
                   label="Last maintenance"
                   value={formatDate(selectedComp.lastMaintenanceDate) ?? "No records"}
                 />
-                {selectedComp.nextDueHobbs !== null && (
+                {selectedComp.nextDueTach != null && (
                   <DetailRow
-                    label="Next due"
-                    value={`${selectedComp.nextDueHobbs.toFixed(1)} hr${selectedComp.hoursUntilDue !== null ? ` (${selectedComp.hoursUntilDue > 0 ? "+" : ""}${selectedComp.hoursUntilDue?.toFixed(1)} hr)` : ""}`}
+                    label="Next due (tach)"
+                    value={`${selectedComp.nextDueTach.toFixed(1)} hr${
+                      selectedComp.hoursUntilDue !== null
+                        ? ` (${selectedComp.hoursUntilDue > 0 ? "+" : ""}${selectedComp.hoursUntilDue?.toFixed(1)} tach hr)`
+                        : ""
+                    }`}
                     highlight={selectedComp.status !== "ok"}
                   />
                 )}
@@ -265,8 +296,8 @@ export default function AircraftComponents({ active }: Props) {
             <p className="text-xs mt-1">to view maintenance history</p>
           </div>
         )}
+        </div>
       </div>
-    </div>
     </div>
   );
 }

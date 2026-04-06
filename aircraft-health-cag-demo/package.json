@@ -1,21 +1,55 @@
 {
   "name": "aircraft-health-cag-demo",
   "version": "1.0.0",
-  "description": "N4798E Aircraft Health Assistant — CAG demo with Python/FastAPI backend and React frontend",
+  "description": "Desert Sky Aviation — four-aircraft 172N fleet CAG demo (mock CDF, FastAPI agent, React)",
   "private": true,
+  "type": "module",
+  "keywords": [
+    "cognite",
+    "cdf",
+    "cag",
+    "aviation",
+    "fastapi",
+    "react"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
+    "bootstrap": "npm install && python3 -m pip install -e . && npm run generate && npm run ingest",
     "dev": "concurrently --names \"mock-cdf,api,client\" --prefix-colors \"cyan,yellow,green\" \"npm run mock-cdf\" \"npm run api\" \"npm run client\"",
-    "mock-cdf": "cd backend && /usr/local/bin/python3.9 -m uvicorn mock_cdf.server:app --port 4000 --reload",
-    "api": "cd backend && /usr/local/bin/python3.9 -m uvicorn src.api:app --port 3000 --reload",
-    "client": "cd client && npm run dev",
-    "ingest": "cd backend && /usr/local/bin/python3.9 -m src.ingest.index",
-    "reset": "cd backend && /usr/local/bin/python3.9 -m scripts.reset",
-    "generate": "cd backend && /usr/local/bin/python3.9 scripts/transform_flights_to_cag.py && /usr/local/bin/python3.9 scripts/transform_maintenance_to_cag.py",
-    "install:client": "cd client && npm install",
-    "install:backend": "cd backend && /usr/local/bin/pip3 install -r requirements.txt",
-    "setup": "npm run install:client && npm run install:backend && npm run generate && npm run ingest"
+    "mock-cdf": "python3 -m uvicorn mock_cdf.server:app --port 4000 --reload",
+    "api": "python3 -m uvicorn src.api:app --port 3000 --reload",
+    "client": "vite --config client/vite.config.ts",
+    "ingest": "python3 -m src.ingest.index",
+    "reset": "python3 -m scripts.reset",
+    "generate": "python3 scripts/transform_flights_to_cag.py && python3 scripts/transform_maintenance_to_cag.py",
+    "install:python": "python3 -m pip install -e .",
+    "build": "tsc --project client/tsconfig.json && vite build --config client/vite.config.ts",
+    "typecheck": "tsc --project client/tsconfig.json --noEmit",
+    "preview": "vite preview --config client/vite.config.ts",
+    "setup": "npm run bootstrap"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.503.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-force-graph-2d": "^1.29.1",
+    "react-markdown": "^10.1.0",
+    "tailwind-merge": "^2.6.1",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.4.1",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.2.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.19"
   }
 }

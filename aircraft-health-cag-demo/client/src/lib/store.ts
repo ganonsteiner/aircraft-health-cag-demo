@@ -7,6 +7,7 @@
  *   - isQuerying: agent is currently streaming a response
  *   - traversalEvents: graph nodes visited by the most recent query
  *   - replayNodes: traversal nodes for replay animation
+ *   - floatingChatOpen: FAB chat popup (all tabs except AI Assistant)
  */
 
 import { create } from "zustand";
@@ -33,6 +34,10 @@ interface AppState {
   replayNodes: AgentEvent[];
   isReplaying: boolean;
   startReplay: (nodes: AgentEvent[]) => Promise<void>;
+
+  floatingChatOpen: boolean;
+  setFloatingChatOpen: (v: boolean) => void;
+  toggleFloatingChat: () => void;
 }
 
 export const useStore = create<AppState>((set) => ({
@@ -68,4 +73,9 @@ export const useStore = create<AppState>((set) => ({
     }
     set({ isReplaying: false });
   },
+
+  floatingChatOpen: false,
+  setFloatingChatOpen: (v) => set({ floatingChatOpen: v }),
+  toggleFloatingChat: () =>
+    set((s) => ({ floatingChatOpen: !s.floatingChatOpen })),
 }));

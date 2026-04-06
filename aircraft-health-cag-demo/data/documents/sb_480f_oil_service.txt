@@ -11,7 +11,10 @@ Applicability: All Lycoming direct-drive aircraft engines including:
                O-360, HO-360, IO-360, AIO-360, HIO-360, TIO-360
                O-540, IO-540, TIO-540, LTIO-540
                And all other direct-drive Lycoming models
-               INCLUDING O-320-H2AD (N4798E engine)
+               INCLUDING O-320-H2AD
+
+               Desert Sky Aviation fleet: N4798E, N2251K, N8834Q, N1156P
+               (Cessna 172N, Lycoming O-320-H2AD) — all affected.
 
 ================================================================================
 PURPOSE
@@ -153,19 +156,3 @@ Required logbook entry format (suggested):
    LW-16702 additive added [OR: AeroShell 15W-50 used per AMOC to AD 80-04-03 R2].
    Lycoming SB 480F complied with. AD 80-04-03 R2 complied with.
    Tach: [X], Hobbs: [X]. [Mechanic name], A&P #[cert number]"
-
-================================================================================
-NOTES FOR N4798E (O-320-H2AD)
-================================================================================
-
-Current Engine Status (2026): ~1,450 hours SMOH
-Recommended: Oil samples sent to Blackstone every other oil change
-             Next oil change due: 50 hours from last or 4 months from last
-             (whichever first)
-
-At 1,450 SMOH, the engine is well into the middle third of its TBO period.
-Oil analysis trends should be watched carefully for rising iron levels,
-which could indicate cam/lifter wear resuming on the replacement components.
-
-Proactive: If iron trend shows consistent rise over 3+ consecutive samples,
-schedule cam/lifter borescope inspection before next oil change.

@@ -2,7 +2,7 @@ CESSNA MODEL 172N SKYHAWK
 PILOT'S OPERATING HANDBOOK — SECTION 5: PERFORMANCE
 1978 Edition (FAA Approved)
 
-Aircraft: N4798E  Serial: 17270798  Engine: Lycoming O-320-H2AD
+Type: Cessna 172N (1978) · Engine: Lycoming O-320-H2AD
 
 All performance data is FAA-approved and reflects a standard aircraft at gross
 weight (2300 lbs) in standard atmospheric conditions (ISA: 15°C, 29.92 in. Hg)

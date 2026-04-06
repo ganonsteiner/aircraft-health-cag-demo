@@ -10,7 +10,8 @@ APPLICABILITY: Cessna Aircraft Company Models: 150, 152, 170, 172, 172RG,
                175, 177, 177RG, 180, 182, 182RG, 185, 188, 190, 195,
                206, 207, 210, T303, 336, 337; ALL serial numbers.
 
-               N4798E (Cessna 172N, S/N 17270798) IS affected.
+               Desert Sky Aviation: N4798E, N2251K, N8834Q, N1156P (Cessna 172N)
+               — all affected (all serial numbers per AD).
 
 EFFECTIVE DATE: June 17, 2011
 
@@ -121,12 +122,23 @@ Each compliance entry must include:
   5. Mechanic signature, certificate number
 
 ================================================================================
-NOTES FOR N4798E
+DESERT SKY AVIATION — FLEET REGISTRY (KPHX)
 ================================================================================
 
-N4798E has two front adjustable seats on floor rails. Both must be inspected
-per this AD. The rear seats are fixed (no tracks) and are NOT subject to this AD.
+  Tail     Cessna S/N
+  ------   ----------
+  N4798E   17270798
+  N2251K   17270822
+  N8834Q   17270856
+  N1156P   17270891
 
-Given N4798E's age (1978) and total time (~4,800 hrs), pay particular attention
-to rail hole diameter wear. Older aircraft with high cycles are more likely to
-have elongated locking holes.
+================================================================================
+NOTES FOR DESERT SKY AVIATION OPERATORS
+================================================================================
+
+  • Each Cessna 172N has two front adjustable seats on floor rails; both sides
+    must be inspected per this AD. Rear seats are fixed (no tracks) and are not
+    subject to this AD.
+  • 1978 airframes may have high total time; pay particular attention to seat rail
+    hole diameter, roller condition, and lock pin engagement per the AD steps.
+  • Do not lubricate seat rails — dry cleaning only, per AD.

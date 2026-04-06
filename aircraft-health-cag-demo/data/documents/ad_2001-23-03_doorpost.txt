@@ -12,7 +12,8 @@ APPLICABILITY: Cessna Aircraft Company Models 172N, 172P, R172K, 172RG,
                Cessna 172N serial numbers: 17267585 through 17274009
                (plus specific additional S/Ns: 17261445, 17261578, 17270050)
 
-               N4798E Serial 17270798 IS within the affected range.
+               Desert Sky fleet serial numbers (all within affected 172N range):
+               N4798E 17270798, N2251K 17270822, N8834Q 17270856, N1156P 17270891.
 
 EFFECTIVE DATE: December 27, 2001
 
@@ -86,12 +87,21 @@ Each annual inspection maintenance entry must include:
   5. Inspector signature, certificate number, IA endorsement
 
 ================================================================================
-NOTES FOR N4798E
+DESERT SKY AVIATION — FLEET REGISTRY (KPHX)
 ================================================================================
 
-N4798E is specifically within the affected serial number range (17270798).
-This AD must be complied with annually. Compliance is typically accomplished
-as part of the annual inspection by the inspecting IA.
+  Tail     Cessna S/N   (AD 2001-23-03 affected range)
+  ------   ----------   --------------------------------
+  N4798E   17270798     within 17267585–17274009
+  N2251K   17270822     within 17267585–17274009
+  N8834Q   17270856     within 17267585–17274009
+  N1156P   17270891     within 17267585–17274009
 
-Maps light switches on aircraft of this vintage often have faded or cracked
-insulators. Allow extra inspection time in the door post area during annuals.
+================================================================================
+NOTES FOR DESERT SKY AVIATION OPERATORS
+================================================================================
+
+  • Recurring compliance: not more than 12 calendar months (see AD text).
+  • Typically accomplished during annual inspection by the inspecting IA.
+  • Map light switch insulators on aircraft of this vintage often show heat or UV
+    degradation; allow adequate time for door post inspection each annual.

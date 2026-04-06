@@ -9,7 +9,8 @@ APPLICABILITY: Cessna Aircraft Company Models 172, 172RG, R172K, 182, 182RG,
                equipped with Continental or Lycoming engine exhaust heater/muffler
                assemblies manufactured by Cessna or approved manufacturers.
 
-               N4798E (Cessna 172N with Lycoming O-320-H2AD) IS affected.
+               Desert Sky Aviation fleet: N4798E, N2251K, N8834Q, N1156P
+               (Cessna 172N, Lycoming O-320-H2AD) — all affected.
 
 EFFECTIVE DATE: March 27, 1991
 
@@ -104,18 +105,24 @@ Each compliance entry must include:
   5. Mechanic signature, certificate number, IA endorsement (for annual)
 
 ================================================================================
-NOTES FOR N4798E
+DESERT SKY AVIATION — FLEET REGISTRY (KPHX)
 ================================================================================
 
-N4798E exhaust system history:
-  - Exhaust riser at #2 cylinder was replaced during engine overhaul (~2009) when
-    cracking was found
-  - Full muffler/heat exchanger assembly was replaced at major overhaul
-  - Recurring annual inspection per this AD is maintained
+  Tail     Cessna S/N
+  ------   ----------
+  N4798E   17270798
+  N2251K   17270822
+  N8834Q   17270856
+  N1156P   17270891
 
-CO detector: A CO Guardian brand detector is affixed to the left cabin sidewall.
-  Replace per manufacturer recommendation (typically annual or at low battery).
+================================================================================
+NOTES FOR DESERT SKY AVIATION OPERATORS
+================================================================================
 
-At 1,450 SMOH, the current exhaust components are at moderate age. Visual
-inspection at each annual is critical; proactive replacement at ~1,800–2,000 SMOH
-is recommended.
+  • Each aircraft requires recurring inspection per this AD at annual and 100-hour
+    (if applicable), and whenever exhaust components are replaced.
+  • Document compliance with AD 90-06-03 R1 in the maintenance log with hobbs/tach.
+  • Installation of a cockpit carbon monoxide detector is strongly recommended;
+    follow manufacturer replacement intervals.
+  • High-time exhaust assemblies warrant careful visual and internal inspection;
+    replace components that meet the AD crack criteria before further flight.

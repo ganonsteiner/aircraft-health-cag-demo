@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aircraft-health-cag-demo"
+version = "1.0.0"
+description = "Desert Sky Aviation fleet CAG demo — FastAPI, mock CDF, React client"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.29.0",
+    "cognite-sdk==7.62.8",
+    "anthropic>=0.49.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0,<2.1",
+    "python-dotenv>=1.0.0",
+    "sse-starlette>=2.1.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.7.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "mock_cdf*", "scripts"]

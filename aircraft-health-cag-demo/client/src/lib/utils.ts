@@ -1,7 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return clsx(inputs);
+  return twMerge(clsx(inputs));
 }
 
 export function formatDate(dateStr: string | null | undefined): string | null {
@@ -23,6 +24,28 @@ export function urgencyColor(daysOrHours: number | null, type: "days" | "hours")
   if (daysOrHours <= threshold) return "text-red-400";
   if (daysOrHours <= warning) return "text-yellow-400";
   return "text-emerald-400";
+}
+
+/** Human-readable maintenance subtype for badges (e.g. oil_change → Oil change). */
+export function formatMaintenanceTypeLabel(raw: string): string {
+  const t = (raw || "").trim().toLowerCase().replace(/ /g, "_");
+  const map: Record<string, string> = {
+    oil_change: "Oil change",
+    annual: "Annual inspection",
+    "100hr": "100-hour inspection",
+    progressive: "Progressive inspection",
+    squawk: "Squawk",
+    post_accident_inspection: "Post-accident inspection",
+  };
+  return map[t] || raw.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) || "Maintenance";
+}
+
+/** Avoid "AD AD 80-04-03" when metadata already includes the AD prefix. */
+export function formatAdReferenceLine(ref: string): string {
+  const t = ref.trim();
+  if (!t) return "";
+  if (/^ad\s/i.test(t)) return t;
+  return `AD ${t}`;
 }
 
 export function severityColor(severity: string): string {

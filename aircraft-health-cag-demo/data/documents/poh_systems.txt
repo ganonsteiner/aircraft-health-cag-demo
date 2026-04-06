@@ -2,7 +2,7 @@ CESSNA MODEL 172N SKYHAWK
 PILOT'S OPERATING HANDBOOK — SECTION 7: AIRPLANE AND SYSTEMS DESCRIPTION
 1978 Edition (FAA Approved)
 
-Aircraft: N4798E  Serial: 17270798  Engine: Lycoming O-320-H2AD
+Type: Cessna 172N (1978) · Engine: Lycoming O-320-H2AD
 
 ================================================================================
 ENGINE
@@ -22,8 +22,8 @@ wide-lobe camshaft, designed to allow tappet servicing without splitting the
 crankcase. In service, this design proved susceptible to cam lobe spalling under
 normal operating loads, prompting Lycoming to issue multiple service bulletins and
 FAA to issue AD 80-04-03 R2 requiring recurring inspection. Many operators have
-since converted to the O-320-D2J configuration. N4798E retains the original H2AD
-variant. Compliance with AD 80-04-03 R2 is mandatory and tracked at each oil change.
+since converted to the O-320-D2J configuration. Aircraft still equipped with the
+H2AD variant require compliance with AD 80-04-03 R2, documented at each oil change.
 
 ================================================================================
 FUEL SYSTEM
@@ -198,8 +198,10 @@ Control Cables: 7×7 galvanized aircraft cable; inspect annually for wear,
                 Maintenance Manual Chapter 27.
 
 ================================================================================
-AVIONICS (AS CURRENTLY INSTALLED IN N4798E)
+AVIONICS (REPRESENTATIVE CONFIGURATION)
 ================================================================================
+
+Equipment varies by airframe; verify the installed stack against aircraft records.
 
 Comm Radio:     Installed in stack (see avionics panel)
 Nav Radio:      VOR/ILS receiver with CDI
@@ -217,8 +219,8 @@ Seats:          Two front bucket seats, manually adjustable fore-and-aft on
                 Two rear bench seats (fixed position)
 
 Seat Rails:     Subject to recurring inspection per AD 2011-10-09 (every 100 hr
-                or 12 calendar months). Seat slippage on takeoff is a known fatal
-                accident cause in Cessna singles.
+                or 12 calendar months). Seat slippage on takeoff has been a known
+                loss-of-control hazard in Cessna singles; comply with the AD.
 
 Seat Belts:     Lap belts: Required for all occupants
                 Shoulder Harnesses: Installed in front seats (required for IFR)

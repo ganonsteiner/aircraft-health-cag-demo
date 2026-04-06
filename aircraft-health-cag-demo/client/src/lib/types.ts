@@ -4,6 +4,8 @@ export interface HealthStatus {
   status: "ok" | "degraded" | "mock_cdf_offline" | "api_key_missing" | "api_key_invalid";
   anthropic_api_key_configured: boolean;
   mock_cdf_reachable: boolean;
+  /** False when /health responds but assets/byids returns no fleet (e.g. wrong process on port 4000). */
+  mock_cdf_fleet_ready?: boolean;
   store: Record<string, number>;
   checkedAt: string;
 }
@@ -19,7 +21,11 @@ export interface FleetAircraft {
   isAirworthy: boolean;
   openSquawkCount: number;
   groundingSquawkCount: number;
+  /** Tach hours overdue on oil (maintenance clock). */
   oilHoursOverdue: number;
+  oilTachHoursOverdue: number;
+  oilTachHoursUntilDue: number;
+  oilDaysUntilDue: number | null;
   annualDaysRemaining: number | null;
   annualDueDate: string;
   activeSymptoms: number;
@@ -52,6 +58,11 @@ export interface AircraftStatus {
   airworthiness: Airworthiness;
   isAirworthy: boolean;
   oilHoursOverdue: number;
+  oilTachHoursOverdue: number;
+  oilTachHoursUntilDue: number;
+  oilNextDueTach: number;
+  oilNextDueDate: string;
+  oilDaysUntilDue: number | null;
   oilNextDueHobbs: number;
   lastMaintenanceDate: string | null;
   activeSymptoms: number;
@@ -72,10 +83,12 @@ export interface Squawk {
 
 export interface MaintenanceItem {
   component: string;
+  summary: string;
   description: string;
   maintenanceType: string;
-  nextDueHobbs: number;
-  hoursUntilDue: number;
+  nextDueTach: number | null;
+  nextDueHobbs: number | null;
+  hoursUntilDue: number | null;
   isOverdue: boolean;
   nextDueDate: string | null;
   daysUntilDue: number | null;
@@ -102,6 +115,9 @@ export interface FlightRecord {
   timestamp: string;
   hobbs_start: number;
   hobbs_end: number;
+  /** Tach hours at start/end of flight; null if not in event metadata (re-ingest for data). */
+  tach_start: number | null;
+  tach_end: number | null;
   duration: number;
   route: string;
   cht_max: number | null;
@@ -130,9 +146,11 @@ export interface ComponentNode {
   parentExternalId: string | null;
   metadata: Record<string, string>;
   lastMaintenanceDate: string | null;
+  nextDueTach: number | null;
   nextDueHobbs: number | null;
   nextDueDate: string | null;
   currentHobbs: number;
+  currentTach: number;
   hoursUntilDue: number | null;
   status: "ok" | "due_soon" | "overdue";
   maintenanceCount: number;

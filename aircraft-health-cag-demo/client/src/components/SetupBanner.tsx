@@ -4,10 +4,16 @@ import { cn } from "../lib/utils";
 interface Props {
   apiKeyMissing: boolean;
   mockCdfOffline: boolean;
+  mockCdfNoFleetData: boolean;
   connectionError: boolean;
 }
 
-export default function SetupBanner({ apiKeyMissing, mockCdfOffline, connectionError }: Props) {
+export default function SetupBanner({
+  apiKeyMissing,
+  mockCdfOffline,
+  mockCdfNoFleetData,
+  connectionError,
+}: Props) {
   return (
     <div className="border-b border-yellow-800/50 bg-yellow-950/20">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 py-3 space-y-2">
@@ -16,7 +22,7 @@ export default function SetupBanner({ apiKeyMissing, mockCdfOffline, connectionE
             icon={<WifiOff className="w-4 h-4 shrink-0" />}
             color="yellow"
             title="API server not reachable"
-            detail="Start the backend: npm run api"
+            detail="Start the API: npm run api"
           />
         )}
         {mockCdfOffline && !connectionError && (
@@ -25,6 +31,23 @@ export default function SetupBanner({ apiKeyMissing, mockCdfOffline, connectionE
             color="yellow"
             title="Mock CDF server offline (port 4000)"
             detail="Start it: npm run mock-cdf"
+          />
+        )}
+        {mockCdfNoFleetData && !mockCdfOffline && !connectionError && (
+          <BannerRow
+            icon={<AlertTriangle className="w-4 h-4 shrink-0" />}
+            color="yellow"
+            title="Mock CDF on port 4000 is not serving this project’s fleet data"
+            detail={
+              <>
+                Another process may be using port 4000 (check{" "}
+                <code className="font-mono text-yellow-300 bg-yellow-950/60 px-1 rounded">
+                  lsof -i :4000
+                </code>
+                ), stop it, then restart{" "}
+                <code className="font-mono text-yellow-300">npm run dev</code> so mock-cdf can start.
+              </>
+            }
           />
         )}
         {apiKeyMissing && (
@@ -36,7 +59,7 @@ export default function SetupBanner({ apiKeyMissing, mockCdfOffline, connectionE
               <>
                 Add your key to{" "}
                 <code className="font-mono text-yellow-300 bg-yellow-950/60 px-1 rounded">
-                  backend/.env
+                  .env
                 </code>
                 : <code className="font-mono text-yellow-300">ANTHROPIC_API_KEY=sk-ant-...</code>
               </>
