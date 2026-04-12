@@ -109,7 +109,6 @@ function AircraftCard({
 
   const annualTone = toneForDue(aircraft.annualDaysRemaining, "days");
   const squawkTone = toneForSquawks(aircraft.openSquawkCount, aircraft.groundingSquawkCount);
-  const symptomTone = toneClasses(aircraft.activeSymptoms > 0 ? "warn" : "ok");
   const nbsp = "\u00a0";
 
   return (
@@ -228,13 +227,14 @@ function AircraftCard({
           </div>
         </div>
 
-        {/* Symptoms (bottom-right) */}
-        <div className={cn("rounded-lg px-3 py-3", symptomTone.panel)}>
-          <div className="text-xs font-medium text-zinc-400 mb-0.5">Symptoms</div>
-          <div className={cn("text-sm font-medium tabular-nums", symptomTone.text)}>
-            {`${aircraft.activeSymptoms}${nbsp}reported`}
+        {/* Last maintenance — neutral gray (reference only, not a due/urgency signal). */}
+        <div className={cn("rounded-lg px-3 py-3", CARD_SURFACE_C)}>
+          <div className="text-xs font-medium text-zinc-400 mb-0.5">Last Maintenance</div>
+          <div className="text-sm font-medium tabular-nums text-zinc-200">
+            {aircraft.lastMaintenanceDate || "—"}
           </div>
         </div>
+
       </div>
 
       {loadErr && (

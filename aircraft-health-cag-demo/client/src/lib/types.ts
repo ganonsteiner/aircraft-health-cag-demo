@@ -30,20 +30,9 @@ export interface FleetAircraft {
   oilDaysUntilDue: number | null;
   annualDaysRemaining: number | null;
   annualDueDate: string;
-  /** Count of active Observation/Symptom events (pilot/ops observations). */
-  activeSymptoms: number;
+  /** Most recent maintenance record calendar date (YYYY-MM-DD), or null if none. */
+  lastMaintenanceDate: string | null;
   metadata: Record<string, string>;
-}
-
-export interface AircraftSymptom {
-  externalId: string;
-  aircraftId: string;
-  title: string;
-  description: string;
-  observation: string;
-  severity: string;
-  firstObserved: string;
-  type: string;
 }
 
 export interface AircraftStatus {
@@ -67,8 +56,6 @@ export interface AircraftStatus {
   oilDaysUntilDue: number | null;
   oilNextDueHobbs: number;
   lastMaintenanceDate: string | null;
-  activeSymptoms: number;
-  symptoms: AircraftSymptom[];
   dataFreshAt: string;
 }
 
@@ -177,10 +164,7 @@ export interface GraphNode {
     | "timeseries"
     | "event"
     | "file"
-    | "SymptomNode"
-    | "EngineModel"
-    | "OperationalPolicy"
-    | "FleetOwner";
+    | "OperationalPolicy";
   group: number;
   linkCount: number;
   unit?: string;

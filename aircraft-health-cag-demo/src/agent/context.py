@@ -24,11 +24,9 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", "..", ".en
 from .tools import (  # noqa: E402
     client,
     clear_traversal_log,
-    fetch_aircraft_symptoms_payload,
     get_fleet_policies,
     get_linked_documents,
     log_traversal,
-    symptom_fleet_deep_dive,
 )
 from ..aircraft_times import (  # noqa: E402
     current_hobbs_from_sdk,
@@ -403,16 +401,11 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
     maint_events = [e for e in all_events_flat if e.get("type") in ("MaintenanceRecord", "Inspection")]
     upcoming = derive_upcoming_maintenance(maint_events, current_tach, aircraft_id)
 
-    # 9. Symptoms for this aircraft (Observation/Symptom CDF events via SDK)
-    symptoms_payload = fetch_aircraft_symptoms_payload(aircraft_id)
-    sym_items = symptoms_payload.get("symptoms") or []
-    symptom_deep_dive = symptom_fleet_deep_dive(aircraft_id, symptoms_payload)
-
-    # 10. ET documents
+    # 9. ET documents
     aircraft_docs = get_linked_documents(aircraft_id)
     engine_docs = get_linked_documents(f"{aircraft_id}-ENGINE")
 
-    # 11. Airworthiness determination
+    # 11. Airworthiness derivation from maintenance records and squawk severity
     annual_expired = annual_days_remaining is not None and annual_days_remaining < 0
     has_grounding_squawk = len(grounding_squawks) > 0
     oil_calendar_overdue_days = (
@@ -435,8 +428,6 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
         airworthiness = "NOT_AIRWORTHY"
     elif oil_tach_ferry or oil_calendar_ferry:
         airworthiness = "FERRY_ONLY"
-    elif len(open_squawks) > 0 and len(sym_items) > 0:
-        airworthiness = "CAUTION"
     else:
         airworthiness = "AIRWORTHY"
 
@@ -468,11 +459,8 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
         "oilHoursOverdue": oil_tach_hours_overdue,
         "oilTachHoursOverdue": oil_tach_hours_overdue,
         "upcomingMaintenance": upcoming,
-        "symptoms": sym_items,
         "documents": aircraft_docs.get("documents", []) + engine_docs.get("documents", []),
         "airworthiness": airworthiness,
         "isAirworthy": airworthiness == "AIRWORTHY",
     }
-    if symptom_deep_dive is not None:
-        out["symptomDeepDive"] = symptom_deep_dive
     return out

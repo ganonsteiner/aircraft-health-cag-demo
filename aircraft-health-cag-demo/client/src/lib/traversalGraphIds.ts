@@ -89,15 +89,6 @@ export function highlightedGraphIdsFromTraversal(
       if (graphIdSet.has(id)) out.add(id);
     }
 
-    if (evt.node.startsWith("Symptoms:")) {
-      const tail = stripSuffixes(evt.node.slice("Symptoms:".length));
-      if (!tail) continue;
-      for (const n of graphData.nodes) {
-        if (n.type === "SymptomNode" && n.metadata?.aircraft_id === tail) {
-          out.add(n.id);
-        }
-      }
-    }
   }
 
   return out;

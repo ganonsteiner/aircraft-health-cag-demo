@@ -90,14 +90,6 @@ CURRENT_TACH_SNAPSHOT: dict[str, float] = {
 # External ID constants for graph nodes (used by ingestion + agent)
 # ---------------------------------------------------------------------------
 
-# Symptom nodes
-SYM_N8834Q_CHT = "Symptom_N8834Q_ElevatedCHT"
-SYM_N8834Q_MAG = "Symptom_N8834Q_RoughMag"
-SYM_N1156P_CHT = "Symptom_N1156P_ElevatedCHT"
-SYM_N1156P_OIL = "Symptom_N1156P_OilConsumption"
-SYM_N1156P_ROUGH = "Symptom_N1156P_RoughRunning"
-SYM_N1156P_POWER = "Symptom_N1156P_PowerLoss"
-
 # Policy nodes
 POLICY_OIL_CHANGE = "Policy_OilChangeInterval"
 POLICY_OIL_GRACE = "Policy_OilGracePeriod"
@@ -107,14 +99,10 @@ POLICY_FERRY = "Policy_FerryFlightOilOverdue"
 # Fleet owner
 FLEET_OWNER_ID = "Desert_Sky_Aviation"
 
-# N1156P: flight_index (chronological 0..77) for EXHIBITED symptom links — last 9 flights before failure
+# N1156P: 78 stored flights; last 9 carry deteriorating telemetry/pilot notes before failure
 N1156P_STORED_FLIGHT_COUNT = 78
-N1156P_EXHIBITED_FLIGHT_RANGE = (69, 78)
-# Last 4 stored flights: elevated multi-metric telemetry (Flights page yellows)
+# Last 4 stored flights: severe multi-metric telemetry (Flights page yellows)
 N1156P_SEVERE_FLIGHT_RANGE = (74, 78)
-
-# N8834Q: last 3 flights exhibit symptoms (0-based flight_index)
-N8834Q_EXHIBITED_FLIGHT_RANGE = (33, 36)
 
 # ---------------------------------------------------------------------------
 # Demo anchor (UTC midnight). All calendar dates in this module derive from it.
@@ -158,82 +146,9 @@ def format_n1156p_accident_month_year(anchor: datetime | None = None) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Symptom / policy data
+# Policy data
 # ---------------------------------------------------------------------------
 
-
-def get_symptom_nodes(anchor: datetime | None = None) -> list[dict[str, Any]]:
-    """
-    Observation/symptom metadata for fleet graph ingest.
-
-    N8834Q first_observed dates sit in a short window before the anchor.
-    N1156P symptoms are compressed into the weeks before the accident date.
-    """
-    a = anchor or get_demo_anchor()
-    accident = n1156p_accident_datetime(a)
-
-    def iso(dt: datetime) -> str:
-        return dt.strftime("%Y-%m-%d")
-
-    q_cht = iso(a - timedelta(days=17))
-    q_mag = iso(a - timedelta(days=10))
-
-    return [
-        {
-            "externalId": SYM_N8834Q_CHT,
-            "aircraft_id": "N8834Q",
-            "title": "Elevated CHT #3",
-            "description": "Cylinder head temperature on #3 cylinder running 40-60°F above the other cylinders during cruise. First observed three flights ago and trending upward.",
-            "observation": "CHT #3 consistently reaching 430-450°F while CHT #1, #2, #4 remain 360-380°F at same power setting.",
-            "severity": "caution",
-            "first_observed": q_cht,
-        },
-        {
-            "externalId": SYM_N8834Q_MAG,
-            "aircraft_id": "N8834Q",
-            "title": "Rough Running on Left Mag",
-            "description": "Engine runs noticeably rough during mag check on left magneto. Right mag check is smooth. RPM drop on left mag is 150 RPM versus 50 RPM on right.",
-            "observation": "Mag check at runup: right mag 50 RPM drop (normal), left mag 150 RPM drop with roughness. Cleared after extended runup.",
-            "severity": "caution",
-            "first_observed": q_mag,
-        },
-        {
-            "externalId": SYM_N1156P_CHT,
-            "aircraft_id": "N1156P",
-            "title": "Persistently Elevated CHT",
-            "description": "CHT readings trending upward over the previous nine flights before failure. Reached 460-480°F on final flights.",
-            "observation": "Pilot notes documented persistent high CHT during cruise, particularly on longer flights. Engine leaned aggressively to manage temperatures.",
-            "severity": "warning",
-            "first_observed": iso(accident - timedelta(days=21)),
-        },
-        {
-            "externalId": SYM_N1156P_OIL,
-            "aircraft_id": "N1156P",
-            "title": "Increased Oil Consumption",
-            "description": "Oil consumption increased in the weeks preceding failure. Required adding 1 qt oil every 8-10 flight hours versus normal 15-20 hours.",
-            "observation": "Pre-flight checks documented oil level dropping faster than historical baseline. No visible external leaks found.",
-            "severity": "warning",
-            "first_observed": iso(accident - timedelta(days=24)),
-        },
-        {
-            "externalId": SYM_N1156P_ROUGH,
-            "aircraft_id": "N1156P",
-            "title": "Intermittent Rough Running",
-            "description": "Rough engine operation noted intermittently during cruise flight, particularly at lean mixture settings. Cleared when mixture enriched.",
-            "observation": "Pilot notes on multiple flights mention roughness that cleared with mixture enrichment. Attributed to improper leaning technique at the time.",
-            "severity": "warning",
-            "first_observed": iso(accident - timedelta(days=14)),
-        },
-        {
-            "externalId": SYM_N1156P_POWER,
-            "aircraft_id": "N1156P",
-            "title": "Reduced Power Output",
-            "description": "Climb performance noticeably reduced on final flights before failure. Unable to maintain normal cruise RPM at full throttle.",
-            "observation": "Pilot reported inability to reach normal cruise RPM. Takeoff roll longer than normal. Climb rate approximately 400 FPM versus normal 770 FPM.",
-            "severity": "critical",
-            "first_observed": iso(accident - timedelta(days=7)),
-        },
-    ]
 OPERATIONAL_POLICIES: list[dict[str, Any]] = [
     {
         "externalId": POLICY_OIL_CHANGE,
@@ -383,7 +298,7 @@ def _generate_flights_n1156p() -> list[dict[str, Any]]:
     accident_date = n1156p_accident_datetime(now)
     span_days = max(1.0, (accident_date - history_start).total_seconds() / 86400.0)
 
-    ex_lo, ex_hi = N1156P_EXHIBITED_FLIGHT_RANGE
+    ex_lo, ex_hi = 69, 78  # last 9 flights carry deteriorating telemetry/pilot notes
     sev_lo, sev_hi = N1156P_SEVERE_FLIGHT_RANGE
     routes = rng.choice(ROUTE_CHOICES, size=count, p=ROUTE_WEIGHTS)
     time_offsets = sorted(rng.uniform(0.0, 1.0, size=count))
@@ -484,10 +399,10 @@ def generate_flights(tail: str) -> list[dict[str, Any]]:
     hobbs = HOBBS_START[tail]
     flights: list[dict[str, Any]] = []
 
-    n8834q_exhibit = set(range(*N8834Q_EXHIBITED_FLIGHT_RANGE))
+    n8834q_caution_flights = set(range(33, 36))  # last 3 flights: elevated CHT pattern
 
     for i in range(count):
-        is_caution = tail == "N8834Q" and i in n8834q_exhibit
+        is_caution = tail == "N8834Q" and i in n8834q_caution_flights
         route = str(routes[i])
         params = _gen_flight_params(rng, route, is_caution=is_caution, is_critical=False)
 

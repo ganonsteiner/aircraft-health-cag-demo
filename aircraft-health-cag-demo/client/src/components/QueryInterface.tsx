@@ -26,40 +26,23 @@ interface Props {
   layout?: "page" | "embedded";
 }
 
-// Context-aware suggestions based on selected aircraft
+/** Fleet scope: `aircraft` is null on `/api/query`. */
 const FLEET_SUGGESTIONS = [
-  "What is the airworthiness status of the whole fleet?",
-  "Which aircraft needs attention most urgently?",
-  "Are there any similar symptoms across the fleet?",
-  "What do fleet policies say about oil change overdue?",
+  "What is the airworthiness status for the fleet?",
+  "What upcoming maintenance is required?",
+  "Are any of the aircraft exhibiting problematic behavior?",
+  "Which aircraft should be used for today's lesson?",
 ];
 
-const TAIL_SUGGESTIONS: Record<string, string[]> = {
-  N4798E: [
-    "Is N4798E airworthy?",
-    "What maintenance is due soon on N4798E?",
-    "When was the last oil change on N4798E?",
-    "Show me the open squawks on N4798E",
-  ],
-  N2251K: [
-    "Is N2251K authorized for a ferry flight?",
-    "What is the oil change status on N2251K?",
-    "What does the ferry flight policy say?",
-    "Show N2251K's maintenance history",
-  ],
-  N8834Q: [
-    "What are the symptoms on N8834Q?",
-    "How serious is the CHT elevation on N8834Q?",
-    "Does N8834Q's CHT issue resemble N1156P's pre-failure symptoms?",
-    "What A&P inspection is required for N8834Q?",
-  ],
-  N1156P: [
-    "What caused N1156P's engine failure?",
-    "How does N1156P's flight log timeline compare to N8834Q's recent flights?",
-    "What pre-failure symptoms did N1156P exhibit?",
-    "What post-accident findings were documented on N1156P?",
-  ],
-};
+/** Single-aircraft scope: same prompts for every tail; tail is interpolated for clarity in the chip label. */
+function aircraftSuggestionsForTail(tail: TailNumber): string[] {
+  return [
+    `Is ${tail} airworthy?`,
+    `What upcoming maintenance does ${tail} need?`,
+    `Is ${tail} showing any concerning behavior?`,
+    `Can I take a student up in ${tail} today?`,
+  ];
+}
 
 function AircraftSelector({
   value,
@@ -186,7 +169,7 @@ export default function QueryInterface({
     : lastAssistantMsg?.traversalEvents ?? [];
 
   const suggestions = selectedAircraft
-    ? (TAIL_SUGGESTIONS[selectedAircraft] ?? FLEET_SUGGESTIONS)
+    ? aircraftSuggestionsForTail(selectedAircraft)
     : FLEET_SUGGESTIONS;
 
   const compact = layout === "embedded";
@@ -307,11 +290,11 @@ export default function QueryInterface({
     <>
       {/* Suggested questions — full AI Assistant tab only, when empty */}
       {showSuggestedQuestions && chatMessages.length === 0 && (
-        <div className="shrink-0 h-36 flex flex-col min-h-0 p-4 pt-3 pb-3 border-b border-zinc-800/60">
-          <p className="text-xs text-zinc-500 mb-2 font-semibold uppercase tracking-widest shrink-0">
+        <div className="shrink-0 flex min-h-[6.75rem] flex-col justify-start border-b border-zinc-800/60 px-4 pt-2.5 pb-2.5">
+          <p className="text-xs text-zinc-500 mb-1.5 shrink-0 font-semibold uppercase tracking-widest">
             Suggested questions for {selectedAircraft ? `${selectedAircraft}` : "Fleet"}
           </p>
-          <div className="flex flex-wrap gap-2 content-start overflow-y-auto min-h-0 flex-1">
+          <div className="flex flex-wrap content-start gap-2">
             {suggestions.map((q) => (
               <button
                 key={q}

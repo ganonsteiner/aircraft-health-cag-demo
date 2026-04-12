@@ -1,14 +1,12 @@
 /**
  * TraversalGraph — shared force-directed knowledge graph visualization.
  *
- * Node types map to CDF resource types (aligned with GraphTraversalPanel):
- *   asset       → #38bdf8
- *   EngineModel → #f1f5f9 (larger radius — hub for IS_TYPE)
- *   timeseries  → #4ade80
- *   event       → #fb923c
- *   file        → #c084fc
+ * Node fill colors are hardcoded below (Tailwind-400 palette).
+ * Edge stroke colors are assigned server-side in `api.py` (`_EDGE_COLORS`).
  *
- * IS_TYPE edges use color from API (#e0f2fe) and a dashed stroke.
+ * Lifecycle: this component stays mounted while data is available. The parent
+ * passes `active` to pause/resume the RAF loop when the KG tab is hidden —
+ * preserving node positions and camera without any serialize/restore cache.
  */
 
 import {
@@ -21,38 +19,33 @@ import {
   useImperativeHandle,
 } from "react";
 import ForceGraph2D from "react-force-graph-2d";
+import { graphDataRevision } from "../lib/graphRevision";
 import type { GraphData, GraphLink, GraphNode } from "../lib/types";
 
 /** Imperative controls for the knowledge graph canvas (reset layout, zoom-to-fit). */
 export interface TraversalGraphHandle {
-  /** Ease nodes from their current positions back to the default settled layout (first equilibrium after load for this graph), then zoom-to-fit. */
+  /** Ease nodes from their current positions back to the default settled layout, then zoom-to-fit. */
   resetLayout: () => void;
   /** Fit current node positions in view without changing the simulation. */
   recenter: () => void;
 }
 
 const NODE_COLOR: Record<string, string> = {
-  asset: "#38bdf8",
-  EngineModel: "#f1f5f9",
-  SymptomNode: "#f97316",
-  OperationalPolicy: "#a855f7",
-  FleetOwner: "#c084fc",
-  timeseries: "#4ade80",
-  event: "#fb923c",
-  file: "#c084fc",
+  asset:             "#38bdf8",  // sky-400    — structural (aircraft, components)
+  timeseries:        "#34d399",  // emerald-400 — live sensor / telemetry
+  event:             "#fb923c",  // orange-400 — operational events (squawks, maintenance)
+  file:              "#c084fc",  // purple-400 — documents and regulatory files
+  OperationalPolicy: "#f472b6",  // pink-400   — policy (distinct from purple docs)
 };
 
-const DEFAULT_LINK = "rgba(113,113,122,0.3)";
+const DEFAULT_LINK = "rgba(113,113,122,0.35)";
 const HIGHLIGHT_COLOR = "#facc15";
 
 const ZOOM_PADDING_PX = 40;
-/** Single smooth zoom when layout settles (no mid-sim snap — that read as jerky with a second zoom). */
 const FINAL_ZOOM_MS = 320;
 const RESIZE_ZOOM_MS = 220;
 const RESIZE_DEBOUNCE_MS = 120;
-/** Duration for reset: interpolate from current positions to the stored default layout. */
 const RESET_TWEEN_MS = 780;
-/** If every node is within this distance (graph coords) of the stored default, Reset is a no-op. */
 const RESET_LAYOUT_EPS = 3;
 
 function easeOutCubic(t: number): number {
@@ -79,14 +72,10 @@ type SimNode = GraphNode & {
 
 function nodeRadius(node: GraphNode): number {
   const base = 3 + Math.min(10, node.linkCount ?? 0) * 0.8;
-  let r = Math.max(4, Math.min(14, base));
-  if (node.type === "EngineModel") {
-    r = Math.min(22, Math.max(12, r + 6));
-  }
-  return r;
+  return Math.max(4, Math.min(14, base));
 }
 
-/** Deterministic tight ring around origin so the first frame is centered before forces spread the graph. */
+/** Deterministic tight ring — forces spread nodes outward to a natural equilibrium, then zoomToFit frames the result. */
 function graphDataWithCenteredSeed(data: GraphData): GraphData {
   const n = data.nodes.length;
   const R = Math.min(28, 8 + n * 0.35);
@@ -103,10 +92,6 @@ function graphDataWithCenteredSeed(data: GraphData): GraphData {
     nodes,
     links: data.links.map((l) => ({ ...l })),
   };
-}
-
-function graphRevision(data: GraphData): string {
-  return `${data.nodes.length}:${data.links.map((l) => `${l.source}>${l.target}:${l.type}`).join("|")}`;
 }
 
 interface SelectedNode extends GraphNode {
@@ -136,7 +121,7 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
   const revisionRef = useRef<string>("");
   const resizeDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const prevViewportRef = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
-  /** Node positions after the first layout settle for this graph revision (the “default” layout). */
+  /** Node positions after the first layout settle for this graph revision (the "default" layout). */
   const defaultPositionsRef = useRef<Map<string, { x: number; y: number }>>(new Map());
   const resetTweenRafRef = useRef<number | null>(null);
   const snapshotRafRef = useRef<number | null>(null);
@@ -145,7 +130,7 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
 
   const seededData = useMemo(() => graphDataWithCenteredSeed(data), [data]);
 
-  const revision = useMemo(() => graphRevision(data), [data]);
+  const revision = useMemo(() => graphDataRevision(data), [data]);
 
   useEffect(() => {
     if (revision === revisionRef.current) return;
@@ -182,7 +167,6 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
       hasInitialFitRef.current = true;
       defaultPositionsRef.current = captureDefaultLayout();
       runZoomToFit(FINAL_ZOOM_MS);
-      // Re-sample after zoom + paint so “default” matches what the user sees once fully still.
       if (snapshotRafRef.current != null) cancelAnimationFrame(snapshotRafRef.current);
       const epoch = layoutEpochRef.current;
       snapshotRafRef.current = requestAnimationFrame(() => {
@@ -194,6 +178,14 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
       });
     }
   }, [data.nodes.length, runZoomToFit, captureDefaultLayout]);
+
+  /** Pause RAF while tab hidden (saves work); resume when visible so zoom/pan still redraw. */
+  useEffect(() => {
+    const fg = fgRef.current;
+    if (!fg) return;
+    if (active) fg.resumeAnimation?.();
+    else fg.pauseAnimation?.();
+  }, [active]);
 
   const resetLayout = useCallback(() => {
     if (data.nodes.length === 0) return;
@@ -216,7 +208,6 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
       }
     };
 
-    // No snapshot yet (e.g. reset during the very first intro): gently reheat from wherever nodes are.
     if (targets.size === 0) {
       releasePinsZeroVelocity();
       hasInitialFitRef.current = false;
@@ -249,7 +240,6 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
       }
     }
 
-    // Pin every node at its current coordinates so nothing moves until the tween updates fx/fy.
     for (const n of seededData.nodes) {
       const nn = n as SimNode;
       if (!Number.isFinite(nn.x) || !Number.isFinite(nn.y)) continue;
@@ -260,8 +250,6 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
       nn.vy = 0;
     }
 
-    // Do not call d3ReheatSimulation here: a running layout would still be cooling when we unpin at
-    // the end and would pull nodes off the snapshot. Redraw-only each frame via centerAt.
     fg?.resumeAnimation?.();
 
     const t0 = performance.now();
@@ -275,8 +263,15 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
         const s0 = starts.get(n.id);
         if (!end || !s0) continue;
         const node = n as SimNode;
-        node.fx = s0.x + (end.x - s0.x) * e;
-        node.fy = s0.y + (end.y - s0.y) * e;
+        const ix = s0.x + (end.x - s0.x) * e;
+        const iy = s0.y + (end.y - s0.y) * e;
+        node.fx = ix;
+        node.fy = iy;
+        // Update render coords directly — the canvas reads x/y, not fx/fy.
+        // D3 only copies fx→x during a simulation tick; if the simulation has
+        // stopped (cooldown exhausted), x/y must be set here to avoid a freeze.
+        node.x = ix;
+        node.y = iy;
       }
 
       forceGraphRedraw(fgRef.current);
@@ -342,21 +337,23 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
     };
   }, [width, height, runZoomToFit]);
 
-  /** Pause RAF while tab hidden (saves work); resume when visible so zoom/pan still redraw. */
-  useEffect(() => {
-    const fg = fgRef.current;
-    if (!fg) return;
-    if (active) fg.resumeAnimation?.();
-    else fg.pauseAnimation?.();
-  }, [active]);
-
   const drawNode = useCallback(
     (node: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
-      const gNode = node as GraphNode & { x: number; y: number };
+      const gNode = node as SimNode;
+      if (!Number.isFinite(gNode.x) || !Number.isFinite(gNode.y)) return;
       const r = nodeRadius(gNode);
       const isHighlighted = traversedIds.has(gNode.id);
       const isSelected = selectedNode?.id === gNode.id;
 
+      // Fill
+      ctx.beginPath();
+      ctx.arc(gNode.x, gNode.y, r, 0, 2 * Math.PI);
+      ctx.fillStyle = NODE_COLOR[gNode.type] || "#71717a";
+      ctx.globalAlpha = isHighlighted ? 1 : 0.85;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      // Highlight ring (drawn over fill)
       if (isHighlighted || isSelected) {
         ctx.beginPath();
         ctx.arc(gNode.x, gNode.y, r + 3, 0, 2 * Math.PI);
@@ -367,23 +364,13 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
         ctx.stroke();
       }
 
-      ctx.beginPath();
-      ctx.arc(gNode.x, gNode.y, r, 0, 2 * Math.PI);
-      ctx.fillStyle = NODE_COLOR[gNode.type] || "#71717a";
-      ctx.globalAlpha = isHighlighted ? 1 : 0.85;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      if (gNode.type === "EngineModel") {
-        ctx.strokeStyle = "rgba(148,163,184,0.5)";
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-
-      const fontSize = 10 / globalScale;
-      if (globalScale > 1.5 || r >= 10) {
+      // Label
+      const gs = Number.isFinite(globalScale) && globalScale > 1e-6 ? globalScale : 1;
+      if (gs > 1.5 || r >= 10) {
+        const fontSize = 10 / gs;
         const label = gNode.label.length > 16 ? gNode.label.slice(0, 14) + "…" : gNode.label;
         ctx.font = `${fontSize}px monospace`;
-        ctx.fillStyle = gNode.type === "EngineModel" ? "rgba(15,23,42,0.9)" : "rgba(255,255,255,0.8)";
+        ctx.fillStyle = "rgba(255,255,255,0.9)";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(label, gNode.x, gNode.y + r + fontSize * 0.8);
@@ -402,11 +389,7 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
 
   const linkColor = useCallback((link: GraphLink) => (link as GraphLink).color || DEFAULT_LINK, []);
 
-  const linkLineDash = useCallback((link: GraphLink) => {
-    return link.type === "IS_TYPE" ? [4, 4] : undefined;
-  }, []);
-
-  const linkWidth = useCallback((link: GraphLink) => (link.type === "IS_TYPE" ? 1 : 0.5), []);
+  const linkWidth = useCallback(() => 0.75, []);
 
   return (
     <div className="relative h-full w-full" style={{ width, height }}>
@@ -420,9 +403,9 @@ const TraversalGraph = forwardRef<TraversalGraphHandle, Props>(function Traversa
         nodeCanvasObjectMode={() => "replace"}
         linkColor={linkColor as any}
         linkWidth={linkWidth as any}
-        linkLineDash={linkLineDash as any}
-        linkDirectionalParticles={2}
+        linkDirectionalParticles={1}
         linkDirectionalParticleWidth={1}
+        linkDirectionalParticleSpeed={0.003}
         linkDirectionalParticleColor={linkColor as any}
         onNodeClick={handleNodeClick}
         onEngineStop={onEngineStop}

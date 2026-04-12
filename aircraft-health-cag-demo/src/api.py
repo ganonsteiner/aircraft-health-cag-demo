@@ -217,10 +217,16 @@ async def get_fleet() -> list[dict[str, Any]]:
                     "oilDaysUntilDue": None,
                     "annualDaysRemaining": None,
                     "annualDueDate": "",
-                    "activeSymptoms": 0,
+                    "lastMaintenanceDate": None,
                     "metadata": {"load_error": str(ctx.get("error", "unknown"))},
                 })
                 continue
+
+            all_maint = ctx.get("allMaintenance", [])
+            last_maint_date: Optional[str] = None
+            if all_maint:
+                most_recent = max(all_maint, key=lambda x: x.get("startTime") or 0)
+                last_maint_date = most_recent.get("metadata", {}).get("date")
 
             results.append({
                 "tail": tail,
@@ -240,7 +246,7 @@ async def get_fleet() -> list[dict[str, Any]]:
                 "oilDaysUntilDue": ctx.get("oilDaysUntilDue"),
                 "annualDaysRemaining": ctx.get("annualDaysRemaining"),
                 "annualDueDate": ctx.get("annualDueDate", ""),
-                "activeSymptoms": len(ctx.get("symptoms", [])),
+                "lastMaintenanceDate": last_maint_date,
                 "metadata": ctx.get("aircraft", {}).get("metadata", {}),
             })
         return results
@@ -275,22 +281,6 @@ async def get_aircraft_status(aircraft: Optional[str] = Query(default=None)) -> 
             most_recent = max(all_maint, key=lambda x: x.get("startTime") or 0)
             last_maint_date = most_recent.get("metadata", {}).get("date")
 
-        raw_symptoms = ctx.get("symptoms", [])
-        symptoms_out: list[dict[str, Any]] = []
-        for s in raw_symptoms:
-            if not isinstance(s, dict):
-                continue
-            symptoms_out.append({
-                "externalId": s.get("externalId", ""),
-                "aircraftId": s.get("aircraft_id", tail),
-                "title": s.get("title", ""),
-                "description": s.get("description", ""),
-                "observation": s.get("observation", ""),
-                "severity": s.get("severity", "caution"),
-                "firstObserved": s.get("first_observed", ""),
-                "type": s.get("type", "SymptomNode"),
-            })
-
         return {
             "tail": tail,
             "hobbs": ctx.get("currentHobbs", 0),
@@ -312,8 +302,6 @@ async def get_aircraft_status(aircraft: Optional[str] = Query(default=None)) -> 
             "oilDaysUntilDue": ctx.get("oilDaysUntilDue"),
             "oilNextDueHobbs": ctx.get("oilNextDueTach", ctx.get("oilNextDueHobbs", 0)),
             "lastMaintenanceDate": last_maint_date,
-            "activeSymptoms": len(symptoms_out),
-            "symptoms": symptoms_out,
             "dataFreshAt": datetime.now(timezone.utc).isoformat(),
         }
     except HTTPException:
@@ -767,33 +755,27 @@ async def get_graph_data() -> dict[str, Any]:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-ENGINE_MODEL_GRAPH_ID = "ENGINE_MODEL_LYC_O320_H2AD"
-
 # Node type color groups for the frontend
 _NODE_COLORS = {
     "asset": 1,
     "timeseries": 2,
     "event": 3,
     "file": 4,
-    "SymptomNode": 5,
-    "EngineModel": 6,
     "OperationalPolicy": 7,
-    "FleetOwner": 8,
 }
 
-# Relationship type colors for edges
+# Relationship type colors — same hex as the node type each edge relates to.
+# LINKED_TO bridges doc↔asset with no single owner, so it uses a neutral zinc.
 _EDGE_COLORS = {
-    "HAS_COMPONENT": "#4B9CD3",
-    "HAS_TIMESERIES": "#2E8B57",
-    "GOVERNED_BY": "#9B59B6",
-    "HAS_POLICY": "#9B59B6",
-    "EXHIBITED": "#E67E22",
-    "IS_TYPE": "#e0f2fe",
-    "PERFORMED_ON": "#95A5A6",
-    "REFERENCES_AD": "#F39C12",
-    "IDENTIFIED_ON": "#E67E22",
-    "LINKED_TO": "#1ABC9C",
-    "OBSERVED_ON": "#fbbf24",
+    "HAS_COMPONENT":  "#38bdf8",  # sky-400    — same as asset nodes
+    "GOVERNED_BY":    "#818cf8",  # indigo-400 — same as FleetOwner nodes
+    "HAS_POLICY":     "#f472b6",  # pink-400   — same as OperationalPolicy nodes
+    "HAS_TIMESERIES": "#34d399",  # emerald-400 — same as timeseries nodes
+    "IS_TYPE":        "#38bdf8",  # sky-400    — same as asset nodes
+    "PERFORMED_ON":   "#fb923c",  # orange-400 — same as event nodes
+    "IDENTIFIED_ON":  "#fb923c",  # orange-400 — same as event nodes
+    "REFERENCES_AD":  "#c084fc",  # purple-400 — same as file nodes
+    "LINKED_TO":      "#71717a",  # zinc-500   — neutral, no single node owner
 }
 
 
@@ -827,39 +809,19 @@ def _sync_get_graph_data() -> dict[str, Any]:
                 "color": _EDGE_COLORS.get(rel_type, "#666"),
             })
 
-    # Assets (engine model is a distinct node type for visualization)
+    # Assets (all rendered as "asset", including the engine model node)
     for asset in cdf_store.get_assets():
         node_id = asset.externalId or str(asset.id)
         meta = asset.metadata or {}
-        node_type = "EngineModel" if node_id == ENGINE_MODEL_GRAPH_ID or meta.get("type") == "EngineModel" else "asset"
-        _add_node(node_id, asset.name or node_id, node_type, meta)
+        _add_node(node_id, asset.name or node_id, "asset", meta)
 
     # TimeSeries
     for ts in cdf_store.get_timeseries():
         node_id = ts.externalId or str(ts.id)
         _add_node(node_id, ts.name or node_id, "timeseries", {"unit": ts.unit or ""})
 
-    # Observation / Symptom events (visualized as SymptomNode for the graph UI)
-    for ev in cdf_store.get_events():
-        if ev.type != "Observation" or (ev.subtype or "") != "Symptom":
-            continue
-        meta = ev.metadata or {}
-        label = str(meta.get("title") or "") or (ev.description or ev.externalId)[:48]
-        _add_node(
-            ev.externalId,
-            label,
-            "SymptomNode",
-            {
-                "aircraft_id": meta.get("aircraft_id", ""),
-                "severity": meta.get("severity", ""),
-            },
-        )
-
     for pol in cdf_store.get_policies():
         _add_node(pol.externalId, pol.title, "OperationalPolicy", {"category": pol.category})
-
-    for fo in cdf_store.get_fleet_owners():
-        _add_node(fo.externalId, fo.name, "FleetOwner", {"location": fo.location})
 
     # Files
     for f in cdf_store.get_files():
@@ -875,7 +837,7 @@ def _sync_get_graph_data() -> dict[str, Any]:
     for ev in cdf_store.get_events():
         if ev.externalId not in graph_event_external_ids:
             continue
-        if ev.type == "Flight" or (ev.type == "Observation" and (ev.subtype or "") == "Symptom"):
+        if ev.type == "Flight":
             continue
         sub = (ev.subtype or ev.type or "event").strip()
         desc = (ev.description or "").strip()
@@ -924,10 +886,8 @@ def _sync_get_graph_data() -> dict[str, Any]:
         "stats": {
             "assets": sum(1 for n in nodes if n["type"] == "asset"),
             "timeseries": sum(1 for n in nodes if n["type"] == "timeseries"),
-            "symptoms": sum(1 for n in nodes if n["type"] == "SymptomNode"),
-            "engine_models": sum(1 for n in nodes if n["type"] == "EngineModel"),
+            "events": sum(1 for n in nodes if n["type"] == "event"),
             "policies": sum(1 for n in nodes if n["type"] == "OperationalPolicy"),
-            "fleet_owners": sum(1 for n in nodes if n["type"] == "FleetOwner"),
             "files": sum(1 for n in nodes if n["type"] == "file"),
             "relationships": len(links),
         },
@@ -953,4 +913,4 @@ async def on_startup() -> None:
             "   ⚠ Mock /health OK but fleet assets missing — port 4000 may be another app.\n"
             "     Stop the process on 4000 and restart so `npm run mock-cdf` can bind."
         )
-    print("   Fleet: N4798E (AIRWORTHY) N2251K (FERRY) N8834Q (CAUTION) N1156P (GROUNDED)\n")
+    print("   Fleet: N4798E  N2251K  N8834Q  N1156P  (airworthiness derived at query time)\n")

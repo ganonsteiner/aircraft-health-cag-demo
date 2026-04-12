@@ -3,7 +3,7 @@
     "id": 1,
     "externalId": "N4798E",
     "name": "N4798E \u2014 1978 Cessna 172N",
-    "description": "1978 Cessna 172N, S/N 17270798. AIRWORTHY. 380 SMOH. Based KPHX.",
+    "description": "1978 Cessna 172N, S/N 17270798. 380 SMOH. Based KPHX.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
@@ -17,11 +17,10 @@
       "engine_smoh": "380",
       "overhaul_tach": "4060.3",
       "max_gross_weight_lbs": "2300",
-      "airworthiness_status": "AIRWORTHY",
       "operator": "Desert Sky Aviation"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 2,
@@ -37,8 +36,8 @@
       "smoh": "380",
       "fuel_type": "100LL"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 3,
@@ -51,8 +50,8 @@
       "count": "4",
       "plug_model": "Champion REM40E"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 4,
@@ -65,8 +64,8 @@
       "capacity_qts": "8",
       "change_interval_hrs": "50"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 5,
@@ -80,8 +79,8 @@
       "tbo_hours": "2000",
       "tbo_years": "6"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 6,
@@ -94,8 +93,8 @@
       "max_gross_weight_lbs": "2300",
       "vne_kias": "163"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 7,
@@ -108,8 +107,8 @@
       "transponder_inspection_months": "24",
       "elt_battery_months": "12"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 8,
@@ -122,14 +121,14 @@
       "capacity_gal_usable": "43",
       "fuel_type": "100LL"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 11,
     "externalId": "N2251K",
     "name": "N2251K \u2014 1978 Cessna 172N",
-    "description": "1978 Cessna 172N, S/N 17271243. FERRY ONLY \u2014 oil overdue 1.2 hr. Based KPHX.",
+    "description": "1978 Cessna 172N, S/N 17271243. 290 SMOH. Based KPHX.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
@@ -143,11 +142,10 @@
       "engine_smoh": "290",
       "overhaul_tach": "4464.9",
       "max_gross_weight_lbs": "2300",
-      "airworthiness_status": "FERRY_ONLY",
       "operator": "Desert Sky Aviation"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 12,
@@ -163,8 +161,8 @@
       "smoh": "290",
       "fuel_type": "100LL"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 13,
@@ -177,8 +175,8 @@
       "count": "4",
       "plug_model": "Champion REM40E"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 14,
@@ -191,8 +189,8 @@
       "capacity_qts": "8",
       "change_interval_hrs": "50"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 15,
@@ -206,8 +204,8 @@
       "tbo_hours": "2000",
       "tbo_years": "6"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 16,
@@ -220,8 +218,8 @@
       "max_gross_weight_lbs": "2300",
       "vne_kias": "163"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 17,
@@ -234,8 +232,8 @@
       "transponder_inspection_months": "24",
       "elt_battery_months": "12"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 18,
@@ -248,14 +246,14 @@
       "capacity_gal_usable": "43",
       "fuel_type": "100LL"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 21,
     "externalId": "N8834Q",
     "name": "N8834Q \u2014 1978 Cessna 172N",
-    "description": "1978 Cessna 172N, S/N 17273047. CAUTION \u2014 elevated CHT #3, rough mag. Based KPHX.",
+    "description": "1978 Cessna 172N, S/N 17273047. 198 SMOH. Based KPHX.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
@@ -269,11 +267,10 @@
       "engine_smoh": "198",
       "overhaul_tach": "4267.2",
       "max_gross_weight_lbs": "2300",
-      "airworthiness_status": "CAUTION",
       "operator": "Desert Sky Aviation"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 22,
@@ -289,8 +286,8 @@
       "smoh": "198",
       "fuel_type": "100LL"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 23,
@@ -303,8 +300,8 @@
       "count": "4",
       "plug_model": "Champion REM40E"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 24,
@@ -317,8 +314,8 @@
       "capacity_qts": "8",
       "change_interval_hrs": "50"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 25,
@@ -332,8 +329,8 @@
       "tbo_hours": "2000",
       "tbo_years": "6"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 26,
@@ -346,8 +343,8 @@
       "max_gross_weight_lbs": "2300",
       "vne_kias": "163"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 27,
@@ -360,8 +357,8 @@
       "transponder_inspection_months": "24",
       "elt_battery_months": "12"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 28,
@@ -374,14 +371,14 @@
       "capacity_gal_usable": "43",
       "fuel_type": "100LL"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 31,
     "externalId": "N1156P",
     "name": "N1156P \u2014 1978 Cessna 172N",
-    "description": "1978 Cessna 172N, S/N 17271891. NOT AIRWORTHY \u2014 catastrophic engine failure (March 2026). Grounded.",
+    "description": "1978 Cessna 172N, S/N 17271891. 520 SMOH. Based KPHX.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
@@ -395,11 +392,10 @@
       "engine_smoh": "520",
       "overhaul_tach": "4475.5",
       "max_gross_weight_lbs": "2300",
-      "airworthiness_status": "NOT_AIRWORTHY",
       "operator": "Desert Sky Aviation"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 32,
@@ -415,8 +411,8 @@
       "smoh": "520",
       "fuel_type": "100LL"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 33,
@@ -429,8 +425,8 @@
       "count": "4",
       "plug_model": "Champion REM40E"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 34,
@@ -443,8 +439,8 @@
       "capacity_qts": "8",
       "change_interval_hrs": "50"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 35,
@@ -458,8 +454,8 @@
       "tbo_hours": "2000",
       "tbo_years": "6"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 36,
@@ -472,8 +468,8 @@
       "max_gross_weight_lbs": "2300",
       "vne_kias": "163"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 37,
@@ -486,8 +482,8 @@
       "transponder_inspection_months": "24",
       "elt_battery_months": "12"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 38,
@@ -500,8 +496,8 @@
       "capacity_gal_usable": "43",
       "fuel_type": "100LL"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 101,
@@ -515,8 +511,8 @@
       "horsepower": "160",
       "tbo_hours": "2000"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   },
   {
     "id": 100,
@@ -530,7 +526,7 @@
       "contact": "ops@desertsky.aero",
       "type": "FleetOperator"
     },
-    "createdTime": 1775975548314,
-    "lastUpdatedTime": 1775975548314
+    "createdTime": 1776031718839,
+    "lastUpdatedTime": 1776031718839
   }
 ]

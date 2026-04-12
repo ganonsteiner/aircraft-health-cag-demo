@@ -27,7 +27,7 @@ from typing import Any
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "scripts"))
 
-from dataset import ENGINE_TACH_AT_OVERHAUL, format_n1156p_accident_month_year  # noqa: E402
+from dataset import ENGINE_TACH_AT_OVERHAUL  # noqa: E402
 
 from mock_cdf.store.store import store, Asset  # noqa: E402
 
@@ -38,37 +38,30 @@ FLEET: list[dict[str, Any]] = [
     {
         "tail": "N4798E",
         "name": "N4798E — 1978 Cessna 172N",
-        "description": "1978 Cessna 172N, S/N 17270798. AIRWORTHY. 380 SMOH. Based KPHX.",
+        "description": "1978 Cessna 172N, S/N 17270798. 380 SMOH. Based KPHX.",
         "serial": "17270798",
         "smoh": "380",
-        "status": "AIRWORTHY",
     },
     {
         "tail": "N2251K",
         "name": "N2251K — 1978 Cessna 172N",
-        "description": "1978 Cessna 172N, S/N 17271243. FERRY ONLY — oil overdue 1.2 hr. Based KPHX.",
+        "description": "1978 Cessna 172N, S/N 17271243. 290 SMOH. Based KPHX.",
         "serial": "17271243",
         "smoh": "290",
-        "status": "FERRY_ONLY",
     },
     {
         "tail": "N8834Q",
         "name": "N8834Q — 1978 Cessna 172N",
-        "description": "1978 Cessna 172N, S/N 17273047. CAUTION — elevated CHT #3, rough mag. Based KPHX.",
+        "description": "1978 Cessna 172N, S/N 17273047. 198 SMOH. Based KPHX.",
         "serial": "17273047",
         "smoh": "198",
-        "status": "CAUTION",
     },
     {
         "tail": "N1156P",
         "name": "N1156P — 1978 Cessna 172N",
-        "description": (
-            "1978 Cessna 172N, S/N 17271891. NOT AIRWORTHY — catastrophic engine failure "
-            f"({format_n1156p_accident_month_year()}). Grounded."
-        ),
+        "description": "1978 Cessna 172N, S/N 17271891. 520 SMOH. Based KPHX.",
         "serial": "17271891",
         "smoh": "520",
-        "status": "NOT_AIRWORTHY",
     },
 ]
 
@@ -100,7 +93,6 @@ def _build_fleet_assets() -> list[dict[str, Any]]:
                 "engine_smoh": aircraft["smoh"],
                 "overhaul_tach": str(ENGINE_TACH_AT_OVERHAUL[tail]),
                 "max_gross_weight_lbs": "2300",
-                "airworthiness_status": aircraft["status"],
                 "operator": "Desert Sky Aviation",
             },
         })

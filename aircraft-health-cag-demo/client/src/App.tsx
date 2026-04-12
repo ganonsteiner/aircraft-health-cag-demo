@@ -269,9 +269,8 @@ export default function App() {
             </div>
             <div
               className={cn(
-                "flex flex-col flex-1 min-h-0 min-w-0 overflow-hidden",
                 activeTab === "graph"
-                  ? "relative z-[1]"
+                  ? "relative z-[1] flex flex-col flex-1 min-h-0 min-w-0 overflow-hidden"
                   : "absolute inset-0 z-0 opacity-0 pointer-events-none min-h-0"
               )}
               aria-hidden={activeTab !== "graph"}

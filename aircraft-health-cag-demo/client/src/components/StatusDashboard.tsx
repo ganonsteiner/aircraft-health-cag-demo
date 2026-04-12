@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   Timer,
   Calendar,
-  SquareActivity,
   AlertTriangle,
   CheckCircle,
   Fan,
@@ -403,44 +402,6 @@ function DashboardContent({
                   )}
                 >
                   {sq.severity}
-                </span>
-              </div>
-            </ClickPanel>
-          ))}
-        </div>
-      )}
-
-      {(status.symptoms ?? []).length > 0 && (
-        <div className="space-y-2">
-          <h2 className="text-xs font-semibold text-zinc-500 uppercase tracking-widest flex items-center gap-2">
-            <SquareActivity className="w-3.5 h-3.5 text-yellow-400/70" aria-hidden />
-            Observed Symptoms
-          </h2>
-          {(status.symptoms ?? []).map((sym) => (
-            <ClickPanel
-              key={sym.externalId}
-              chatHint={`Ask about symptom: ${sym.title}`}
-              onClick={open}
-              className={cn("p-3 text-sm", severityRowClass(sym.severity))}
-            >
-              <div className="flex items-start gap-3 w-full min-w-0">
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium leading-snug">{sym.title}</p>
-                  <p className="text-zinc-300/90 mt-1 leading-snug">{sym.description}</p>
-                  {sym.observation ? (
-                    <p className="text-xs opacity-70 mt-1.5 leading-snug">{sym.observation}</p>
-                  ) : null}
-                  <p className="text-xs opacity-60 mt-1">
-                    First observed {(formatDate(sym.firstObserved) ?? sym.firstObserved) || "—"}
-                  </p>
-                </div>
-                <span
-                  className={cn(
-                    "shrink-0 self-start text-xs px-2 py-0.5 rounded-full border uppercase tracking-wide font-medium",
-                    severityPillClass(sym.severity)
-                  )}
-                >
-                  {sym.severity}
                 </span>
               </div>
             </ClickPanel>

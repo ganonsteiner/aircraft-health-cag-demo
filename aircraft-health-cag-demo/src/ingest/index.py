@@ -6,8 +6,8 @@ Runs all ingestion stages in order:
   2. Documents   — ET documents (POH, ADs, SBs)
   3. Flights     — OT sensor data, per-tail CSVs, flight events
   4. Maintenance — IT maintenance records, per-tail CSVs
-  5. Fleet graph — Observation/Symptom events, policies
-                   + relationships (GOVERNED_BY, HAS_POLICY, EXHIBITED, IS_TYPE, HAS_COMPONENT)
+  5. Fleet graph — policies, fleet owner
+                   + relationships (GOVERNED_BY, HAS_POLICY, IS_TYPE, HAS_COMPONENT)
 
 Usage:
   python -m src.ingest.index

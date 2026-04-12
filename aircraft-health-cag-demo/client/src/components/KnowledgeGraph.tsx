@@ -6,8 +6,10 @@ import {
   LineChart,
   RotateCcw,
   Share2,
+  Shield,
   AlertTriangle,
   Waypoints,
+  Zap,
 } from "lucide-react";
 import {
   cn,
@@ -17,7 +19,10 @@ import {
   TAB_PAGE_TOP_INSET,
 } from "../lib/utils";
 import { api } from "../lib/api";
-import { highlightedGraphIdsFromTraversal } from "../lib/traversalGraphIds";
+import {
+  highlightedGraphIdsFromTraversal,
+  graphIdsFromTraversalNode,
+} from "../lib/traversalGraphIds";
 import { useStore } from "../lib/store";
 import type { GraphData, GraphLink, GraphNode } from "../lib/types";
 import TraversalGraph, { type TraversalGraphHandle } from "./TraversalGraph";
@@ -26,8 +31,16 @@ interface Props {
   active: boolean;
 }
 
+const STAGGER_MS = 150;
+
 export default function KnowledgeGraph({ active }: Props) {
-  const { traversalEvents, setGraphDataSnapshot } = useStore();
+  const {
+    traversalEvents,
+    isQuerying,
+    isReplaying,
+    replayNodes,
+    setGraphDataSnapshot,
+  } = useStore();
   const [graphData, setGraphData] = useState<GraphData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +66,10 @@ export default function KnowledgeGraph({ active }: Props) {
     if (graphData) setGraphDataSnapshot(graphData);
   }, [graphData, setGraphDataSnapshot]);
 
-  // Measure while mounted — graph tab stays in layout (absolute when inactive) so size stays valid.
+  /**
+   * Measure once on mount and on resize. The KG tab uses `opacity-0` when inactive so the
+   * container stays in the layout — dimensions remain valid without re-measuring on tab switch.
+   */
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -63,7 +79,7 @@ export default function KnowledgeGraph({ active }: Props) {
         const w = box.clientWidth;
         const h = box.clientHeight;
         if (w > 0 && h > 0) {
-          setViewport({ width: w, height: h });
+          setViewport((prev) => (prev.width === w && prev.height === h ? prev : { width: w, height: h }));
         }
       }
     };
@@ -77,11 +93,98 @@ export default function KnowledgeGraph({ active }: Props) {
     };
   }, []);
 
-  /** Distinct graph node ids from the traversal log (yellow ring; legend “N nodes traversed”). */
-  const traversedIds = useMemo(
-    () => highlightedGraphIdsFromTraversal(traversalEvents, graphData),
-    [traversalEvents, graphData]
+  /** Set of graph node ids for fast membership checks. */
+  const graphIdSet = useMemo(
+    () => new Set(graphData?.nodes.map((n) => n.id) ?? []),
+    [graphData]
   );
+
+  // Staggered traversal highlight state — grows one batch at a time during streaming.
+  const [visibleTraversedIds, setVisibleTraversedIds] = useState<Set<string>>(new Set());
+  const idBufferRef = useRef<string[][]>([]);
+  const drainTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const lastEventCountRef = useRef(0);
+
+  // Replay: replayNodes already advances at 150ms intervals in the store — derive directly.
+  const replayTraversedIds = useMemo(
+    () => (isReplaying ? highlightedGraphIdsFromTraversal(replayNodes, graphData) : null),
+    [isReplaying, replayNodes, graphData]
+  );
+
+  // Streaming: buffer new traversal events, drain one batch of node IDs every 150ms.
+  useEffect(() => {
+    if (isReplaying) return;
+
+    if (!isQuerying) {
+      // Not streaming — show the full set immediately.
+      const out = new Set<string>();
+      for (const evt of traversalEvents) {
+        if (evt.type !== "traversal" || !evt.node) continue;
+        for (const id of graphIdsFromTraversalNode(evt.node)) {
+          if (graphIdSet.has(id)) out.add(id);
+        }
+      }
+      setVisibleTraversedIds(out);
+      idBufferRef.current = [];
+      if (drainTimerRef.current) {
+        clearInterval(drainTimerRef.current);
+        drainTimerRef.current = null;
+      }
+      lastEventCountRef.current = traversalEvents.length;
+      return;
+    }
+
+    // Buffer any newly arrived events.
+    const newEvents = traversalEvents.slice(lastEventCountRef.current);
+    lastEventCountRef.current = traversalEvents.length;
+    for (const evt of newEvents) {
+      if (evt.type !== "traversal" || !evt.node) continue;
+      const ids = graphIdsFromTraversalNode(evt.node).filter((id) => graphIdSet.has(id));
+      if (ids.length) idBufferRef.current.push(ids);
+    }
+
+    // Start drain timer if not already running.
+    if (!drainTimerRef.current) {
+      drainTimerRef.current = setInterval(() => {
+        const batch = idBufferRef.current.shift();
+        if (batch) {
+          setVisibleTraversedIds((prev) => {
+            const next = new Set(prev);
+            for (const id of batch) next.add(id);
+            return next;
+          });
+        } else {
+          clearInterval(drainTimerRef.current!);
+          drainTimerRef.current = null;
+        }
+      }, STAGGER_MS);
+    }
+  }, [traversalEvents, isQuerying, isReplaying, graphIdSet]);
+
+  // Reset when traversalEvents is cleared (new query).
+  useEffect(() => {
+    if (traversalEvents.length === 0) {
+      setVisibleTraversedIds(new Set());
+      idBufferRef.current = [];
+      lastEventCountRef.current = 0;
+      if (drainTimerRef.current) {
+        clearInterval(drainTimerRef.current);
+        drainTimerRef.current = null;
+      }
+    }
+  }, [traversalEvents.length]);
+
+  // Cleanup drain timer on unmount.
+  useEffect(() => {
+    return () => {
+      if (drainTimerRef.current) clearInterval(drainTimerRef.current);
+    };
+  }, []);
+
+  // During replay use replayNodes-derived set; otherwise use streaming-buffered set.
+  const displayTraversedIds = isReplaying
+    ? (replayTraversedIds ?? new Set<string>())
+    : visibleTraversedIds;
 
   const allEdgeTypes = useMemo(() => {
     if (!graphData?.links.length) return [] as string[];
@@ -91,32 +194,6 @@ export default function KnowledgeGraph({ active }: Props) {
     }
     return Array.from(s).sort();
   }, [graphData?.links]);
-
-  const [visibleEdgeTypes, setVisibleEdgeTypes] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    if (graphData && allEdgeTypes.length) {
-      setVisibleEdgeTypes(new Set(allEdgeTypes));
-    }
-  }, [graphData, allEdgeTypes]);
-
-  const filteredGraphData = useMemo((): GraphData | null => {
-    if (!graphData) return null;
-    if (visibleEdgeTypes.size === 0) {
-      return { ...graphData, links: [] };
-    }
-    const links = graphData.links.filter((l: GraphLink) => visibleEdgeTypes.has(l.type));
-    return { ...graphData, links };
-  }, [graphData, visibleEdgeTypes]);
-
-  const toggleEdgeType = (t: string) => {
-    setVisibleEdgeTypes((prev) => {
-      const next = new Set(prev);
-      if (next.has(t)) next.delete(t);
-      else next.add(t);
-      return next;
-    });
-  };
 
   const stats = graphData?.stats;
 
@@ -133,15 +210,17 @@ export default function KnowledgeGraph({ active }: Props) {
         {stats && (
           <div className="flex items-center gap-3">
             {[
-              { label: "Assets", count: stats.assets, icon: <Box className="w-3 h-3" />, color: "text-sky-400" },
-              { label: "TimeSeries", count: stats.timeseries, icon: <LineChart className="w-3 h-3" aria-hidden />, color: "text-emerald-400" },
-              { label: "Files", count: stats.files, icon: <FileText className="w-3 h-3" />, color: "text-purple-400" },
-              { label: "Relations", count: stats.relationships, icon: <Share2 className="w-3 h-3" aria-hidden />, color: "text-violet-400" },
+              { label: "Assets",     count: stats.assets,        icon: <Box className="w-3 h-3" aria-hidden />,        color: "text-sky-400"     },
+              { label: "TimeSeries", count: stats.timeseries,    icon: <LineChart className="w-3 h-3" aria-hidden />,  color: "text-emerald-400" },
+              { label: "Events",     count: stats.events,        icon: <Zap className="w-3 h-3" aria-hidden />,        color: "text-orange-400"  },
+              { label: "Files",      count: stats.files,         icon: <FileText className="w-3 h-3" aria-hidden />,   color: "text-purple-400"  },
+              { label: "Policies",   count: stats.policies,      icon: <Shield className="w-3 h-3" aria-hidden />,     color: "text-pink-400"    },
+              { label: "Relations",  count: stats.relationships, icon: <Share2 className="w-3 h-3" aria-hidden />,     color: "text-indigo-400"  },
             ].map((s) => (
               <div key={s.label} className={`flex items-center gap-1.5 text-xs ${s.color}`}>
                 {s.icon}
                 <span className="font-semibold">{s.count}</span>
-                <span className="text-zinc-600 hidden sm:inline">{s.label}</span>
+                <span className="text-zinc-200 hidden sm:inline">{s.label}</span>
               </div>
             ))}
           </div>
@@ -174,14 +253,14 @@ export default function KnowledgeGraph({ active }: Props) {
 
         {!loading &&
           !error &&
-          filteredGraphData &&
+          graphData &&
           viewport.width > 0 &&
           viewport.height > 0 && (
             <TraversalGraph
               ref={graphRef}
               active={active}
-              data={filteredGraphData}
-              traversedIds={traversedIds}
+              data={graphData}
+              traversedIds={displayTraversedIds}
               onNodeClick={setSelectedNode}
               width={viewport.width}
               height={viewport.height}
@@ -191,7 +270,6 @@ export default function KnowledgeGraph({ active }: Props) {
         {graphData &&
           !loading &&
           !error &&
-          filteredGraphData &&
           viewport.width > 0 &&
           viewport.height > 0 && (
             <div className="absolute bottom-3 right-3 z-10 flex gap-2">
@@ -221,17 +299,18 @@ export default function KnowledgeGraph({ active }: Props) {
         {/* Legend overlay */}
         {graphData && !loading && (
           <div className={cn("absolute top-3 left-3 rounded-lg px-3 py-2 backdrop-blur-sm max-w-[220px] max-h-[min(70vh,520px)] overflow-y-auto bg-zinc-900/90 border-zinc-800", CARD_SURFACE_B)}>
-            <p className="text-xs font-semibold text-zinc-500 mb-1.5 uppercase tracking-widest">
+            <p className="text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-widest">
               Node types
             </p>
             <div className="space-y-1">
               {[
-                { type: "Asset", color: "#38bdf8" },
-                { type: "Engine model", color: "#f1f5f9" },
-                { type: "TimeSeries", color: "#4ade80" },
-                { type: "File", color: "#c084fc" },
+                { type: "Asset",              color: "#38bdf8" },
+                { type: "TimeSeries",         color: "#34d399" },
+                { type: "Event",              color: "#fb923c" },
+                { type: "File / Document",    color: "#c084fc" },
+                { type: "Oper. Policy",       color: "#f472b6" },
               ].map((l) => (
-                <div key={l.type} className="flex items-center gap-2 text-xs text-zinc-400">
+                <div key={l.type} className="flex items-center gap-2 text-xs text-zinc-200">
                   <span
                     className="w-2.5 h-2.5 rounded-full shrink-0 border border-zinc-600"
                     style={{ backgroundColor: l.color }}
@@ -242,44 +321,27 @@ export default function KnowledgeGraph({ active }: Props) {
             </div>
             {allEdgeTypes.length > 0 && (
               <>
-                <p className="text-xs font-semibold text-zinc-500 mb-1 mt-2 pt-2 border-t border-zinc-800/60 uppercase tracking-widest">
+                <p className="text-xs font-semibold text-zinc-400 mb-1 mt-2 pt-2 border-t border-zinc-800/60 uppercase tracking-widest">
                   Edge types
                 </p>
                 <div className="space-y-1">
                   {allEdgeTypes.map((t) => {
-                    const on = visibleEdgeTypes.has(t);
-                    const sample = graphData.links.find((l) => l.type === t);
+                    const sample = graphData.links.find((l: GraphLink) => l.type === t);
                     const swatch = sample?.color || "#666";
-                    const isTypeStyle = t === "IS_TYPE";
                     return (
-                      <label
-                        key={t}
-                        className="flex items-center gap-2 text-xs text-zinc-400 cursor-pointer select-none"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={on}
-                          onChange={() => toggleEdgeType(t)}
-                          className="rounded border-zinc-600"
-                        />
-                        <span
-                          className="w-6 h-0.5 shrink-0"
-                          style={{
-                            backgroundColor: isTypeStyle ? "transparent" : swatch,
-                            borderTop: isTypeStyle ? `2px dashed ${swatch}` : undefined,
-                          }}
-                        />
+                      <div key={t} className="flex items-center gap-2 text-xs text-zinc-200">
+                        <span className="w-6 h-0.5 shrink-0" style={{ backgroundColor: swatch }} />
                         <span className="truncate font-mono">{t}</span>
-                      </label>
+                      </div>
                     );
                   })}
                 </div>
               </>
             )}
-            {traversedIds.size > 0 && (
+            {displayTraversedIds.size > 0 && (
               <div className="flex items-center gap-2 text-xs text-yellow-400 mt-1.5 border-t border-zinc-800/60 pt-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-yellow-400 shrink-0" />
-                {traversedIds.size} node{traversedIds.size === 1 ? "" : "s"} traversed
+                {displayTraversedIds.size} node{displayTraversedIds.size === 1 ? "" : "s"} traversed
               </div>
             )}
           </div>

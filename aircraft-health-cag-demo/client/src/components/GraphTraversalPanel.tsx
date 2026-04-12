@@ -22,13 +22,17 @@ function nodeIcon(node: string) {
   )
     return { icon: <Box className="w-3 h-3" />, color: "text-sky-400", bg: "bg-sky-950/60 border-sky-800/50" };
 
-  if (node.startsWith("Sensor:") || node.startsWith("Datapoint:") || node.startsWith("TimeSeries:"))
+  if (
+    node.startsWith("Sensor:") ||
+    node.startsWith("Datapoint:") ||
+    node.startsWith("TimeSeries:") ||
+    node.startsWith("Trend:")
+  )
     return { icon: <Activity className="w-3 h-3" />, color: "text-emerald-400", bg: "bg-emerald-950/60 border-emerald-800/50" };
 
   if (
     node.startsWith("Events:") ||
     node.startsWith("ComponentEvents:") ||
-    node.startsWith("Symptoms:") ||
     node.startsWith("FleetSearch:") ||
     node.startsWith("PolicyCompliance:")
   )
@@ -40,9 +44,10 @@ function nodeIcon(node: string) {
     node.startsWith("FleetOverview:") ||
     node.startsWith("EngineTypeHistory:") ||
     node.startsWith("IS_TYPE:") ||
-    node.startsWith("HAS_COMPONENT:")
+    node.startsWith("HAS_COMPONENT:") ||
+    node.startsWith("FleetSensorCompare:")
   )
-    return { icon: <GitBranch className="w-3 h-3" />, color: "text-violet-400", bg: "bg-violet-950/60 border-violet-800/50" };
+    return { icon: <GitBranch className="w-3 h-3" />, color: "text-indigo-400", bg: "bg-indigo-950/60 border-indigo-800/50" };
 
   if (node.startsWith("File:") || node.startsWith("Documents:"))
     return { icon: <FileText className="w-3 h-3" />, color: KG_DOCUMENT_NODE_COLOR, bg: "bg-purple-950/60 border-purple-800/50" };
@@ -55,22 +60,29 @@ function nodeIcon(node: string) {
 
 function toolColor(name: string): string {
   const map: Record<string, string> = {
-    assemble_aircraft_context: "text-yellow-400",
-    assemble_fleet_context: "text-yellow-300",
-    get_fleet_overview: "text-sky-300",
-    get_fleet_policies: "text-violet-300",
-    get_aircraft_symptoms: "text-orange-300",
-    get_engine_type_history: "text-cyan-400",
-    search_fleet_for_similar_events: "text-pink-400",
-    check_fleet_policy_compliance: "text-violet-400",
-    get_asset: "text-sky-400",
-    get_asset_children: "text-sky-300",
-    get_asset_subgraph: "text-sky-500",
-    get_time_series: "text-emerald-400",
-    get_datapoints: "text-emerald-300",
-    get_events: "text-orange-400",
-    get_relationships: "text-violet-400",
-    get_linked_documents: KG_DOCUMENT_NODE_COLOR,
+    // Asset family — sky
+    get_asset:                          "text-sky-400",
+    get_asset_children:                 "text-sky-300",
+    get_asset_subgraph:                 "text-sky-400",
+    // Telemetry family — emerald
+    get_time_series:                    "text-emerald-400",
+    get_datapoints:                     "text-emerald-300",
+    get_time_series_trend:              "text-emerald-400",
+    // Event family — orange
+    get_events:                         "text-orange-400",
+    search_fleet_for_similar_events:    "text-orange-300",
+    // Relationship / graph traversal family — indigo
+    get_relationships:                  "text-indigo-400",
+    get_fleet_policies:                 "text-indigo-300",
+    get_fleet_overview:                 "text-indigo-300",
+    get_engine_type_history:            "text-indigo-400",
+    check_fleet_policy_compliance:      "text-indigo-400",
+    compare_engine_sensor_across_fleet: "text-indigo-400",
+    // Context family — yellow
+    assemble_aircraft_context:          "text-yellow-400",
+    assemble_fleet_context:             "text-yellow-400",
+    // Document family — purple
+    get_linked_documents:               KG_DOCUMENT_NODE_COLOR,
   };
   return map[name] || "text-zinc-400";
 }
@@ -206,15 +218,16 @@ export default function GraphTraversalPanel({
       {/* Legend */}
       <div className="px-3 py-2 border-b border-zinc-800 flex flex-wrap gap-x-3 gap-y-1 shrink-0">
         {[
-          { label: "Asset", color: "text-sky-400" },
+          { label: "Asset",     color: "text-sky-400"     },
           { label: "Sensor/TS", color: "text-emerald-400" },
-          { label: "Event", color: "text-orange-400" },
-          { label: "Relation", color: "text-violet-400" },
-          { label: "Document", color: KG_DOCUMENT_NODE_COLOR },
-          { label: "Context", color: "text-yellow-400" },
+          { label: "Event",     color: "text-orange-400"  },
+          { label: "Relation",  color: "text-indigo-400"  },
+          { label: "Document",  color: KG_DOCUMENT_NODE_COLOR },
+          { label: "Context",   color: "text-yellow-400"  },
         ].map((l) => (
-          <span key={l.label} className={cn("text-xs", l.color)}>
-            ● {l.label}
+          <span key={l.label} className="inline-flex items-center gap-0.5 text-xs">
+            <span className={l.color}>●</span>
+            <span className="text-zinc-200">{l.label}</span>
           </span>
         ))}
       </div>
