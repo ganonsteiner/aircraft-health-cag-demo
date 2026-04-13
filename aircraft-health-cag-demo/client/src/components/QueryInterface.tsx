@@ -403,7 +403,7 @@ export default function QueryInterface({
             )}
           >
             <AlertCircle className="w-3.5 h-3.5 shrink-0" />
-            Add ANTHROPIC_API_KEY to .env in the project root to enable queries
+            Set ANTHROPIC_API_KEY (higher performance) or LOCAL_LLM_URL (Ollama, lower performance) in .env to enable queries
           </div>
         )}
         <form

@@ -80,7 +80,7 @@ export default function App() {
     setActiveTab(tab);
   };
 
-  const apiKeyMissing = health ? !health.anthropic_api_key_configured : false;
+  const apiKeyMissing = health ? !health.llm_ready : false;
   const mockCdfOffline = health ? !health.mock_cdf_reachable : false;
   const mockCdfNoFleetData =
     health?.mock_cdf_reachable === true &&
@@ -137,8 +137,14 @@ export default function App() {
               <div className="flex items-center gap-2">
                 <StatusDot
                   label="LLM"
-                  ok={health.anthropic_api_key_configured}
-                  tooltip={health.anthropic_api_key_configured ? "Anthropic API key configured" : "API key missing"}
+                  ok={health.llm_ready}
+                  tooltip={
+                    health.anthropic_api_key_configured
+                      ? "Anthropic configured (claude-sonnet-4-5)"
+                      : health.local_llm_configured
+                        ? "Local LLM configured via LOCAL_LLM_URL (lower performance than Anthropic)"
+                        : "No LLM configured — set ANTHROPIC_API_KEY or LOCAL_LLM_URL in .env"
+                  }
                 />
                 <StatusDot
                   label="KG"

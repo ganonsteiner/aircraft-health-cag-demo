@@ -1,18 +1,20 @@
 """
-Claude ReAct Agent — Python equivalent of src/agent/agent.ts.
+ReAct Agent — supports Anthropic (claude-sonnet-4-5) and any OpenAI-compatible
+local model (e.g. Ollama).  Priority: Anthropic if ANTHROPIC_API_KEY is set,
+otherwise the URL in LOCAL_LLM_URL.
 
 Implements the Reason-Act loop as an async generator, yielding structured
 SSE events as the agent works. Each yield maps to one Server-Sent Event
 that the frontend renders in the Graph Traversal Panel.
 
 Event types yielded:
-  - "thinking"    : Claude's reasoning text before tool calls
-  - "tool_call"   : Agent is about to call a CDF graph tool
-  - "tool_result" : Tool returned a result (summarized)
-  - "traversal"   : A graph node was visited (from traversal_log)
-  - "final"       : Final answer text (markdown)
-  - "error"       : Something went wrong
-  - "done"        : Stream complete
+  - "thinking"    : model reasoning text before tool calls
+  - "tool_call"   : agent is about to call a CDF graph tool
+  - "tool_result" : tool returned a result (summarized)
+  - "traversal"   : a graph node was visited (from traversal_log)
+  - "final"       : final answer text (markdown)
+  - "error"       : something went wrong
+  - "done"        : stream complete
 """
 
 from __future__ import annotations
@@ -35,6 +37,8 @@ from .tools import (  # noqa: E402
 )
 
 MODEL = "claude-sonnet-4-5"
+LOCAL_LLM_MODEL = os.getenv("LOCAL_LLM_MODEL", "qwen2.5:14b")
+LOCAL_LLM_URL = os.getenv("LOCAL_LLM_URL", "")
 MAX_ITERATIONS = 15
 
 SYSTEM_PROMPT = """You are an airworthiness advisor and fleet maintenance coordinator for Desert Sky Aviation, a Part 141 flight school at KPHX operating four 1978 Cessna 172N Skyhawks. You have access to the fleet's complete knowledge graph in Cognite Data Fusion (CDF).
@@ -167,40 +171,36 @@ def _extract_text_blocks(content: list[Any]) -> str:
     return "\n".join(parts)
 
 
-async def run_agent_streaming(
+def _to_openai_tools(anthropic_tools: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Convert TOOL_DEFINITIONS (Anthropic format) to OpenAI function-calling format."""
+    return [
+        {
+            "type": "function",
+            "function": {
+                "name": t["name"],
+                "description": t["description"],
+                "parameters": t["input_schema"],
+            },
+        }
+        for t in anthropic_tools
+    ]
+
+
+async def _run_anthropic_streaming(
     user_query: str,
-    aircraft_id: Optional[str] = None,
-    max_iterations: int = MAX_ITERATIONS,
+    aircraft_id: Optional[str],
+    max_iterations: int,
+    api_key: str,
 ) -> AsyncGenerator[dict[str, Any], None]:
-    """
-    ReAct agent loop as an async generator.
-
-    Each iteration:
-      1. Call Claude with current message history and tool definitions
-      2. If stop_reason == "end_turn": yield final answer and return
-      3. If stop_reason == "tool_use": yield tool_call events, execute tools,
-         yield tool_result events, append results to message history
-      4. Emit traversal log entries as "traversal" events after each tool batch
-
-    Each yielded dict becomes one JSON-encoded SSE data field.
-    """
-    api_key = os.getenv("ANTHROPIC_API_KEY", "")
-    if not api_key or api_key.startswith("sk-ant-..."):
-        yield {"type": "error", "message": "ANTHROPIC_API_KEY not configured"}
-        yield {"type": "done"}
-        return
-
+    """ReAct loop using the Anthropic SDK."""
     anthropic_client = anthropic.Anthropic(api_key=api_key)
     clear_traversal_log()
 
-    # Prepend aircraft context hint if a specific tail was selected
     user_content = user_query
     if aircraft_id:
         user_content = f"[Context: focusing on aircraft {aircraft_id}]\n\n{user_query}"
 
-    messages: list[dict[str, Any]] = [
-        {"role": "user", "content": user_content}
-    ]
+    messages: list[dict[str, Any]] = [{"role": "user", "content": user_content}]
 
     for iteration in range(max_iterations):
         try:
@@ -221,24 +221,20 @@ async def run_agent_streaming(
             yield {"type": "done"}
             return
 
-        # Emit any thinking/text blocks before tool calls
         thinking_text = _extract_text_blocks(response.content)
         if thinking_text.strip():
             yield {"type": "thinking", "content": thinking_text}
 
         if response.stop_reason == "end_turn":
-            final_text = _extract_text_blocks(response.content)
-            yield {"type": "final", "content": final_text}
-            yield {"type": "done"}
-            return
-
-        if response.stop_reason != "tool_use":
-            # Unexpected stop reason — treat as final
             yield {"type": "final", "content": _extract_text_blocks(response.content)}
             yield {"type": "done"}
             return
 
-        # Process tool calls
+        if response.stop_reason != "tool_use":
+            yield {"type": "final", "content": _extract_text_blocks(response.content)}
+            yield {"type": "done"}
+            return
+
         tool_results: list[dict[str, Any]] = []
         prev_traversal_count = len(get_traversal_log())
 
@@ -250,29 +246,16 @@ async def run_agent_streaming(
             tool_input: dict[str, Any] = block.input
             tool_use_id: str = block.id
 
-            yield {
-                "type": "tool_call",
-                "tool_name": tool_name,
-                "args": tool_input,
-                "iteration": iteration + 1,
-            }
+            yield {"type": "tool_call", "tool_name": tool_name, "args": tool_input, "iteration": iteration + 1}
 
             result = await asyncio.to_thread(execute_tool, tool_name, tool_input)
 
-            # Emit traversal events logged during this tool call
             current_log = get_traversal_log()
-            new_traversal_entries = current_log[prev_traversal_count:]
-            for entry in new_traversal_entries:
+            for entry in current_log[prev_traversal_count:]:
                 yield {"type": "traversal", "node": entry}
             prev_traversal_count = len(current_log)
 
-            summary = _summarize_result(tool_name, result)
-            yield {
-                "type": "tool_result",
-                "tool_name": tool_name,
-                "summary": summary,
-                "iteration": iteration + 1,
-            }
+            yield {"type": "tool_result", "tool_name": tool_name, "summary": _summarize_result(tool_name, result), "iteration": iteration + 1}
 
             tool_results.append({
                 "type": "tool_result",
@@ -280,13 +263,148 @@ async def run_agent_streaming(
                 "content": json.dumps(result, default=str),
             })
 
-        # Append assistant turn + tool results to message history
         messages.append({"role": "assistant", "content": response.content})
         messages.append({"role": "user", "content": tool_results})
 
-    # Max iterations reached
-    yield {
-        "type": "error",
-        "message": f"Max iterations ({max_iterations}) reached without final answer",
-    }
+    yield {"type": "error", "message": f"Max iterations ({max_iterations}) reached without final answer"}
     yield {"type": "done"}
+
+
+async def _run_local_llm_streaming(
+    user_query: str,
+    aircraft_id: Optional[str],
+    max_iterations: int,
+) -> AsyncGenerator[dict[str, Any], None]:
+    """
+    ReAct loop using any OpenAI-compatible local model (e.g. Ollama).
+
+    Uses the openai Python package pointed at LOCAL_LLM_URL.  Tool definitions
+    are converted from Anthropic format to OpenAI function-calling format.
+    Response quality is substantially lower than Anthropic for complex
+    multi-hop graph reasoning queries.
+    """
+    try:
+        import openai  # noqa: PLC0415
+    except ImportError:
+        yield {"type": "error", "message": "openai package not installed — run: pip install openai"}
+        yield {"type": "done"}
+        return
+
+    local_url = os.getenv("LOCAL_LLM_URL", "").rstrip("/")
+    local_model = os.getenv("LOCAL_LLM_MODEL", "qwen2.5:14b")
+
+    try:
+        local_client = openai.OpenAI(base_url=local_url, api_key="ollama")
+    except Exception as e:
+        yield {"type": "error", "message": f"Local LLM client error: {str(e)}"}
+        yield {"type": "done"}
+        return
+
+    openai_tools = _to_openai_tools(TOOL_DEFINITIONS)
+    clear_traversal_log()
+
+    user_content = user_query
+    if aircraft_id:
+        user_content = f"[Context: focusing on aircraft {aircraft_id}]\n\n{user_query}"
+
+    messages: list[dict[str, Any]] = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user_content},
+    ]
+
+    for iteration in range(max_iterations):
+        try:
+            response = await asyncio.to_thread(
+                local_client.chat.completions.create,
+                model=local_model,
+                messages=messages,
+                tools=openai_tools,
+            )
+        except Exception as e:
+            yield {"type": "error", "message": f"Local LLM error: {str(e)}"}
+            yield {"type": "done"}
+            return
+
+        choice = response.choices[0]
+        message = choice.message
+
+        if message.content and message.content.strip():
+            yield {"type": "thinking", "content": message.content}
+
+        if choice.finish_reason == "stop" or not message.tool_calls:
+            yield {"type": "final", "content": message.content or ""}
+            yield {"type": "done"}
+            return
+
+        prev_traversal_count = len(get_traversal_log())
+        tool_result_messages: list[dict[str, Any]] = []
+
+        for tool_call in message.tool_calls:
+            tool_name = tool_call.function.name
+            try:
+                tool_input: dict[str, Any] = json.loads(tool_call.function.arguments)
+            except json.JSONDecodeError:
+                tool_input = {}
+
+            yield {"type": "tool_call", "tool_name": tool_name, "args": tool_input, "iteration": iteration + 1}
+
+            result = await asyncio.to_thread(execute_tool, tool_name, tool_input)
+
+            current_log = get_traversal_log()
+            for entry in current_log[prev_traversal_count:]:
+                yield {"type": "traversal", "node": entry}
+            prev_traversal_count = len(current_log)
+
+            yield {"type": "tool_result", "tool_name": tool_name, "summary": _summarize_result(tool_name, result), "iteration": iteration + 1}
+
+            tool_result_messages.append({
+                "role": "tool",
+                "tool_call_id": tool_call.id,
+                "content": json.dumps(result, default=str),
+            })
+
+        messages.append({
+            "role": "assistant",
+            "content": message.content,
+            "tool_calls": [
+                {
+                    "id": tc.id,
+                    "type": "function",
+                    "function": {"name": tc.function.name, "arguments": tc.function.arguments},
+                }
+                for tc in message.tool_calls
+            ],
+        })
+        messages.extend(tool_result_messages)
+
+    yield {"type": "error", "message": f"Max iterations ({max_iterations}) reached without final answer"}
+    yield {"type": "done"}
+
+
+async def run_agent_streaming(
+    user_query: str,
+    aircraft_id: Optional[str] = None,
+    max_iterations: int = MAX_ITERATIONS,
+) -> AsyncGenerator[dict[str, Any], None]:
+    """
+    Dispatch to the correct LLM backend based on environment configuration.
+
+    Priority:
+      1. ANTHROPIC_API_KEY set → Anthropic claude-sonnet-4-5 (highest quality)
+      2. LOCAL_LLM_URL set    → OpenAI-compatible local model via Ollama (lower quality)
+      3. Neither configured   → error event
+    """
+    api_key = os.getenv("ANTHROPIC_API_KEY", "")
+    anthropic_configured = bool(api_key and not api_key.startswith("sk-ant-...") and len(api_key) > 20)
+
+    local_url = os.getenv("LOCAL_LLM_URL", "")
+
+    if anthropic_configured:
+        async for event in _run_anthropic_streaming(user_query, aircraft_id, max_iterations, api_key):
+            yield event
+    elif local_url:
+        async for event in _run_local_llm_streaming(user_query, aircraft_id, max_iterations):
+            yield event
+    else:
+        yield {"type": "error", "message": "No LLM configured — set ANTHROPIC_API_KEY or LOCAL_LLM_URL in .env"}
+        yield {"type": "done"}

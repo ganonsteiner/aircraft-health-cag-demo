@@ -139,7 +139,11 @@ def _get_store_counts() -> dict[str, int]:
 async def health_check() -> dict[str, Any]:
     """GET /api/health — frontend polls on load to check API key and services."""
     api_key = os.getenv("ANTHROPIC_API_KEY", "")
-    key_configured = bool(api_key and not api_key.startswith("sk-ant-...") and len(api_key) > 20)
+    anthropic_configured = bool(api_key and not api_key.startswith("sk-ant-...") and len(api_key) > 20)
+    local_llm_url = os.getenv("LOCAL_LLM_URL", "")
+    local_llm_configured = bool(local_llm_url)
+    llm_ready = anthropic_configured or local_llm_configured
+
     mock_cdf_reachable = await _check_mock_cdf()
     mock_cdf_fleet_ready = await _mock_cdf_fleet_ready() if mock_cdf_reachable else False
     store_counts = _get_store_counts()
@@ -148,16 +152,16 @@ async def health_check() -> dict[str, Any]:
         status = "mock_cdf_offline"
     elif not mock_cdf_fleet_ready:
         status = "degraded"
-    elif not api_key:
-        status = "api_key_missing"
-    elif not key_configured:
-        status = "api_key_invalid"
+    elif not llm_ready:
+        status = "llm_missing"
     else:
         status = "ok"
 
     return {
         "status": status,
-        "anthropic_api_key_configured": key_configured,
+        "anthropic_api_key_configured": anthropic_configured,
+        "local_llm_configured": local_llm_configured,
+        "llm_ready": llm_ready,
         "mock_cdf_reachable": mock_cdf_reachable,
         "mock_cdf_fleet_ready": mock_cdf_fleet_ready,
         "store": store_counts,
@@ -176,10 +180,12 @@ async def query_agent(req: QueryRequest) -> EventSourceResponse:
     Body: { question: string, aircraft?: string }
     """
     api_key = os.getenv("ANTHROPIC_API_KEY", "")
-    if not api_key or api_key.startswith("sk-ant-...") or len(api_key) <= 20:
+    anthropic_configured = bool(api_key and not api_key.startswith("sk-ant-...") and len(api_key) > 20)
+    local_llm_url = os.getenv("LOCAL_LLM_URL", "")
+    if not anthropic_configured and not local_llm_url:
         raise HTTPException(
             status_code=503,
-            detail={"error": "ANTHROPIC_API_KEY not configured", "hint": "Add to .env in project root"},
+            detail={"error": "No LLM configured", "hint": "Set ANTHROPIC_API_KEY or LOCAL_LLM_URL in .env"},
         )
 
     async def event_stream() -> AsyncGenerator[dict[str, str], None]:

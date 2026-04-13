@@ -27,14 +27,57 @@ python3 -m venv .venv && source .venv/bin/activate
 npm run bootstrap
 ```
 
-**Configure the agent:**
+**Choose your LLM and complete its setup — then start the app.**
 
-```bash
-cp .env.example .env
-# edit .env — set ANTHROPIC_API_KEY to your key from console.anthropic.com
-```
+---
 
-**Start everything:**
+**Option A — Anthropic (recommended, higher performance)**
+
+1. Copy the env file:
+   ```bash
+   cp .env.example .env
+   ```
+2. Open `.env` and set your API key from [console.anthropic.com](https://console.anthropic.com/):
+   ```
+   ANTHROPIC_API_KEY=sk-ant-...
+   ```
+
+---
+
+**Option B — Local model via Ollama (lower performance)**
+
+> Response quality is significantly lower than Anthropic on this demo’s complex, multi-hop queries. Use for offline or cost-free development.
+
+1. Install Ollama from [https://ollama.com/download](https://ollama.com/download) and start the app.
+2. Confirm Ollama is running:
+   ```bash
+   curl -s http://localhost:11434/api/tags
+   ```
+   You should get a JSON response. If it hangs or fails, Ollama is not running — fix that before continuing.
+3. Pull the recommended model (~9 GB):
+   ```bash
+   ollama pull qwen2.5:14b
+   ```
+   Short on RAM or disk? Use the smaller backup (~5 GB) instead, and note the name for step 5:
+   ```bash
+   ollama pull qwen2.5:7b
+   ```
+4. Copy the env file:
+   ```bash
+   cp .env.example .env
+   ```
+5. Open `.env`, leave `ANTHROPIC_API_KEY` empty, and uncomment the two local LLM lines:
+   ```
+   ANTHROPIC_API_KEY=
+
+   LOCAL_LLM_URL=http://localhost:11434/v1
+   LOCAL_LLM_MODEL=qwen2.5:14b   # change to qwen2.5:7b if you used the backup
+   ```
+   The URL must include `/v1`.
+
+---
+
+**Start the app:**
 
 ```bash
 npm run dev
@@ -47,6 +90,28 @@ Open [http://localhost:4000](http://localhost:4000)
 | Vite Dev Server (website) | 4000 |
 | Mock CDF Server | 4001 |
 | API Server | 8080 |
+
+## Local LLM troubleshooting
+
+If you chose Option B and something isn’t working:
+
+| Symptom | Fix |
+|---------|-----|
+| Yellow “No LLM configured” banner | `LOCAL_LLM_URL=http://localhost:11434/v1` must be in `.env` and `ANTHROPIC_API_KEY` must be empty. Restart `npm run dev`. |
+| LLM dot says “Anthropic configured” | `ANTHROPIC_API_KEY` has a real value — clear it. |
+| Error in chat | Confirm Ollama is running: `curl -s http://localhost:11434/api/tags`. Confirm model is pulled: `ollama list`. |
+| Out of memory, very slow, or timeouts | Switch to the backup: `ollama pull qwen2.5:7b`, then set `LOCAL_LLM_MODEL=qwen2.5:7b` in `.env`. |
+| `openai package not installed` | Run `python3 -m pip install -e .` from `aircraft-health-cag-demo/`. |
+
+Recommended Ollama models:
+
+| Model | Size | Notes |
+|-------|------|-------|
+| **`qwen2.5:14b`** | ~9 GB | **Default** — best tool-calling quality for this demo |
+| `qwen2.5:7b` | ~5 GB | **Backup** — use if RAM, VRAM, or disk is limited |
+| `llama3.1:8b` | ~5 GB | Alternative if Qwen is unavailable |
+
+Other OpenAI-compatible servers (LM Studio, vLLM, etc.) work if they expose a `/v1/chat/completions` endpoint with `tools` support. Point `LOCAL_LLM_URL` at that server’s base URL and set `LOCAL_LLM_MODEL` to the model name it expects.
 
 ## What It Demonstrates
 

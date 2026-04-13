@@ -54,14 +54,19 @@ export default function SetupBanner({
           <BannerRow
             icon={<AlertTriangle className="w-4 h-4 shrink-0" />}
             color="yellow"
-            title="ANTHROPIC_API_KEY not configured — AI queries disabled"
+            title="No LLM configured — AI queries disabled"
             detail={
               <>
-                Add your key to{" "}
+                Set{" "}
                 <code className="font-mono text-yellow-300 bg-yellow-950/60 px-1 rounded">
-                  .env
-                </code>
-                : <code className="font-mono text-yellow-300">ANTHROPIC_API_KEY=sk-ant-...</code>
+                  ANTHROPIC_API_KEY
+                </code>{" "}
+                (higher performance) or{" "}
+                <code className="font-mono text-yellow-300 bg-yellow-950/60 px-1 rounded">
+                  LOCAL_LLM_URL
+                </code>{" "}
+                (Ollama, lower performance) in{" "}
+                <code className="font-mono text-yellow-300">.env</code>
               </>
             }
           />

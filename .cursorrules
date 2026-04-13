@@ -10,7 +10,7 @@ IT/OT/ET data → Industrial Knowledge Graph → Agent (using CAG)
 - Frontend: TypeScript / React (Vite, Tailwind CSS, shadcn/ui)
 - Backend: Python (FastAPI, uvicorn)
 - CDF queries: cognite-sdk Python client → mock server
-- LLM: Anthropic SDK (claude-sonnet-4-5)
+- LLM: Anthropic SDK (claude-sonnet-4-5) — or any OpenAI-compatible local model (e.g. Ollama) when ANTHROPIC_API_KEY is not set; local models produce significantly lower quality results for this demo's multi-hop graph reasoning
 
 ## Architecture
 Keep consistent with this structure:

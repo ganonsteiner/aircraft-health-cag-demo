@@ -1,8 +1,11 @@
 export type Airworthiness = "AIRWORTHY" | "FERRY_ONLY" | "CAUTION" | "NOT_AIRWORTHY" | "UNKNOWN";
 
 export interface HealthStatus {
-  status: "ok" | "degraded" | "mock_cdf_offline" | "api_key_missing" | "api_key_invalid";
+  status: "ok" | "degraded" | "mock_cdf_offline" | "llm_missing";
   anthropic_api_key_configured: boolean;
+  local_llm_configured: boolean;
+  /** True when either Anthropic or a local LLM is configured. */
+  llm_ready: boolean;
   mock_cdf_reachable: boolean;
   /** False when /health responds but assets/byids returns no fleet (e.g. wrong process on port 4001). */
   mock_cdf_fleet_ready?: boolean;
