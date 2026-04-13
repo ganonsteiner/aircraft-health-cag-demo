@@ -5,8 +5,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.9h \u2014 nan",
-    "startTime": 1740474439000,
-    "endTime": 1740477715000,
+    "startTime": 1740560839000,
+    "endTime": 1740564115000,
     "assetIds": [
       1
     ],
@@ -27,8 +27,8 @@
       "fuel_used_gal": "5.84"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200001,
@@ -36,8 +36,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1741148926000,
-    "endTime": 1741156161999,
+    "startTime": 1741235326000,
+    "endTime": 1741242561999,
     "assetIds": [
       1
     ],
@@ -58,8 +58,8 @@
       "fuel_used_gal": "14.48"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200002,
@@ -67,8 +67,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.7h \u2014 nan",
-    "startTime": 1741744428000,
-    "endTime": 1741750656000,
+    "startTime": 1741830828000,
+    "endTime": 1741837056000,
     "assetIds": [
       1
     ],
@@ -89,8 +89,8 @@
       "fuel_used_gal": "13.52"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200003,
@@ -98,8 +98,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1742677243000,
-    "endTime": 1742679619000,
+    "startTime": 1742763643000,
+    "endTime": 1742766019000,
     "assetIds": [
       1
     ],
@@ -120,8 +120,8 @@
       "fuel_used_gal": "5.6"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200004,
@@ -129,8 +129,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1742791629000,
-    "endTime": 1742796849000,
+    "startTime": 1742878029000,
+    "endTime": 1742883249000,
     "assetIds": [
       1
     ],
@@ -151,8 +151,8 @@
       "fuel_used_gal": "10.85"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200005,
@@ -160,8 +160,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N4798E \u2014 KPHX-KPRC \u2014 1.7h \u2014 nan",
-    "startTime": 1742877195000,
-    "endTime": 1742883351000,
+    "startTime": 1742963595000,
+    "endTime": 1742969751000,
     "assetIds": [
       1
     ],
@@ -182,8 +182,8 @@
       "fuel_used_gal": "13.02"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200006,
@@ -191,8 +191,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1743103537000,
-    "endTime": 1743106453000,
+    "startTime": 1743189937000,
+    "endTime": 1743192853000,
     "assetIds": [
       1
     ],
@@ -213,8 +213,8 @@
       "fuel_used_gal": "5.5"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200007,
@@ -222,8 +222,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1743353748000,
-    "endTime": 1743356700000,
+    "startTime": 1743440148000,
+    "endTime": 1743443100000,
     "assetIds": [
       1
     ],
@@ -244,8 +244,8 @@
       "fuel_used_gal": "5.83"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200008,
@@ -253,8 +253,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.2h \u2014 Slight turbulence below 3000 ft, otherwise uneventful.",
-    "startTime": 1743874828000,
-    "endTime": 1743879148000,
+    "startTime": 1743961228000,
+    "endTime": 1743965548000,
     "assetIds": [
       1
     ],
@@ -275,8 +275,8 @@
       "fuel_used_gal": "8.28"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200009,
@@ -284,8 +284,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1744821085000,
-    "endTime": 1744826125000,
+    "startTime": 1744907485000,
+    "endTime": 1744912525000,
     "assetIds": [
       1
     ],
@@ -306,8 +306,8 @@
       "fuel_used_gal": "11.12"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200010,
@@ -315,8 +315,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.3h \u2014 nan",
-    "startTime": 1745098983000,
-    "endTime": 1745103663000,
+    "startTime": 1745185383000,
+    "endTime": 1745190063000,
     "assetIds": [
       1
     ],
@@ -337,8 +337,8 @@
       "fuel_used_gal": "10.12"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200011,
@@ -346,8 +346,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.8h \u2014 nan",
-    "startTime": 1745418693000,
-    "endTime": 1745425245000,
+    "startTime": 1745505093000,
+    "endTime": 1745511645000,
     "assetIds": [
       1
     ],
@@ -368,8 +368,8 @@
       "fuel_used_gal": "9.29"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200012,
@@ -377,8 +377,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1745622128000,
-    "endTime": 1745625044000,
+    "startTime": 1745708528000,
+    "endTime": 1745711444000,
     "assetIds": [
       1
     ],
@@ -399,8 +399,8 @@
       "fuel_used_gal": "6.49"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200013,
@@ -408,8 +408,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.9h \u2014 nan",
-    "startTime": 1745751303000,
-    "endTime": 1745754543000,
+    "startTime": 1745837703000,
+    "endTime": 1745840943000,
     "assetIds": [
       1
     ],
@@ -430,8 +430,8 @@
       "fuel_used_gal": "4.23"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200014,
@@ -439,8 +439,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1745971818000,
-    "endTime": 1745978298000,
+    "startTime": 1746058218000,
+    "endTime": 1746064698000,
     "assetIds": [
       1
     ],
@@ -461,8 +461,8 @@
       "fuel_used_gal": "11.95"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200015,
@@ -470,8 +470,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1746884972000,
-    "endTime": 1746890012000,
+    "startTime": 1746971372000,
+    "endTime": 1746976412000,
     "assetIds": [
       1
     ],
@@ -492,8 +492,8 @@
       "fuel_used_gal": "8.36"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200016,
@@ -501,8 +501,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1747321067000,
-    "endTime": 1747326647000,
+    "startTime": 1747407467000,
+    "endTime": 1747413047000,
     "assetIds": [
       1
     ],
@@ -523,8 +523,8 @@
       "fuel_used_gal": "12.21"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200017,
@@ -532,8 +532,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.2h \u2014 nan",
-    "startTime": 1748011709000,
-    "endTime": 1748016137000,
+    "startTime": 1748098109000,
+    "endTime": 1748102537000,
     "assetIds": [
       1
     ],
@@ -554,8 +554,8 @@
       "fuel_used_gal": "5.98"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200018,
@@ -563,8 +563,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.9h \u2014 nan",
-    "startTime": 1749151091000,
-    "endTime": 1749157859000,
+    "startTime": 1749237491000,
+    "endTime": 1749244259000,
     "assetIds": [
       1
     ],
@@ -585,8 +585,8 @@
       "fuel_used_gal": "10.39"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200019,
@@ -594,8 +594,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.5h \u2014 nan",
-    "startTime": 1749378450000,
-    "endTime": 1749380286000,
+    "startTime": 1749464850000,
+    "endTime": 1749466686000,
     "assetIds": [
       1
     ],
@@ -616,8 +616,8 @@
       "fuel_used_gal": "3.28"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200020,
@@ -625,8 +625,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1749704677000,
-    "endTime": 1749707377000,
+    "startTime": 1749791077000,
+    "endTime": 1749793777000,
     "assetIds": [
       1
     ],
@@ -647,8 +647,8 @@
       "fuel_used_gal": "6.07"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200021,
@@ -656,8 +656,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.5h \u2014 nan",
-    "startTime": 1750140364000,
-    "endTime": 1750145764000,
+    "startTime": 1750226764000,
+    "endTime": 1750232164000,
     "assetIds": [
       1
     ],
@@ -678,8 +678,8 @@
       "fuel_used_gal": "10.04"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200022,
@@ -687,8 +687,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N4798E \u2014 KPHX-KPRC \u2014 1.5h \u2014 nan",
-    "startTime": 1750422916000,
-    "endTime": 1750428244000,
+    "startTime": 1750509316000,
+    "endTime": 1750514644000,
     "assetIds": [
       1
     ],
@@ -709,8 +709,8 @@
       "fuel_used_gal": "7.37"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200023,
@@ -718,8 +718,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.6h \u2014 Good flight.",
-    "startTime": 1750581511000,
-    "endTime": 1750587127000,
+    "startTime": 1750667911000,
+    "endTime": 1750673527000,
     "assetIds": [
       1
     ],
@@ -740,8 +740,8 @@
       "fuel_used_gal": "11.92"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200024,
@@ -749,8 +749,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.7h \u2014 Smooth flight, all instruments normal.",
-    "startTime": 1751434503000,
-    "endTime": 1751437059000,
+    "startTime": 1751520903000,
+    "endTime": 1751523459000,
     "assetIds": [
       1
     ],
@@ -771,8 +771,8 @@
       "fuel_used_gal": "3.89"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200025,
@@ -780,8 +780,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.9h \u2014 nan",
-    "startTime": 1752041424000,
-    "endTime": 1752048444000,
+    "startTime": 1752127824000,
+    "endTime": 1752134844000,
     "assetIds": [
       1
     ],
@@ -802,8 +802,8 @@
       "fuel_used_gal": "15.44"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200026,
@@ -811,8 +811,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.9h \u2014 nan",
-    "startTime": 1752574631000,
-    "endTime": 1752581543000,
+    "startTime": 1752661031000,
+    "endTime": 1752667943000,
     "assetIds": [
       1
     ],
@@ -833,8 +833,8 @@
       "fuel_used_gal": "13.43"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200027,
@@ -842,8 +842,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.4h \u2014 nan",
-    "startTime": 1753260056000,
-    "endTime": 1753265132000,
+    "startTime": 1753346456000,
+    "endTime": 1753351532000,
     "assetIds": [
       1
     ],
@@ -864,8 +864,8 @@
       "fuel_used_gal": "6.59"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200028,
@@ -873,8 +873,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1754165183000,
-    "endTime": 1754170223000,
+    "startTime": 1754251583000,
+    "endTime": 1754256623000,
     "assetIds": [
       1
     ],
@@ -895,8 +895,8 @@
       "fuel_used_gal": "7.11"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200029,
@@ -904,8 +904,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.5h \u2014 nan",
-    "startTime": 1754241609000,
-    "endTime": 1754247117000,
+    "startTime": 1754328009000,
+    "endTime": 1754333517000,
     "assetIds": [
       1
     ],
@@ -926,8 +926,8 @@
       "fuel_used_gal": "7.65"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200030,
@@ -935,8 +935,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 1.0h \u2014 nan",
-    "startTime": 1754501338000,
-    "endTime": 1754504794000,
+    "startTime": 1754587738000,
+    "endTime": 1754591194000,
     "assetIds": [
       1
     ],
@@ -957,8 +957,8 @@
       "fuel_used_gal": "5.52"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200031,
@@ -966,8 +966,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N4798E \u2014 KPHX-KFLG \u2014 1.8h \u2014 nan",
-    "startTime": 1755082462000,
-    "endTime": 1755088834000,
+    "startTime": 1755168862000,
+    "endTime": 1755175234000,
     "assetIds": [
       1
     ],
@@ -988,8 +988,8 @@
       "fuel_used_gal": "13.52"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200032,
@@ -997,8 +997,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1755584283000,
-    "endTime": 1755590259000,
+    "startTime": 1755670683000,
+    "endTime": 1755676659000,
     "assetIds": [
       1
     ],
@@ -1019,8 +1019,8 @@
       "fuel_used_gal": "12.78"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200033,
@@ -1028,8 +1028,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1755698656000,
-    "endTime": 1755704524000,
+    "startTime": 1755785056000,
+    "endTime": 1755790924000,
     "assetIds": [
       1
     ],
@@ -1050,8 +1050,8 @@
       "fuel_used_gal": "9.4"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200034,
@@ -1059,8 +1059,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.1h \u2014 nan",
-    "startTime": 1755927556000,
-    "endTime": 1755931588000,
+    "startTime": 1756013956000,
+    "endTime": 1756017988000,
     "assetIds": [
       1
     ],
@@ -1081,8 +1081,8 @@
       "fuel_used_gal": "6.41"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200035,
@@ -1090,8 +1090,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1756145257000,
-    "endTime": 1756152349000,
+    "startTime": 1756231657000,
+    "endTime": 1756238749000,
     "assetIds": [
       1
     ],
@@ -1112,8 +1112,8 @@
       "fuel_used_gal": "16.62"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200036,
@@ -1121,8 +1121,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.1h \u2014 nan",
-    "startTime": 1757291173000,
-    "endTime": 1757298624999,
+    "startTime": 1757377573000,
+    "endTime": 1757385024999,
     "assetIds": [
       1
     ],
@@ -1143,8 +1143,8 @@
       "fuel_used_gal": "10.54"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200037,
@@ -1152,8 +1152,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.3h \u2014 nan",
-    "startTime": 1757542880000,
-    "endTime": 1757551124000,
+    "startTime": 1757629280000,
+    "endTime": 1757637524000,
     "assetIds": [
       1
     ],
@@ -1174,8 +1174,8 @@
       "fuel_used_gal": "18.07"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200038,
@@ -1183,8 +1183,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1759540689000,
-    "endTime": 1759547061000,
+    "startTime": 1759627089000,
+    "endTime": 1759633461000,
     "assetIds": [
       1
     ],
@@ -1205,8 +1205,8 @@
       "fuel_used_gal": "13.43"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200039,
@@ -1214,8 +1214,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1760332407000,
-    "endTime": 1760334495000,
+    "startTime": 1760418807000,
+    "endTime": 1760420895000,
     "assetIds": [
       1
     ],
@@ -1236,8 +1236,8 @@
       "fuel_used_gal": "3.04"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200040,
@@ -1245,8 +1245,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.1h \u2014 nan",
-    "startTime": 1760398120000,
-    "endTime": 1760402152000,
+    "startTime": 1760484520000,
+    "endTime": 1760488552000,
     "assetIds": [
       1
     ],
@@ -1267,8 +1267,8 @@
       "fuel_used_gal": "7.87"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200041,
@@ -1276,8 +1276,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1760506484000,
-    "endTime": 1760508788000,
+    "startTime": 1760592884000,
+    "endTime": 1760595188000,
     "assetIds": [
       1
     ],
@@ -1298,8 +1298,8 @@
       "fuel_used_gal": "4.74"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200042,
@@ -1307,8 +1307,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 1.0h \u2014 nan",
-    "startTime": 1760633038000,
-    "endTime": 1760636566000,
+    "startTime": 1760719438000,
+    "endTime": 1760722966000,
     "assetIds": [
       1
     ],
@@ -1329,8 +1329,8 @@
       "fuel_used_gal": "4.57"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200043,
@@ -1338,8 +1338,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.5h \u2014 nan",
-    "startTime": 1762048386000,
-    "endTime": 1762053930000,
+    "startTime": 1762134786000,
+    "endTime": 1762140330000,
     "assetIds": [
       1
     ],
@@ -1360,8 +1360,8 @@
       "fuel_used_gal": "12.59"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200044,
@@ -1369,8 +1369,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1762154499000,
-    "endTime": 1762156587000,
+    "startTime": 1762240899000,
+    "endTime": 1762242987000,
     "assetIds": [
       1
     ],
@@ -1391,8 +1391,8 @@
       "fuel_used_gal": "4.48"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200045,
@@ -1400,8 +1400,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1762852606000,
-    "endTime": 1762855018000,
+    "startTime": 1762939006000,
+    "endTime": 1762941418000,
     "assetIds": [
       1
     ],
@@ -1422,8 +1422,8 @@
       "fuel_used_gal": "4.83"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200046,
@@ -1431,8 +1431,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.5h \u2014 nan",
-    "startTime": 1763283299000,
-    "endTime": 1763288807000,
+    "startTime": 1763369699000,
+    "endTime": 1763375207000,
     "assetIds": [
       1
     ],
@@ -1453,8 +1453,8 @@
       "fuel_used_gal": "7.42"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200047,
@@ -1462,8 +1462,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.2h \u2014 Smooth flight, all instruments normal.",
-    "startTime": 1763368832000,
-    "endTime": 1763376644000,
+    "startTime": 1763455232000,
+    "endTime": 1763463044000,
     "assetIds": [
       1
     ],
@@ -1484,8 +1484,8 @@
       "fuel_used_gal": "17.72"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200048,
@@ -1493,8 +1493,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1764510939000,
-    "endTime": 1764512955000,
+    "startTime": 1764597339000,
+    "endTime": 1764599355000,
     "assetIds": [
       1
     ],
@@ -1515,8 +1515,8 @@
       "fuel_used_gal": "4.64"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200049,
@@ -1524,8 +1524,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.7h \u2014 nan",
-    "startTime": 1764631789000,
-    "endTime": 1764641581000,
+    "startTime": 1764718189000,
+    "endTime": 1764727981000,
     "assetIds": [
       1
     ],
@@ -1546,8 +1546,8 @@
       "fuel_used_gal": "19.35"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200050,
@@ -1555,8 +1555,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1765244935000,
-    "endTime": 1765251487000,
+    "startTime": 1765331335000,
+    "endTime": 1765337887000,
     "assetIds": [
       1
     ],
@@ -1577,8 +1577,8 @@
       "fuel_used_gal": "11.68"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200051,
@@ -1586,8 +1586,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.1h \u2014 nan",
-    "startTime": 1765336740000,
-    "endTime": 1765344156000,
+    "startTime": 1765423140000,
+    "endTime": 1765430556000,
     "assetIds": [
       1
     ],
@@ -1608,8 +1608,8 @@
       "fuel_used_gal": "13.51"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200052,
@@ -1617,8 +1617,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1765440093000,
-    "endTime": 1765442253000,
+    "startTime": 1765526493000,
+    "endTime": 1765528653000,
     "assetIds": [
       1
     ],
@@ -1639,8 +1639,8 @@
       "fuel_used_gal": "2.84"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200053,
@@ -1648,8 +1648,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1766730404000,
-    "endTime": 1766732852000,
+    "startTime": 1766816804000,
+    "endTime": 1766819252000,
     "assetIds": [
       1
     ],
@@ -1670,8 +1670,8 @@
       "fuel_used_gal": "5.44"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200054,
@@ -1679,8 +1679,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1767452324000,
-    "endTime": 1767454304000,
+    "startTime": 1767538724000,
+    "endTime": 1767540704000,
     "assetIds": [
       1
     ],
@@ -1701,8 +1701,8 @@
       "fuel_used_gal": "3.52"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200055,
@@ -1710,8 +1710,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1767635996000,
-    "endTime": 1767638588000,
+    "startTime": 1767722396000,
+    "endTime": 1767724988000,
     "assetIds": [
       1
     ],
@@ -1732,8 +1732,8 @@
       "fuel_used_gal": "5.92"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200056,
@@ -1741,8 +1741,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.6h \u2014 nan",
-    "startTime": 1768710852000,
-    "endTime": 1768720392000,
+    "startTime": 1768797252000,
+    "endTime": 1768806792000,
     "assetIds": [
       1
     ],
@@ -1763,8 +1763,8 @@
       "fuel_used_gal": "20.95"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200057,
@@ -1772,8 +1772,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.1h \u2014 nan",
-    "startTime": 1770116152000,
-    "endTime": 1770120148000,
+    "startTime": 1770202552000,
+    "endTime": 1770206548000,
     "assetIds": [
       1
     ],
@@ -1794,8 +1794,8 @@
       "fuel_used_gal": "8.57"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200058,
@@ -1803,8 +1803,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.5h \u2014 nan",
-    "startTime": 1770230738000,
-    "endTime": 1770239702000,
+    "startTime": 1770317138000,
+    "endTime": 1770326102000,
     "assetIds": [
       1
     ],
@@ -1825,8 +1825,8 @@
       "fuel_used_gal": "12.85"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200059,
@@ -1834,8 +1834,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1771871741000,
-    "endTime": 1771878833000,
+    "startTime": 1771958141000,
+    "endTime": 1771965233000,
     "assetIds": [
       1
     ],
@@ -1856,8 +1856,8 @@
       "fuel_used_gal": "12.87"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200060,
@@ -1865,8 +1865,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.8h \u2014 Smooth flight, all instruments normal.",
-    "startTime": 1772085066000,
-    "endTime": 1772087838000,
+    "startTime": 1772171466000,
+    "endTime": 1772174238000,
     "assetIds": [
       1
     ],
@@ -1887,8 +1887,8 @@
       "fuel_used_gal": "4.29"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200061,
@@ -1896,8 +1896,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1772675246000,
-    "endTime": 1772682446000,
+    "startTime": 1772761646000,
+    "endTime": 1772768846000,
     "assetIds": [
       1
     ],
@@ -1918,8 +1918,8 @@
       "fuel_used_gal": "13.42"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200062,
@@ -1927,8 +1927,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.5h \u2014 nan",
-    "startTime": 1773987586000,
-    "endTime": 1773993094000,
+    "startTime": 1774073986000,
+    "endTime": 1774079494000,
     "assetIds": [
       1
     ],
@@ -1949,8 +1949,8 @@
       "fuel_used_gal": "10.09"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200063,
@@ -1958,8 +1958,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.5h \u2014 nan",
-    "startTime": 1774247314000,
-    "endTime": 1774249258000,
+    "startTime": 1774333714000,
+    "endTime": 1774335658000,
     "assetIds": [
       1
     ],
@@ -1980,8 +1980,8 @@
       "fuel_used_gal": "4.37"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200064,
@@ -1989,8 +1989,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N4798E \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1775360991000,
-    "endTime": 1775363979000,
+    "startTime": 1775447391000,
+    "endTime": 1775450379000,
     "assetIds": [
       1
     ],
@@ -2011,8 +2011,8 @@
       "fuel_used_gal": "4.09"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200065,
@@ -2020,8 +2020,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.5h \u2014 nan",
-    "startTime": 1775397235000,
-    "endTime": 1775402527000,
+    "startTime": 1775483635000,
+    "endTime": 1775488927000,
     "assetIds": [
       1
     ],
@@ -2042,8 +2042,8 @@
       "fuel_used_gal": "11.84"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200066,
@@ -2051,8 +2051,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.3h \u2014 nan",
-    "startTime": 1775638897000,
-    "endTime": 1775643613000,
+    "startTime": 1775725297000,
+    "endTime": 1775730013000,
     "assetIds": [
       1
     ],
@@ -2073,8 +2073,8 @@
       "fuel_used_gal": "7.97"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200067,
@@ -2082,8 +2082,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.1h \u2014 nan",
-    "startTime": 1775704585000,
-    "endTime": 1775708652999,
+    "startTime": 1775790985000,
+    "endTime": 1775795052999,
     "assetIds": [
       1
     ],
@@ -2104,8 +2104,8 @@
       "fuel_used_gal": "6.01"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200068,
@@ -2113,8 +2113,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 2.5h \u2014 nan",
-    "startTime": 1775820598000,
-    "endTime": 1775829778000,
+    "startTime": 1775906998000,
+    "endTime": 1775916178000,
     "assetIds": [
       1
     ],
@@ -2135,8 +2135,8 @@
       "fuel_used_gal": "14.06"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 200069,
@@ -2144,8 +2144,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N4798E \u2014 KPHX-local \u2014 1.2h \u2014 nan",
-    "startTime": 1775926936000,
-    "endTime": 1775931292000,
+    "startTime": 1776013336000,
+    "endTime": 1776017692000,
     "assetIds": [
       1
     ],
@@ -2166,8 +2166,8 @@
       "fuel_used_gal": "7.89"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300000,
@@ -2175,8 +2175,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N2251K \u2014 KPHX-KFLG \u2014 2.6h \u2014 nan",
-    "startTime": 1750275545000,
-    "endTime": 1750284761000,
+    "startTime": 1750361945000,
+    "endTime": 1750371161000,
     "assetIds": [
       11
     ],
@@ -2197,8 +2197,8 @@
       "fuel_used_gal": "21.44"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300001,
@@ -2206,8 +2206,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 2.7h \u2014 Crosswind practice.",
-    "startTime": 1750510453000,
-    "endTime": 1750520029000,
+    "startTime": 1750596853000,
+    "endTime": 1750606429000,
     "assetIds": [
       11
     ],
@@ -2228,8 +2228,8 @@
       "fuel_used_gal": "15.85"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300002,
@@ -2237,8 +2237,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.2h \u2014 nan",
-    "startTime": 1750811548000,
-    "endTime": 1750815760000,
+    "startTime": 1750897948000,
+    "endTime": 1750902160000,
     "assetIds": [
       11
     ],
@@ -2259,8 +2259,8 @@
       "fuel_used_gal": "6.88"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300003,
@@ -2268,8 +2268,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1751156048000,
-    "endTime": 1751158244000,
+    "startTime": 1751242448000,
+    "endTime": 1751244644000,
     "assetIds": [
       11
     ],
@@ -2290,8 +2290,8 @@
       "fuel_used_gal": "3.86"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300004,
@@ -2299,8 +2299,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1751578482000,
-    "endTime": 1751584062000,
+    "startTime": 1751664882000,
+    "endTime": 1751670462000,
     "assetIds": [
       11
     ],
@@ -2321,8 +2321,8 @@
       "fuel_used_gal": "12.37"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300005,
@@ -2330,8 +2330,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.9h \u2014 nan",
-    "startTime": 1751861472000,
-    "endTime": 1751868168000,
+    "startTime": 1751947872000,
+    "endTime": 1751954568000,
     "assetIds": [
       11
     ],
@@ -2352,8 +2352,8 @@
       "fuel_used_gal": "15.05"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300006,
@@ -2361,8 +2361,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.3h \u2014 nan",
-    "startTime": 1752112347000,
-    "endTime": 1752116919000,
+    "startTime": 1752198747000,
+    "endTime": 1752203319000,
     "assetIds": [
       11
     ],
@@ -2383,8 +2383,8 @@
       "fuel_used_gal": "10.13"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300007,
@@ -2392,8 +2392,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1752137856000,
-    "endTime": 1752145056000,
+    "startTime": 1752224256000,
+    "endTime": 1752231456000,
     "assetIds": [
       11
     ],
@@ -2414,8 +2414,8 @@
       "fuel_used_gal": "12.94"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300008,
@@ -2423,8 +2423,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.3h \u2014 nan",
-    "startTime": 1752171396000,
-    "endTime": 1752175932000,
+    "startTime": 1752257796000,
+    "endTime": 1752262332000,
     "assetIds": [
       11
     ],
@@ -2445,8 +2445,8 @@
       "fuel_used_gal": "9.62"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300009,
@@ -2454,8 +2454,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1752522746000,
-    "endTime": 1752527750000,
+    "startTime": 1752609146000,
+    "endTime": 1752614150000,
     "assetIds": [
       11
     ],
@@ -2476,8 +2476,8 @@
       "fuel_used_gal": "10.57"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300010,
@@ -2485,8 +2485,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 1.1h \u2014 Pattern work, 6 T&Gs.",
-    "startTime": 1753050695000,
-    "endTime": 1753054655000,
+    "startTime": 1753137095000,
+    "endTime": 1753141055000,
     "assetIds": [
       11
     ],
@@ -2507,8 +2507,8 @@
       "fuel_used_gal": "7.95"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300011,
@@ -2516,8 +2516,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1753545568000,
-    "endTime": 1753547980000,
+    "startTime": 1753631968000,
+    "endTime": 1753634380000,
     "assetIds": [
       11
     ],
@@ -2538,8 +2538,8 @@
       "fuel_used_gal": "4.21"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300012,
@@ -2547,8 +2547,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1754677375000,
-    "endTime": 1754679931000,
+    "startTime": 1754763775000,
+    "endTime": 1754766331000,
     "assetIds": [
       11
     ],
@@ -2569,8 +2569,8 @@
       "fuel_used_gal": "5.63"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300013,
@@ -2578,8 +2578,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1756098042000,
-    "endTime": 1756105421999,
+    "startTime": 1756184442000,
+    "endTime": 1756191821999,
     "assetIds": [
       11
     ],
@@ -2600,8 +2600,8 @@
       "fuel_used_gal": "13.36"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300014,
@@ -2609,8 +2609,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 2.3h \u2014 nan",
-    "startTime": 1758011162000,
-    "endTime": 1758019334000,
+    "startTime": 1758097562000,
+    "endTime": 1758105734000,
     "assetIds": [
       11
     ],
@@ -2631,8 +2631,8 @@
       "fuel_used_gal": "17.6"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300015,
@@ -2640,8 +2640,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.5h \u2014 nan",
-    "startTime": 1758625481000,
-    "endTime": 1758630953000,
+    "startTime": 1758711881000,
+    "endTime": 1758717353000,
     "assetIds": [
       11
     ],
@@ -2662,8 +2662,8 @@
       "fuel_used_gal": "7.13"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300016,
@@ -2671,8 +2671,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1760103234000,
-    "endTime": 1760105754000,
+    "startTime": 1760189634000,
+    "endTime": 1760192154000,
     "assetIds": [
       11
     ],
@@ -2693,8 +2693,8 @@
       "fuel_used_gal": "5.41"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300017,
@@ -2702,8 +2702,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1760633672000,
-    "endTime": 1760639432000,
+    "startTime": 1760720072000,
+    "endTime": 1760725832000,
     "assetIds": [
       11
     ],
@@ -2724,8 +2724,8 @@
       "fuel_used_gal": "12.81"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300018,
@@ -2733,8 +2733,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N2251K \u2014 KPHX-KPRC \u2014 1.7h \u2014 nan",
-    "startTime": 1760900646000,
-    "endTime": 1760906910000,
+    "startTime": 1760987046000,
+    "endTime": 1760993310000,
     "assetIds": [
       11
     ],
@@ -2755,8 +2755,8 @@
       "fuel_used_gal": "14.01"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300019,
@@ -2764,8 +2764,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1762118143000,
-    "endTime": 1762124299000,
+    "startTime": 1762204543000,
+    "endTime": 1762210699000,
     "assetIds": [
       11
     ],
@@ -2786,8 +2786,8 @@
       "fuel_used_gal": "9.82"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300020,
@@ -2795,8 +2795,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 1.1h \u2014 Pattern work, 6 T&Gs.",
-    "startTime": 1762771057000,
-    "endTime": 1762774873000,
+    "startTime": 1762857457000,
+    "endTime": 1762861273000,
     "assetIds": [
       11
     ],
@@ -2817,8 +2817,8 @@
       "fuel_used_gal": "7.83"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300021,
@@ -2826,8 +2826,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N2251K \u2014 KPHX-KFLG \u2014 1.7h \u2014 nan",
-    "startTime": 1762832753000,
-    "endTime": 1762838801000,
+    "startTime": 1762919153000,
+    "endTime": 1762925201000,
     "assetIds": [
       11
     ],
@@ -2848,8 +2848,8 @@
       "fuel_used_gal": "13.73"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300022,
@@ -2857,8 +2857,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.3h \u2014 Smooth flight, all instruments normal.",
-    "startTime": 1762879972000,
-    "endTime": 1762884724000,
+    "startTime": 1762966372000,
+    "endTime": 1762971124000,
     "assetIds": [
       11
     ],
@@ -2879,8 +2879,8 @@
       "fuel_used_gal": "6.13"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300023,
@@ -2888,8 +2888,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.1h \u2014 nan",
-    "startTime": 1763153517000,
-    "endTime": 1763157584999,
+    "startTime": 1763239917000,
+    "endTime": 1763243984999,
     "assetIds": [
       11
     ],
@@ -2910,8 +2910,8 @@
       "fuel_used_gal": "8.32"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300024,
@@ -2919,8 +2919,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1763797238000,
-    "endTime": 1763802170000,
+    "startTime": 1763883638000,
+    "endTime": 1763888570000,
     "assetIds": [
       11
     ],
@@ -2941,8 +2941,8 @@
       "fuel_used_gal": "6.46"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300025,
@@ -2950,8 +2950,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1764599501000,
-    "endTime": 1764602093000,
+    "startTime": 1764685901000,
+    "endTime": 1764688493000,
     "assetIds": [
       11
     ],
@@ -2972,8 +2972,8 @@
       "fuel_used_gal": "3.26"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300026,
@@ -2981,8 +2981,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1765146317000,
-    "endTime": 1765151933000,
+    "startTime": 1765232717000,
+    "endTime": 1765238333000,
     "assetIds": [
       11
     ],
@@ -3003,8 +3003,8 @@
       "fuel_used_gal": "7.41"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300027,
@@ -3012,8 +3012,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1765742311000,
-    "endTime": 1765748755000,
+    "startTime": 1765828711000,
+    "endTime": 1765835155000,
     "assetIds": [
       11
     ],
@@ -3034,8 +3034,8 @@
       "fuel_used_gal": "15.07"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300028,
@@ -3043,8 +3043,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N2251K \u2014 KPHX-KPRC \u2014 1.4h \u2014 nan",
-    "startTime": 1765769946000,
-    "endTime": 1765774806000,
+    "startTime": 1765856346000,
+    "endTime": 1765861206000,
     "assetIds": [
       11
     ],
@@ -3065,8 +3065,8 @@
       "fuel_used_gal": "8.51"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300029,
@@ -3074,8 +3074,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1765840048000,
-    "endTime": 1765845016000,
+    "startTime": 1765926448000,
+    "endTime": 1765931416000,
     "assetIds": [
       11
     ],
@@ -3096,8 +3096,8 @@
       "fuel_used_gal": "7.94"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300030,
@@ -3105,8 +3105,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1766144721000,
-    "endTime": 1766149941000,
+    "startTime": 1766231121000,
+    "endTime": 1766236341000,
     "assetIds": [
       11
     ],
@@ -3127,8 +3127,8 @@
       "fuel_used_gal": "9.94"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300031,
@@ -3136,8 +3136,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1766150829000,
-    "endTime": 1766155833000,
+    "startTime": 1766237229000,
+    "endTime": 1766242233000,
     "assetIds": [
       11
     ],
@@ -3158,8 +3158,8 @@
       "fuel_used_gal": "9.12"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300032,
@@ -3167,8 +3167,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1766808168000,
-    "endTime": 1766814540000,
+    "startTime": 1766894568000,
+    "endTime": 1766900940000,
     "assetIds": [
       11
     ],
@@ -3189,8 +3189,8 @@
       "fuel_used_gal": "10.73"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300033,
@@ -3198,8 +3198,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N2251K \u2014 KPHX-KPRC \u2014 1.4h \u2014 nan",
-    "startTime": 1767729784000,
-    "endTime": 1767734752000,
+    "startTime": 1767816184000,
+    "endTime": 1767821152000,
     "assetIds": [
       11
     ],
@@ -3220,8 +3220,8 @@
       "fuel_used_gal": "8.96"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300034,
@@ -3229,8 +3229,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1767870080000,
-    "endTime": 1767872312000,
+    "startTime": 1767956480000,
+    "endTime": 1767958712000,
     "assetIds": [
       11
     ],
@@ -3251,8 +3251,8 @@
       "fuel_used_gal": "2.81"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300035,
@@ -3260,8 +3260,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1768649664000,
-    "endTime": 1768655748000,
+    "startTime": 1768736064000,
+    "endTime": 1768742148000,
     "assetIds": [
       11
     ],
@@ -3282,8 +3282,8 @@
       "fuel_used_gal": "11.8"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300036,
@@ -3291,8 +3291,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.0h \u2014 nan",
-    "startTime": 1769591967000,
-    "endTime": 1769595639000,
+    "startTime": 1769678367000,
+    "endTime": 1769682039000,
     "assetIds": [
       11
     ],
@@ -3313,8 +3313,8 @@
       "fuel_used_gal": "8.39"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300037,
@@ -3322,8 +3322,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N2251K \u2014 KPHX-KFLG \u2014 2.4h \u2014 nan",
-    "startTime": 1770009016000,
-    "endTime": 1770017728000,
+    "startTime": 1770095416000,
+    "endTime": 1770104128000,
     "assetIds": [
       11
     ],
@@ -3344,8 +3344,8 @@
       "fuel_used_gal": "16.0"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300038,
@@ -3353,8 +3353,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.1h \u2014 Pattern work, 6 T&Gs.",
-    "startTime": 1770178015000,
-    "endTime": 1770181975000,
+    "startTime": 1770264415000,
+    "endTime": 1770268375000,
     "assetIds": [
       11
     ],
@@ -3375,8 +3375,8 @@
       "fuel_used_gal": "6.14"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300039,
@@ -3384,8 +3384,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1770378801000,
-    "endTime": 1770386036999,
+    "startTime": 1770465201000,
+    "endTime": 1770472436999,
     "assetIds": [
       11
     ],
@@ -3406,8 +3406,8 @@
       "fuel_used_gal": "14.09"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300040,
@@ -3415,8 +3415,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.2h \u2014 nan",
-    "startTime": 1770469414000,
-    "endTime": 1770473914000,
+    "startTime": 1770555814000,
+    "endTime": 1770560314000,
     "assetIds": [
       11
     ],
@@ -3437,8 +3437,8 @@
       "fuel_used_gal": "7.75"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300041,
@@ -3446,8 +3446,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.3h \u2014 nan",
-    "startTime": 1770628469000,
-    "endTime": 1770633221000,
+    "startTime": 1770714869000,
+    "endTime": 1770719621000,
     "assetIds": [
       11
     ],
@@ -3468,8 +3468,8 @@
       "fuel_used_gal": "10.51"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300042,
@@ -3477,8 +3477,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1770760952000,
-    "endTime": 1770762968000,
+    "startTime": 1770847352000,
+    "endTime": 1770849368000,
     "assetIds": [
       11
     ],
@@ -3499,8 +3499,8 @@
       "fuel_used_gal": "4.45"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300043,
@@ -3508,8 +3508,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N2251K \u2014 KPHX-KPRC \u2014 1.6h \u2014 nan",
-    "startTime": 1771064590000,
-    "endTime": 1771070494000,
+    "startTime": 1771150990000,
+    "endTime": 1771156894000,
     "assetIds": [
       11
     ],
@@ -3530,8 +3530,8 @@
       "fuel_used_gal": "12.49"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300044,
@@ -3539,8 +3539,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.1h \u2014 nan",
-    "startTime": 1772382662000,
-    "endTime": 1772386478000,
+    "startTime": 1772469062000,
+    "endTime": 1772472878000,
     "assetIds": [
       11
     ],
@@ -3561,8 +3561,8 @@
       "fuel_used_gal": "7.24"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300045,
@@ -3570,8 +3570,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.3h \u2014 nan",
-    "startTime": 1772449679000,
-    "endTime": 1772454359000,
+    "startTime": 1772536079000,
+    "endTime": 1772540759000,
     "assetIds": [
       11
     ],
@@ -3592,8 +3592,8 @@
       "fuel_used_gal": "9.57"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300046,
@@ -3601,8 +3601,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 2.3h \u2014 nan",
-    "startTime": 1773351166000,
-    "endTime": 1773359446000,
+    "startTime": 1773437566000,
+    "endTime": 1773445846000,
     "assetIds": [
       11
     ],
@@ -3623,8 +3623,8 @@
       "fuel_used_gal": "12.61"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300047,
@@ -3632,8 +3632,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N2251K \u2014 KPHX-KSDL \u2014 0.9h \u2014 nan",
-    "startTime": 1775363064000,
-    "endTime": 1775366196000,
+    "startTime": 1775449464000,
+    "endTime": 1775452596000,
     "assetIds": [
       11
     ],
@@ -3654,8 +3654,8 @@
       "fuel_used_gal": "4.3"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300048,
@@ -3663,8 +3663,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.1h \u2014 nan",
-    "startTime": 1775413087000,
-    "endTime": 1775416903000,
+    "startTime": 1775499487000,
+    "endTime": 1775503303000,
     "assetIds": [
       11
     ],
@@ -3685,8 +3685,8 @@
       "fuel_used_gal": "7.01"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300049,
@@ -3694,8 +3694,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.5h \u2014 nan",
-    "startTime": 1775441924000,
-    "endTime": 1775447432000,
+    "startTime": 1775528324000,
+    "endTime": 1775533832000,
     "assetIds": [
       11
     ],
@@ -3716,8 +3716,8 @@
       "fuel_used_gal": "8.22"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300050,
@@ -3725,8 +3725,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 2.3h \u2014 nan",
-    "startTime": 1775456715000,
-    "endTime": 1775465139000,
+    "startTime": 1775543115000,
+    "endTime": 1775551539000,
     "assetIds": [
       11
     ],
@@ -3747,8 +3747,8 @@
       "fuel_used_gal": "18.76"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300051,
@@ -3756,8 +3756,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1775554284000,
-    "endTime": 1775560440000,
+    "startTime": 1775640684000,
+    "endTime": 1775646840000,
     "assetIds": [
       11
     ],
@@ -3778,8 +3778,8 @@
       "fuel_used_gal": "10.35"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 300052,
@@ -3787,8 +3787,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N2251K \u2014 KPHX-local \u2014 2.5h \u2014 nan",
-    "startTime": 1775574360000,
-    "endTime": 1775583252000,
+    "startTime": 1775660760000,
+    "endTime": 1775669652000,
     "assetIds": [
       11
     ],
@@ -3809,8 +3809,8 @@
       "fuel_used_gal": "16.3"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400000,
@@ -3818,8 +3818,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1758694424000,
-    "endTime": 1758699500000,
+    "startTime": 1758780824000,
+    "endTime": 1758785900000,
     "assetIds": [
       21
     ],
@@ -3840,8 +3840,8 @@
       "fuel_used_gal": "7.27"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400001,
@@ -3849,8 +3849,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N8834Q \u2014 KPHX-KFLG \u2014 2.0h \u2014 Smooth flight, all instruments normal.",
-    "startTime": 1759069858000,
-    "endTime": 1759077165999,
+    "startTime": 1759156258000,
+    "endTime": 1759163565999,
     "assetIds": [
       21
     ],
@@ -3871,8 +3871,8 @@
       "fuel_used_gal": "11.78"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400002,
@@ -3880,8 +3880,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.3h \u2014 nan",
-    "startTime": 1759456758000,
-    "endTime": 1759461402000,
+    "startTime": 1759543158000,
+    "endTime": 1759547802000,
     "assetIds": [
       21
     ],
@@ -3902,8 +3902,8 @@
       "fuel_used_gal": "9.1"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400003,
@@ -3911,8 +3911,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1759929693000,
-    "endTime": 1759935705000,
+    "startTime": 1760016093000,
+    "endTime": 1760022105000,
     "assetIds": [
       21
     ],
@@ -3933,8 +3933,8 @@
       "fuel_used_gal": "10.11"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400004,
@@ -3942,8 +3942,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N8834Q \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1760175910000,
-    "endTime": 1760178070000,
+    "startTime": 1760262310000,
+    "endTime": 1760264470000,
     "assetIds": [
       21
     ],
@@ -3964,8 +3964,8 @@
       "fuel_used_gal": "2.97"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400005,
@@ -3973,8 +3973,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.5h \u2014 nan",
-    "startTime": 1761006377000,
-    "endTime": 1761011741000,
+    "startTime": 1761092777000,
+    "endTime": 1761098141000,
     "assetIds": [
       21
     ],
@@ -3995,8 +3995,8 @@
       "fuel_used_gal": "7.1"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400006,
@@ -4004,8 +4004,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1761972485000,
-    "endTime": 1761978317000,
+    "startTime": 1762058885000,
+    "endTime": 1762064717000,
     "assetIds": [
       21
     ],
@@ -4026,8 +4026,8 @@
       "fuel_used_gal": "8.61"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400007,
@@ -4035,8 +4035,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1762063237000,
-    "endTime": 1762069465000,
+    "startTime": 1762149637000,
+    "endTime": 1762155865000,
     "assetIds": [
       21
     ],
@@ -4057,8 +4057,8 @@
       "fuel_used_gal": "14.58"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400008,
@@ -4066,8 +4066,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.4h \u2014 nan",
-    "startTime": 1763917481000,
-    "endTime": 1763922665000,
+    "startTime": 1764003881000,
+    "endTime": 1764009065000,
     "assetIds": [
       21
     ],
@@ -4088,8 +4088,8 @@
       "fuel_used_gal": "10.48"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400009,
@@ -4097,8 +4097,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1764746752000,
-    "endTime": 1764752368000,
+    "startTime": 1764833152000,
+    "endTime": 1764838768000,
     "assetIds": [
       21
     ],
@@ -4119,8 +4119,8 @@
       "fuel_used_gal": "11.31"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400010,
@@ -4128,8 +4128,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N8834Q \u2014 KPHX-KSDL \u2014 0.9h \u2014 nan",
-    "startTime": 1765298908000,
-    "endTime": 1765302220000,
+    "startTime": 1765385308000,
+    "endTime": 1765388620000,
     "assetIds": [
       21
     ],
@@ -4150,8 +4150,8 @@
       "fuel_used_gal": "5.64"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400011,
@@ -4159,8 +4159,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N8834Q \u2014 KPHX-KFLG \u2014 1.7h \u2014 nan",
-    "startTime": 1765407294000,
-    "endTime": 1765413558000,
+    "startTime": 1765493694000,
+    "endTime": 1765499958000,
     "assetIds": [
       21
     ],
@@ -4181,8 +4181,8 @@
       "fuel_used_gal": "8.52"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400012,
@@ -4190,8 +4190,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1766993272000,
-    "endTime": 1766998852000,
+    "startTime": 1767079672000,
+    "endTime": 1767085252000,
     "assetIds": [
       21
     ],
@@ -4212,8 +4212,8 @@
       "fuel_used_gal": "8.11"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400013,
@@ -4221,8 +4221,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1767051107000,
-    "endTime": 1767057371000,
+    "startTime": 1767137507000,
+    "endTime": 1767143771000,
     "assetIds": [
       21
     ],
@@ -4243,8 +4243,8 @@
       "fuel_used_gal": "11.43"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400014,
@@ -4252,8 +4252,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1767867497000,
-    "endTime": 1767874769000,
+    "startTime": 1767953897000,
+    "endTime": 1767961169000,
     "assetIds": [
       21
     ],
@@ -4274,8 +4274,8 @@
       "fuel_used_gal": "10.5"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400015,
@@ -4283,8 +4283,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.9h \u2014 nan",
-    "startTime": 1768499181000,
-    "endTime": 1768506057000,
+    "startTime": 1768585581000,
+    "endTime": 1768592457000,
     "assetIds": [
       21
     ],
@@ -4305,8 +4305,8 @@
       "fuel_used_gal": "14.76"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400016,
@@ -4314,8 +4314,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.1h \u2014 Smooth flight, all instruments normal.",
-    "startTime": 1768749722000,
-    "endTime": 1768753826000,
+    "startTime": 1768836122000,
+    "endTime": 1768840226000,
     "assetIds": [
       21
     ],
@@ -4336,8 +4336,8 @@
       "fuel_used_gal": "8.23"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400017,
@@ -4345,8 +4345,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.3h \u2014 nan",
-    "startTime": 1768810220000,
-    "endTime": 1768814756000,
+    "startTime": 1768896620000,
+    "endTime": 1768901156000,
     "assetIds": [
       21
     ],
@@ -4367,8 +4367,8 @@
       "fuel_used_gal": "8.01"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400018,
@@ -4376,8 +4376,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 2.1h \u2014 Crosswind practice.",
-    "startTime": 1768842822000,
-    "endTime": 1768850526000,
+    "startTime": 1768929222000,
+    "endTime": 1768936926000,
     "assetIds": [
       21
     ],
@@ -4398,8 +4398,8 @@
       "fuel_used_gal": "11.32"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400019,
@@ -4407,8 +4407,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N8834Q \u2014 KPHX-KPRC \u2014 1.5h \u2014 nan",
-    "startTime": 1769294553000,
-    "endTime": 1769300025000,
+    "startTime": 1769380953000,
+    "endTime": 1769386425000,
     "assetIds": [
       21
     ],
@@ -4429,8 +4429,8 @@
       "fuel_used_gal": "9.98"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400020,
@@ -4438,8 +4438,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N8834Q \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1769705536000,
-    "endTime": 1769707696000,
+    "startTime": 1769791936000,
+    "endTime": 1769794096000,
     "assetIds": [
       21
     ],
@@ -4460,8 +4460,8 @@
       "fuel_used_gal": "4.35"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400021,
@@ -4469,8 +4469,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N8834Q \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1769880339000,
-    "endTime": 1769883255000,
+    "startTime": 1769966739000,
+    "endTime": 1769969655000,
     "assetIds": [
       21
     ],
@@ -4491,8 +4491,8 @@
       "fuel_used_gal": "5.19"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400022,
@@ -4500,8 +4500,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N8834Q \u2014 KPHX-KSDL \u2014 0.7h \u2014 nan",
-    "startTime": 1770535090000,
-    "endTime": 1770537574000,
+    "startTime": 1770621490000,
+    "endTime": 1770623974000,
     "assetIds": [
       21
     ],
@@ -4522,8 +4522,8 @@
       "fuel_used_gal": "5.0"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400023,
@@ -4531,8 +4531,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.2h \u2014 nan",
-    "startTime": 1771921283000,
-    "endTime": 1771925603000,
+    "startTime": 1772007683000,
+    "endTime": 1772012003000,
     "assetIds": [
       21
     ],
@@ -4553,8 +4553,8 @@
       "fuel_used_gal": "5.63"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400024,
@@ -4562,8 +4562,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N8834Q \u2014 KPHX-KPRC \u2014 1.8h \u2014 nan",
-    "startTime": 1772777168000,
-    "endTime": 1772783648000,
+    "startTime": 1772863568000,
+    "endTime": 1772870048000,
     "assetIds": [
       21
     ],
@@ -4584,8 +4584,8 @@
       "fuel_used_gal": "15.25"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400025,
@@ -4593,8 +4593,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N8834Q \u2014 KPHX-KSDL \u2014 0.6h \u2014 nan",
-    "startTime": 1773885021000,
-    "endTime": 1773887073000,
+    "startTime": 1773971421000,
+    "endTime": 1773973473000,
     "assetIds": [
       21
     ],
@@ -4615,8 +4615,8 @@
       "fuel_used_gal": "3.88"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400026,
@@ -4624,8 +4624,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.9h \u2014 nan",
-    "startTime": 1774249445000,
-    "endTime": 1774256285000,
+    "startTime": 1774335845000,
+    "endTime": 1774342685000,
     "assetIds": [
       21
     ],
@@ -4646,8 +4646,8 @@
       "fuel_used_gal": "11.12"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400027,
@@ -4655,8 +4655,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.2h \u2014 nan",
-    "startTime": 1774449137000,
-    "endTime": 1774453421000,
+    "startTime": 1774535537000,
+    "endTime": 1774539821000,
     "assetIds": [
       21
     ],
@@ -4677,8 +4677,8 @@
       "fuel_used_gal": "9.42"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400028,
@@ -4686,8 +4686,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1775092150000,
-    "endTime": 1775098558000,
+    "startTime": 1775178550000,
+    "endTime": 1775184958000,
     "assetIds": [
       21
     ],
@@ -4708,8 +4708,8 @@
       "fuel_used_gal": "12.62"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400029,
@@ -4717,8 +4717,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.5h \u2014 Crosswind practice.",
-    "startTime": 1775187114000,
-    "endTime": 1775192658000,
+    "startTime": 1775273514000,
+    "endTime": 1775279058000,
     "assetIds": [
       21
     ],
@@ -4739,8 +4739,8 @@
       "fuel_used_gal": "10.29"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400030,
@@ -4748,8 +4748,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1775377012000,
-    "endTime": 1775383168000,
+    "startTime": 1775463412000,
+    "endTime": 1775469568000,
     "assetIds": [
       21
     ],
@@ -4770,8 +4770,8 @@
       "fuel_used_gal": "8.92"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400031,
@@ -4779,8 +4779,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.7h \u2014 nan",
-    "startTime": 1775449750000,
-    "endTime": 1775455906000,
+    "startTime": 1775536150000,
+    "endTime": 1775542306000,
     "assetIds": [
       21
     ],
@@ -4801,8 +4801,8 @@
       "fuel_used_gal": "8.23"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400032,
@@ -4810,8 +4810,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.6h \u2014 nan",
-    "startTime": 1775565581000,
-    "endTime": 1775571233000,
+    "startTime": 1775651981000,
+    "endTime": 1775657633000,
     "assetIds": [
       21
     ],
@@ -4832,8 +4832,8 @@
       "fuel_used_gal": "8.87"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400033,
@@ -4841,8 +4841,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N8834Q \u2014 KPHX-KSDL \u2014 0.6h \u2014 CHT #3 running high at 433\u00b0F, other cylinders normal. Enrich",
-    "startTime": 1775698359000,
-    "endTime": 1775700411000,
+    "startTime": 1775784759000,
+    "endTime": 1775786811000,
     "assetIds": [
       21
     ],
@@ -4864,8 +4864,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400034,
@@ -4873,8 +4873,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N8834Q \u2014 KPHX-local \u2014 1.5h \u2014 CHT #3 running high at 445\u00b0F, other cylinders normal. Enrich",
-    "startTime": 1775706141000,
-    "endTime": 1775711685000,
+    "startTime": 1775792541000,
+    "endTime": 1775798085000,
     "assetIds": [
       21
     ],
@@ -4896,8 +4896,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 400035,
@@ -4905,8 +4905,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N8834Q \u2014 KPHX-KPRC \u2014 1.8h \u2014 CHT #3 running high at 447\u00b0F, other cylinders normal. Enrich",
-    "startTime": 1775918839000,
-    "endTime": 1775925247000,
+    "startTime": 1776005239000,
+    "endTime": 1776011647000,
     "assetIds": [
       21
     ],
@@ -4928,8 +4928,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500000,
@@ -4937,8 +4937,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.1h \u2014 nan",
-    "startTime": 1724881784000,
-    "endTime": 1724889452000,
+    "startTime": 1724968184000,
+    "endTime": 1724975852000,
     "assetIds": [
       31
     ],
@@ -4959,8 +4959,8 @@
       "fuel_used_gal": "12.55"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500001,
@@ -4968,8 +4968,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.5h \u2014 nan",
-    "startTime": 1725264055000,
-    "endTime": 1725276691000,
+    "startTime": 1725350455000,
+    "endTime": 1725363091000,
     "assetIds": [
       31
     ],
@@ -4990,8 +4990,8 @@
       "fuel_used_gal": "17.77"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500002,
@@ -4999,8 +4999,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.9h \u2014 nan",
-    "startTime": 1725524370000,
-    "endTime": 1725531174000,
+    "startTime": 1725610770000,
+    "endTime": 1725617574000,
     "assetIds": [
       31
     ],
@@ -5021,8 +5021,8 @@
       "fuel_used_gal": "14.63"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500003,
@@ -5030,8 +5030,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1725562615000,
-    "endTime": 1725565639000,
+    "startTime": 1725649015000,
+    "endTime": 1725652039000,
     "assetIds": [
       31
     ],
@@ -5052,8 +5052,8 @@
       "fuel_used_gal": "4.01"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500004,
@@ -5061,8 +5061,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.9h \u2014 nan",
-    "startTime": 1725773172000,
-    "endTime": 1725783576000,
+    "startTime": 1725859572000,
+    "endTime": 1725869976000,
     "assetIds": [
       31
     ],
@@ -5083,8 +5083,8 @@
       "fuel_used_gal": "16.72"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500005,
@@ -5092,8 +5092,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N1156P \u2014 KPHX-KPRC \u2014 2.2h \u2014 nan",
-    "startTime": 1726584707000,
-    "endTime": 1726592699000,
+    "startTime": 1726671107000,
+    "endTime": 1726679099000,
     "assetIds": [
       31
     ],
@@ -5114,8 +5114,8 @@
       "fuel_used_gal": "10.45"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500006,
@@ -5123,8 +5123,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.8h \u2014 nan",
-    "startTime": 1727401090000,
-    "endTime": 1727414878000,
+    "startTime": 1727487490000,
+    "endTime": 1727501278000,
     "assetIds": [
       31
     ],
@@ -5145,8 +5145,8 @@
       "fuel_used_gal": "17.58"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500007,
@@ -5154,8 +5154,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.1h \u2014 nan",
-    "startTime": 1727492004000,
-    "endTime": 1727495856000,
+    "startTime": 1727578404000,
+    "endTime": 1727582256000,
     "assetIds": [
       31
     ],
@@ -5176,8 +5176,8 @@
       "fuel_used_gal": "5.11"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500008,
@@ -5185,8 +5185,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.6h \u2014 Oil temp a little warm today, ambient hot.",
-    "startTime": 1727929830000,
-    "endTime": 1727939334000,
+    "startTime": 1728016230000,
+    "endTime": 1728025734000,
     "assetIds": [
       31
     ],
@@ -5207,8 +5207,8 @@
       "fuel_used_gal": "17.93"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500009,
@@ -5216,8 +5216,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.1h \u2014 nan",
-    "startTime": 1728654278000,
-    "endTime": 1728658130000,
+    "startTime": 1728740678000,
+    "endTime": 1728744530000,
     "assetIds": [
       31
     ],
@@ -5238,8 +5238,8 @@
       "fuel_used_gal": "6.87"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500010,
@@ -5247,8 +5247,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N1156P \u2014 KPHX-KPRC \u2014 2.5h \u2014 CHT running 396\u00b0F at cruise, leaned as per POH.",
-    "startTime": 1729432790000,
-    "endTime": 1729441934000,
+    "startTime": 1729519190000,
+    "endTime": 1729528334000,
     "assetIds": [
       31
     ],
@@ -5269,8 +5269,8 @@
       "fuel_used_gal": "13.66"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500011,
@@ -5278,8 +5278,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.1h \u2014 nan",
-    "startTime": 1730233504000,
-    "endTime": 1730244664000,
+    "startTime": 1730319904000,
+    "endTime": 1730331064000,
     "assetIds": [
       31
     ],
@@ -5300,8 +5300,8 @@
       "fuel_used_gal": "19.97"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500012,
@@ -5309,8 +5309,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.3h \u2014 nan",
-    "startTime": 1730350938000,
-    "endTime": 1730362818000,
+    "startTime": 1730437338000,
+    "endTime": 1730449218000,
     "assetIds": [
       31
     ],
@@ -5331,8 +5331,8 @@
       "fuel_used_gal": "16.69"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500013,
@@ -5340,8 +5340,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.2h \u2014 nan",
-    "startTime": 1730808314000,
-    "endTime": 1730816198000,
+    "startTime": 1730894714000,
+    "endTime": 1730902598000,
     "assetIds": [
       31
     ],
@@ -5362,8 +5362,8 @@
       "fuel_used_gal": "13.97"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500014,
@@ -5371,8 +5371,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.2h \u2014 nan",
-    "startTime": 1731036419000,
-    "endTime": 1731044195000,
+    "startTime": 1731122819000,
+    "endTime": 1731130595000,
     "assetIds": [
       31
     ],
@@ -5393,8 +5393,8 @@
       "fuel_used_gal": "16.88"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500015,
@@ -5402,8 +5402,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.5h \u2014 Good flight, all normal.",
-    "startTime": 1731851622000,
-    "endTime": 1731860586000,
+    "startTime": 1731938022000,
+    "endTime": 1731946986000,
     "assetIds": [
       31
     ],
@@ -5424,8 +5424,8 @@
       "fuel_used_gal": "13.43"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500016,
@@ -5433,8 +5433,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.3h \u2014 CHT running 381\u00b0F at cruise, leaned as per POH.",
-    "startTime": 1731900480000,
-    "endTime": 1731905196000,
+    "startTime": 1731986880000,
+    "endTime": 1731991596000,
     "assetIds": [
       31
     ],
@@ -5455,8 +5455,8 @@
       "fuel_used_gal": "8.57"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500017,
@@ -5464,8 +5464,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 0.9h \u2014 nan",
-    "startTime": 1732105948000,
-    "endTime": 1732109116000,
+    "startTime": 1732192348000,
+    "endTime": 1732195516000,
     "assetIds": [
       31
     ],
@@ -5486,8 +5486,8 @@
       "fuel_used_gal": "7.0"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500018,
@@ -5495,8 +5495,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.5h \u2014 nan",
-    "startTime": 1732124183000,
-    "endTime": 1732133327000,
+    "startTime": 1732210583000,
+    "endTime": 1732219727000,
     "assetIds": [
       31
     ],
@@ -5517,8 +5517,8 @@
       "fuel_used_gal": "18.76"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500019,
@@ -5526,8 +5526,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N1156P \u2014 KPHX-KPRC \u2014 2.4h \u2014 nan",
-    "startTime": 1732388362000,
-    "endTime": 1732396930000,
+    "startTime": 1732474762000,
+    "endTime": 1732483330000,
     "assetIds": [
       31
     ],
@@ -5548,8 +5548,8 @@
       "fuel_used_gal": "18.37"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500020,
@@ -5557,8 +5557,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.3h \u2014 nan",
-    "startTime": 1732604681000,
-    "endTime": 1732609325000,
+    "startTime": 1732691081000,
+    "endTime": 1732695725000,
     "assetIds": [
       31
     ],
@@ -5579,8 +5579,8 @@
       "fuel_used_gal": "6.81"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500021,
@@ -5588,8 +5588,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.2h \u2014 nan",
-    "startTime": 1732717220000,
-    "endTime": 1732721540000,
+    "startTime": 1732803620000,
+    "endTime": 1732807940000,
     "assetIds": [
       31
     ],
@@ -5610,8 +5610,8 @@
       "fuel_used_gal": "5.87"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500022,
@@ -5619,8 +5619,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1733016813000,
-    "endTime": 1733019729000,
+    "startTime": 1733103213000,
+    "endTime": 1733106129000,
     "assetIds": [
       31
     ],
@@ -5641,8 +5641,8 @@
       "fuel_used_gal": "6.85"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500023,
@@ -5650,8 +5650,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.0h \u2014 nan",
-    "startTime": 1734393631000,
-    "endTime": 1734404287000,
+    "startTime": 1734480031000,
+    "endTime": 1734490687000,
     "assetIds": [
       31
     ],
@@ -5672,8 +5672,8 @@
       "fuel_used_gal": "13.44"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500024,
@@ -5681,8 +5681,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.3h \u2014 nan",
-    "startTime": 1735597445000,
-    "endTime": 1735605833000,
+    "startTime": 1735683845000,
+    "endTime": 1735692233000,
     "assetIds": [
       31
     ],
@@ -5703,8 +5703,8 @@
       "fuel_used_gal": "15.92"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500025,
@@ -5712,8 +5712,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.6h \u2014 nan",
-    "startTime": 1736078479000,
-    "endTime": 1736084131000,
+    "startTime": 1736164879000,
+    "endTime": 1736170531000,
     "assetIds": [
       31
     ],
@@ -5734,8 +5734,8 @@
       "fuel_used_gal": "7.91"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500026,
@@ -5743,8 +5743,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1736357843000,
-    "endTime": 1736364251000,
+    "startTime": 1736444243000,
+    "endTime": 1736450651000,
     "assetIds": [
       31
     ],
@@ -5765,8 +5765,8 @@
       "fuel_used_gal": "11.43"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500027,
@@ -5774,8 +5774,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.4h \u2014 nan",
-    "startTime": 1736866070000,
-    "endTime": 1736874530000,
+    "startTime": 1736952470000,
+    "endTime": 1736960930000,
     "assetIds": [
       31
     ],
@@ -5796,8 +5796,8 @@
       "fuel_used_gal": "11.92"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500028,
@@ -5805,8 +5805,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.8h \u2014 nan",
-    "startTime": 1736936923000,
-    "endTime": 1736947111000,
+    "startTime": 1737023323000,
+    "endTime": 1737033511000,
     "assetIds": [
       31
     ],
@@ -5827,8 +5827,8 @@
       "fuel_used_gal": "18.89"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500029,
@@ -5836,8 +5836,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 0.9h \u2014 nan",
-    "startTime": 1737218388000,
-    "endTime": 1737221556000,
+    "startTime": 1737304788000,
+    "endTime": 1737307956000,
     "assetIds": [
       31
     ],
@@ -5858,8 +5858,8 @@
       "fuel_used_gal": "5.31"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500030,
@@ -5867,8 +5867,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.3h \u2014 nan",
-    "startTime": 1737604939000,
-    "endTime": 1737613327000,
+    "startTime": 1737691339000,
+    "endTime": 1737699727000,
     "assetIds": [
       31
     ],
@@ -5889,8 +5889,8 @@
       "fuel_used_gal": "19.08"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500031,
@@ -5898,8 +5898,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.4h \u2014 nan",
-    "startTime": 1738506260000,
-    "endTime": 1738518428000,
+    "startTime": 1738592660000,
+    "endTime": 1738604828000,
     "assetIds": [
       31
     ],
@@ -5920,8 +5920,8 @@
       "fuel_used_gal": "27.75"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500032,
@@ -5929,8 +5929,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1739783057000,
-    "endTime": 1739790364999,
+    "startTime": 1739869457000,
+    "endTime": 1739876764999,
     "assetIds": [
       31
     ],
@@ -5951,8 +5951,8 @@
       "fuel_used_gal": "16.72"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500033,
@@ -5960,8 +5960,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.6h \u2014 nan",
-    "startTime": 1739983379000,
-    "endTime": 1739996483000,
+    "startTime": 1740069779000,
+    "endTime": 1740082883000,
     "assetIds": [
       31
     ],
@@ -5982,8 +5982,8 @@
       "fuel_used_gal": "26.33"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500034,
@@ -5991,8 +5991,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.8h \u2014 CHT running 355\u00b0F at cruise, leaned as per POH.",
-    "startTime": 1740504593000,
-    "endTime": 1740511145000,
+    "startTime": 1740590993000,
+    "endTime": 1740597545000,
     "assetIds": [
       31
     ],
@@ -6013,8 +6013,8 @@
       "fuel_used_gal": "10.95"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500035,
@@ -6022,8 +6022,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.8h \u2014 nan",
-    "startTime": 1741203542000,
-    "endTime": 1741213478000,
+    "startTime": 1741289942000,
+    "endTime": 1741299878000,
     "assetIds": [
       31
     ],
@@ -6044,8 +6044,8 @@
       "fuel_used_gal": "14.6"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500036,
@@ -6053,8 +6053,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.7h \u2014 nan",
-    "startTime": 1741366328000,
-    "endTime": 1741376120000,
+    "startTime": 1741452728000,
+    "endTime": 1741462520000,
     "assetIds": [
       31
     ],
@@ -6075,8 +6075,8 @@
       "fuel_used_gal": "19.52"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500037,
@@ -6084,8 +6084,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.4h \u2014 nan",
-    "startTime": 1742717859000,
-    "endTime": 1742726319000,
+    "startTime": 1742804259000,
+    "endTime": 1742812719000,
     "assetIds": [
       31
     ],
@@ -6106,8 +6106,8 @@
       "fuel_used_gal": "11.39"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500038,
@@ -6115,8 +6115,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 0.9h \u2014 Good flight, all normal.",
-    "startTime": 1742963922000,
-    "endTime": 1742967090000,
+    "startTime": 1743050322000,
+    "endTime": 1743053490000,
     "assetIds": [
       31
     ],
@@ -6137,8 +6137,8 @@
       "fuel_used_gal": "5.59"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500039,
@@ -6146,8 +6146,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.0h \u2014 nan",
-    "startTime": 1743153072000,
-    "endTime": 1743156780000,
+    "startTime": 1743239472000,
+    "endTime": 1743243180000,
     "assetIds": [
       31
     ],
@@ -6168,8 +6168,8 @@
       "fuel_used_gal": "5.17"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500040,
@@ -6177,8 +6177,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.7h \u2014 nan",
-    "startTime": 1743611118000,
-    "endTime": 1743620730000,
+    "startTime": 1743697518000,
+    "endTime": 1743707130000,
     "assetIds": [
       31
     ],
@@ -6199,8 +6199,8 @@
       "fuel_used_gal": "16.14"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500041,
@@ -6208,8 +6208,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.3h \u2014 nan",
-    "startTime": 1745071315000,
-    "endTime": 1745083087000,
+    "startTime": 1745157715000,
+    "endTime": 1745169487000,
     "assetIds": [
       31
     ],
@@ -6230,8 +6230,8 @@
       "fuel_used_gal": "21.24"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500042,
@@ -6239,8 +6239,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 0.8h \u2014 nan",
-    "startTime": 1745767071000,
-    "endTime": 1745769807000,
+    "startTime": 1745853471000,
+    "endTime": 1745856207000,
     "assetIds": [
       31
     ],
@@ -6261,8 +6261,8 @@
       "fuel_used_gal": "5.3"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500043,
@@ -6270,8 +6270,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.5h \u2014 nan",
-    "startTime": 1746642051000,
-    "endTime": 1746647451000,
+    "startTime": 1746728451000,
+    "endTime": 1746733851000,
     "assetIds": [
       31
     ],
@@ -6292,8 +6292,8 @@
       "fuel_used_gal": "12.21"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500044,
@@ -6301,8 +6301,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N1156P \u2014 KPHX-KPRC \u2014 3.0h \u2014 nan",
-    "startTime": 1746710325000,
-    "endTime": 1746721053000,
+    "startTime": 1746796725000,
+    "endTime": 1746807453000,
     "assetIds": [
       31
     ],
@@ -6323,8 +6323,8 @@
       "fuel_used_gal": "23.98"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500045,
@@ -6332,8 +6332,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.2h \u2014 nan",
-    "startTime": 1747242185000,
-    "endTime": 1747249961000,
+    "startTime": 1747328585000,
+    "endTime": 1747336361000,
     "assetIds": [
       31
     ],
@@ -6354,8 +6354,8 @@
       "fuel_used_gal": "17.42"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500046,
@@ -6363,8 +6363,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.6h \u2014 nan",
-    "startTime": 1747578445000,
-    "endTime": 1747591333000,
+    "startTime": 1747664845000,
+    "endTime": 1747677733000,
     "assetIds": [
       31
     ],
@@ -6385,8 +6385,8 @@
       "fuel_used_gal": "21.76"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500047,
@@ -6394,8 +6394,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1748065507000,
-    "endTime": 1748071951000,
+    "startTime": 1748151907000,
+    "endTime": 1748158351000,
     "assetIds": [
       31
     ],
@@ -6416,8 +6416,8 @@
       "fuel_used_gal": "8.2"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500048,
@@ -6425,8 +6425,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.7h \u2014 nan",
-    "startTime": 1748163363000,
-    "endTime": 1748173047000,
+    "startTime": 1748249763000,
+    "endTime": 1748259447000,
     "assetIds": [
       31
     ],
@@ -6447,8 +6447,8 @@
       "fuel_used_gal": "14.94"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500049,
@@ -6456,8 +6456,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 0.9h \u2014 nan",
-    "startTime": 1748628645000,
-    "endTime": 1748632065000,
+    "startTime": 1748715045000,
+    "endTime": 1748718465000,
     "assetIds": [
       31
     ],
@@ -6478,8 +6478,8 @@
       "fuel_used_gal": "6.66"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500050,
@@ -6487,8 +6487,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.1h \u2014 nan",
-    "startTime": 1749378178000,
-    "endTime": 1749385738000,
+    "startTime": 1749464578000,
+    "endTime": 1749472138000,
     "assetIds": [
       31
     ],
@@ -6509,8 +6509,8 @@
       "fuel_used_gal": "12.61"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500051,
@@ -6518,8 +6518,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.8h \u2014 Good flight, all normal.",
-    "startTime": 1749546176000,
-    "endTime": 1749552764000,
+    "startTime": 1749632576000,
+    "endTime": 1749639164000,
     "assetIds": [
       31
     ],
@@ -6540,8 +6540,8 @@
       "fuel_used_gal": "10.33"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500052,
@@ -6549,8 +6549,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.6h \u2014 Oil temp a little warm today, ambient hot.",
-    "startTime": 1750529449000,
-    "endTime": 1750538845000,
+    "startTime": 1750615849000,
+    "endTime": 1750625245000,
     "assetIds": [
       31
     ],
@@ -6571,8 +6571,8 @@
       "fuel_used_gal": "21.81"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500053,
@@ -6580,8 +6580,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.9h \u2014 nan",
-    "startTime": 1751296402000,
-    "endTime": 1751303098000,
+    "startTime": 1751382802000,
+    "endTime": 1751389498000,
     "assetIds": [
       31
     ],
@@ -6602,8 +6602,8 @@
       "fuel_used_gal": "13.27"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500054,
@@ -6611,8 +6611,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.5h \u2014 Good flight, all normal.",
-    "startTime": 1752090233000,
-    "endTime": 1752099197000,
+    "startTime": 1752176633000,
+    "endTime": 1752185597000,
     "assetIds": [
       31
     ],
@@ -6633,8 +6633,8 @@
       "fuel_used_gal": "12.47"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500055,
@@ -6642,8 +6642,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.2h \u2014 nan",
-    "startTime": 1752093445000,
-    "endTime": 1752101365000,
+    "startTime": 1752179845000,
+    "endTime": 1752187765000,
     "assetIds": [
       31
     ],
@@ -6664,8 +6664,8 @@
       "fuel_used_gal": "12.15"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500056,
@@ -6673,8 +6673,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.4h \u2014 nan",
-    "startTime": 1752166011000,
-    "endTime": 1752178215000,
+    "startTime": 1752252411000,
+    "endTime": 1752264615000,
     "assetIds": [
       31
     ],
@@ -6695,8 +6695,8 @@
       "fuel_used_gal": "25.71"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500057,
@@ -6704,8 +6704,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.5h \u2014 nan",
-    "startTime": 1752472759000,
-    "endTime": 1752481687000,
+    "startTime": 1752559159000,
+    "endTime": 1752568087000,
     "assetIds": [
       31
     ],
@@ -6726,8 +6726,8 @@
       "fuel_used_gal": "15.98"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500058,
@@ -6735,8 +6735,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.0h \u2014 nan",
-    "startTime": 1756510745000,
-    "endTime": 1756517980999,
+    "startTime": 1756597145000,
+    "endTime": 1756604380999,
     "assetIds": [
       31
     ],
@@ -6757,8 +6757,8 @@
       "fuel_used_gal": "11.8"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500059,
@@ -6766,8 +6766,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.5h \u2014 Slight hesitation on startup, cleared after warmup.",
-    "startTime": 1756520889000,
-    "endTime": 1756529961000,
+    "startTime": 1756607289000,
+    "endTime": 1756616361000,
     "assetIds": [
       31
     ],
@@ -6788,8 +6788,8 @@
       "fuel_used_gal": "13.77"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500060,
@@ -6797,8 +6797,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.7h \u2014 nan",
-    "startTime": 1756648447000,
-    "endTime": 1756661767000,
+    "startTime": 1756734847000,
+    "endTime": 1756748167000,
     "assetIds": [
       31
     ],
@@ -6819,8 +6819,8 @@
       "fuel_used_gal": "19.31"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500061,
@@ -6828,8 +6828,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.6h \u2014 nan",
-    "startTime": 1758937122000,
-    "endTime": 1758946482000,
+    "startTime": 1759023522000,
+    "endTime": 1759032882000,
     "assetIds": [
       31
     ],
@@ -6850,8 +6850,8 @@
       "fuel_used_gal": "22.01"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500062,
@@ -6859,8 +6859,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.1h \u2014 nan",
-    "startTime": 1759129189000,
-    "endTime": 1759133113000,
+    "startTime": 1759215589000,
+    "endTime": 1759219513000,
     "assetIds": [
       31
     ],
@@ -6881,8 +6881,8 @@
       "fuel_used_gal": "8.04"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500063,
@@ -6890,8 +6890,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.8h \u2014 nan",
-    "startTime": 1759883728000,
-    "endTime": 1759890172000,
+    "startTime": 1759970128000,
+    "endTime": 1759976572000,
     "assetIds": [
       31
     ],
@@ -6912,8 +6912,8 @@
       "fuel_used_gal": "11.54"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500064,
@@ -6921,8 +6921,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.2h \u2014 Slight hesitation on startup, cleared after warmup.",
-    "startTime": 1760019481000,
-    "endTime": 1760023765000,
+    "startTime": 1760105881000,
+    "endTime": 1760110165000,
     "assetIds": [
       31
     ],
@@ -6943,8 +6943,8 @@
       "fuel_used_gal": "7.62"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500065,
@@ -6952,8 +6952,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.9h \u2014 nan",
-    "startTime": 1760871124000,
-    "endTime": 1760881420000,
+    "startTime": 1760957524000,
+    "endTime": 1760967820000,
     "assetIds": [
       31
     ],
@@ -6974,8 +6974,8 @@
       "fuel_used_gal": "13.91"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500066,
@@ -6983,8 +6983,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.3h \u2014 nan",
-    "startTime": 1761240593000,
-    "endTime": 1761245201000,
+    "startTime": 1761326993000,
+    "endTime": 1761331601000,
     "assetIds": [
       31
     ],
@@ -7005,8 +7005,8 @@
       "fuel_used_gal": "8.86"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500067,
@@ -7014,8 +7014,8 @@
     "type": "Flight",
     "subtype": "KPHX-KFLG",
     "description": "Flight N1156P \u2014 KPHX-KFLG \u2014 2.3h \u2014 nan",
-    "startTime": 1762076014000,
-    "endTime": 1762084366000,
+    "startTime": 1762162414000,
+    "endTime": 1762170766000,
     "assetIds": [
       31
     ],
@@ -7036,8 +7036,8 @@
       "fuel_used_gal": "17.73"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500068,
@@ -7045,8 +7045,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.3h \u2014 Slight hesitation on startup, cleared after warmup.",
-    "startTime": 1763388304000,
-    "endTime": 1763396439999,
+    "startTime": 1763474704000,
+    "endTime": 1763482839999,
     "assetIds": [
       31
     ],
@@ -7067,8 +7067,8 @@
       "fuel_used_gal": "13.72"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500069,
@@ -7076,8 +7076,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 2.3h \u2014 Added quart of oil before flight \u2014 burning more than usual.",
-    "startTime": 1764509489000,
-    "endTime": 1764517841000,
+    "startTime": 1764595889000,
+    "endTime": 1764604241000,
     "assetIds": [
       31
     ],
@@ -7099,8 +7099,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500070,
@@ -7108,8 +7108,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 0.9h \u2014 Engine feels slightly rough at cruise power. Oil consumption",
-    "startTime": 1765041160000,
-    "endTime": 1765044580000,
+    "startTime": 1765127560000,
+    "endTime": 1765130980000,
     "assetIds": [
       31
     ],
@@ -7131,8 +7131,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500071,
@@ -7140,8 +7140,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.8h \u2014 CHT elevated at 433\u00b0F during cruise. Enriched mixture helped",
-    "startTime": 1765427053000,
-    "endTime": 1765433605000,
+    "startTime": 1765513453000,
+    "endTime": 1765520005000,
     "assetIds": [
       31
     ],
@@ -7163,8 +7163,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500072,
@@ -7172,8 +7172,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.3h \u2014 Rough running on climbout, smoothed out in cruise. CHT 423\u00b0F",
-    "startTime": 1767246205000,
-    "endTime": 1767250921000,
+    "startTime": 1767332605000,
+    "endTime": 1767337321000,
     "assetIds": [
       31
     ],
@@ -7195,8 +7195,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500073,
@@ -7204,8 +7204,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.7h \u2014 Intermittent roughness when leaned. Kept mixture rich.",
-    "startTime": 1767610761000,
-    "endTime": 1767616953000,
+    "startTime": 1767697161000,
+    "endTime": 1767703353000,
     "assetIds": [
       31
     ],
@@ -7227,8 +7227,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500074,
@@ -7236,8 +7236,8 @@
     "type": "Flight",
     "subtype": "KPHX-KPRC",
     "description": "Flight N1156P \u2014 KPHX-KPRC \u2014 2.2h \u2014 High CHT again 468\u00b0F. Leaned aggressively to bring it down. ",
-    "startTime": 1767780410000,
-    "endTime": 1767788438000,
+    "startTime": 1767866810000,
+    "endTime": 1767874838000,
     "assetIds": [
       31
     ],
@@ -7259,8 +7259,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500075,
@@ -7268,8 +7268,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 1.8h \u2014 Engine running rough intermittently. CHT spiked to 474\u00b0F. Re",
-    "startTime": 1771033588000,
-    "endTime": 1771039924000,
+    "startTime": 1771119988000,
+    "endTime": 1771126324000,
     "assetIds": [
       31
     ],
@@ -7291,8 +7291,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500076,
@@ -7300,8 +7300,8 @@
     "type": "Flight",
     "subtype": "KPHX-local",
     "description": "Flight N1156P \u2014 KPHX-local \u2014 3.3h \u2014 Engine running rough intermittently. CHT spiked to 489\u00b0F. Re",
-    "startTime": 1771469811000,
-    "endTime": 1771481691000,
+    "startTime": 1771556211000,
+    "endTime": 1771568091000,
     "assetIds": [
       31
     ],
@@ -7323,8 +7323,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500077,
@@ -7332,8 +7332,8 @@
     "type": "Flight",
     "subtype": "KPHX-KSDL",
     "description": "Flight N1156P \u2014 KPHX-KSDL \u2014 1.2h \u2014 Rough running throughout flight, couldn't maintain altitude ",
-    "startTime": 1771848439000,
-    "endTime": 1771852759000,
+    "startTime": 1771934839000,
+    "endTime": 1771939159000,
     "assetIds": [
       31
     ],
@@ -7355,8 +7355,8 @@
       "anomalous": "true"
     },
     "source": "flight_data_ot",
-    "createdTime": 1776031719306,
-    "lastUpdatedTime": 1776031719306
+    "createdTime": 1776047663900,
+    "lastUpdatedTime": 1776047663900
   },
   {
     "id": 500246,
@@ -7504,11 +7504,11 @@
   },
   {
     "id": 500252,
-    "externalId": "INSP-N4798E-2025-06-21",
+    "externalId": "INSP-N4798E-2025-06-22",
     "type": "Inspection",
     "subtype": "annual",
     "description": "Annual inspection completed. All systems checked per FAR 43 Appendix D. Minor discrepancies noted and corrected. Aircraft returned to service.",
-    "startTime": 1750464000000,
+    "startTime": 1750550400000,
     "endTime": null,
     "assetIds": [
       1
@@ -7516,7 +7516,7 @@
     "metadata": {
       "component_id": "N4798E",
       "maintenance_type": "annual",
-      "date": "2025-06-21",
+      "date": "2025-06-22",
       "mechanic": "Cactus Aviation Services \u2014 Mike Torres, A&P/IA #3847291",
       "inspector": "Mike Torres, IA #3847291",
       "ad_reference": "AD 80-04-03 R2; AD 2001-23-03; AD 2011-10-09; AD 90-06-03 R1",
@@ -7528,20 +7528,20 @@
       "tach_at_service": "4360.9",
       "next_due_hobbs": "",
       "next_due_tach": "",
-      "next_due_date": "2026-06-21",
+      "next_due_date": "2026-06-22",
       "tail": "N4798E"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500253,
-    "externalId": "MAINT-N4798E-oil_change-2026-01-07",
+    "externalId": "MAINT-N4798E-oil_change-2026-01-08",
     "type": "MaintenanceRecord",
     "subtype": "oil_change",
     "description": "Oil and filter change. 50-hour interval. Drained 7 qts 15W-50. Cut filter \u2014 trace ferrous particles, within normal limits for this engine variant. Oil analysis sent to Blackstone Labs.",
-    "startTime": 1767744000000,
+    "startTime": 1767830400000,
     "endTime": null,
     "assetIds": [
       2,
@@ -7550,7 +7550,7 @@
     "metadata": {
       "component_id": "N4798E-ENGINE",
       "maintenance_type": "oil_change",
-      "date": "2026-01-07",
+      "date": "2026-01-08",
       "mechanic": "Cactus Aviation Services \u2014 Mike Torres, A&P/IA #3847291",
       "inspector": "",
       "ad_reference": "",
@@ -7566,8 +7566,8 @@
       "tail": "N4798E"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500254,
@@ -7575,7 +7575,7 @@
     "type": "Squawk",
     "subtype": "squawk",
     "description": "Minor oil seep at rocker cover gasket \u2014 right rear cylinder. Not affecting oil level measurably. Deferred to next scheduled maintenance.",
-    "startTime": 1770940800000,
+    "startTime": 1771027200000,
     "endTime": null,
     "assetIds": [
       2,
@@ -7584,7 +7584,7 @@
     "metadata": {
       "component_id": "N4798E-ENGINE",
       "maintenance_type": "squawk",
-      "date": "2026-02-13",
+      "date": "2026-02-14",
       "mechanic": "Cactus Aviation Services \u2014 Mike Torres, A&P/IA #3847291",
       "inspector": "",
       "ad_reference": "",
@@ -7602,16 +7602,16 @@
       "status": "open"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500255,
-    "externalId": "INSP-N2251K-2025-06-16",
+    "externalId": "INSP-N2251K-2025-06-17",
     "type": "Inspection",
     "subtype": "annual",
     "description": "Annual inspection completed. Seat tracks inspected per AD 2011-10-09. Exhaust inspected per AD 90-06-03 R1. Aircraft returned to service.",
-    "startTime": 1750032000000,
+    "startTime": 1750118400000,
     "endTime": null,
     "assetIds": [
       11
@@ -7619,7 +7619,7 @@
     "metadata": {
       "component_id": "N2251K",
       "maintenance_type": "annual",
-      "date": "2025-06-16",
+      "date": "2025-06-17",
       "mechanic": "Desert Aero Maintenance \u2014 James Wheeler, A&P/IA #2918473",
       "inspector": "James Wheeler, IA #2918473",
       "ad_reference": "AD 80-04-03 R2; AD 2011-10-09; AD 90-06-03 R1",
@@ -7631,20 +7631,20 @@
       "tach_at_service": "4684.6",
       "next_due_hobbs": "",
       "next_due_tach": "",
-      "next_due_date": "2026-06-16",
+      "next_due_date": "2026-06-17",
       "tail": "N2251K"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500256,
-    "externalId": "MAINT-N2251K-oil_change-2025-05-21",
+    "externalId": "MAINT-N2251K-oil_change-2025-05-22",
     "type": "MaintenanceRecord",
     "subtype": "oil_change",
     "description": "50-hour oil and filter change. No anomalies. Cut filter clean.",
-    "startTime": 1747785600000,
+    "startTime": 1747872000000,
     "endTime": null,
     "assetIds": [
       12,
@@ -7653,7 +7653,7 @@
     "metadata": {
       "component_id": "N2251K-ENGINE",
       "maintenance_type": "oil_change",
-      "date": "2025-05-21",
+      "date": "2025-05-22",
       "mechanic": "Desert Aero Maintenance \u2014 James Wheeler, A&P/IA #2918473",
       "inspector": "",
       "ad_reference": "",
@@ -7669,16 +7669,16 @@
       "tail": "N2251K"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500257,
-    "externalId": "MAINT-N2251K-oil_change-2026-02-05",
+    "externalId": "MAINT-N2251K-oil_change-2026-02-06",
     "type": "MaintenanceRecord",
     "subtype": "oil_change",
     "description": "50-hour oil and filter change. Cut filter \u2014 no metal. Last oil analysis normal.",
-    "startTime": 1770249600000,
+    "startTime": 1770336000000,
     "endTime": null,
     "assetIds": [
       12,
@@ -7687,7 +7687,7 @@
     "metadata": {
       "component_id": "N2251K-ENGINE",
       "maintenance_type": "oil_change",
-      "date": "2026-02-05",
+      "date": "2026-02-06",
       "mechanic": "Desert Aero Maintenance \u2014 James Wheeler, A&P/IA #2918473",
       "inspector": "",
       "ad_reference": "",
@@ -7699,20 +7699,20 @@
       "tach_at_service": "4703.7",
       "next_due_hobbs": "",
       "next_due_tach": "4753.7",
-      "next_due_date": "2026-05-24",
+      "next_due_date": "2026-05-25",
       "tail": "N2251K"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500258,
-    "externalId": "INSP-N8834Q-2025-09-23",
+    "externalId": "INSP-N8834Q-2025-09-24",
     "type": "Inspection",
     "subtype": "annual",
     "description": "Annual inspection completed. All systems airworthy. Magnetos timed and tested. No discrepancies. Aircraft returned to service.",
-    "startTime": 1758585600000,
+    "startTime": 1758672000000,
     "endTime": null,
     "assetIds": [
       21
@@ -7720,7 +7720,7 @@
     "metadata": {
       "component_id": "N8834Q",
       "maintenance_type": "annual",
-      "date": "2025-09-23",
+      "date": "2025-09-24",
       "mechanic": "Cactus Aviation Services \u2014 Mike Torres, A&P/IA #3847291",
       "inspector": "Mike Torres, IA #3847291",
       "ad_reference": "AD 80-04-03 R2; AD 2011-10-09; AD 90-06-03 R1",
@@ -7732,20 +7732,20 @@
       "tach_at_service": "4377.5",
       "next_due_hobbs": "",
       "next_due_tach": "",
-      "next_due_date": "2026-09-23",
+      "next_due_date": "2026-09-24",
       "tail": "N8834Q"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500259,
-    "externalId": "MAINT-N8834Q-oil_change-2025-10-01",
+    "externalId": "MAINT-N8834Q-oil_change-2025-10-02",
     "type": "MaintenanceRecord",
     "subtype": "oil_change",
     "description": "50-hour oil change concurrent with annual. No anomalies.",
-    "startTime": 1759276800000,
+    "startTime": 1759363200000,
     "endTime": null,
     "assetIds": [
       22,
@@ -7754,7 +7754,7 @@
     "metadata": {
       "component_id": "N8834Q-ENGINE",
       "maintenance_type": "oil_change",
-      "date": "2025-10-01",
+      "date": "2025-10-02",
       "mechanic": "Cactus Aviation Services \u2014 Mike Torres, A&P/IA #3847291",
       "inspector": "",
       "ad_reference": "",
@@ -7770,16 +7770,16 @@
       "tail": "N8834Q"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500260,
-    "externalId": "MAINT-N8834Q-oil_change-2026-02-08",
+    "externalId": "MAINT-N8834Q-oil_change-2026-02-09",
     "type": "MaintenanceRecord",
     "subtype": "oil_change",
     "description": "50-hour oil and filter change. Cut filter \u2014 very fine metallic particles, borderline. Noted for follow-up. Sent to Blackstone.",
-    "startTime": 1770508800000,
+    "startTime": 1770595200000,
     "endTime": null,
     "assetIds": [
       22,
@@ -7788,7 +7788,7 @@
     "metadata": {
       "component_id": "N8834Q-ENGINE",
       "maintenance_type": "oil_change",
-      "date": "2026-02-08",
+      "date": "2026-02-09",
       "mechanic": "Cactus Aviation Services \u2014 Mike Torres, A&P/IA #3847291",
       "inspector": "",
       "ad_reference": "",
@@ -7804,16 +7804,16 @@
       "tail": "N8834Q"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500261,
-    "externalId": "INSP-N1156P-2025-09-23",
+    "externalId": "INSP-N1156P-2025-09-24",
     "type": "Inspection",
     "subtype": "annual",
     "description": "Annual inspection completed. Minor squawks noted. ELT battery replaced. Aircraft returned to service.",
-    "startTime": 1758585600000,
+    "startTime": 1758672000000,
     "endTime": null,
     "assetIds": [
       31
@@ -7821,7 +7821,7 @@
     "metadata": {
       "component_id": "N1156P",
       "maintenance_type": "annual",
-      "date": "2025-09-23",
+      "date": "2025-09-24",
       "mechanic": "Desert Aero Maintenance \u2014 James Wheeler, A&P/IA #2918473",
       "inspector": "James Wheeler, IA #2918473",
       "ad_reference": "AD 80-04-03 R2; AD 2011-10-09; AD 90-06-03 R1",
@@ -7833,20 +7833,20 @@
       "tach_at_service": "4859.7",
       "next_due_hobbs": "",
       "next_due_tach": "",
-      "next_due_date": "2026-09-23",
+      "next_due_date": "2026-09-24",
       "tail": "N1156P"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500262,
-    "externalId": "MAINT-N1156P-oil_change-2025-09-28",
+    "externalId": "MAINT-N1156P-oil_change-2025-09-29",
     "type": "MaintenanceRecord",
     "subtype": "oil_change",
     "description": "Oil change concurrent with annual. Cut filter clean. No anomalies.",
-    "startTime": 1759017600000,
+    "startTime": 1759104000000,
     "endTime": null,
     "assetIds": [
       32,
@@ -7855,7 +7855,7 @@
     "metadata": {
       "component_id": "N1156P-ENGINE",
       "maintenance_type": "oil_change",
-      "date": "2025-09-28",
+      "date": "2025-09-29",
       "mechanic": "Desert Aero Maintenance \u2014 James Wheeler, A&P/IA #2918473",
       "inspector": "",
       "ad_reference": "",
@@ -7871,16 +7871,16 @@
       "tail": "N1156P"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500263,
-    "externalId": "MAINT-N1156P-oil_change-2026-02-13",
+    "externalId": "MAINT-N1156P-oil_change-2026-02-14",
     "type": "MaintenanceRecord",
     "subtype": "oil_change",
     "description": "50-hour oil change. OVERDUE \u2014 53.2 hours since last change. Pilot reported oil consumption has increased. Cut filter shows elevated fine metallic particles. RECOMMEND BORESCOPE AND OIL ANALYSIS BEFORE NEXT FLIGHT. Blackstone sample sent.",
-    "startTime": 1770940800000,
+    "startTime": 1771027200000,
     "endTime": null,
     "assetIds": [
       32,
@@ -7889,7 +7889,7 @@
     "metadata": {
       "component_id": "N1156P-ENGINE",
       "maintenance_type": "oil_change",
-      "date": "2026-02-13",
+      "date": "2026-02-14",
       "mechanic": "Desert Aero Maintenance \u2014 James Wheeler, A&P/IA #2918473",
       "inspector": "",
       "ad_reference": "",
@@ -7905,16 +7905,16 @@
       "tail": "N1156P"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500264,
-    "externalId": "MAINT-N1156P-postaccident-2026-04-25",
+    "externalId": "MAINT-N1156P-postaccident-2026-04-26",
     "type": "MaintenanceRecord",
     "subtype": "post_accident_inspection",
-    "description": "Post-accident teardown inspection following catastrophic engine failure on 2026-03-13. Cylinder #2 connecting rod failed and exited through case. Evidence of chronic lean detonation found: piston crown erosion, cylinder head erosion consistent with detonation, valve face pitting. Engine is NOT REPAIRABLE. Replacement required.",
-    "startTime": 1777075200000,
+    "description": "Post-accident teardown inspection following catastrophic engine failure on 2026-03-14. Cylinder #2 connecting rod failed and exited through case. Evidence of chronic lean detonation found: piston crown erosion, cylinder head erosion consistent with detonation, valve face pitting. Engine is NOT REPAIRABLE. Replacement required.",
+    "startTime": 1777161600000,
     "endTime": null,
     "assetIds": [
       32,
@@ -7923,7 +7923,7 @@
     "metadata": {
       "component_id": "N1156P-ENGINE",
       "maintenance_type": "post_accident_inspection",
-      "date": "2026-04-25",
+      "date": "2026-04-26",
       "mechanic": "AZ Aviation Overhaul \u2014 Linda Chen, A&P/IA #3561028",
       "inspector": "Linda Chen, IA #3561028",
       "ad_reference": "AD 2011-10-09",
@@ -7939,8 +7939,8 @@
       "tail": "N1156P"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   },
   {
     "id": 500265,
@@ -7948,7 +7948,7 @@
     "type": "Squawk",
     "subtype": "squawk",
     "description": "CATASTROPHIC ENGINE FAILURE. Connecting rod failure, rod exited through case. Aircraft made emergency off-airport landing. Aircraft NOT AIRWORTHY. Engine requires replacement.",
-    "startTime": 1773360000000,
+    "startTime": 1773446400000,
     "endTime": null,
     "assetIds": [
       32,
@@ -7957,7 +7957,7 @@
     "metadata": {
       "component_id": "N1156P-ENGINE",
       "maintenance_type": "squawk",
-      "date": "2026-03-13",
+      "date": "2026-03-14",
       "mechanic": "AZ Aviation Overhaul \u2014 Linda Chen, A&P/IA #3561028",
       "inspector": "Linda Chen, IA #3561028",
       "ad_reference": "AD 2011-10-09",
@@ -7975,7 +7975,7 @@
       "status": "open"
     },
     "source": "maintenance_log_it",
-    "createdTime": 1776031720105,
-    "lastUpdatedTime": 1776031720105
+    "createdTime": 1776047664741,
+    "lastUpdatedTime": 1776047664741
   }
 ]

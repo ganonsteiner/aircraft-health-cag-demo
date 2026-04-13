@@ -114,6 +114,10 @@ function AircraftSelector({
   );
 }
 
+function isGraphTraversalEvent(e: AgentEvent): boolean {
+  return e.type === "tool_call" || e.type === "tool_result" || e.type === "traversal";
+}
+
 function formatTraversalActivityLine(events: AgentEvent[], graphData: GraphData | null): string {
   const { toolCount, stepCount, graphNodeCount } = traversalActivityCounts(events, graphData);
   const toolLabel = `${toolCount} tool${toolCount === 1 ? "" : "s"}`;
@@ -136,6 +140,7 @@ export default function QueryInterface({
     setSelectedAircraft,
     chatMessages,
     addChatMessage,
+    insertChatMessageBefore,
     updateChatMessage,
     isQuerying,
     setIsQuerying,
@@ -198,6 +203,7 @@ export default function QueryInterface({
     });
 
     const sessionEvents: AgentEvent[] = [];
+    let noticeInserted = false;
 
     try {
       const res = await fetch("/api/query", {
@@ -232,8 +238,21 @@ export default function QueryInterface({
           if (!jsonStr) continue;
           try {
             const event: AgentEvent = JSON.parse(jsonStr);
-            sessionEvents.push(event);
-            appendTraversalEvent(event);
+
+            if (event.type === "status" && !noticeInserted && event.content?.trim()) {
+              insertChatMessageBefore(assistantMsgId, {
+                id: crypto.randomUUID(),
+                role: "assistant",
+                content: event.content,
+                timestamp: new Date(),
+              });
+              noticeInserted = true;
+            }
+
+            if (isGraphTraversalEvent(event)) {
+              sessionEvents.push(event);
+              appendTraversalEvent(event);
+            }
 
             if (event.type === "final") {
               updateChatMessage(assistantMsgId, {
@@ -333,7 +352,14 @@ export default function QueryInterface({
           </div>
         )}
 
-        {chatMessages.map((msg) => (
+        {chatMessages.map((msg) => {
+          const isStreamingAssistant =
+            isQuerying &&
+            msg.role === "assistant" &&
+            !msg.content &&
+            msg.id === chatMessages[chatMessages.length - 1]?.id;
+
+          return (
           <div key={msg.id} className={cn("flex", msg.role === "user" ? "justify-end" : "justify-start")}>
             <div
               className={cn(
@@ -374,9 +400,9 @@ export default function QueryInterface({
                 >
                   <ReactMarkdown>{msg.content}</ReactMarkdown>
                 </div>
-              ) : (
+              ) : isStreamingAssistant ? (
                 <StreamingIndicator compact={compact} />
-              )}
+              ) : null}
               {msg.role === "assistant" && msg.traversalEvents && msg.traversalEvents.length > 0 && (
                 <p
                   className={cn(
@@ -389,7 +415,8 @@ export default function QueryInterface({
               )}
             </div>
           </div>
-        ))}
+          );
+        })}
         <div ref={messagesEndRef} />
       </div>
 

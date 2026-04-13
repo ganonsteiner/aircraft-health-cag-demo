@@ -190,6 +190,7 @@ export interface GraphData {
 // SSE event types from the agent streaming endpoint
 export type AgentEventType =
   | "thinking"
+  | "status"
   | "tool_call"
   | "tool_result"
   | "traversal"

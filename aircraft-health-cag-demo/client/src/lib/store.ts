@@ -12,6 +12,8 @@ interface AppState {
 
   chatMessages: ChatMessage[];
   addChatMessage: (msg: ChatMessage) => void;
+  /** Insert a message immediately before the message with `targetId` (e.g. status notice before the typing placeholder). */
+  insertChatMessageBefore: (targetId: string, msg: ChatMessage) => void;
   updateChatMessage: (id: string, updates: Partial<ChatMessage>) => void;
 
   isQuerying: boolean;
@@ -41,6 +43,14 @@ export const useStore = create<AppState>((set) => ({
   chatMessages: [],
   addChatMessage: (msg) =>
     set((s) => ({ chatMessages: [...s.chatMessages, msg] })),
+  insertChatMessageBefore: (targetId, msg) =>
+    set((s) => {
+      const i = s.chatMessages.findIndex((m) => m.id === targetId);
+      if (i < 0) return { chatMessages: [...s.chatMessages, msg] };
+      return {
+        chatMessages: [...s.chatMessages.slice(0, i), msg, ...s.chatMessages.slice(i)],
+      };
+    }),
   updateChatMessage: (id, updates) =>
     set((s) => ({
       chatMessages: s.chatMessages.map((m) =>

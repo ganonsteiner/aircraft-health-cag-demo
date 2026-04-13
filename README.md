@@ -97,11 +97,14 @@ If you chose Option B and something isn’t working:
 
 | Symptom | Fix |
 |---------|-----|
+| First request takes several minutes | Normal — Ollama loads model weights on first use. Wait for the response. |
 | Yellow “No LLM configured” banner | `LOCAL_LLM_URL=http://localhost:11434/v1` must be in `.env` and `ANTHROPIC_API_KEY` must be empty. Restart `npm run dev`. |
 | LLM dot says “Anthropic configured” | `ANTHROPIC_API_KEY` has a real value — clear it. |
 | Error in chat | Confirm Ollama is running: `curl -s http://localhost:11434/api/tags`. Confirm model is pulled: `ollama list`. |
 | Out of memory, very slow, or timeouts | Switch to the backup: `ollama pull qwen2.5:7b`, then set `LOCAL_LLM_MODEL=qwen2.5:7b` in `.env`. |
 | `openai package not installed` | Run `python3 -m pip install -e .` from `aircraft-health-cag-demo/`. |
+
+> **Tip:** Set `LOCAL_LLM_MAX_TOKENS=1024` in `.env` to reduce token output and speed up each response.
 
 Recommended Ollama models:
 

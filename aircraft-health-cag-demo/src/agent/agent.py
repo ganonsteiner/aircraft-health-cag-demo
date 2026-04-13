@@ -80,6 +80,7 @@ Fleet-wide questions:
 1. Call assemble_fleet_context() — it returns annual status, oil status, system airworthiness, squawk counts, engine sensor anomalies, and pre-failure peer comparisons for all aircraft in a single traversal.
 2. Do NOT call assemble_aircraft_context for each aircraft after assemble_fleet_context. Only call assemble_aircraft_context for an individual aircraft when you need specific maintenance history details (exact squawk text, full maintenance records) not in the fleet context.
 3. The fleet context already includes fleetSensorComparisons for anomalous aircraft — use that data for the engine health assessment without additional tool calls.
+4. Do NOT call get_time_series_trend for any tail after assemble_fleet_context — all engine trend windows and comparisons are already in that response.
 
 Single-aircraft questions:
 1. Call assemble_aircraft_context — its engineTrends field already contains all key engine sensor data. Do NOT call get_time_series_trend again for the same aircraft after assemble_aircraft_context.
@@ -292,6 +293,19 @@ async def _run_local_llm_streaming(
 
     local_url = os.getenv("LOCAL_LLM_URL", "").rstrip("/")
     local_model = os.getenv("LOCAL_LLM_MODEL", "qwen2.5:14b")
+    max_tokens = int(os.getenv("LOCAL_LLM_MAX_TOKENS", "2048"))
+
+    # Shown immediately so the user isn't staring at a blank spinner while
+    # Ollama loads model weights into memory on the first request.
+    yield {
+        "type": "status",
+        "content": (
+            f"Sending query to local model ({local_model}) via Ollama. "
+            "If this is the first request since starting Ollama, the model may take "
+            "several minutes to load into memory before responding — this is normal. "
+            "Subsequent queries in the same session will be faster."
+        ),
+    }
 
     try:
         local_client = openai.OpenAI(base_url=local_url, api_key="ollama")
@@ -319,9 +333,20 @@ async def _run_local_llm_streaming(
                 model=local_model,
                 messages=messages,
                 tools=openai_tools,
+                max_tokens=max_tokens,
+                # One tool call at a time — some local models produce malformed
+                # JSON when asked to batch multiple calls in a single response.
+                parallel_tool_calls=False,
             )
         except Exception as e:
-            yield {"type": "error", "message": f"Local LLM error: {str(e)}"}
+            err = str(e)
+            if "timed out" in err.lower() or "timeout" in err.lower():
+                hint = " Model is still loading or too slow — wait longer or reduce LOCAL_LLM_MAX_TOKENS in .env."
+            elif "connection" in err.lower() or "refused" in err.lower():
+                hint = " Is Ollama running? Verify: curl http://localhost:11434/api/tags"
+            else:
+                hint = ""
+            yield {"type": "error", "message": f"Local LLM error: {err}{hint}"}
             yield {"type": "done"}
             return
 

@@ -83,7 +83,10 @@ def _get_log() -> list[str]:
 
 def log_traversal(message: str) -> None:
     """Record a graph traversal step for CAG visibility."""
-    _get_log().append(message)
+    log = _get_log()
+    if log and log[-1] == message:
+        return
+    log.append(message)
     print(f"[CAG] Traversed: {message}")
 
 
@@ -428,6 +431,8 @@ def get_time_series_trend(
     aircraft_id: str,
     metric: str,
     last_n: int = DEFAULT_TREND_LOOKBACK,
+    *,
+    record_traversal: bool = True,
 ) -> dict[str, Any]:
     """
     Retrieve the last last_n datapoints for {aircraft_id}.{metric} and compute trend stats.
@@ -438,7 +443,8 @@ def get_time_series_trend(
     Use before calling compare_engine_sensor_across_fleet when readings look anomalous.
     """
     ts_ext_id = f"{aircraft_id}.{metric}"
-    log_traversal(f"Trend:{ts_ext_id}(last_n={last_n})")
+    if record_traversal:
+        log_traversal(f"Trend:{ts_ext_id}(last_n={last_n})")
     try:
         raw = _cdf_post("timeseries/data/list", {
             "items": [{"externalId": ts_ext_id, "limit": 1000}]
@@ -955,7 +961,10 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
     # Engine sensor trends (last N datapoints with stats)
     engine_trends: dict[str, Any] = {}
     for metric in ("engine.cht_max", "engine.oil_temp_max", "engine.oil_pressure_max", "engine.egt_max"):
-        engine_trends[metric] = get_time_series_trend(aircraft_id, metric)
+        engine_trends[metric] = get_time_series_trend(
+            aircraft_id, metric, record_traversal=False
+        )
+    log_traversal(f"Trend:batch:{aircraft_id}(4 engine series)")
 
     # IT events
     maintenance = get_events(aircraft_id, "MaintenanceRecord")
@@ -1112,7 +1121,7 @@ def assemble_fleet_context() -> dict[str, Any]:
         anomalous_metrics: list[dict[str, Any]] = []
         fleet_comparisons: list[dict[str, Any]] = []
         for metric in ENGINE_METRIC_RANGES:
-            trend = get_time_series_trend(tail, metric)
+            trend = get_time_series_trend(tail, metric, record_traversal=False)
             if trend.get("exceeds_caution"):
                 anomalous_metrics.append({
                     "metric": metric,
@@ -1122,6 +1131,8 @@ def assemble_fleet_context() -> dict[str, Any]:
                 })
                 comparison = compare_engine_sensor_across_fleet(tail, metric)
                 fleet_comparisons.append(comparison)
+
+        log_traversal(f"Trend:scan:{tail}({len(ENGINE_METRIC_RANGES)} engine metrics)")
 
         aircraft_summaries.append({
             "tail": tail,
