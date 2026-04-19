@@ -1,5 +1,5 @@
 {
-  "name": "aircraft-health-cag-demo",
+  "name": "cdf-demo",
   "version": "1.0.0",
   "description": "Desert Sky Aviation — four-aircraft 172N fleet CAG demo (mock CDF, FastAPI agent, React)",
   "private": true,

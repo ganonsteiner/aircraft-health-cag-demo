@@ -2,22 +2,22 @@
 .DS_Store
 
 # Python
-aircraft-health-cag-demo/.venv/
-aircraft-health-cag-demo/venv/
-aircraft-health-cag-demo/**/__pycache__/
-aircraft-health-cag-demo/**/*.py[cod]
-aircraft-health-cag-demo/**/*.egg-info/
-aircraft-health-cag-demo/.ruff_cache/
-aircraft-health-cag-demo/.pytest_cache/
-aircraft-health-cag-demo/.mypy_cache/
+dev/.venv/
+dev/venv/
+dev/**/__pycache__/
+dev/**/*.py[cod]
+dev/**/*.egg-info/
+dev/.ruff_cache/
+dev/.pytest_cache/
+dev/.mypy_cache/
 
 # Build / frontend
-aircraft-health-cag-demo/dist/
-aircraft-health-cag-demo/client/dist/
-aircraft-health-cag-demo/node_modules/
-aircraft-health-cag-demo/client/node_modules/
+dev/dist/
+dev/client/dist/
+dev/node_modules/
+dev/client/node_modules/
 
 # Secrets
-aircraft-health-cag-demo/.env
-aircraft-health-cag-demo/client/.env.local
-aircraft-health-cag-demo/client/.env.*.local
+dev/.env
+dev/client/.env.local
+dev/client/.env.*.local

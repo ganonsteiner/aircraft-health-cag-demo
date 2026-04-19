@@ -1,4 +1,4 @@
-# aircraft-health-cag-demo
+# cdf-demo
 
 Demo project showcasing Cognite Data Fusion (CDF) architecture and Context Augmented Generation (CAG). The generic UI shows how a fleet of aircraft would typically be managed while the AI Assistant shows the value of CAG and its ability to connect the dots between a number of data sources and formats.
 
@@ -7,12 +7,12 @@ Demo project showcasing Cognite Data Fusion (CDF) architecture and Context Augme
 **Engine:** Lycoming O-320-H2AD (shared across fleet)  
 **Stack:** Python (FastAPI) + React/TypeScript
 
-All code lives in [`aircraft-health-cag-demo/`](aircraft-health-cag-demo/). Commands below assume you're inside that directory.
+Application code lives in [`dev/`](dev/). Commands below assume your shell’s working directory is `dev/` (from the repository root: `cd dev`).
 
 ## Quick Start
 
 ```bash
-cd aircraft-health-cag-demo
+cd dev
 ```
 
 **Prerequisites:** Node.js 18+ and Python 3.9+. A virtualenv is recommended:
@@ -102,7 +102,7 @@ If you chose Option B and something isn’t working:
 | LLM dot says “Anthropic configured” | `ANTHROPIC_API_KEY` has a real value — clear it. |
 | Error in chat | Confirm Ollama is running: `curl -s http://localhost:11434/api/tags`. Confirm model is pulled: `ollama list`. |
 | Out of memory, very slow, or timeouts | Switch to the backup: `ollama pull qwen2.5:7b`, then set `LOCAL_LLM_MODEL=qwen2.5:7b` in `.env`. |
-| `openai package not installed` | Run `python3 -m pip install -e .` from `aircraft-health-cag-demo/`. |
+| `openai package not installed` | Run `python3 -m pip install -e .` from `dev/`. |
 
 > **Tip:** Set `LOCAL_LLM_MAX_TOKENS=1024` in `.env` to reduce token output and speed up each response.
 
@@ -185,7 +185,7 @@ Policies are stored as nodes in the knowledge graph and retrieved by the agent a
 ## Project Structure
 
 ```
-aircraft-health-cag-demo/
+dev/
 ├── package.json
 ├── pyproject.toml
 ├── data/

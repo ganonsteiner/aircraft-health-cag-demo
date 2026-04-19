@@ -1,4 +1,4 @@
-# aircraft-health-cag-demo
+# cdf-demo
 
 ## Purpose
 Demo: showcases Cognite Data Fusion (CDF) architecture and Context Augmented Generation (CAG). The generic UI shows how a fleet of aircraft would typically be managed while the AI Assistant shows the value of CAG and its ability to connect the dots between a number of data sources and formats.
@@ -82,7 +82,7 @@ No graph edges assert causation — timeline is the causal chain.
 
 ## CogniteClient (Python)
 config = ClientConfig(
-    client_name="aircraft-health-cag-demo",
+    client_name="cdf-demo",
     project="desert_sky",
     base_url="http://localhost:4001",
     credentials=Token("mock-token")
@@ -90,7 +90,7 @@ config = ClientConfig(
 client = CogniteClient(config)
 
 ## File ownership
-All application paths below are relative to `aircraft-health-cag-demo/`.
+All application paths below are relative to `dev/`.
 
 - mock_cdf/: mock server — do not modify architecture
 - src/agent/: CAG context assembly and agent — core

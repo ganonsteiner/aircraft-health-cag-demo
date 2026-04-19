@@ -43,7 +43,7 @@ _CDF_BASE_URL = os.getenv("CDF_BASE_URL", "http://localhost:4001")
 _CDF_TOKEN = os.getenv("CDF_TOKEN", "mock-token")
 
 _config = ClientConfig(
-    client_name="aircraft-health-cag-demo",
+    client_name="cdf-demo",
     project=_CDF_PROJECT,
     base_url=_CDF_BASE_URL,
     credentials=Token(_CDF_TOKEN),
