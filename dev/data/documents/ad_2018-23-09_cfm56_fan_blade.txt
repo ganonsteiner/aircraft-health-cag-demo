@@ -1,0 +1,36 @@
+AIRWORTHINESS DIRECTIVE
+Federal Aviation Administration
+14 CFR Part 39
+
+AD 2018-23-09: CFM International CFM56-7B Series Turbofan Engines
+Fan Blade Root Fatigue Inspection
+
+SUMMARY
+This AD requires repetitive inspections of the fan blade roots for fatigue cracking on CFM56-7B engines. Reports of fan blade root cracking have been identified in certain serial number ranges. This condition, if not corrected, could result in fan blade separation and uncontained engine failure.
+
+APPLICABILITY
+CFM56-7B series turbofan engines with fan blades having Part Number (P/N) 335-063-801-0 through -0 series, installed on Boeing 737-600, -700, -800, and -900 series aircraft.
+
+COMPLIANCE
+Required as indicated, unless already accomplished:
+
+(a) Initial inspection: Within 1,000 flight cycles after the effective date of this AD, perform a fluorescent penetrant inspection (FPI) of all fan blade roots per CFM56-7B ESM Task 72-21-00-200-801.
+
+(b) Repeat inspection interval: Every 3,000 flight cycles thereafter.
+
+(c) If any indication is found during inspection, replace the affected fan blade assembly before further flight per CFM56-7B ESM Task 72-21-00-400-801.
+
+DETAILED INSPECTION PROCEDURE
+- Remove fan blades from disk
+- Clean blade root dovetail surfaces
+- Apply fluorescent penetrant per MIL-PRF-25135 Type I, Method A, Form d
+- Inspect under UV light (minimum 1,000 μW/cm²) at 10x magnification
+- Reject any linear indication > 1.0 mm or any branching indication
+
+COSTS OF COMPLIANCE
+Estimated 8 work-hours per engine for initial inspection. Blade replacement cost: approximately $45,000 per blade set if replacement required.
+
+AUTHORITY
+49 USC 106(g), 40113, 44701; 14 CFR 39.19, 39.23.
+
+Effective Date: November 20, 2018

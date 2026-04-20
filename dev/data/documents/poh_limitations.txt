@@ -1,153 +1,90 @@
-CESSNA MODEL 172N SKYHAWK
-PILOT'S OPERATING HANDBOOK — SECTION 2: LIMITATIONS
-1978 Edition (FAA Approved)
-
-Type: Cessna 172N (1978) · Engine: Lycoming O-320-H2AD
+BOEING 737-800 NG
+FLIGHT CREW OPERATIONS MANUAL — CHAPTER 2: LIMITATIONS
+Applicable to: CFM56-7B powered 737-800 (Southwest Airlines fleet)
 
 ================================================================================
-AIRSPEED LIMITATIONS
+AIRSPEED LIMITATIONS (indicated airspeed unless noted)
 ================================================================================
 
-Vne — Never Exceed Speed:                163 KIAS
-  Do not exceed this speed in any operation.
+VMO (Maximum Operating Speed):             340 KIAS / MMO 0.82
+  Do not exceed in any phase of flight.
 
-Vno — Maximum Structural Cruising Speed: 128 KIAS
-  Do not exceed this speed except in smooth air and then only with caution.
+VFE (Maximum Flap Extended Speed):
+  Flaps 1:   250 KIAS
+  Flaps 2:   250 KIAS
+  Flaps 5:   250 KIAS
+  Flaps 10:  210 KIAS
+  Flaps 15:  200 KIAS
+  Flaps 25:  190 KIAS
+  Flaps 30:  175 KIAS
+  Flaps 40:  162 KIAS
 
-Va — Maneuvering Speed:                   99 KIAS (at 2300 lbs gross weight)
-  Do not make full or abrupt control inputs above this speed.
-  Decrease Va with decreasing gross weight.
+VLO (Max Landing Gear Operating Speed):    270 KIAS (extension / retraction)
+VLE (Max Landing Gear Extended Speed):     270 KIAS
 
-Vfe — Maximum Flap Extended Speed:        85 KIAS
-  Do not exceed this speed with flaps extended.
-
-Vlo — Maximum Landing Gear Speed:         N/A (fixed gear)
-
-================================================================================
-POWERPLANT LIMITATIONS
-================================================================================
-
-Engine Model:       Lycoming O-320-H2AD
-Maximum Horsepower: 160 HP at 2700 RPM
-Maximum RPM:        2700 RPM
-Oil Temperature:    245°F maximum
-                     75°F minimum for takeoff
-Oil Pressure:       25 psi minimum (at idle)
-                     60–90 psi normal operating range
-                     115 psi maximum (cold starts only, transient)
-Cylinder Head Temp: 500°F maximum
-EGT:                No redline; monitor for mixture management
-
-Fuel Grade:         100LL (Aviation Grade 100 Low Lead, colored blue)
-                    100 Octane Aviation Gasoline (colored green) also approved
-                    NOTE: automotive fuel (mogas) is NOT approved for this aircraft
-
-Oil Grade:          SAE 50 or SAE 40 (above 16°C)
-                    SAE 30 or SAE 40 (between 0°C and 16°C)
-                    SAE 30 (below 0°C)
-                    Multiviscosity 15W-50 aviation oil approved per Lycoming SB 480F
-                    Lycoming LW-16702 anti-wear additive required per AD 80-04-03 R2
-                    (unless using pre-additized AeroShell W 15W-50 or AeroShell W 100 Plus)
-
-Oil Capacity:       8 quarts maximum
-                    6 quarts minimum for flight
-
-Engine TBOH:        2000 hours (Lycoming recommended, not FAA mandatory for non-commercial ops)
+Turbulent Air Penetration:                 280 KIAS / M0.76 (whichever is lower)
+Windshield Wiper Operation:                250 KIAS maximum
 
 ================================================================================
-WEIGHT LIMITS
+POWERPLANT LIMITATIONS — CFM56-7B27E
 ================================================================================
 
-Maximum Gross Weight:           2300 lbs
-Maximum Ramp Weight:            2308 lbs
-Maximum Zero Fuel Weight:       No limit
-Baggage Area Weight (aft):      120 lbs maximum
-Baggage Area Moment:            See weight and balance section
+Engine Model:         CFM International CFM56-7B27E
+Rated Thrust (T/O):   27,300 lbf (sea level, static, ISA)
+Rated Thrust (cont.): 24,900 lbf
+
+Maximum EGT:
+  Takeoff (5-min limit):     950 °C
+  Maximum continuous:        925 °C
+  Starting (transient):      725 °C
+
+Oil Temperature:
+  Normal operating range:    0 °C to 155 °C
+  Maximum continuous:        155 °C
+
+Oil Pressure:
+  Minimum (idle):            13 psi
+  Normal operating:          37–102 psi
+
+N1 (Fan Speed):             100% = 5,188 rpm
+N2 (Core Speed):            100% = 14,460 rpm
+Maximum N1:                 104.0%
+Maximum N2:                 105.0%
+
+EGT Deviation Monitoring:
+  Advisory threshold (above baseline):    +10 °C
+  Maintenance inspection required:        +15 °C
+  Ground aircraft pending borescope:      +20 °C
 
 ================================================================================
-CENTER OF GRAVITY LIMITS
+WEIGHT LIMITATIONS
 ================================================================================
 
-Forward CG Limit:  35.0 inches aft of datum (at gross weight)
-                   36.5 inches aft of datum (at 1950 lbs)
-Aft CG Limit:      47.3 inches aft of datum (all weights)
-Reference Datum:   Leading edge of firewall
+Maximum Takeoff Weight (MTOW):   174,200 lbs (79,016 kg)
+Maximum Landing Weight (MLW):    146,300 lbs (66,361 kg)
+Maximum Zero Fuel Weight (MZFW): 138,300 lbs (62,731 kg)
+Maximum Ramp Weight:             174,700 lbs (79,243 kg)
+Operating Empty Weight (OEW):    ~91,300 lbs (41,413 kg) (configuration-dependent)
 
 ================================================================================
-MANEUVER LIMITS
+ALTITUDE LIMITATIONS
 ================================================================================
 
-Category:    Normal
-             This aircraft is certificated in the Normal category only.
-             All aerobatic maneuvers including spins are PROHIBITED.
-             Intentional spins are prohibited.
-
-Load Factor: +3.8g to -1.52g (Normal category at gross weight)
-             Reduced with flaps extended.
+Maximum Operating Altitude:      41,000 ft (FL410)
+Maximum Takeoff / Landing Alt:   8,400 ft pressure altitude (standard conditions)
+Maximum Crosswind for T/O:       36 kts (demonstrated)
+Maximum Demonstrated Crosswind:  38 kts
 
 ================================================================================
-FUEL LIMITS
+FUEL SYSTEM LIMITATIONS
 ================================================================================
 
-Total Fuel Capacity:   43 gallons usable (two wing tanks, 21.5 gal each)
-                       45 gallons total (1 gal unusable per tank)
-Minimum Fuel for IFR:  Per 14 CFR 91.151 and 91.167
-
-Unusable Fuel (each tank): 1 gallon
-
-Approved Fuel Grades: Aviation Grade 100LL (blue)
-                      Aviation Grade 100 (green)
+Maximum Fuel Imbalance (wing tanks):   1,500 lbs
+Total Fuel Capacity (usable):          ~46,100 lbs (6,875 US gal, typical config)
 
 ================================================================================
-FLIGHT CREW
+CREW REQUIREMENTS
 ================================================================================
 
-Minimum Crew:   1 pilot
-                Dual control capable — co-pilot controls fully functional
-
-================================================================================
-KINDS OF OPERATION
-================================================================================
-
-Day VFR:       Approved
-Night VFR:     Approved (with required equipment per 14 CFR 91.205)
-Day IFR:       Approved (with required equipment per 14 CFR 91.205)
-Night IFR:     Approved (with required equipment per 14 CFR 91.205)
-Icing:         NOT approved for flight into known icing conditions
-
-================================================================================
-SYSTEM LIMITATIONS
-================================================================================
-
-Vacuum System (gyros):
-  Minimum vacuum for gyro operation: 4.5 in. Hg
-  Normal vacuum range: 4.5–5.4 in. Hg
-
-Electrical System:
-  28-volt DC system
-  60-amp alternator
-  24-volt battery
-
-Transponder:
-  24-month inspection required per 14 CFR 91.413
-
-ELT:
-  Battery replacement/inspection required per 14 CFR 91.207
-  (12 months from date of last inspection, or after activation, or at 50% battery life)
-
-Pitot-Static System:
-  24-month inspection required for IFR flight per 14 CFR 91.411
-
-================================================================================
-PLACARDS (REQUIRED IN-COCKPIT)
-================================================================================
-
-  "THIS AIRPLANE IS APPROVED FOR THE FOLLOWING OPERATIONS WHEN EQUIPPED
-   PER THE APPLICABLE FAR: DAY VFR, NIGHT VFR, DAY IFR, NIGHT IFR"
-
-  "NO ACROBATIC MANEUVERS INCLUDING SPINS APPROVED"
-
-  "FUEL SELECTOR VALVE: LEFT — BOTH — RIGHT — OFF"
-  (RIGHT tank fuel must be used with LEFT tank to prevent asymmetric loading)
-
-  "IN EMERGENCY, PULL TO UNLOCK" (door placard)
+Minimum crew: 2 (Captain + First Officer)
+Certificate: ATP required for PIC; Flight Engineer not required (EFIS-equipped)

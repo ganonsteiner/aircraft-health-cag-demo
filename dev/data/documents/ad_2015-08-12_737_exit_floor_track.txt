@@ -1,0 +1,38 @@
+AIRWORTHINESS DIRECTIVE
+Federal Aviation Administration
+14 CFR Part 39
+
+AD 2015-08-12: The Boeing Company Model 737-600, -700, -700C, -800, -900, and -900ER Series Airplanes
+Emergency Exit Row Floor Track Seat Fitting Inspection
+
+SUMMARY
+This AD requires repetitive inspections of the floor tracks and seat fittings in emergency exit rows for corrosion, cracking, and improper seating. Certain seat track assemblies in the over-wing emergency exit rows may develop cracks at the lug attachment holes due to fatigue loading. This condition, if not corrected, could result in seat separation during an emergency evacuation or turbulence event.
+
+APPLICABILITY
+Boeing 737-600, -700, -700C, -800, -900, and -900ER series airplanes with line numbers 1 through 5500, certificated in any category.
+
+COMPLIANCE
+Required as indicated, unless already accomplished:
+
+(a) Within 18 months after the effective date of this AD, perform a detailed visual inspection (DVI) of the floor track seat fitting attachment holes in all emergency exit rows (rows adjacent to overwing exits) per Boeing Alert Service Bulletin 737-25A1456, Revision 2.
+
+(b) If any cracking or corrosion is found, replace the affected track section before further flight per Boeing SRM 53-41-00.
+
+(c) Repeat the inspection at intervals not to exceed 24 months.
+
+INSPECTION AREAS
+- Floor track lug attachment holes (rows 15-17 on -800 series typical)
+- Seat track upper surface for pitting corrosion
+- Track splice plates for security and cracking
+- Roller fitting engagement for proper seating
+
+SPECIAL FLIGHT PERMIT
+Not permitted.
+
+COSTS OF COMPLIANCE
+Estimated 4 work-hours per airplane per inspection cycle.
+
+AUTHORITY
+49 USC 106(g), 40113, 44701; 14 CFR 39.19, 39.23.
+
+Effective Date: August 12, 2015

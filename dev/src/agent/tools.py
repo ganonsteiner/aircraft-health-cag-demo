@@ -1,12 +1,12 @@
 """
-Agent Tools — Desert Sky Aviation Fleet CAG.
+Agent Tools — Southwest Airlines 737 Fleet CAG.
 
 CDF graph traversal tools for the ReAct agent, using:
   - cognite-sdk Python client for standard CDF resources
   - httpx for custom fleet resource routes (policies, fleet_owners)
 
 Key additions over the single-aircraft version:
-  - get_fleet_overview: aggregate factual metadata for all four aircraft
+  - get_fleet_overview: aggregate factual metadata for all fleet aircraft
   - get_fleet_policies: HTTP list operational policies
   - get_time_series_trend: last-N engine sensor window with trend stats and caution check
   - compare_engine_sensor_across_fleet: IS_TYPE peers + pre-failure datapoint windows
@@ -38,7 +38,7 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", "..", ".en
 # CDF client
 # ---------------------------------------------------------------------------
 
-_CDF_PROJECT = os.getenv("CDF_PROJECT", "desert_sky")
+_CDF_PROJECT = os.getenv("CDF_PROJECT", "southwest_airlines")
 _CDF_BASE_URL = os.getenv("CDF_BASE_URL", "http://localhost:4001")
 _CDF_TOKEN = os.getenv("CDF_TOKEN", "mock-token")
 
@@ -50,16 +50,18 @@ _config = ClientConfig(
 )
 client = CogniteClient(_config)
 
-ENGINE_MODEL_EXT_ID = "ENGINE_MODEL_LYC_O320_H2AD"
+ENGINE_MODEL_EXT_ID = "ENGINE_MODEL_CFM56_7B"
 
 DEFAULT_TREND_LOOKBACK = 10
 
 ENGINE_METRIC_RANGES: dict[str, dict[str, Any]] = {
-    "engine.cht_max":          {"normal_max": 400, "caution": 430, "unit": "°F"},
-    "engine.egt_max":          {"normal_min": 1200, "normal_max": 1450, "unit": "°F"},
-    "engine.oil_temp_max":     {"normal_min": 180, "normal_max": 245, "caution": 245, "unit": "°F"},
-    "engine.oil_pressure_max": {"normal_min": 60, "normal_max": 90, "unit": "PSI"},
-    "engine.oil_pressure_min": {"normal_min": 25, "caution_low": 25, "unit": "PSI"},
+    "engine.egt_deviation":    {"normal_max": 8,   "caution": 10,  "warning": 15, "unit": "°C"},
+    "engine.n1_vibration":     {"normal_max": 1.4, "caution": 1.8, "warning": 2.5, "unit": "units"},
+    "engine.n2_speed":         {"normal_min": 91,  "normal_max": 97, "unit": "%"},
+    "engine.oil_temp_max":     {"normal_min": 82,  "normal_max": 102, "caution": 102, "unit": "°C"},
+    "engine.oil_pressure_min": {"normal_min": 42,  "caution_low": 40, "unit": "psi"},
+    "engine.oil_pressure_max": {"normal_min": 55,  "normal_max": 72, "unit": "psi"},
+    "engine.fuel_flow":        {"normal_min": 2200, "normal_max": 2700, "unit": "kg/hr"},
 }
 
 # ---------------------------------------------------------------------------
@@ -392,12 +394,24 @@ def get_linked_documents(asset_id: str) -> dict[str, Any]:
 
 def get_fleet_overview() -> dict[str, Any]:
     """
-    Aggregate factual metadata for all four Desert Sky Aviation aircraft.
-    Traverses each aircraft root asset — no pre-labeled health status included.
-    Agent derives airworthiness from maintenance/squawk data using CDF resources.
+    Aggregate factual metadata for all Southwest Airlines fleet aircraft.
+    Discovers aircraft via GOVERNED_BY relationship from Southwest_Airlines fleet owner.
+    No pre-labeled health status — agent derives airworthiness from maintenance/squawk data.
     """
-    log_traversal("FleetOverview:Desert_Sky_Aviation")
-    tails = ["N4798E", "N2251K", "N8834Q", "N1156P"]
+    log_traversal("FleetOverview:Southwest_Airlines")
+    # Discover all aircraft via GOVERNED_BY inbound to fleet owner
+    governed_rels = _cdf_post("relationships/bidirectional", {
+        "externalId": "Southwest_Airlines",
+        "relationshipType": "GOVERNED_BY",
+        "direction": "inbound",
+    }).get("items", [])
+    tails = sorted(
+        r["sourceExternalId"]
+        for r in governed_rels
+        if r.get("relationshipType") == "GOVERNED_BY"
+        and r.get("targetExternalId") == "Southwest_Airlines"
+        and not r.get("sourceExternalId", "").startswith("POLICY_")
+    )
     fleet = []
     for tail in tails:
         asset_info = get_asset(tail)
@@ -406,22 +420,23 @@ def get_fleet_overview() -> dict[str, Any]:
             "tail": tail,
             "name": asset_info.get("name", tail),
             "smoh": meta.get("engine_smoh", ""),
+            "model": meta.get("aircraft_type", "Boeing 737-800"),
             "description": asset_info.get("description", ""),
         })
     return {
         "fleet": fleet,
         "totalAircraft": len(fleet),
-        "operator": "Desert Sky Aviation",
-        "base": "KPHX",
+        "operator": "Southwest Airlines",
+        "base": "PHX",
     }
 
 
 def get_fleet_policies() -> dict[str, Any]:
     """
-    Retrieve all Desert Sky Aviation operational policies.
+    Retrieve all Southwest Airlines operational policies.
     Calls the custom /policies/list route via httpx.
     """
-    log_traversal("FleetPolicies:Desert_Sky_Aviation")
+    log_traversal("FleetPolicies:Southwest_Airlines")
     data = _cdf_post("policies/list", {})
     policies = data.get("items", [])
     return {"count": len(policies), "policies": policies}
@@ -554,7 +569,6 @@ def compare_engine_sensor_across_fleet(
                 peer_engines.append(str(src))
     peer_engines = sorted(set(peer_engines))
 
-    tails_known = {"N4798E", "N2251K", "N8834Q", "N1156P"}
     comparisons: list[dict[str, Any]] = []
 
     for peer_eng in peer_engines:
@@ -569,8 +583,8 @@ def compare_engine_sensor_across_fleet(
         peer_tail: Optional[str] = None
         for r in has_comp:
             if r.get("relationshipType") == "HAS_COMPONENT" and r.get("targetExternalId") == peer_eng:
-                p = r.get("sourceExternalId")
-                if p in tails_known:
+                p = str(r.get("sourceExternalId", ""))
+                if p.startswith("N") and p.endswith("WN"):
                     peer_tail = p
                     break
         if not peer_tail:
@@ -699,6 +713,157 @@ def compare_engine_sensor_across_fleet(
     }
 
 
+_PRE_FAILURE_METRICS = (
+    "engine.egt_deviation",
+    "engine.n1_vibration",
+    "engine.oil_temp_max",
+    "engine.oil_pressure_min",
+)
+
+
+def get_fleet_failure_history() -> dict[str, Any]:
+    """
+    Discover every aircraft in the fleet that has suffered a terminal grounding event
+    (open grounding squawk with no subsequent flights), and return each one's pre-failure
+    sensor snapshot.
+
+    Use this as the FIRST step when assessing risk for a currently-flying aircraft — it
+    tells you which peers have failed and gives you concrete pre-failure sensor values
+    to compare against the live telemetry of the aircraft you're analyzing.
+    """
+    log_traversal("FleetFailureHistory(start)")
+
+    try:
+        governed = _cdf_post("relationships/bidirectional", {
+            "externalId": "Southwest_Airlines",
+            "relationshipType": "GOVERNED_BY",
+            "direction": "inbound",
+        }).get("items", [])
+    except Exception:
+        governed = []
+
+    tails: list[str] = []
+    for r in governed:
+        if r.get("relationshipType") == "GOVERNED_BY":
+            src = str(r.get("sourceExternalId", ""))
+            if src.startswith("N") and src.endswith("WN"):
+                tails.append(src)
+    tails = sorted(set(tails))
+
+    failures: list[dict[str, Any]] = []
+    for tail in tails:
+        try:
+            asset = client.assets.retrieve(external_id=tail)
+            if not asset or not asset.id:
+                continue
+            all_evs = list(client.events.list(asset_ids=[asset.id], limit=500))
+            all_evs.sort(key=lambda e: e.start_time or 0)
+
+            grounding_ev = None
+            for e in all_evs:
+                meta = e.metadata or {}
+                if (
+                    e.type == "Squawk"
+                    and meta.get("severity") == "grounding"
+                    and meta.get("status") == "open"
+                ):
+                    grounding_ev = e
+
+            if grounding_ev is None:
+                continue
+
+            grounded_ts = grounding_ev.start_time or 0
+            post_flights = [
+                e for e in all_evs
+                if e.type == "Flight" and (e.start_time or 0) > grounded_ts
+            ]
+            if post_flights:
+                continue  # resumed flying — not a terminal failure
+
+            engine_model = ""
+            try:
+                is_type = _cdf_post("relationships/bidirectional", {
+                    "externalId": f"{tail}-ENGINE-1",
+                    "relationshipType": "IS_TYPE",
+                    "direction": "outbound",
+                }).get("items", [])
+                for r in is_type:
+                    if r.get("relationshipType") == "IS_TYPE":
+                        engine_model = str(r.get("targetExternalId", ""))
+                        break
+            except Exception:
+                pass
+
+            pre_failure_sensors: dict[str, Optional[float]] = {}
+            for metric in _PRE_FAILURE_METRICS:
+                ts_ext_id = f"{tail}.{metric}"
+                key = metric.split(".", 1)[-1]
+                try:
+                    raw = _cdf_post("timeseries/data/list", {
+                        "items": [{"externalId": ts_ext_id, "end": grounded_ts, "limit": 10}]
+                    })
+                    dps = (raw.get("items") or [{}])[0].get("datapoints", [])
+                    if dps:
+                        last_val = dps[-1].get("value")
+                        pre_failure_sensors[key] = (
+                            round(float(last_val), 2) if last_val is not None else None
+                        )
+                    else:
+                        pre_failure_sensors[key] = None
+                except Exception:
+                    pre_failure_sensors[key] = None
+
+            efh_at_failure: Optional[float] = None
+            gmeta = grounding_ev.metadata or {}
+            for k in ("hobbs_at_service", "efh_at_service", "tach_at_service", "efh", "hobbs"):
+                if k in gmeta:
+                    try:
+                        efh_at_failure = float(gmeta[k])
+                        break
+                    except Exception:
+                        continue
+            if efh_at_failure is None:
+                last_flight = None
+                for e in all_evs:
+                    if e.type == "Flight" and (e.start_time or 0) <= grounded_ts:
+                        last_flight = e
+                if last_flight:
+                    fmeta = last_flight.metadata or {}
+                    for k in ("hobbs_end", "efh_end", "tach_end"):
+                        if k in fmeta:
+                            try:
+                                efh_at_failure = float(fmeta[k])
+                                break
+                            except Exception:
+                                continue
+
+            grounded_on = datetime.fromtimestamp(grounded_ts / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
+
+            failures.append({
+                "tail": tail,
+                "grounded_on": grounded_on,
+                "primary_cause": (grounding_ev.description or "")[:300],
+                "engine_model": engine_model,
+                "efh_at_failure": efh_at_failure,
+                "pre_failure_sensors": pre_failure_sensors,
+            })
+            log_traversal(f"FleetFailureHistory:found={tail}")
+        except Exception:
+            continue
+
+    log_traversal("FleetFailureHistory(complete)")
+    return {
+        "failures": failures,
+        "note": (
+            "Each entry is a peer aircraft that has suffered a terminal grounding event. "
+            "The pre_failure_sensors snapshot is the last known reading for each key metric "
+            "before the grounding. Compare those values to a currently-flying aircraft's "
+            "recent readings to decide whether the flying aircraft is trending toward a "
+            "similar failure."
+        ),
+    }
+
+
 def get_engine_type_history(aircraft_id: str) -> dict[str, Any]:
     """
     Traverses IS_TYPE relationship to find all aircraft sharing the same engine model,
@@ -748,7 +913,6 @@ def get_engine_type_history(aircraft_id: str) -> dict[str, Any]:
     peer_engines = sorted(set(peer_engines))
 
     history_by_tail: dict[str, list[dict[str, Any]]] = {}
-    tails_known = {"N4798E", "N2251K", "N8834Q", "N1156P"}
 
     for peer_eng in peer_engines:
         if peer_eng == engine_ext:
@@ -761,8 +925,8 @@ def get_engine_type_history(aircraft_id: str) -> dict[str, Any]:
         parent_tail: Optional[str] = None
         for r in has_comp:
             if r.get("relationshipType") == "HAS_COMPONENT" and r.get("targetExternalId") == peer_eng:
-                p = r.get("sourceExternalId")
-                if p in tails_known:
+                p = str(r.get("sourceExternalId", ""))
+                if p.startswith("N") and p.endswith("WN"):
                     parent_tail = p
                     break
         if not parent_tail:
@@ -813,8 +977,8 @@ def search_fleet_for_similar_events(description: str) -> dict[str, Any]:
       - Squawk events: event description field
       - MaintenanceRecord events: description field
 
-    Use to find cross-aircraft patterns — e.g. 'elevated CHT rough running' will
-    match N8834Q squawks and N1156P pre-failure pilot notes.
+    Use to find cross-aircraft patterns — e.g. 'EGT deviation' will
+    match squawks and pre-failure pilot notes across the fleet.
     """
     log_traversal(f"FleetSearch:{description[:40]}")
     query_lower = description.lower()
@@ -872,7 +1036,19 @@ def check_fleet_policy_compliance(policy_id: Optional[str] = None) -> dict[str, 
     If policy_id provided, evaluates only that policy.
     """
     log_traversal(f"PolicyCompliance:{policy_id or 'all'}")
-    tails = ["N4798E", "N2251K", "N8834Q", "N1156P"]
+    # Discover all aircraft via GOVERNED_BY
+    governed_rels = _cdf_post("relationships/bidirectional", {
+        "externalId": "Southwest_Airlines",
+        "relationshipType": "GOVERNED_BY",
+        "direction": "inbound",
+    }).get("items", [])
+    tails = sorted(
+        r["sourceExternalId"]
+        for r in governed_rels
+        if r.get("relationshipType") == "GOVERNED_BY"
+        and r.get("targetExternalId") == "Southwest_Airlines"
+        and str(r.get("sourceExternalId", "")).startswith("N")
+    )
 
     # Get policies
     pol_data = get_fleet_policies()
@@ -1055,7 +1231,7 @@ def assemble_fleet_context() -> dict[str, Any]:
     Mirrors how Cognite Atlas AI would assemble context across multiple
     assets in an industrial setting — one connected traversal across the fleet.
     """
-    log_traversal("FleetContext:Desert_Sky_Aviation(start)")
+    log_traversal("FleetContext:Southwest_Airlines(start)")
 
     fleet = get_fleet_overview()
     policies = get_fleet_policies()
@@ -1117,17 +1293,34 @@ def assemble_fleet_context() -> dict[str, Any]:
         else:
             derived_airworthiness = "AIRWORTHY"
 
-        # Engine sensor trends — flag anomalous metrics
+        # Engine sensor trends — flag anomalous metrics.
+        # Trigger the peer comparison not only when the caution threshold is crossed,
+        # but also when a metric is trending upward and already near that threshold.
+        # This catches aircraft that are degrading toward a peer's pre-failure pattern
+        # before they're fully out-of-spec.
         anomalous_metrics: list[dict[str, Any]] = []
         fleet_comparisons: list[dict[str, Any]] = []
         for metric in ENGINE_METRIC_RANGES:
             trend = get_time_series_trend(tail, metric, record_traversal=False)
-            if trend.get("exceeds_caution"):
+            exceeds = bool(trend.get("exceeds_caution"))
+            direction = trend.get("trend_direction")
+            current = trend.get("current_value")
+            ranges = ENGINE_METRIC_RANGES.get(metric, {})
+            caution_threshold = ranges.get("caution") or ranges.get("caution_low")
+            near_caution = False
+            if (
+                isinstance(current, (int, float))
+                and isinstance(caution_threshold, (int, float))
+                and "caution_low" not in ranges
+            ):
+                near_caution = current >= caution_threshold * 0.8
+            is_degrading = direction == "increasing" and near_caution
+            if exceeds or is_degrading:
                 anomalous_metrics.append({
                     "metric": metric,
-                    "current_value": trend.get("current_value"),
-                    "trend_direction": trend.get("trend_direction"),
-                    "exceeds_caution": trend.get("exceeds_caution"),
+                    "current_value": current,
+                    "trend_direction": direction,
+                    "exceeds_caution": exceeds,
                 })
                 comparison = compare_engine_sensor_across_fleet(tail, metric)
                 fleet_comparisons.append(comparison)
@@ -1158,8 +1351,8 @@ def assemble_fleet_context() -> dict[str, Any]:
 
     log_traversal("FleetContext:assembled")
     return {
-        "operator": "Desert Sky Aviation",
-        "base": "KPHX",
+        "operator": "Southwest Airlines",
+        "base": "PHX",
         "aircraftCount": len(aircraft_summaries),
         "aircraft": aircraft_summaries,
         "policies": [
@@ -1179,10 +1372,10 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
         "name": "get_asset",
         "description": (
             "Retrieve a specific CDF asset node by its externalId. "
-            "Aircraft roots: N4798E, N2251K, N8834Q, N1156P. "
-            "Components: {TAIL}-ENGINE, {TAIL}-ENGINE-CYLINDERS, {TAIL}-ENGINE-OIL, "
-            "{TAIL}-PROPELLER, {TAIL}-AIRFRAME, {TAIL}-AVIONICS, {TAIL}-FUEL-SYSTEM. "
-            "Fleet owner: Desert_Sky_Aviation."
+            "Aircraft roots: e.g. N287WN, N246WN, N231WN. "
+            "Components: {TAIL}-ENGINE-1, {TAIL}-ENGINE-2, {TAIL}-APU, "
+            "{TAIL}-AIRFRAME, {TAIL}-AVIONICS, {TAIL}-LANDING-GEAR, {TAIL}-HYDRAULICS. "
+            "Fleet owner: Southwest_Airlines."
         ),
         "input_schema": {
             "type": "object",
@@ -1296,14 +1489,14 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
     {
         "name": "get_fleet_overview",
         "description": (
-            "Get factual metadata for all four Desert Sky Aviation aircraft: tail, SMOH, description. "
-            "No pre-labeled health status — agent derives airworthiness from maintenance/squawk data."
+            "Get factual metadata for all Southwest Airlines fleet aircraft: tail, model, SMOH, description. "
+            "Discovers aircraft via GOVERNED_BY relationship — no pre-labeled health status."
         ),
         "input_schema": {"type": "object", "properties": {}, "required": []},
     },
     {
         "name": "get_fleet_policies",
-        "description": "List all Desert Sky Aviation operational policies: oil change intervals, ferry authorization, annual requirements.",
+        "description": "List all Southwest Airlines operational policies: engine borescope intervals, EGT monitoring, vibration limits, A-check intervals, AD compliance, MEL.",
         "input_schema": {"type": "object", "properties": {}, "required": []},
     },
     {
@@ -1319,8 +1512,8 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
         "input_schema": {
             "type": "object",
             "properties": {
-                "aircraft_id": {"type": "string", "description": "Tail number, e.g. N8834Q"},
-                "metric": {"type": "string", "description": "Metric suffix, e.g. engine.cht_max"},
+                "aircraft_id": {"type": "string", "description": "Tail number, e.g. N246WN"},
+                "metric": {"type": "string", "description": "Metric suffix, e.g. engine.egt_deviation"},
                 "last_n": {"type": "integer", "description": "Number of datapoints to retrieve (default 10)"},
             },
             "required": ["aircraft_id", "metric"],
@@ -1339,12 +1532,24 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
         "input_schema": {
             "type": "object",
             "properties": {
-                "aircraft_id": {"type": "string", "description": "Tail number, e.g. N8834Q"},
-                "metric": {"type": "string", "description": "Metric suffix, e.g. engine.cht_max"},
+                "aircraft_id": {"type": "string", "description": "Tail number, e.g. N246WN"},
+                "metric": {"type": "string", "description": "Metric suffix, e.g. engine.egt_deviation"},
                 "last_n": {"type": "integer", "description": "Window size (default 10)"},
             },
             "required": ["aircraft_id", "metric"],
         },
+    },
+    {
+        "name": "get_fleet_failure_history",
+        "description": (
+            "Return every aircraft in the fleet that has suffered a terminal grounding event "
+            "(open grounding squawk, no subsequent flights), along with each one's pre-failure "
+            "sensor snapshot (EGT deviation, N1 vibration, oil temp, oil pressure min), "
+            "engine model, EFH at failure, and primary cause. "
+            "Call this FIRST whenever you are assessing a currently-flying aircraft's risk — "
+            "it gives you concrete peer-failure patterns to compare against."
+        ),
+        "input_schema": {"type": "object", "properties": {}, "required": []},
     },
     {
         "name": "get_engine_type_history",
@@ -1359,7 +1564,7 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
             "properties": {
                 "aircraft_id": {
                     "type": "string",
-                    "description": "Aircraft root externalId, e.g. N8834Q",
+                    "description": "Aircraft root externalId, e.g. N246WN",
                 }
             },
             "required": ["aircraft_id"],
@@ -1370,8 +1575,8 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
         "description": (
             "Full-text search across all fleet events (flights, squawks, maintenance records). "
             "Searches pilot_notes, squawk descriptions, and maintenance descriptions. "
-            "Use to find patterns across aircraft — e.g. 'elevated CHT rough running' "
-            "will match N8834Q squawks AND N1156P pre-failure pilot notes."
+            "Use to find patterns across aircraft — e.g. 'EGT deviation' "
+            "will match squawks and pre-failure pilot notes across the fleet."
         ),
         "input_schema": {
             "type": "object",
@@ -1386,7 +1591,7 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
     },
     {
         "name": "check_fleet_policy_compliance",
-        "description": "Evaluate which aircraft are in compliance with Desert Sky Aviation operational policies.",
+        "description": "Evaluate which aircraft are in compliance with Southwest Airlines operational policies.",
         "input_schema": {
             "type": "object",
             "properties": {
@@ -1411,7 +1616,7 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
             "properties": {
                 "aircraft_id": {
                     "type": "string",
-                    "description": "Tail number: N4798E, N2251K, N8834Q, or N1156P",
+                    "description": "Tail number, e.g. N246WN or N287WN",
                 }
             },
             "required": ["aircraft_id"],
@@ -1470,6 +1675,7 @@ def execute_tool(tool_name: str, tool_input: dict[str, Any]) -> Any:
             tool_input["metric"],
             tool_input.get("last_n", DEFAULT_TREND_LOOKBACK),
         ),
+        "get_fleet_failure_history": lambda: get_fleet_failure_history(),
         "get_engine_type_history": lambda: get_engine_type_history(tool_input["aircraft_id"]),
         "search_fleet_for_similar_events": lambda: search_fleet_for_similar_events(
             tool_input["description"]
@@ -1478,7 +1684,7 @@ def execute_tool(tool_name: str, tool_input: dict[str, Any]) -> Any:
             tool_input.get("policy_id")
         ),
         "assemble_aircraft_context": lambda: assemble_aircraft_context(
-            tool_input.get("aircraft_id", "N4798E")
+            tool_input.get("aircraft_id", "N246WN")
         ),
         "assemble_fleet_context": lambda: assemble_fleet_context(),
     }

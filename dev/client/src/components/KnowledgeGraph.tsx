@@ -6,7 +6,6 @@ import {
   LineChart,
   RotateCcw,
   Share2,
-  Shield,
   AlertTriangle,
   Waypoints,
   Zap,
@@ -192,7 +191,30 @@ export default function KnowledgeGraph({ active }: Props) {
     for (const l of graphData.links) {
       if (l.type) s.add(l.type);
     }
-    return Array.from(s).sort();
+    // Edge ordering: mirror the node-type legend order (Asset → File → Event → TimeSeries),
+    // then keep the rest logical. `LINKED_TO` is a high-fanout bridge, so it always goes last.
+    const EDGE_ORDER: Record<string, number> = {
+      // Asset-structural
+      HAS_COMPONENT: 10,
+      IS_TYPE: 11,
+      GOVERNED_BY: 12,
+      // File-centric
+      HAS_POLICY: 20,
+      REFERENCES_AD: 21,
+      // Event-centric
+      IDENTIFIED_ON: 30,
+      PERFORMED_ON: 31,
+      // TimeSeries-centric
+      HAS_TIMESERIES: 40,
+      // Always last
+      LINKED_TO: 99,
+    };
+    return Array.from(s).sort((a, b) => {
+      const ra = EDGE_ORDER[a] ?? 50;
+      const rb = EDGE_ORDER[b] ?? 50;
+      if (ra !== rb) return ra - rb;
+      return a.localeCompare(b);
+    });
   }, [graphData?.links]);
 
   const stats = graphData?.stats;
@@ -210,17 +232,16 @@ export default function KnowledgeGraph({ active }: Props) {
         {stats && (
           <div className="flex items-center gap-3">
             {[
-              { label: "Assets",     count: stats.assets,        icon: <Box className="w-3 h-3" aria-hidden />,        color: "text-sky-400"     },
-              { label: "TimeSeries", count: stats.timeseries,    icon: <LineChart className="w-3 h-3" aria-hidden />,  color: "text-emerald-400" },
-              { label: "Events",     count: stats.events,        icon: <Zap className="w-3 h-3" aria-hidden />,        color: "text-orange-400"  },
-              { label: "Files",      count: stats.files,         icon: <FileText className="w-3 h-3" aria-hidden />,   color: "text-purple-400"  },
-              { label: "Policies",   count: stats.policies,      icon: <Shield className="w-3 h-3" aria-hidden />,     color: "text-pink-400"    },
-              { label: "Relations",  count: stats.relationships, icon: <Share2 className="w-3 h-3" aria-hidden />,     color: "text-indigo-400"  },
+              { label: "Assets",     count: stats.assets,        icon: <Box className="w-3 h-3" aria-hidden />,        color: "text-blue-500"   },
+              { label: "Files",      count: stats.files,         icon: <FileText className="w-3 h-3" aria-hidden />,   color: "text-purple-500" },
+              { label: "Events",     count: stats.events,        icon: <Zap className="w-3 h-3" aria-hidden />,        color: "text-orange-500" },
+              { label: "TimeSeries", count: stats.timeseries,    icon: <LineChart className="w-3 h-3" aria-hidden />,  color: "text-green-500"  },
+              { label: "Relations",  count: stats.relationships, icon: <Share2 className="w-3 h-3" aria-hidden />,     color: "text-indigo-500" },
             ].map((s) => (
               <div key={s.label} className={`flex items-center gap-1.5 text-xs ${s.color}`}>
                 {s.icon}
                 <span className="font-semibold">{s.count}</span>
-                <span className="text-zinc-200 hidden sm:inline">{s.label}</span>
+                <span className="text-slate-800 hidden sm:inline">{s.label}</span>
               </div>
             ))}
           </div>
@@ -233,7 +254,7 @@ export default function KnowledgeGraph({ active }: Props) {
         className={cn("flex-1 min-h-[16rem] sm:min-h-[24rem] rounded-xl overflow-hidden relative", CARD_SURFACE_A)}
       >
         {loading && (
-          <div className="absolute inset-0 flex items-center justify-center text-zinc-600">
+          <div className="absolute inset-0 flex items-center justify-center text-slate-400">
             <div className="text-center">
               <Waypoints className="w-10 h-10 mb-3 animate-pulse mx-auto" />
               <p className="text-sm">Loading knowledge graph…</p>
@@ -245,8 +266,8 @@ export default function KnowledgeGraph({ active }: Props) {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex flex-col items-center gap-3 text-center px-8">
               <AlertTriangle className="w-10 h-10 text-yellow-400" />
-              <p className="text-sm text-zinc-300">Could not load graph data</p>
-              <p className="text-xs text-zinc-600 font-mono max-w-sm">{error}</p>
+              <p className="text-sm text-slate-700">Could not load graph data</p>
+              <p className="text-xs text-slate-400 font-mono max-w-sm">{error}</p>
             </div>
           </div>
         )}
@@ -275,7 +296,7 @@ export default function KnowledgeGraph({ active }: Props) {
             <div className="absolute bottom-3 right-3 z-10 flex gap-2">
               <button
                 type="button"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-900/90 px-2.5 py-1.5 text-xs text-zinc-300 backdrop-blur-sm hover:border-zinc-600 hover:bg-zinc-800/90 focus:outline-none focus:border-sky-600"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white/90 px-2.5 py-1.5 text-xs text-slate-700 backdrop-blur-sm hover:border-slate-300 hover:bg-slate-100/90 focus:outline-none focus:border-[#304cb2]"
                 title="Fit graph in view"
                 aria-label="Recenter graph"
                 onClick={() => graphRef.current?.recenter()}
@@ -285,7 +306,7 @@ export default function KnowledgeGraph({ active }: Props) {
               </button>
               <button
                 type="button"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-900/90 px-2.5 py-1.5 text-xs text-zinc-300 backdrop-blur-sm hover:border-zinc-600 hover:bg-zinc-800/90 focus:outline-none focus:border-sky-600"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white/90 px-2.5 py-1.5 text-xs text-slate-700 backdrop-blur-sm hover:border-slate-300 hover:bg-slate-100/90 focus:outline-none focus:border-[#304cb2]"
                 title="Animate back to the default settled layout"
                 aria-label="Reset graph layout"
                 onClick={() => graphRef.current?.resetLayout()}
@@ -298,21 +319,20 @@ export default function KnowledgeGraph({ active }: Props) {
 
         {/* Legend overlay */}
         {graphData && !loading && (
-          <div className={cn("absolute top-3 left-3 rounded-lg px-3 py-2 backdrop-blur-sm max-w-[220px] max-h-[min(70vh,520px)] overflow-y-auto bg-zinc-900/90 border-zinc-800", CARD_SURFACE_B)}>
-            <p className="text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-widest">
+          <div className={cn("absolute top-3 left-3 rounded-lg px-3 py-2 backdrop-blur-sm max-w-[220px] max-h-[min(70vh,520px)] overflow-y-auto bg-white/90 border-slate-200", CARD_SURFACE_B)}>
+            <p className="text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-widest">
               Node types
             </p>
             <div className="space-y-1">
               {[
-                { type: "Asset",              color: "#38bdf8" },
-                { type: "TimeSeries",         color: "#34d399" },
-                { type: "Event",              color: "#fb923c" },
-                { type: "File / Document",    color: "#c084fc" },
-                { type: "Oper. Policy",       color: "#f472b6" },
-              ].map((l) => (
-                <div key={l.type} className="flex items-center gap-2 text-xs text-zinc-200">
+                { type: "Asset",      color: "#3b82f6" },
+                { type: "File",       color: "#a855f7" },
+                { type: "Event",      color: "#f97316" },
+                { type: "TimeSeries", color: "#22c55e" },
+              ].map((l) => (  // order: Asset → File → Event → TimeSeries
+                <div key={l.type} className="flex items-center gap-2 text-xs text-slate-800">
                   <span
-                    className="w-2.5 h-2.5 rounded-full shrink-0 border border-zinc-600"
+                    className="w-2.5 h-2.5 rounded-full shrink-0 border border-slate-300"
                     style={{ backgroundColor: l.color }}
                   />
                   {l.type}
@@ -321,7 +341,7 @@ export default function KnowledgeGraph({ active }: Props) {
             </div>
             {allEdgeTypes.length > 0 && (
               <>
-                <p className="text-xs font-semibold text-zinc-400 mb-1 mt-2 pt-2 border-t border-zinc-800/60 uppercase tracking-widest">
+                <p className="text-xs font-semibold text-slate-500 mb-1 mt-2 pt-2 border-t border-slate-200 uppercase tracking-widest">
                   Edge types
                 </p>
                 <div className="space-y-1">
@@ -329,7 +349,7 @@ export default function KnowledgeGraph({ active }: Props) {
                     const sample = graphData.links.find((l: GraphLink) => l.type === t);
                     const swatch = sample?.color || "#666";
                     return (
-                      <div key={t} className="flex items-center gap-2 text-xs text-zinc-200">
+                      <div key={t} className="flex items-center gap-2 text-xs text-slate-800">
                         <span className="w-6 h-0.5 shrink-0" style={{ backgroundColor: swatch }} />
                         <span className="truncate font-mono">{t}</span>
                       </div>
@@ -339,8 +359,8 @@ export default function KnowledgeGraph({ active }: Props) {
               </>
             )}
             {displayTraversedIds.size > 0 && (
-              <div className="flex items-center gap-2 text-xs text-yellow-400 mt-1.5 border-t border-zinc-800/60 pt-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-400 shrink-0" />
+              <div className="flex items-center gap-2 text-xs text-red-600 mt-1.5 border-t border-slate-200 pt-1.5 font-medium">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0 ring-2 ring-red-200" />
                 {displayTraversedIds.size} node{displayTraversedIds.size === 1 ? "" : "s"} traversed
               </div>
             )}

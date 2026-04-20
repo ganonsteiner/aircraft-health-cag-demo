@@ -30,110 +30,83 @@ DOCUMENT_DEFS: list[dict[str, Any]] = [
     {
         "id": 500,
         "externalId": "DOC-POH-LIMITATIONS",
-        "name": "POH — Section 2: Limitations",
+        "name": "FCOM — Chapter 2: Limitations (B737-800 / CFM56-7B)",
         "filename": "poh_limitations.txt",
         "mimeType": "text/plain",
-        "linkedAssets": ["N4798E"],
-        "metadata": {"type": "poh", "section": "limitations"},
+        "linkedAssets": ["ALL_AIRCRAFT"],
+        "metadata": {"type": "fcom", "section": "limitations"},
     },
     {
         "id": 501,
         "externalId": "DOC-POH-EMERGENCY",
-        "name": "POH — Section 3: Emergency Procedures",
+        "name": "FCOM — Chapter 3: Emergency Procedures (B737-800 / CFM56-7B)",
         "filename": "poh_emergency.txt",
         "mimeType": "text/plain",
-        "linkedAssets": ["N4798E"],
-        "metadata": {"type": "poh", "section": "emergency"},
+        "linkedAssets": ["ALL_AIRCRAFT"],
+        "metadata": {"type": "fcom", "section": "emergency"},
     },
     {
         "id": 502,
         "externalId": "DOC-POH-SYSTEMS",
-        "name": "POH — Section 7: Aircraft Systems",
+        "name": "FCOM — Chapter 7: Aircraft and Systems Description (B737-800 / CFM56-7B)",
         "filename": "poh_systems.txt",
         "mimeType": "text/plain",
-        "linkedAssets": ["N4798E", "ENGINE-1"],
-        "metadata": {"type": "poh", "section": "systems"},
+        "linkedAssets": ["ALL_AIRCRAFT", "ENGINE-1"],
+        "metadata": {"type": "fcom", "section": "systems"},
     },
     {
         "id": 503,
         "externalId": "DOC-POH-PERFORMANCE",
-        "name": "POH — Section 5: Performance",
+        "name": "FCOM — Chapter 5: Performance (B737-800 / CFM56-7B)",
         "filename": "poh_performance.txt",
         "mimeType": "text/plain",
-        "linkedAssets": ["N4798E"],
-        "metadata": {"type": "poh", "section": "performance"},
+        "linkedAssets": ["ALL_AIRCRAFT"],
+        "metadata": {"type": "fcom", "section": "performance"},
     },
     {
         "id": 504,
-        "externalId": "DOC-AD-80-04-03-R2",
-        "name": "AD 80-04-03 R2 — Lycoming Cam/Lifter Inspection",
-        "filename": "ad_80-04-03-r2_cam_lifter.txt",
+        "externalId": "DOC-AD-2020-14-06",
+        "name": "AD 2020-14-06 — CFM56-7B HPT Stage 1 Blade Inspection",
+        "filename": "ad_2020-14-06_cfm56_hpt_blade.txt",
         "mimeType": "text/plain",
-        "linkedAssets": ["ENGINE-1", "ENGINE-1-CAM-LIFTERS"],
-        "metadata": {"type": "ad", "ad_number": "80-04-03 R2", "aircraft": "Lycoming O-320-H2AD"},
+        "linkedAssets": ["ALL_AIRCRAFT"],
+        "metadata": {"type": "ad", "ad_number": "2020-14-06", "aircraft": "Boeing 737-800 / CFM56-7B"},
     },
     {
         "id": 505,
-        "externalId": "DOC-AD-2001-23-03",
-        "name": "AD 2001-23-03 — Cessna 172 Door Post Wiring Inspection",
-        "filename": "ad_2001-23-03_doorpost.txt",
+        "externalId": "DOC-AD-2018-23-09",
+        "name": "AD 2018-23-09 — CFM56-7B Fan Blade Root Fatigue Inspection",
+        "filename": "ad_2018-23-09_cfm56_fan_blade.txt",
         "mimeType": "text/plain",
-        "linkedAssets": ["AIRFRAME-1"],
-        "metadata": {"type": "ad", "ad_number": "2001-23-03"},
+        "linkedAssets": ["ALL_AIRCRAFT"],
+        "metadata": {"type": "ad", "ad_number": "2018-23-09", "aircraft": "Boeing 737-800 / CFM56-7B"},
     },
     {
         "id": 506,
-        "externalId": "DOC-AD-2011-10-09",
-        "name": "AD 2011-10-09 — Cessna Seat Rail/Lock Inspection",
-        "filename": "ad_2011-10-09_seat_rail.txt",
+        "externalId": "DOC-AD-2015-08-12",
+        "name": "AD 2015-08-12 — Boeing 737-800 Emergency Exit Row Floor Track",
+        "filename": "ad_2015-08-12_737_exit_floor_track.txt",
         "mimeType": "text/plain",
-        "linkedAssets": ["AIRFRAME-1-SEATS-BELTS"],
-        "metadata": {"type": "ad", "ad_number": "2011-10-09"},
-    },
-    {
-        "id": 507,
-        "externalId": "DOC-AD-90-06-03-R1",
-        "name": "AD 90-06-03 R1 — Cessna 172 Exhaust Muffler/Heat Exchanger Inspection",
-        "filename": "ad_90-06-03-r1_exhaust.txt",
-        "mimeType": "text/plain",
-        "linkedAssets": ["ENGINE-1-EXHAUST"],
-        "metadata": {"type": "ad", "ad_number": "90-06-03 R1"},
-    },
-    {
-        "id": 508,
-        "externalId": "DOC-SB-480F",
-        "name": "Lycoming SB 480F — Oil Servicing Recommendations",
-        "filename": "sb_480f_oil_service.txt",
-        "mimeType": "text/plain",
-        "linkedAssets": ["ENGINE-1", "ENGINE-1-OIL-FILTER"],
-        "metadata": {"type": "sb", "sb_number": "480F", "manufacturer": "Lycoming"},
+        "linkedAssets": ["ALL_AIRCRAFT"],
+        "metadata": {"type": "ad", "ad_number": "2015-08-12", "aircraft": "Boeing 737-800"},
     },
 ]
 
 
 def _expand_template_assets_to_fleet(linked_templates: list[str]) -> list[str]:
     """
-    Expand legacy template asset IDs to all four tails (fleet-wide POH, shared engine ADs/SBs).
-    N4798E in a template list means every aircraft root; ENGINE-1 → each tail's engine, etc.
+    Expand symbolic asset IDs to all fleet tails.
+    ALL_AIRCRAFT → every aircraft root asset.
+    ENGINE-1     → each tail's Engine #1 sub-asset.
     """
     from dataset import TAILS  # type: ignore[import]
 
     expanded: list[str] = []
     for tmpl in linked_templates:
-        if tmpl == "N4798E":
+        if tmpl == "ALL_AIRCRAFT":
             expanded.extend(TAILS)
         elif tmpl == "ENGINE-1":
-            expanded.extend(f"{t}-ENGINE" for t in TAILS)
-        elif tmpl == "ENGINE-1-CAM-LIFTERS":
-            expanded.extend(f"{t}-ENGINE-CYLINDERS" for t in TAILS)
-        elif tmpl == "AIRFRAME-1":
-            expanded.extend(f"{t}-AIRFRAME" for t in TAILS)
-        elif tmpl == "AIRFRAME-1-SEATS-BELTS":
-            expanded.extend(f"{t}-AIRFRAME" for t in TAILS)
-        elif tmpl == "ENGINE-1-EXHAUST":
-            expanded.extend(f"{t}-ENGINE" for t in TAILS)
-        elif tmpl == "ENGINE-1-OIL-FILTER":
-            expanded.extend(f"{t}-ENGINE-OIL" for t in TAILS)
+            expanded.extend(f"{t}-ENGINE-1" for t in TAILS)
         else:
             expanded.append(tmpl)
     seen: set[str] = set()

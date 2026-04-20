@@ -19,6 +19,9 @@ export interface FleetAircraft {
   smoh: number;
   tbo: number;
   smohPercent: number;
+  engine2SMOH?: number;
+  engine2TBO?: number;
+  engine2SMOHPercent?: number;
   hobbs: number;
   /** Engine tach (maintenance clock). */
   tach: number;
@@ -45,6 +48,9 @@ export interface AircraftStatus {
   engineSMOH: number;
   engineTBO: number;
   engineSMOHPercent: number;
+  engine2SMOH?: number;
+  engine2TBO?: number;
+  engine2SMOHPercent?: number;
   annualDueDate: string;
   annualDaysRemaining: number | null;
   openSquawkCount: number;
@@ -114,15 +120,70 @@ export interface FlightRecord {
   tach_end: number | null;
   duration: number;
   route: string;
-  cht_max: number | null;
-  egt_max: number | null;
+  /** 737 engine metrics */
+  egt_deviation: number | null;
+  n1_vibration: number | null;
   oil_pressure_min: number | null;
   oil_pressure_max: number | null;
   oil_temp_max: number | null;
+  fuel_flow_kgh: number | null;
+  /** Legacy piston fields (may be null for 737 flights) */
+  cht_max: number | null;
+  egt_max: number | null;
   fuel_used_gal: number | null;
   pilot_notes: string;
   anomalous: boolean;
   year: number;
+}
+
+export interface TimeseriesDatapoint {
+  timestamp: number;
+  value: number;
+  flight_index: number;
+}
+
+export interface TimeseriesResponse {
+  aircraft: string;
+  metric: string;
+  unit: string;
+  caution_threshold: number | null;
+  critical_threshold?: number | null;
+  datapoints: TimeseriesDatapoint[];
+}
+
+export interface Insight {
+  id: string;
+  title: string;
+  summary: string;
+  severity: "critical" | "warning" | "info";
+  aircraft: string[];
+  generated_at: string;
+  reasoning: string;
+  category: "safety" | "maintenance" | "pattern" | "compliance";
+}
+
+export interface InsightsResponse {
+  insights: Insight[];
+  generated_at: string | null;
+  is_fallback: boolean;
+}
+
+export interface PredictiveRisk {
+  aircraft: string;
+  status: "scored" | "insufficient_data";
+  risk_score: number | null;
+  risk_level: "low" | "moderate" | "high" | "critical" | "failed" | null;
+  primary_driver: string | null;
+  reasoning: string | null;
+  recommended_action: string | null;
+  confidence: "high" | "moderate" | "low" | null;
+  data_points_analyzed: number | null;
+  generated_at: string | null;
+}
+
+export interface Suggestion {
+  question: string;
+  context: string | null;
 }
 
 export interface FlightHistoryPage {

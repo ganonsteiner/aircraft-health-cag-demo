@@ -14,7 +14,7 @@ Extended routes for fleet-specific resource types (policies, fleet_owners) retur
 called via httpx from agent tools — matching the same mock CDF pattern
 without requiring SDK changes. Symptoms are standard CDF Events (Observation/Symptom).
 
-Runs on port 4001 (MOCK_CDF_PORT). Project: desert_sky.
+Runs on port 4001 (MOCK_CDF_PORT). Project: southwest_airlines.
 """
 
 import gzip
@@ -33,7 +33,7 @@ from .routes.relationships import router as relationships_router
 from .routes.files import router as files_router
 from .store.store import store
 
-PROJECT = "desert_sky"
+PROJECT = "southwest_airlines"
 BASE = f"/api/v1/projects/{PROJECT}"
 
 
@@ -98,7 +98,7 @@ def create_app() -> FastAPI:
     """Create and configure the FastAPI mock CDF server."""
     _app = FastAPI(
         title="Mock CDF Server",
-        description="Cognite Data Fusion REST API mock for Desert Sky Aviation fleet",
+        description="Cognite Data Fusion REST API mock for Southwest Airlines fleet",
         version="2.0.0",
     )
 
@@ -198,7 +198,7 @@ def create_app() -> FastAPI:
     def on_startup() -> None:
         port = os.getenv("MOCK_CDF_PORT", "4001")
         counts = store.get_counts()
-        print(f"\n✈  Mock CDF server — Desert Sky Aviation Fleet")
+        print("\n✈  Mock CDF server — Southwest Airlines Fleet")
         print(f"   Port: {port}  Project: {PROJECT}")
         print(f"   Store: {counts}\n")
 

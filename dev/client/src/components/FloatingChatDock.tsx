@@ -43,7 +43,7 @@ interface Props {
  * Open state lives in Zustand so it survives tab changes.
  *
  * No full-screen overlay: the rest of the app stays clickable. A capture listener closes the
- * chat on “empty” clicks; real controls (links, buttons, inputs, graph canvas, etc.) keep it open.
+ * chat on "empty" clicks; real controls (links, buttons, inputs, graph canvas, etc.) keep it open.
  * Navigating to the full AI Assistant tab still clears floating chat (see App.tsx).
  */
 export default function FloatingChatDock({
@@ -82,7 +82,7 @@ export default function FloatingChatDock({
         <div
           ref={panelRef}
           className={cn(
-            "fixed right-4 bottom-20 w-[min(24rem,90vw)] rounded-xl shadow-2xl overflow-hidden z-40 flex flex-col",
+            "fixed right-4 bottom-20 w-[min(24rem,90vw)] rounded-xl shadow-2xl overflow-hidden z-50 flex flex-col",
             CARD_SURFACE_B
           )}
           style={{ height: "min(58vh, 480px)" }}
@@ -90,15 +90,15 @@ export default function FloatingChatDock({
           aria-modal="false"
           aria-label="Chat"
         >
-          <div className="flex items-center justify-between px-3 py-2 border-b border-zinc-800 bg-zinc-900/95 backdrop-blur-sm">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
             <div className="flex items-center gap-1.5 min-w-0">
-              <MessageSquare className="w-4 h-4 text-sky-400 shrink-0" aria-hidden />
-              <span className="text-xs font-medium text-zinc-200 shrink-0">AI Assistant</span>
+              <MessageSquare className="w-4 h-4 text-[#304cb2] shrink-0" aria-hidden />
+              <span className="text-xs font-medium text-slate-800 shrink-0">AI Assistant</span>
             </div>
             <button
               type="button"
               onClick={() => setFloatingChatOpen(false)}
-              className="text-zinc-600 hover:text-zinc-300 transition-colors shrink-0 p-1 rounded-md hover:bg-zinc-800/80"
+              className="text-slate-400 hover:text-slate-700 transition-colors shrink-0 p-1 rounded-md hover:bg-slate-100"
               aria-label="Close chat"
             >
               <X className="w-4 h-4" />
@@ -120,8 +120,8 @@ export default function FloatingChatDock({
         ref={fabRef}
         type="button"
         onClick={() => toggleFloatingChat()}
-        className="fixed bottom-6 right-6 w-12 h-12 bg-sky-600 hover:bg-sky-500 rounded-full
-          shadow-lg flex items-center justify-center transition-colors z-50"
+        className="fixed bottom-6 right-6 w-12 h-12 bg-[#304cb2] hover:bg-blue-700 rounded-full
+          shadow-lg flex items-center justify-center transition-colors z-[60]"
         title={floatingChatOpen ? "Close chat" : "Open chat"}
       >
         {floatingChatOpen ? (

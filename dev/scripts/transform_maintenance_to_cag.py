@@ -49,8 +49,8 @@ def write_maintenance_csv(tail: str) -> Path:
 
 def main() -> None:
     anchor = get_demo_anchor()
-    env_used = os.environ.get("DESERT_SKY_DEMO_DATE", "").strip()
-    src = "DESERT_SKY_DEMO_DATE" if env_used else "UTC today"
+    env_used = os.environ.get("SW_DEMO_DATE", "").strip()
+    src = "SW_DEMO_DATE" if env_used else "UTC today"
     print(f"Demo anchor (UTC date): {anchor.date().isoformat()} (source: {src})")
     print("Generating per-tail maintenance CSVs...")
     for tail in TAILS:

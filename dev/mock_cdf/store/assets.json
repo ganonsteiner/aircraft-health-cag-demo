@@ -1,532 +1,1191 @@
 [
   {
     "id": 1,
-    "externalId": "N4798E",
-    "name": "N4798E \u2014 1978 Cessna 172N",
-    "description": "1978 Cessna 172N, S/N 17270798. 380 SMOH. Based KPHX.",
+    "externalId": "N287WN",
+    "name": "N287WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, S/N 28789. 9718 EFH SMOH. Based PHX.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
-      "aircraft_type": "Cessna 172N",
-      "year": "1978",
-      "serial_number": "17270798",
-      "tail_number": "N4798E",
-      "base_airport": "KPHX",
-      "engine_type": "Lycoming O-320-H2AD",
-      "engine_tbo_hours": "2000",
-      "engine_smoh": "380",
-      "overhaul_tach": "4060.3",
-      "max_gross_weight_lbs": "2300",
-      "operator": "Desert Sky Aviation"
+      "aircraft_type": "Boeing 737-800",
+      "serial_number": "28789",
+      "tail_number": "N287WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "engine_smoh": "9718",
+      "efh_at_shop_visit": "18650.0",
+      "operator": "Southwest Airlines",
+      "status_note": "NOT_AIRWORTHY \u2014 Engine #1 failure, grounded for engine replacement",
+      "max_gross_weight_lbs": "174200"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 2,
-    "externalId": "N4798E-ENGINE",
-    "name": "N4798E \u2014 Engine (Lycoming O-320-H2AD)",
-    "description": "Lycoming O-320-H2AD, 160 hp, 2000 hr TBOH, 380 SMOH",
+    "externalId": "N287WN-ENGINE-1",
+    "name": "N287WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 9718 EFH since last shop visit.",
     "parentId": null,
-    "parentExternalId": "N4798E",
+    "parentExternalId": "N287WN",
     "metadata": {
-      "model": "O-320-H2AD",
-      "hp": "160",
-      "tbo_hours": "2000",
-      "smoh": "380",
-      "fuel_type": "100LL"
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "9718",
+      "efh_at_shop_visit": "18650.0",
+      "position": "left_wing",
+      "component_status": "failed"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 3,
-    "externalId": "N4798E-ENGINE-CYLINDERS",
-    "name": "N4798E \u2014 Cylinders (4)",
-    "description": "Four cylinders, Champion REM40E spark plugs, hydraulic barrel lifters (H2AD variant)",
+    "externalId": "N287WN-ENGINE-2",
+    "name": "N287WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 8868 EFH since last shop visit.",
     "parentId": null,
-    "parentExternalId": "N4798E-ENGINE",
+    "parentExternalId": "N287WN",
     "metadata": {
-      "count": "4",
-      "plug_model": "Champion REM40E"
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "8868",
+      "efh_at_shop_visit": "19500.0",
+      "position": "right_wing"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 4,
-    "externalId": "N4798E-ENGINE-OIL",
-    "name": "N4798E \u2014 Oil System",
-    "description": "Wet sump, 8 qt capacity, 50-hr change interval per Lycoming SB 388C",
+    "externalId": "N287WN-APU",
+    "name": "N287WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
     "parentId": null,
-    "parentExternalId": "N4798E-ENGINE",
+    "parentExternalId": "N287WN",
     "metadata": {
-      "capacity_qts": "8",
-      "change_interval_hrs": "50"
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 5,
-    "externalId": "N4798E-PROPELLER",
-    "name": "N4798E \u2014 Propeller (McCauley 1C235/DTM7557)",
-    "description": "McCauley 1C235/DTM7557 fixed-pitch 2-blade, 2000 hr / 6 yr TBOH",
+    "externalId": "N287WN-AIRFRAME",
+    "name": "N287WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
     "parentId": null,
-    "parentExternalId": "N4798E",
+    "parentExternalId": "N287WN",
     "metadata": {
-      "model": "1C235/DTM7557",
-      "tbo_hours": "2000",
-      "tbo_years": "6"
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5",
+      "fuselage_stations": "full"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 6,
-    "externalId": "N4798E-AIRFRAME",
-    "name": "N4798E \u2014 Airframe",
-    "description": "Fuselage, wings, empennage, flight controls, landing gear",
+    "externalId": "N287WN-AVIONICS",
+    "name": "N287WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
     "parentId": null,
-    "parentExternalId": "N4798E",
+    "parentExternalId": "N287WN",
     "metadata": {
-      "max_gross_weight_lbs": "2300",
-      "vne_kias": "163"
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 7,
-    "externalId": "N4798E-AVIONICS",
-    "name": "N4798E \u2014 Avionics",
-    "description": "Comm radio, nav/VOR, transponder (24-mo inspection), ELT (12-mo battery)",
+    "externalId": "N287WN-LANDING-GEAR",
+    "name": "N287WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
     "parentId": null,
-    "parentExternalId": "N4798E",
+    "parentExternalId": "N287WN",
     "metadata": {
-      "transponder_inspection_months": "24",
-      "elt_battery_months": "12"
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 8,
-    "externalId": "N4798E-FUEL-SYSTEM",
-    "name": "N4798E \u2014 Fuel System",
-    "description": "Gravity-feed from two wing tanks, 43 gal usable, 100LL avgas",
+    "externalId": "N287WN-HYDRAULICS",
+    "name": "N287WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
     "parentId": null,
-    "parentExternalId": "N4798E",
+    "parentExternalId": "N287WN",
     "metadata": {
-      "capacity_gal_usable": "43",
-      "fuel_type": "100LL"
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 11,
-    "externalId": "N2251K",
-    "name": "N2251K \u2014 1978 Cessna 172N",
-    "description": "1978 Cessna 172N, S/N 17271243. 290 SMOH. Based KPHX.",
+    "externalId": "N246WN",
+    "name": "N246WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, S/N 28246. 9276 EFH SMOH. Based PHX.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
-      "aircraft_type": "Cessna 172N",
-      "year": "1978",
-      "serial_number": "17271243",
-      "tail_number": "N2251K",
-      "base_airport": "KPHX",
-      "engine_type": "Lycoming O-320-H2AD",
-      "engine_tbo_hours": "2000",
-      "engine_smoh": "290",
-      "overhaul_tach": "4464.9",
-      "max_gross_weight_lbs": "2300",
-      "operator": "Desert Sky Aviation"
+      "aircraft_type": "Boeing 737-800",
+      "serial_number": "28246",
+      "tail_number": "N246WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "engine_smoh": "9276",
+      "efh_at_shop_visit": "14200.0",
+      "operator": "Southwest Airlines",
+      "status_note": "CAUTION \u2014 Engine #1 EGT deviation +14\u00b0C, N1 vibration 1.9 units, enhanced monitoring",
+      "max_gross_weight_lbs": "174200"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 12,
-    "externalId": "N2251K-ENGINE",
-    "name": "N2251K \u2014 Engine (Lycoming O-320-H2AD)",
-    "description": "Lycoming O-320-H2AD, 160 hp, 2000 hr TBOH, 290 SMOH",
+    "externalId": "N246WN-ENGINE-1",
+    "name": "N246WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 9276 EFH since last shop visit.",
     "parentId": null,
-    "parentExternalId": "N2251K",
+    "parentExternalId": "N246WN",
     "metadata": {
-      "model": "O-320-H2AD",
-      "hp": "160",
-      "tbo_hours": "2000",
-      "smoh": "290",
-      "fuel_type": "100LL"
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "9276",
+      "efh_at_shop_visit": "14200.0",
+      "position": "left_wing"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 13,
-    "externalId": "N2251K-ENGINE-CYLINDERS",
-    "name": "N2251K \u2014 Cylinders (4)",
-    "description": "Four cylinders, Champion REM40E spark plugs, hydraulic barrel lifters (H2AD variant)",
+    "externalId": "N246WN-ENGINE-2",
+    "name": "N246WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 8676 EFH since last shop visit.",
     "parentId": null,
-    "parentExternalId": "N2251K-ENGINE",
+    "parentExternalId": "N246WN",
     "metadata": {
-      "count": "4",
-      "plug_model": "Champion REM40E"
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "8676",
+      "efh_at_shop_visit": "14800.0",
+      "position": "right_wing"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 14,
-    "externalId": "N2251K-ENGINE-OIL",
-    "name": "N2251K \u2014 Oil System",
-    "description": "Wet sump, 8 qt capacity, 50-hr change interval per Lycoming SB 388C",
+    "externalId": "N246WN-APU",
+    "name": "N246WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
     "parentId": null,
-    "parentExternalId": "N2251K-ENGINE",
+    "parentExternalId": "N246WN",
     "metadata": {
-      "capacity_qts": "8",
-      "change_interval_hrs": "50"
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 15,
-    "externalId": "N2251K-PROPELLER",
-    "name": "N2251K \u2014 Propeller (McCauley 1C235/DTM7557)",
-    "description": "McCauley 1C235/DTM7557 fixed-pitch 2-blade, 2000 hr / 6 yr TBOH",
+    "externalId": "N246WN-AIRFRAME",
+    "name": "N246WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
     "parentId": null,
-    "parentExternalId": "N2251K",
+    "parentExternalId": "N246WN",
     "metadata": {
-      "model": "1C235/DTM7557",
-      "tbo_hours": "2000",
-      "tbo_years": "6"
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5",
+      "fuselage_stations": "full"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 16,
-    "externalId": "N2251K-AIRFRAME",
-    "name": "N2251K \u2014 Airframe",
-    "description": "Fuselage, wings, empennage, flight controls, landing gear",
+    "externalId": "N246WN-AVIONICS",
+    "name": "N246WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
     "parentId": null,
-    "parentExternalId": "N2251K",
+    "parentExternalId": "N246WN",
     "metadata": {
-      "max_gross_weight_lbs": "2300",
-      "vne_kias": "163"
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 17,
-    "externalId": "N2251K-AVIONICS",
-    "name": "N2251K \u2014 Avionics",
-    "description": "Comm radio, nav/VOR, transponder (24-mo inspection), ELT (12-mo battery)",
+    "externalId": "N246WN-LANDING-GEAR",
+    "name": "N246WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
     "parentId": null,
-    "parentExternalId": "N2251K",
+    "parentExternalId": "N246WN",
     "metadata": {
-      "transponder_inspection_months": "24",
-      "elt_battery_months": "12"
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 18,
-    "externalId": "N2251K-FUEL-SYSTEM",
-    "name": "N2251K \u2014 Fuel System",
-    "description": "Gravity-feed from two wing tanks, 43 gal usable, 100LL avgas",
+    "externalId": "N246WN-HYDRAULICS",
+    "name": "N246WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
     "parentId": null,
-    "parentExternalId": "N2251K",
+    "parentExternalId": "N246WN",
     "metadata": {
-      "capacity_gal_usable": "43",
-      "fuel_type": "100LL"
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 21,
-    "externalId": "N8834Q",
-    "name": "N8834Q \u2014 1978 Cessna 172N",
-    "description": "1978 Cessna 172N, S/N 17273047. 198 SMOH. Based KPHX.",
+    "externalId": "N220WN",
+    "name": "N220WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, S/N 28220. 6300 EFH SMOH. Based PHX.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
-      "aircraft_type": "Cessna 172N",
-      "year": "1978",
-      "serial_number": "17273047",
-      "tail_number": "N8834Q",
-      "base_airport": "KPHX",
-      "engine_type": "Lycoming O-320-H2AD",
-      "engine_tbo_hours": "2000",
-      "engine_smoh": "198",
-      "overhaul_tach": "4267.2",
-      "max_gross_weight_lbs": "2300",
-      "operator": "Desert Sky Aviation"
+      "aircraft_type": "Boeing 737-800",
+      "serial_number": "28220",
+      "tail_number": "N220WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "engine_smoh": "6300",
+      "efh_at_shop_visit": "12400.0",
+      "operator": "Southwest Airlines",
+      "status_note": "AIRWORTHY \u2014 All parameters nominal",
+      "max_gross_weight_lbs": "174200"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 22,
-    "externalId": "N8834Q-ENGINE",
-    "name": "N8834Q \u2014 Engine (Lycoming O-320-H2AD)",
-    "description": "Lycoming O-320-H2AD, 160 hp, 2000 hr TBOH, 198 SMOH",
+    "externalId": "N220WN-ENGINE-1",
+    "name": "N220WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 6300 EFH since last shop visit.",
     "parentId": null,
-    "parentExternalId": "N8834Q",
+    "parentExternalId": "N220WN",
     "metadata": {
-      "model": "O-320-H2AD",
-      "hp": "160",
-      "tbo_hours": "2000",
-      "smoh": "198",
-      "fuel_type": "100LL"
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "6300",
+      "efh_at_shop_visit": "12400.0",
+      "position": "left_wing"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 23,
-    "externalId": "N8834Q-ENGINE-CYLINDERS",
-    "name": "N8834Q \u2014 Cylinders (4)",
-    "description": "Four cylinders, Champion REM40E spark plugs, hydraulic barrel lifters (H2AD variant)",
+    "externalId": "N220WN-ENGINE-2",
+    "name": "N220WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 8500 EFH since last shop visit.",
     "parentId": null,
-    "parentExternalId": "N8834Q-ENGINE",
+    "parentExternalId": "N220WN",
     "metadata": {
-      "count": "4",
-      "plug_model": "Champion REM40E"
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "8500",
+      "efh_at_shop_visit": "10200.0",
+      "position": "right_wing"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 24,
-    "externalId": "N8834Q-ENGINE-OIL",
-    "name": "N8834Q \u2014 Oil System",
-    "description": "Wet sump, 8 qt capacity, 50-hr change interval per Lycoming SB 388C",
+    "externalId": "N220WN-APU",
+    "name": "N220WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
     "parentId": null,
-    "parentExternalId": "N8834Q-ENGINE",
+    "parentExternalId": "N220WN",
     "metadata": {
-      "capacity_qts": "8",
-      "change_interval_hrs": "50"
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 25,
-    "externalId": "N8834Q-PROPELLER",
-    "name": "N8834Q \u2014 Propeller (McCauley 1C235/DTM7557)",
-    "description": "McCauley 1C235/DTM7557 fixed-pitch 2-blade, 2000 hr / 6 yr TBOH",
+    "externalId": "N220WN-AIRFRAME",
+    "name": "N220WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
     "parentId": null,
-    "parentExternalId": "N8834Q",
+    "parentExternalId": "N220WN",
     "metadata": {
-      "model": "1C235/DTM7557",
-      "tbo_hours": "2000",
-      "tbo_years": "6"
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5",
+      "fuselage_stations": "full"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 26,
-    "externalId": "N8834Q-AIRFRAME",
-    "name": "N8834Q \u2014 Airframe",
-    "description": "Fuselage, wings, empennage, flight controls, landing gear",
+    "externalId": "N220WN-AVIONICS",
+    "name": "N220WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
     "parentId": null,
-    "parentExternalId": "N8834Q",
+    "parentExternalId": "N220WN",
     "metadata": {
-      "max_gross_weight_lbs": "2300",
-      "vne_kias": "163"
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 27,
-    "externalId": "N8834Q-AVIONICS",
-    "name": "N8834Q \u2014 Avionics",
-    "description": "Comm radio, nav/VOR, transponder (24-mo inspection), ELT (12-mo battery)",
+    "externalId": "N220WN-LANDING-GEAR",
+    "name": "N220WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
     "parentId": null,
-    "parentExternalId": "N8834Q",
+    "parentExternalId": "N220WN",
     "metadata": {
-      "transponder_inspection_months": "24",
-      "elt_battery_months": "12"
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 28,
-    "externalId": "N8834Q-FUEL-SYSTEM",
-    "name": "N8834Q \u2014 Fuel System",
-    "description": "Gravity-feed from two wing tanks, 43 gal usable, 100LL avgas",
+    "externalId": "N220WN-HYDRAULICS",
+    "name": "N220WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
     "parentId": null,
-    "parentExternalId": "N8834Q",
+    "parentExternalId": "N220WN",
     "metadata": {
-      "capacity_gal_usable": "43",
-      "fuel_type": "100LL"
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 31,
-    "externalId": "N1156P",
-    "name": "N1156P \u2014 1978 Cessna 172N",
-    "description": "1978 Cessna 172N, S/N 17271891. 520 SMOH. Based KPHX.",
+    "externalId": "N235WN",
+    "name": "N235WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, S/N 28235. 5400 EFH SMOH. Based PHX.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
-      "aircraft_type": "Cessna 172N",
-      "year": "1978",
-      "serial_number": "17271891",
-      "tail_number": "N1156P",
-      "base_airport": "KPHX",
-      "engine_type": "Lycoming O-320-H2AD",
-      "engine_tbo_hours": "2000",
-      "engine_smoh": "520",
-      "overhaul_tach": "4475.5",
-      "max_gross_weight_lbs": "2300",
-      "operator": "Desert Sky Aviation"
+      "aircraft_type": "Boeing 737-800",
+      "serial_number": "28235",
+      "tail_number": "N235WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "engine_smoh": "5400",
+      "efh_at_shop_visit": "16800.0",
+      "operator": "Southwest Airlines",
+      "status_note": "AIRWORTHY \u2014 All parameters nominal",
+      "max_gross_weight_lbs": "174200"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 32,
-    "externalId": "N1156P-ENGINE",
-    "name": "N1156P \u2014 Engine (Lycoming O-320-H2AD)",
-    "description": "Lycoming O-320-H2AD, 160 hp, 2000 hr TBOH, 520 SMOH",
+    "externalId": "N235WN-ENGINE-1",
+    "name": "N235WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 5400 EFH since last shop visit.",
     "parentId": null,
-    "parentExternalId": "N1156P",
+    "parentExternalId": "N235WN",
     "metadata": {
-      "model": "O-320-H2AD",
-      "hp": "160",
-      "tbo_hours": "2000",
-      "smoh": "520",
-      "fuel_type": "100LL"
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "5400",
+      "efh_at_shop_visit": "16800.0",
+      "position": "left_wing"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 33,
-    "externalId": "N1156P-ENGINE-CYLINDERS",
-    "name": "N1156P \u2014 Cylinders (4)",
-    "description": "Four cylinders, Champion REM40E spark plugs, hydraulic barrel lifters (H2AD variant)",
+    "externalId": "N235WN-ENGINE-2",
+    "name": "N235WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 6500 EFH since last shop visit.",
     "parentId": null,
-    "parentExternalId": "N1156P-ENGINE",
+    "parentExternalId": "N235WN",
     "metadata": {
-      "count": "4",
-      "plug_model": "Champion REM40E"
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "6500",
+      "efh_at_shop_visit": "15700.0",
+      "position": "right_wing"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 34,
-    "externalId": "N1156P-ENGINE-OIL",
-    "name": "N1156P \u2014 Oil System",
-    "description": "Wet sump, 8 qt capacity, 50-hr change interval per Lycoming SB 388C",
+    "externalId": "N235WN-APU",
+    "name": "N235WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
     "parentId": null,
-    "parentExternalId": "N1156P-ENGINE",
+    "parentExternalId": "N235WN",
     "metadata": {
-      "capacity_qts": "8",
-      "change_interval_hrs": "50"
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 35,
-    "externalId": "N1156P-PROPELLER",
-    "name": "N1156P \u2014 Propeller (McCauley 1C235/DTM7557)",
-    "description": "McCauley 1C235/DTM7557 fixed-pitch 2-blade, 2000 hr / 6 yr TBOH",
+    "externalId": "N235WN-AIRFRAME",
+    "name": "N235WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
     "parentId": null,
-    "parentExternalId": "N1156P",
+    "parentExternalId": "N235WN",
     "metadata": {
-      "model": "1C235/DTM7557",
-      "tbo_hours": "2000",
-      "tbo_years": "6"
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5",
+      "fuselage_stations": "full"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 36,
-    "externalId": "N1156P-AIRFRAME",
-    "name": "N1156P \u2014 Airframe",
-    "description": "Fuselage, wings, empennage, flight controls, landing gear",
+    "externalId": "N235WN-AVIONICS",
+    "name": "N235WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
     "parentId": null,
-    "parentExternalId": "N1156P",
+    "parentExternalId": "N235WN",
     "metadata": {
-      "max_gross_weight_lbs": "2300",
-      "vne_kias": "163"
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 37,
-    "externalId": "N1156P-AVIONICS",
-    "name": "N1156P \u2014 Avionics",
-    "description": "Comm radio, nav/VOR, transponder (24-mo inspection), ELT (12-mo battery)",
+    "externalId": "N235WN-LANDING-GEAR",
+    "name": "N235WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
     "parentId": null,
-    "parentExternalId": "N1156P",
+    "parentExternalId": "N235WN",
     "metadata": {
-      "transponder_inspection_months": "24",
-      "elt_battery_months": "12"
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
     "id": 38,
-    "externalId": "N1156P-FUEL-SYSTEM",
-    "name": "N1156P \u2014 Fuel System",
-    "description": "Gravity-feed from two wing tanks, 43 gal usable, 100LL avgas",
+    "externalId": "N235WN-HYDRAULICS",
+    "name": "N235WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
     "parentId": null,
-    "parentExternalId": "N1156P",
+    "parentExternalId": "N235WN",
     "metadata": {
-      "capacity_gal_usable": "43",
-      "fuel_type": "100LL"
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
-    "id": 101,
-    "externalId": "ENGINE_MODEL_LYC_O320_H2AD",
-    "name": "Lycoming O-320-H2AD",
-    "description": "4-cylinder horizontally opposed aircraft engine, 160hp, 2000hr TBOH",
+    "id": 41,
+    "externalId": "N231WN",
+    "name": "N231WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, based PHX. 10,666 total airframe hours.",
+    "parentId": null,
+    "parentExternalId": null,
+    "metadata": {
+      "aircraft_type": "Boeing 737-800",
+      "tail_number": "N231WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "operator": "Southwest Airlines",
+      "total_afh": "10666",
+      "total_efh": "4477",
+      "engine_smoh": "1566"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 42,
+    "externalId": "N231WN-ENGINE-1",
+    "name": "N231WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 4,477 total EFH.",
+    "parentId": null,
+    "parentExternalId": "N231WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "engine_smoh": "1566",
+      "total_efh": "4477",
+      "position": "left_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 43,
+    "externalId": "N231WN-ENGINE-2",
+    "name": "N231WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf.",
+    "parentId": null,
+    "parentExternalId": "N231WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "1253",
+      "total_efh": "4477",
+      "position": "right_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 44,
+    "externalId": "N231WN-APU",
+    "name": "N231WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
+    "parentId": null,
+    "parentExternalId": "N231WN",
+    "metadata": {
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 45,
+    "externalId": "N231WN-AIRFRAME",
+    "name": "N231WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
+    "parentId": null,
+    "parentExternalId": "N231WN",
+    "metadata": {
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 46,
+    "externalId": "N231WN-AVIONICS",
+    "name": "N231WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
+    "parentId": null,
+    "parentExternalId": "N231WN",
+    "metadata": {
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 47,
+    "externalId": "N231WN-LANDING-GEAR",
+    "name": "N231WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
+    "parentId": null,
+    "parentExternalId": "N231WN",
+    "metadata": {
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 48,
+    "externalId": "N231WN-HYDRAULICS",
+    "name": "N231WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
+    "parentId": null,
+    "parentExternalId": "N231WN",
+    "metadata": {
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 49,
+    "externalId": "N251WN",
+    "name": "N251WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, based PHX. 12,478 total airframe hours.",
+    "parentId": null,
+    "parentExternalId": null,
+    "metadata": {
+      "aircraft_type": "Boeing 737-800",
+      "tail_number": "N251WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "operator": "Southwest Airlines",
+      "total_afh": "12478",
+      "total_efh": "11621",
+      "engine_smoh": "4067"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 50,
+    "externalId": "N251WN-ENGINE-1",
+    "name": "N251WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 11,621 total EFH.",
+    "parentId": null,
+    "parentExternalId": "N251WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "engine_smoh": "4067",
+      "total_efh": "11621",
+      "position": "left_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 51,
+    "externalId": "N251WN-ENGINE-2",
+    "name": "N251WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf.",
+    "parentId": null,
+    "parentExternalId": "N251WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "3253",
+      "total_efh": "11621",
+      "position": "right_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 52,
+    "externalId": "N251WN-APU",
+    "name": "N251WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
+    "parentId": null,
+    "parentExternalId": "N251WN",
+    "metadata": {
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 53,
+    "externalId": "N251WN-AIRFRAME",
+    "name": "N251WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
+    "parentId": null,
+    "parentExternalId": "N251WN",
+    "metadata": {
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 54,
+    "externalId": "N251WN-AVIONICS",
+    "name": "N251WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
+    "parentId": null,
+    "parentExternalId": "N251WN",
+    "metadata": {
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 55,
+    "externalId": "N251WN-LANDING-GEAR",
+    "name": "N251WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
+    "parentId": null,
+    "parentExternalId": "N251WN",
+    "metadata": {
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 56,
+    "externalId": "N251WN-HYDRAULICS",
+    "name": "N251WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
+    "parentId": null,
+    "parentExternalId": "N251WN",
+    "metadata": {
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 57,
+    "externalId": "N266WN",
+    "name": "N266WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, based PHX. 12,529 total airframe hours.",
+    "parentId": null,
+    "parentExternalId": null,
+    "metadata": {
+      "aircraft_type": "Boeing 737-800",
+      "tail_number": "N266WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "operator": "Southwest Airlines",
+      "total_afh": "12529",
+      "total_efh": "5002",
+      "engine_smoh": "1750"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 58,
+    "externalId": "N266WN-ENGINE-1",
+    "name": "N266WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 5,002 total EFH.",
+    "parentId": null,
+    "parentExternalId": "N266WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "engine_smoh": "1750",
+      "total_efh": "5002",
+      "position": "left_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 59,
+    "externalId": "N266WN-ENGINE-2",
+    "name": "N266WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf.",
+    "parentId": null,
+    "parentExternalId": "N266WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "1400",
+      "total_efh": "5002",
+      "position": "right_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 60,
+    "externalId": "N266WN-APU",
+    "name": "N266WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
+    "parentId": null,
+    "parentExternalId": "N266WN",
+    "metadata": {
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 61,
+    "externalId": "N266WN-AIRFRAME",
+    "name": "N266WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
+    "parentId": null,
+    "parentExternalId": "N266WN",
+    "metadata": {
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 62,
+    "externalId": "N266WN-AVIONICS",
+    "name": "N266WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
+    "parentId": null,
+    "parentExternalId": "N266WN",
+    "metadata": {
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 63,
+    "externalId": "N266WN-LANDING-GEAR",
+    "name": "N266WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
+    "parentId": null,
+    "parentExternalId": "N266WN",
+    "metadata": {
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 64,
+    "externalId": "N266WN-HYDRAULICS",
+    "name": "N266WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
+    "parentId": null,
+    "parentExternalId": "N266WN",
+    "metadata": {
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 65,
+    "externalId": "N277WN",
+    "name": "N277WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, based PHX. 12,703 total airframe hours.",
+    "parentId": null,
+    "parentExternalId": null,
+    "metadata": {
+      "aircraft_type": "Boeing 737-800",
+      "tail_number": "N277WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "operator": "Southwest Airlines",
+      "total_afh": "12703",
+      "total_efh": "9246",
+      "engine_smoh": "3236"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 66,
+    "externalId": "N277WN-ENGINE-1",
+    "name": "N277WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 9,246 total EFH.",
+    "parentId": null,
+    "parentExternalId": "N277WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "engine_smoh": "3236",
+      "total_efh": "9246",
+      "position": "left_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 67,
+    "externalId": "N277WN-ENGINE-2",
+    "name": "N277WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf.",
+    "parentId": null,
+    "parentExternalId": "N277WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "2588",
+      "total_efh": "9246",
+      "position": "right_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 68,
+    "externalId": "N277WN-APU",
+    "name": "N277WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
+    "parentId": null,
+    "parentExternalId": "N277WN",
+    "metadata": {
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 69,
+    "externalId": "N277WN-AIRFRAME",
+    "name": "N277WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
+    "parentId": null,
+    "parentExternalId": "N277WN",
+    "metadata": {
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 70,
+    "externalId": "N277WN-AVIONICS",
+    "name": "N277WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
+    "parentId": null,
+    "parentExternalId": "N277WN",
+    "metadata": {
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 71,
+    "externalId": "N277WN-LANDING-GEAR",
+    "name": "N277WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
+    "parentId": null,
+    "parentExternalId": "N277WN",
+    "metadata": {
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 72,
+    "externalId": "N277WN-HYDRAULICS",
+    "name": "N277WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
+    "parentId": null,
+    "parentExternalId": "N277WN",
+    "metadata": {
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 73,
+    "externalId": "N291WN",
+    "name": "N291WN \u2014 Boeing 737-800",
+    "description": "Boeing 737-800, based PHX. 26,552 total airframe hours.",
+    "parentId": null,
+    "parentExternalId": null,
+    "metadata": {
+      "aircraft_type": "Boeing 737-800",
+      "tail_number": "N291WN",
+      "base_airport": "PHX",
+      "engine_type": "CFM International CFM56-7B",
+      "engine_tbo_efh": "30000",
+      "operator": "Southwest Airlines",
+      "total_afh": "26552",
+      "total_efh": "24896",
+      "engine_smoh": "8713"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 74,
+    "externalId": "N291WN-ENGINE-1",
+    "name": "N291WN \u2014 Engine #1 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf. 24,896 total EFH.",
+    "parentId": null,
+    "parentExternalId": "N291WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "engine_smoh": "8713",
+      "total_efh": "24896",
+      "position": "left_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 75,
+    "externalId": "N291WN-ENGINE-2",
+    "name": "N291WN \u2014 Engine #2 (CFM56-7B)",
+    "description": "CFM56-7B27E, rated 27,300 lbf.",
+    "parentId": null,
+    "parentExternalId": "N291WN",
+    "metadata": {
+      "model": "CFM56-7B27E",
+      "thrust_lbf": "27300",
+      "tbo_efh": "30000",
+      "smoh_efh": "6970",
+      "total_efh": "24896",
+      "position": "right_wing"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 76,
+    "externalId": "N291WN-APU",
+    "name": "N291WN \u2014 APU (Honeywell APS3200)",
+    "description": "Honeywell APS3200 auxiliary power unit, shaft power + bleed air",
+    "parentId": null,
+    "parentExternalId": "N291WN",
+    "metadata": {
+      "model": "APS3200",
+      "manufacturer": "Honeywell"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 77,
+    "externalId": "N291WN-AIRFRAME",
+    "name": "N291WN \u2014 Airframe",
+    "description": "Fuselage, wings, empennage, flight controls, nacelle struts",
+    "parentId": null,
+    "parentExternalId": "N291WN",
+    "metadata": {
+      "max_gross_weight_lbs": "174200",
+      "wingspan_ft": "117.5"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 78,
+    "externalId": "N291WN-AVIONICS",
+    "name": "N291WN \u2014 Avionics Suite",
+    "description": "FMC/FMS, dual VHF comm, ILS/VOR, TCAS II, GPWS, ACARS",
+    "parentId": null,
+    "parentExternalId": "N291WN",
+    "metadata": {
+      "fms": "Honeywell FMC-700",
+      "acars": "ARINC 618"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 79,
+    "externalId": "N291WN-LANDING-GEAR",
+    "name": "N291WN \u2014 Landing Gear",
+    "description": "Main gear (2 \u00d7 2-wheel bogies) + nose gear, hydraulic actuation",
+    "parentId": null,
+    "parentExternalId": "N291WN",
+    "metadata": {
+      "configuration": "tricycle",
+      "actuation": "hydraulic"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 80,
+    "externalId": "N291WN-HYDRAULICS",
+    "name": "N291WN \u2014 Hydraulic System",
+    "description": "System A (engine #1 + elec pump), System B (engine #2 + elec pump), standby system",
+    "parentId": null,
+    "parentExternalId": "N291WN",
+    "metadata": {
+      "systems": "A; B; standby",
+      "fluid_spec": "Skydrol LD-4"
+    },
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
+  },
+  {
+    "id": 901,
+    "externalId": "ENGINE_MODEL_CFM56_7B",
+    "name": "CFM International CFM56-7B",
+    "description": "High-bypass turbofan engine, 22,700\u201327,300 lbf thrust. Powers Boeing 737 Classic and NG variants.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
       "type": "EngineModel",
-      "horsepower": "160",
-      "tbo_hours": "2000"
+      "manufacturer": "CFM International",
+      "thrust_range_lbf": "22700-27300",
+      "bypass_ratio": "5.1",
+      "tbo_efh": "30000"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   },
   {
-    "id": 100,
-    "externalId": "Desert_Sky_Aviation",
-    "name": "Desert Sky Aviation",
-    "description": "Flight school and aircraft rental operation at KPHX. Operates four 1978 Cessna 172N aircraft.",
+    "id": 900,
+    "externalId": "Southwest_Airlines",
+    "name": "Southwest Airlines",
+    "description": "Major US low-cost carrier. Operates the world's largest Boeing 737 fleet.",
     "parentId": null,
     "parentExternalId": null,
     "metadata": {
-      "location": "KPHX \u2014 Phoenix Sky Harbor International Airport",
-      "contact": "ops@desertsky.aero",
-      "type": "FleetOperator"
+      "location": "Dallas Love Field (DAL), Texas",
+      "contact": "maintenance@southwestairlines.com",
+      "type": "FleetOperator",
+      "fleet_size": "47"
     },
-    "createdTime": 1776047663342,
-    "lastUpdatedTime": 1776047663342
+    "createdTime": 1776703615711,
+    "lastUpdatedTime": 1776703615711
   }
 ]

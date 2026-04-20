@@ -24,16 +24,36 @@ import {
   type ToneClasses,
 } from "../lib/utils";
 import { api } from "../lib/api";
-import { useStore, TAILS } from "../lib/store";
+import { useStore, TAILS, DEFAULT_TAIL, type TailNumber } from "../lib/store";
 import { MenuSelect } from "./MenuSelect";
 import type { MaintenanceItem, MaintenanceRecord } from "../lib/types";
+
+function airworthinessDotClass(aw: string | undefined): string {
+  if (aw === "NOT_AIRWORTHY") return "bg-red-500";
+  if (aw === "CAUTION" || aw === "FERRY_ONLY") return "bg-orange-500";
+  if (aw === "AIRWORTHY") return "bg-emerald-500";
+  return "bg-slate-300";
+}
+
+function tailOption(tail: string, aw: string | undefined) {
+  return {
+    value: tail as TailNumber,
+    label: (
+      <span className="flex items-center gap-1.5">
+        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${airworthinessDotClass(aw)}`} />
+        {tail}
+      </span>
+    ),
+  };
+}
 
 const COMPONENT_OPTIONS = [
   { value: "", label: "All components" },
   { value: "ENGINE", label: "Engine" },
-  { value: "PROPELLER", label: "Propeller" },
   { value: "AIRFRAME", label: "Airframe" },
   { value: "AVIONICS", label: "Avionics" },
+  { value: "APU", label: "APU" },
+  { value: "HYDRAULICS", label: "Hydraulics" },
 ];
 
 const TONE_RANK: Record<Tone, number> = { unknown: 0, ok: 1, warn: 2, bad: 3 };
@@ -112,7 +132,7 @@ function UpcomingMetricsColumn({
         {overdue ? Math.abs(value).toFixed(1) : value.toFixed(1)}
       </p>
       {overdue && <p className="text-xs text-red-400 font-semibold leading-tight">OVERDUE</p>}
-      <p className="text-[10px] text-zinc-600">hr</p>
+      <p className="text-[10px] text-slate-400">hr</p>
     </div>
   );
 
@@ -128,7 +148,7 @@ function UpcomingMetricsColumn({
         {overdue ? Math.abs(value) : value}
       </p>
       {overdue && <p className="text-xs text-red-400 font-semibold leading-tight">OVERDUE</p>}
-      <p className="text-[10px] text-zinc-600">{unit}</p>
+      <p className="text-[10px] text-slate-400">{unit}</p>
     </div>
   );
 
@@ -139,14 +159,14 @@ function UpcomingMetricsColumn({
           <span className={cn("text-lg font-bold tabular-nums leading-tight", dueTone.text)}>
             {hVal.toFixed(1)}
           </span>
-          <span className="text-[10px] text-zinc-600 leading-tight mt-0.5">hr</span>
+          <span className="text-[10px] text-slate-400 leading-tight mt-0.5">hr</span>
         </div>
-        <span className="text-zinc-500 text-sm font-medium shrink-0 self-center" aria-hidden>
+        <span className="text-slate-400 text-sm font-medium shrink-0 self-center" aria-hidden>
           /
         </span>
         <div className="flex flex-col items-center text-center min-w-[2.75rem]">
           <span className={cn("text-lg font-bold tabular-nums leading-tight", dueTone.text)}>{dVal}</span>
-          <span className="text-[10px] text-zinc-600 leading-tight mt-0.5">days</span>
+          <span className="text-[10px] text-slate-400 leading-tight mt-0.5">days</span>
         </div>
       </div>
     );
@@ -174,7 +194,7 @@ function UpcomingMetricsColumn({
   if (dd !== null) {
     return dayBlock(ddOver, dd, "days");
   }
-  return <p className="text-xs text-zinc-500">—</p>;
+  return <p className="text-xs text-slate-400">—</p>;
 }
 
 interface Props {
@@ -182,8 +202,9 @@ interface Props {
 }
 
 export default function MaintenanceTimeline({ active }: Props) {
-  const { selectedAircraft, setSelectedAircraft } = useStore();
-  const tail = selectedAircraft ?? "N4798E";
+  const { selectedAircraft, setSelectedAircraft, fleetStatusMap } = useStore();
+  const tail = selectedAircraft ?? DEFAULT_TAIL;
+  const tailOptions = TAILS.map((t) => tailOption(t, fleetStatusMap[t]));
   const [upcoming, setUpcoming] = useState<MaintenanceItem[]>([]);
   const [history, setHistory] = useState<MaintenanceRecord[]>([]);
   const [total, setTotal] = useState(0);
@@ -195,6 +216,7 @@ export default function MaintenanceTimeline({ active }: Props) {
   const [loading, setLoading] = useState(false);
   const [upcomingLoading, setUpcomingLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [airworthiness, setAirworthiness] = useState<string | null>(null);
 
   const yearMenuOptions = useMemo(
     () => [
@@ -203,6 +225,13 @@ export default function MaintenanceTimeline({ active }: Props) {
     ],
     [availableYears]
   );
+
+  // Fetch airworthiness status for grounded aircraft banner
+  useEffect(() => {
+    api.status(tail)
+      .then((s) => setAirworthiness(s.airworthiness))
+      .catch(() => setAirworthiness(null));
+  }, [tail]);
 
   // Upcoming maintenance — refetch on tail change
   useEffect(() => {
@@ -255,40 +284,27 @@ export default function MaintenanceTimeline({ active }: Props) {
   };
 
   return (
-    <div
-      className={cn(
-        "flex flex-col flex-1 min-h-0 w-full min-w-0 pb-6",
-        MAIN_TAB_CONTENT_FRAME,
-        TAB_PAGE_TOP_INSET
-      )}
-    >
-      <div className={cn("shrink-0 mb-3", TAB_PAGE_READABLE_COLUMN)}>
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1 flex-wrap">
-            {TAILS.map((t) => (
-              <button
-                key={t}
-                type="button"
-                onClick={() => setSelectedAircraft(t)}
-                className={cn(
-                  "px-2.5 py-0.5 rounded-full text-xs font-medium border transition-colors",
-                  tail === t
-                    ? "bg-sky-600 text-white border-sky-500"
-                    : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
-                )}
-              >
-                {t}
-              </button>
-            ))}
+    <div className="flex flex-1 min-h-0 flex-col overflow-y-auto w-full">
+      <div className={cn("flex flex-col min-w-0 pb-6", MAIN_TAB_CONTENT_FRAME, TAB_PAGE_TOP_INSET)}>
+      <div className={cn("shrink-0 mb-3 space-y-2", TAB_PAGE_READABLE_COLUMN)}>
+        <MenuSelect
+          value={tail}
+          options={tailOptions}
+          onChange={(v) => setSelectedAircraft(v as TailNumber)}
+          ariaLabel="Select aircraft"
+        />
+        {airworthiness === "NOT_AIRWORTHY" && (
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-red-600 border border-red-700 border-l-[3px] border-l-red-800 text-white text-xs">
+            <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+            Aircraft grounded — Engine #1 failure. Airworthiness: NOT AIRWORTHY
           </div>
-        </div>
+        )}
       </div>
 
-      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain w-full min-w-0">
       <div className={cn(TAB_PAGE_READABLE_COLUMN, "pb-6 space-y-6")}>
       {/* Upcoming maintenance */}
       <section>
-        <h2 className="text-xs font-semibold text-zinc-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+        <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
           <Clock className="w-3.5 h-3.5" />
           Upcoming Maintenance
         </h2>
@@ -301,15 +317,15 @@ export default function MaintenanceTimeline({ active }: Props) {
                 className={cn("flex items-center gap-4 p-4 rounded-xl", CARD_SURFACE_B)}
               >
                 <div className="shrink-0 w-24 flex flex-col items-center gap-1.5 animate-pulse">
-                  <div className="h-7 bg-zinc-800 rounded w-16" />
-                  <div className="h-3 bg-zinc-800/80 rounded w-10" />
+                  <div className="h-7 bg-slate-100 rounded w-16" />
+                  <div className="h-3 bg-slate-100 rounded w-10" />
                 </div>
                 <div className="flex-1 min-w-0 space-y-2 animate-pulse">
-                  <div className="h-4 bg-zinc-800 rounded max-w-lg w-full" />
-                  <div className="h-3 bg-zinc-800/80 rounded max-w-md w-3/4" />
+                  <div className="h-4 bg-slate-100 rounded max-w-lg w-full" />
+                  <div className="h-3 bg-slate-100 rounded max-w-md w-3/4" />
                 </div>
                 <div className="shrink-0 animate-pulse">
-                  <div className="h-7 w-[4.5rem] bg-zinc-800 rounded-full" />
+                  <div className="h-7 w-[4.5rem] bg-slate-100 rounded-full" />
                 </div>
               </div>
             ))}
@@ -343,12 +359,12 @@ export default function MaintenanceTimeline({ active }: Props) {
                     <p
                       className={cn(
                         "text-sm font-medium leading-snug",
-                        dueTone.tone === "unknown" ? "text-zinc-200" : dueTone.text
+                        dueTone.tone === "unknown" ? "text-slate-800" : dueTone.text
                       )}
                     >
                       {buildUpcomingPrimaryLine(item)}
                     </p>
-                    <p className="text-xs text-zinc-600 mt-1">{formatDueAtSubtext(item)}</p>
+                    <p className="text-xs text-slate-400 mt-1">{formatDueAtSubtext(item)}</p>
                   </div>
                   <div className="shrink-0">
                     <span
@@ -370,11 +386,11 @@ export default function MaintenanceTimeline({ active }: Props) {
       {/* Full maintenance history */}
       <section>
         <div className="flex items-center justify-between gap-4 mb-3 flex-wrap">
-          <h2 className="text-xs font-semibold text-zinc-500 uppercase tracking-widest flex items-center gap-2">
+          <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-widest flex items-center gap-2">
             <Wrench className="w-3.5 h-3.5" />
             Maintenance History
             {total > 0 && (
-              <span className="text-zinc-600 normal-case font-normal">· {total} records</span>
+              <span className="text-slate-400 normal-case font-normal">· {total} records</span>
             )}
           </h2>
 
@@ -406,10 +422,10 @@ export default function MaintenanceTimeline({ active }: Props) {
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className={cn("rounded-xl p-3 min-h-[3.75rem] animate-pulse", CARD_SURFACE_B)}>
                 <div className="flex items-start justify-between gap-2">
-                  <div className="h-4 bg-zinc-800 rounded flex-1 max-w-xl" />
-                  <div className="h-3 bg-zinc-800 rounded w-14 shrink-0" />
+                  <div className="h-4 bg-slate-100 rounded flex-1 max-w-xl" />
+                  <div className="h-3 bg-slate-100 rounded w-14 shrink-0" />
                 </div>
-                <div className="h-3 bg-zinc-800/80 rounded w-40 mt-2" />
+                <div className="h-3 bg-slate-100 rounded w-40 mt-2" />
               </div>
             ))}
           </div>
@@ -424,7 +440,7 @@ export default function MaintenanceTimeline({ active }: Props) {
             <p className="text-sm text-red-300">{error}</p>
           </div>
         ) : history.length === 0 ? (
-          <div className={cn("p-8 rounded-xl text-zinc-500 text-sm text-center", CARD_SURFACE_B)}>
+          <div className={cn("p-8 rounded-xl text-slate-400 text-sm text-center", CARD_SURFACE_B)}>
             <Wrench className="w-8 h-8 mx-auto mb-2 opacity-30" />
             No maintenance records found. Run ingestion first.
           </div>
@@ -440,14 +456,14 @@ export default function MaintenanceTimeline({ active }: Props) {
                 if (dateLine) {
                   metaParts.push({
                     key: "date",
-                    node: <span className="text-zinc-600">{dateLine}</span>,
+                    node: <span className="text-slate-400">{dateLine}</span>,
                   });
                 }
                 if (shop) {
                   metaParts.push({
                     key: "shop",
                     node: (
-                      <span className="text-zinc-600 truncate max-w-[min(12rem,100%)]">{shop}</span>
+                      <span className="text-slate-400 truncate max-w-[min(12rem,100%)]">{shop}</span>
                     ),
                   });
                 }
@@ -464,10 +480,10 @@ export default function MaintenanceTimeline({ active }: Props) {
                 return (
                   <div key={record.externalId || idx} className={cn("rounded-xl p-3", CARD_SURFACE_B)}>
                     <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm text-zinc-200 leading-snug flex-1">
+                      <p className="text-sm text-slate-800 leading-snug flex-1">
                         {record.description || record.subtype || record.type}
                       </p>
-                      <span className="shrink-0 text-xs text-zinc-600 font-mono">
+                      <span className="shrink-0 text-xs text-slate-400 font-mono">
                         {record.metadata?.hobbs_at_service
                           ? `${record.metadata.hobbs_at_service} hr`
                           : formatTimestamp(record.startTime ?? null)}
@@ -479,7 +495,7 @@ export default function MaintenanceTimeline({ active }: Props) {
                           <Fragment key={part.key}>
                             {i > 0 && (
                               <span
-                                className="text-zinc-500 select-none px-1.5 shrink-0"
+                                className="text-slate-400 select-none px-1.5 shrink-0"
                                 aria-hidden
                               >
                                 ·
@@ -498,15 +514,15 @@ export default function MaintenanceTimeline({ active }: Props) {
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex items-center justify-between pt-4">
-                <p className="text-xs text-zinc-600">
+                <p className="text-xs text-slate-400">
                   Page {page} of {totalPages} · {total} total records
                 </p>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="p-1.5 rounded-lg border border-zinc-700 text-zinc-400 hover:text-zinc-200
-                      hover:border-zinc-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    className="p-1.5 rounded-lg border border-slate-200 text-slate-500 hover:text-slate-800
+                      hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
@@ -528,8 +544,8 @@ export default function MaintenanceTimeline({ active }: Props) {
                           className={cn(
                             "w-7 h-7 rounded-lg text-xs font-medium transition-colors",
                             p === page
-                              ? "bg-sky-600 text-white"
-                              : "text-zinc-500 hover:text-zinc-200 hover:bg-zinc-800"
+                              ? "bg-[#304cb2] text-white"
+                              : "text-slate-400 hover:text-slate-800 hover:bg-slate-100"
                           )}
                         >
                           {p}
@@ -540,8 +556,8 @@ export default function MaintenanceTimeline({ active }: Props) {
                   <button
                     onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="p-1.5 rounded-lg border border-zinc-700 text-zinc-400 hover:text-zinc-200
-                      hover:border-zinc-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    className="p-1.5 rounded-lg border border-slate-200 text-slate-500 hover:text-slate-800
+                      hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>

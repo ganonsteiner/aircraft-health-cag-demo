@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #0f172a;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --canvas: #ebeef4;
+    --muted: #f3f5f9;
+    --muted-foreground: #64748b;
+    --border: #d4dae4;
+    --ring: #304cb2;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
 @layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -20,25 +43,20 @@ body,
   overflow: hidden;
 }
 
-body {
-  background-color: #09090b;
-  color: #f4f4f5;
-}
-
-/* Custom scrollbar for dark theme */
+/* Light theme scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #18181b;
+  background: #ebeef4;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+  background: #cbd5e1;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
+  background: #94a3b8;
 }
 
 /* Animated entry for traversal events */

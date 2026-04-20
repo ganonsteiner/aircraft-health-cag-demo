@@ -1,38 +1,29 @@
 [
   {
-    "externalId": "Policy_OilChangeInterval",
-    "title": "Oil Change Interval",
-    "description": "All Desert Sky Aviation aircraft require oil and filter change every 50 tach (engine) hours or 4 calendar months, whichever comes first. References Lycoming SB 388C.",
-    "rule": "oil_change_tach_interval=50; oil_change_calendar_months=4",
-    "category": "engine_maintenance",
-    "references": "Lycoming SB 388C; FAA AC 43.13-1B",
+    "externalId": "Policy_ACheckInterval",
+    "title": "A-Check Maintenance Interval",
+    "description": "Boeing 737 A-check required every 500\u2013600 flight hours or 45 calendar days, whichever comes first. Includes inspection of flight controls, landing gear, hydraulic systems, and engine cowlings. Engine oil and hydraulic fluid serviced. References Boeing 737 Maintenance Planning Document (MPD).",
+    "rule": "a_check_flight_hours=550; a_check_calendar_days=45",
+    "category": "scheduled_maintenance",
+    "references": "Boeing 737 MPD; Southwest Airlines GMM Chapter 5",
     "type": "OperationalPolicy"
   },
   {
-    "externalId": "Policy_OilGracePeriod",
-    "title": "Oil Change Grace Period \u2014 Ferry Flight Authorization",
-    "description": "Aircraft may conduct a single direct ferry to the maintenance facility when oil is overdue on tach by >0.0\u20135.0 hours, or on the calendar leg by 1\u201313 days (per 50 tach hr / 4 month policy). PIC must document the ferry in the journey log. Oil overdue by more than 5 tach hours, or 14+ calendar days past the due date, is NOT AIRWORTHY.",
-    "rule": "ferry_authorized_if_oil_overdue_tach_hours_between=0.1,5; ferry_authorized_if_oil_overdue_calendar_days_between=1,13; ferry_not_authorized_if_oil_overdue_tach_hours_gt=5; ferry_not_authorized_if_oil_overdue_calendar_days_gte=14",
+    "externalId": "Policy_ADCompliance",
+    "title": "Airworthiness Directive (AD) Compliance",
+    "description": "All applicable FAA Airworthiness Directives must be complied with per 14 CFR 39. CFM56-7B applicable ADs: AD 2020-14-06 (fan blade inspection every 2,500 EFH), AD 2018-23-09 (HPT stage 1 blade inspection every 1,000 EFH), AD 2022-01-04 (combustor inspection). Boeing 737 structural ADs: AD 2020-09-07 (nacelle strut inspection).",
+    "rule": "ad_compliance_required=true; cfm56_fan_blade_interval_efh=2500; hpt_blade_interval_efh=1000",
     "category": "airworthiness",
-    "references": "Desert Sky Aviation Operations Manual Rev 4.2",
+    "references": "14 CFR 39; FAA AD 2020-14-06; AD 2018-23-09; AD 2022-01-04; AD 2020-09-07",
     "type": "OperationalPolicy"
   },
   {
-    "externalId": "Policy_AnnualInspection",
-    "title": "Annual Inspection Currency",
-    "description": "All aircraft must maintain current annual inspection per 14 CFR 91.409. Annual inspection must be completed by a certificated A&P/IA. Aircraft with expired annual are NOT AIRWORTHY.",
-    "rule": "annual_inspection_required_calendar_months=12",
+    "externalId": "Policy_MELCompliance",
+    "title": "Minimum Equipment List (MEL) Compliance",
+    "description": "All Southwest Airlines aircraft must be dispatched in accordance with the FAA-approved Minimum Equipment List. Category A MEL items require repair within 3 calendar days; Category B within 10 days; Category C within 120 days. Aircraft with items beyond MEL limits are NOT AIRWORTHY.",
+    "rule": "mel_category_a_days=3; mel_category_b_days=10; mel_category_c_days=120; dispatch_requires_mel_compliance=true",
     "category": "airworthiness",
-    "references": "14 CFR 91.409; Desert Sky Aviation Policy Manual",
-    "type": "OperationalPolicy"
-  },
-  {
-    "externalId": "Policy_FerryFlightOilOverdue",
-    "title": "Ferry Flight Procedure for Maintenance",
-    "description": "Ferry flights to maintenance facility are permitted only when: (1) aircraft has a valid annual inspection, (2) oil is overdue by no more than 5 tach hours and no more than 13 calendar days (4-month leg), (3) no grounding squawks exist, (4) PIC holds at least private certificate with appropriate ratings, (5) flight is direct to maintenance facility with no intermediate stops.",
-    "rule": "ferry_requires_valid_annual=true; ferry_max_oil_overdue_tach_hours=5; ferry_max_oil_overdue_calendar_days=13; ferry_requires_no_grounding_squawks=true",
-    "category": "operations",
-    "references": "Desert Sky Aviation Operations Manual Rev 4.2",
+    "references": "FAA-approved Southwest Airlines MEL; Boeing 737 MEL; 14 CFR 91.213",
     "type": "OperationalPolicy"
   }
 ]

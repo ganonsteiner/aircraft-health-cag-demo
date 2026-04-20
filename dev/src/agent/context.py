@@ -1,5 +1,5 @@
 """
-CAG Context Assembly — Desert Sky Aviation Fleet.
+CAG Context Assembly — Southwest Airlines Fleet.
 
 assemble_aircraft_context(aircraft_id) builds structured context for one
 aircraft by traversing the knowledge graph. Used by /api/status and the
@@ -23,6 +23,7 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", "..", ".en
 from .tools import (  # noqa: E402
     client,
     clear_traversal_log,
+    get_fleet_failure_history,
     get_fleet_policies,
     get_linked_documents,
     log_traversal,
@@ -34,13 +35,12 @@ from ..aircraft_times import (  # noqa: E402
 )
 from ..date_only import calendar_days_until_iso  # noqa: E402
 
-TAILS = ("N4798E", "N2251K", "N8834Q", "N1156P")
-
-# Oil change airworthiness (tach + calendar legs; mirrors POLICY_OIL_GRACE in mock CDF).
-# More than this many tach hours overdue → NOT_AIRWORTHY (5.0 hr still FERRY_ONLY).
-OIL_TACH_HOURS_NOT_AIRWORTHY = 5.0
-OIL_TACH_HOURS_FERRY_MIN = 0.0
-OIL_CALENDAR_DAYS_NOT_AIRWORTHY = 14
+TAILS = (
+    "N287WN", "N246WN",
+    "N231WN", "N251WN", "N266WN", "N277WN", "N291WN",
+    "N205WN", "N206WN", "N207WN", "N208WN", "N209WN",
+)
+INSTRUMENTED_TAILS = ("N287WN", "N246WN")
 
 
 def _safe_float(val: Any, default: float = 0.0) -> float:
@@ -59,7 +59,7 @@ def _days_until(date_str: str) -> Optional[int]:
 def _oil_change_calendar_months_from_policy() -> int:
     """
     Parse oil_change_calendar_months from fleet OperationalPolicy rule (mock CDF).
-    Default 4 months — matches Desert Sky oil change policy when list fails.
+    Default 4 months — matches Southwest Airlines A-check calendar interval when list fails.
     Cached for /api/fleet (four context builds per request).
     """
     try:
@@ -278,7 +278,6 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
         return {"error": f"Could not retrieve root asset {aircraft_id}: {e}"}
 
     meta = root_dict.get("metadata", {})
-    overhaul_hobbs_str = meta.get("overhaul_hobbs", "")
 
     # 2. Full component hierarchy
     log_traversal(f"AssetSubtree:{aircraft_id}")
@@ -300,9 +299,10 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
 
     # 3. OT sensors — per-tail time series IDs
     sensor_suffixes = [
-        "aircraft.hobbs", "aircraft.tach", "aircraft.cycles", "aircraft.fuel_used",
-        "engine.oil_pressure_min", "engine.oil_pressure_max",
-        "engine.oil_temp_max", "engine.cht_max", "engine.egt_max",
+        "aircraft.hobbs", "aircraft.tach", "aircraft.cycles",
+        "engine.egt_deviation", "engine.n1_vibration", "engine.n2_speed",
+        "engine.fuel_flow", "engine.oil_pressure_min", "engine.oil_pressure_max",
+        "engine.oil_temp_max",
     ]
     sensors: dict[str, Any] = {}
     for suffix in sensor_suffixes:
@@ -325,16 +325,27 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
     if current_tach <= 0.0:
         current_tach = _safe_float(sensors.get("aircraft.tach", {}).get("value"))
 
-    # SMOH from tach since overhaul (maintenance clock)
-    overhaul_tach = _safe_float(meta.get("overhaul_tach", ""), default=-1.0)
-    if overhaul_tach < 0:
-        engine_smoh_str = meta.get("engine_smoh", "")
-        try:
-            engine_smoh = float(engine_smoh_str)
-        except (ValueError, TypeError):
-            engine_smoh = 0.0
+    # SMOH from EFH since last engine shop visit (737/CFM56-7B)
+    efh_at_shop = _safe_float(meta.get("efh_at_shop_visit", ""), default=-1.0)
+    if efh_at_shop >= 0 and current_tach > 0:
+        engine_smoh = max(0.0, round(current_tach - efh_at_shop, 1))
     else:
-        engine_smoh = max(0.0, round(current_tach - overhaul_tach, 1))
+        engine_smoh = _safe_float(meta.get("engine_smoh", ""))
+
+    # Engine #2 SMOH — direct lookup (SDK retrieve_subtree uses parentId filter which is
+    # not populated in the mock store, so all_components is empty; byids works correctly)
+    engine2_smoh = 0.0
+    try:
+        engine2_obj = client.assets.retrieve(external_id=f"{aircraft_id}-ENGINE-2")
+        if engine2_obj:
+            e2_meta = engine2_obj.metadata or {}
+            efh2_shop = _safe_float(e2_meta.get("efh_at_shop_visit", ""), default=-1.0)
+            if efh2_shop >= 0 and current_tach > 0:
+                engine2_smoh = max(0.0, round(current_tach - efh2_shop, 1))
+            else:
+                engine2_smoh = _safe_float(e2_meta.get("smoh_efh", ""))
+    except Exception:
+        pass
 
     # 4. IT event layer
     all_events_flat: list[dict[str, Any]] = []
@@ -364,6 +375,12 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
         e for e in all_events_flat
         if e.get("type") == "Inspection" and (e.get("subtype") or "").lower() == "annual"
     ]
+    if not annual_inspections:
+        annual_inspections = [
+            e for e in all_events_flat
+            if e.get("type") == "MaintenanceRecord"
+            and (e.get("subtype") or "").lower() in ("a_check", "c_check")
+        ]
     last_annual: Optional[dict[str, Any]] = None
     if annual_inspections:
         last_annual = max(annual_inspections, key=lambda x: x.get("startTime") or 0)
@@ -404,44 +421,46 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
     aircraft_docs = get_linked_documents(aircraft_id)
     engine_docs = get_linked_documents(f"{aircraft_id}-ENGINE")
 
-    # 11. Airworthiness derivation from maintenance records and squawk severity
+    # 11. Airworthiness derivation from squawks and inspection currency
     annual_expired = annual_days_remaining is not None and annual_days_remaining < 0
     has_grounding_squawk = len(grounding_squawks) > 0
-    oil_calendar_overdue_days = (
-        int(-oil_days_until_due)
-        if oil_days_until_due is not None and oil_days_until_due < 0
-        else 0
-    )
-    oil_tach_not_airworthy = oil_tach_hours_overdue > OIL_TACH_HOURS_NOT_AIRWORTHY
-    oil_calendar_not_airworthy = oil_calendar_overdue_days >= OIL_CALENDAR_DAYS_NOT_AIRWORTHY
-    oil_tach_ferry = (
-        oil_tach_hours_overdue > OIL_TACH_HOURS_FERRY_MIN
-        and not oil_tach_not_airworthy
-    )
-    oil_calendar_ferry = (
-        oil_calendar_overdue_days >= 1
-        and oil_calendar_overdue_days < OIL_CALENDAR_DAYS_NOT_AIRWORTHY
-    )
+    has_open_squawk = len(open_squawks) > 0
 
-    if has_grounding_squawk or annual_expired or oil_tach_not_airworthy or oil_calendar_not_airworthy:
+    if has_grounding_squawk or annual_expired:
         airworthiness = "NOT_AIRWORTHY"
-    elif oil_tach_ferry or oil_calendar_ferry:
-        airworthiness = "FERRY_ONLY"
+    elif has_open_squawk:
+        airworthiness = "CAUTION"
     else:
         airworthiness = "AIRWORTHY"
 
     log_traversal(f"Context:{aircraft_id}(complete)")
 
+    # Peer-failure context — whenever we assemble single-aircraft context, surface any
+    # other aircraft in the fleet that have already failed so the agent can compare
+    # the current aircraft's sensor trends to a concrete peer pre-failure pattern.
+    try:
+        failure_history = get_fleet_failure_history()
+        peer_failures = [
+            f for f in (failure_history.get("failures") or [])
+            if f.get("tail") != aircraft_id
+        ]
+    except Exception:
+        peer_failures = []
+
     out: dict[str, Any] = {
         "aircraft": root_dict,
+        "peerFailures": peer_failures,
         "totalComponents": len(all_components),
         "components": all_components,
         "sensors": sensors,
         "currentHobbs": current_hobbs,
         "currentTach": current_tach,
         "engineSMOH": engine_smoh,
-        "engineTBO": 2000,
-        "engineSMOHPercent": round((engine_smoh / 2000.0) * 100, 1) if engine_smoh > 0 else 0.0,
+        "engineTBO": 30000,
+        "engineSMOHPercent": round((engine_smoh / 30000.0) * 100, 1) if engine_smoh > 0 else 0.0,
+        "engine2SMOH": engine2_smoh,
+        "engine2TBO": 30000,
+        "engine2SMOHPercent": round((engine2_smoh / 30000.0) * 100, 1) if engine2_smoh > 0 else 0.0,
         "allMaintenance": [e for e in all_events_flat if e.get("type") == "MaintenanceRecord"],
         "allInspections": annual_inspections,
         "openSquawks": open_squawks,
@@ -460,6 +479,6 @@ def assemble_aircraft_context(aircraft_id: str) -> dict[str, Any]:
         "upcomingMaintenance": upcoming,
         "documents": aircraft_docs.get("documents", []) + engine_docs.get("documents", []),
         "airworthiness": airworthiness,
-        "isAirworthy": airworthiness == "AIRWORTHY",
+        "isAirworthy": airworthiness in ("AIRWORTHY", "CAUTION"),
     }
     return out

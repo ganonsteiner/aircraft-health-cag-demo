@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  Plane,
   Activity,
   Wrench,
   MessageSquare,
@@ -9,10 +8,12 @@ import {
   Loader2,
   Puzzle,
   Warehouse,
+  Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 import { cn } from "./lib/utils";
 import { api } from "./lib/api";
-import { useStore, type TailNumber } from "./lib/store";
+import { useStore, INSTRUMENTED_TAILS, DEFAULT_TAIL, type TailNumber } from "./lib/store";
 import type { HealthStatus } from "./lib/types";
 import SetupBanner from "./components/SetupBanner";
 import StatusDashboard from "./components/StatusDashboard";
@@ -23,14 +24,16 @@ import FlightHistory from "./components/FlightHistory";
 import KnowledgeGraph from "./components/KnowledgeGraph";
 import FleetPage from "./components/FleetPage";
 import FloatingChatDock from "./components/FloatingChatDock";
+import AgenticInsights from "./components/AgenticInsights";
+import PredictiveMaintenance from "./components/PredictiveMaintenance";
 
-type Tab = "fleet" | "dashboard" | "query" | "maintenance" | "aircraft" | "flights" | "graph";
+type Tab = "fleet" | "dashboard" | "query" | "maintenance" | "aircraft" | "flights" | "graph" | "insights" | "predictive";
 
 /**
  * Tabs where the page implies a single tail — Fleet is disabled in the floating chat;
  * if scope were fleet-wide, we default the store to a tail for those UIs.
  */
-const TABS_WITHOUT_FLEET_SCOPE: Tab[] = ["dashboard", "maintenance", "aircraft", "flights"];
+const TABS_WITHOUT_FLEET_SCOPE: Tab[] = ["dashboard", "maintenance", "aircraft", "flights", "insights", "predictive"];
 
 /** Hangar / Knowledge Graph — no in-page tail strip; keep a tail only while floating chat is open. */
 const TABS_WITHOUT_PAGE_AIRCRAFT_SELECTION: Tab[] = ["fleet", "graph"];
@@ -45,12 +48,27 @@ export default function App() {
     setSelectedAircraft,
     floatingChatOpen,
     setFloatingChatOpen,
+    setFleetStatusMap,
   } = useStore();
 
   useEffect(() => {
     api.health()
       .then(setHealth)
       .catch(() => setHealthError(true));
+    api.fleet()
+      .then((aircraft) => {
+        const map: Record<string, string> = {};
+        for (const a of aircraft) map[a.tail] = a.airworthiness;
+        setFleetStatusMap(map);
+      })
+      .catch(() => {});
+    // Trigger all LLM-backed content refreshes on website launch. The server
+    // skips each one if its cache is already populated (returns "already_cached"),
+    // so reloads and --reload cycles don't waste Claude credits.
+    api.refreshInsights().catch(() => {});
+    INSTRUMENTED_TAILS.forEach((tail) => api.refreshPredictive(tail).catch(() => {}));
+    api.refreshSuggestions().catch(() => {});
+    INSTRUMENTED_TAILS.forEach((tail) => api.refreshAircraftSuggestions(tail).catch(() => {}));
   }, []);
 
   useEffect(() => {
@@ -61,7 +79,7 @@ export default function App() {
 
   useEffect(() => {
     if (TABS_WITHOUT_FLEET_SCOPE.includes(activeTab) && selectedAircraft === null) {
-      setSelectedAircraft("N4798E");
+      setSelectedAircraft(DEFAULT_TAIL);
     }
   }, [activeTab, selectedAircraft, setSelectedAircraft]);
 
@@ -95,11 +113,13 @@ export default function App() {
   ];
 
   const secondaryTabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
+    { id: "insights", label: "Agentic Insights", icon: <Sparkles className="w-4 h-4 shrink-0" /> },
+    { id: "predictive", label: "Predictive Maintenance", icon: <ShieldCheck className="w-4 h-4 shrink-0" /> },
     {
       id: "query",
       label: "AI Assistant",
       icon: isQuerying ? (
-        <Loader2 className="w-4 h-4 shrink-0 animate-spin text-sky-400" />
+        <Loader2 className="w-4 h-4 shrink-0 animate-spin" />
       ) : (
         <MessageSquare className="w-4 h-4 shrink-0" />
       ),
@@ -109,26 +129,33 @@ export default function App() {
 
   const tabButtonClass = (tabId: Tab) =>
     cn(
-      "flex items-center gap-1.5 px-3 py-3 text-sm font-medium border-b-2 -mb-px whitespace-nowrap transition-colors shrink-0",
+      "flex items-center gap-1.5 px-3 py-3 text-sm font-medium border-l-[1px] border-r-[1px] whitespace-nowrap transition-colors shrink-0",
       activeTab === tabId
-        ? "border-sky-500 text-sky-400"
-        : "border-transparent text-zinc-500 hover:text-zinc-300 hover:border-zinc-600"
+        ? "border-white text-white"
+        : "border-transparent text-white/60 hover:text-white hover:border-white/40"
     );
 
   return (
-    <div className="h-screen bg-zinc-950 text-zinc-100 flex flex-col overflow-hidden">
+    <div className="h-screen bg-canvas text-slate-900 flex flex-col overflow-hidden">
       {/* Header — 56px */}
-      <header className="h-14 shrink-0 border-b border-zinc-800 bg-zinc-900/90 backdrop-blur-sm z-50">
+      <header className="h-14 shrink-0 border-b border-border bg-card z-50">
         <div className="h-full max-w-screen-2xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-          {/* Left: fleet identity */}
+          {/* Left: Southwest logo + product name */}
           <div className="flex items-center gap-3 shrink-0">
-            <div className="p-2 bg-sky-500/10 rounded-lg border border-sky-500/20">
-              <Plane className="w-4 h-4 text-sky-400" aria-hidden />
-            </div>
-            <div>
-              <h1 className="text-sm font-semibold text-zinc-100 tracking-wide">Desert Sky Aviation</h1>
-              <p className="text-xs text-zinc-500 hidden sm:block">KPHX · 4 × 1978 Cessna 172N</p>
-            </div>
+            <img
+              src="/logos/southwest-logo.png"
+              alt="Southwest Airlines"
+              className="h-9 w-auto shrink-0"
+            />
+            <span
+              className="text-xl font-bold tracking-tight hidden sm:inline"
+              style={{
+                color: "#304cb2",
+                fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif",
+              }}
+            >
+              Asset Performance Manager
+            </span>
           </div>
 
           {/* Right: system status dots */}
@@ -164,12 +191,17 @@ export default function App() {
                 />
               </div>
             )}
+            <img
+              src="/logos/cognite-logo.png"
+              alt="Cognite"
+              className="h-10 w-auto shrink-0"
+            />
           </div>
         </div>
       </header>
 
       {/* Tab bar — primary left, AI + graph flush right (ml-auto); comfortable vertical padding */}
-      <div className="shrink-0 border-b border-zinc-800 bg-zinc-900/70 z-40">
+      <div className="shrink-0 bg-[#304cb2] z-40">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 flex items-stretch min-w-0 min-h-[3.25rem]">
           <div className="flex items-stretch gap-0 overflow-x-auto scrollbar-hide min-w-0">
             {primaryTabs.map((tab) => (
@@ -275,6 +307,24 @@ export default function App() {
             </div>
             <div
               className={cn(
+                activeTab === "insights"
+                  ? "flex flex-col flex-1 min-h-0 min-w-0 overflow-hidden"
+                  : "hidden"
+              )}
+            >
+              <AgenticInsights />
+            </div>
+            <div
+              className={cn(
+                activeTab === "predictive"
+                  ? "flex flex-col flex-1 min-h-0 min-w-0 overflow-hidden"
+                  : "hidden"
+              )}
+            >
+              <PredictiveMaintenance />
+            </div>
+            <div
+              className={cn(
                 activeTab === "graph"
                   ? "relative z-[1] flex flex-col flex-1 min-h-0 min-w-0 overflow-hidden"
                   : "absolute inset-0 z-0 opacity-0 pointer-events-none min-h-0"
@@ -300,7 +350,7 @@ function StatusDot({ label, ok, tooltip }: { label: string; ok: boolean; tooltip
   return (
     <div className="flex items-center gap-1.5 group relative" title={tooltip}>
       <span className={cn("w-2 h-2 rounded-full", ok ? "bg-emerald-400" : "bg-red-500")} />
-      <span className="text-xs text-zinc-500 hidden sm:inline">{label}</span>
+      <span className="text-xs text-slate-400 hidden sm:inline">{label}</span>
     </div>
   );
 }

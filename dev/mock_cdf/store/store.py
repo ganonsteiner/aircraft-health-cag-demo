@@ -1,5 +1,5 @@
 """
-CDF Store — single in-memory store for the Desert Sky Aviation fleet.
+CDF Store — single in-memory store for the Southwest Airlines fleet.
 
 Mirrors the Cognite Data Fusion resource model with JSON file persistence.
 Each resource type corresponds to a CDF resource: Assets, TimeSeries,
@@ -137,7 +137,7 @@ class CdfStore:
     Thread-safe JSON persistence layer for all CDF resource types.
 
     Single active store — no multi-state routing. One events.json and one
-    datapoints.json covering the entire Desert Sky Aviation fleet.
+    datapoints.json covering the entire Southwest Airlines fleet.
     """
 
     def __init__(self) -> None:

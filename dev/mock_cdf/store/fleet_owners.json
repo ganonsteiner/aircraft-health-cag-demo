@@ -1,10 +1,10 @@
 [
   {
-    "externalId": "Desert_Sky_Aviation",
-    "name": "Desert Sky Aviation",
-    "description": "Flight school and aircraft rental operation based at KPHX. Operates a fleet of four 1978 Cessna 172N Skyhawks.",
-    "location": "KPHX \u2014 Phoenix Sky Harbor International Airport",
-    "contact": "ops@desertsky.aero",
+    "externalId": "Southwest_Airlines",
+    "name": "Southwest Airlines",
+    "description": "Major US low-cost carrier operating a fleet of 47 Boeing 737-800 aircraft based at Phoenix Sky Harbor (PHX). Fleet maintained under FAA-approved maintenance program.",
+    "location": "HQ: Dallas Love Field (DAL), Texas",
+    "contact": "maintenance@southwestairlines.com",
     "type": "FleetOwner"
   }
 ]

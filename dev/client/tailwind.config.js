@@ -16,9 +16,30 @@ export default {
         mono: ['"JetBrains Mono"', '"Fira Code"', "Consolas", "monospace"],
       },
       colors: {
-        zinc: {
-          950: "#09090b",
+        // Cognite primary blue
+        primary: {
+          DEFAULT: "#304cb2",
+          foreground: "#ffffff",
         },
+        // shadcn CSS-variable-based color aliases
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        canvas: "var(--canvas)",
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        border: "var(--border)",
+        ring: "var(--ring)",
+      },
+      borderRadius: {
+        lg: "0.75rem",
+        md: "0.5rem",
+        sm: "0.375rem",
       },
     },
   },

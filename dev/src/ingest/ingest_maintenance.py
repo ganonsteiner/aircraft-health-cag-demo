@@ -1,5 +1,5 @@
 """
-Maintenance Log Ingestion — Desert Sky Aviation Fleet.
+Maintenance Log Ingestion — Southwest Airlines Fleet.
 
 Parses data/maintenance_{TAIL}.csv (IT source) for each of the four
 aircraft and creates:
@@ -36,10 +36,9 @@ def _ad_reference_token_to_doc_external_id(token: str) -> Optional[str]:
         raw = raw[3:].strip()
     key = raw.strip().lower()
     doc_by_key: dict[str, str] = {
-        "80-04-03 r2": "DOC-AD-80-04-03-R2",
-        "2001-23-03": "DOC-AD-2001-23-03",
-        "2011-10-09": "DOC-AD-2011-10-09",
-        "90-06-03 r1": "DOC-AD-90-06-03-R1",
+        "2020-14-06": "DOC-AD-2020-14-06",
+        "2018-23-09": "DOC-AD-2018-23-09",
+        "2015-08-12": "DOC-AD-2015-08-12",
     }
     return doc_by_key.get(key)
 

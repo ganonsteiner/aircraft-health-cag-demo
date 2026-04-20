@@ -1,14 +1,31 @@
-/** Global Zustand store for the Desert Sky Aviation fleet demo. */
+/** Global Zustand store for the Southwest Airlines fleet demo. */
 
 import { create } from "zustand";
 import type { AgentEvent, ChatMessage, GraphData } from "./types";
 
-export const TAILS = ["N4798E", "N2251K", "N8834Q", "N1156P"] as const;
+/** Fully instrumented aircraft (all telemetry available). */
+export const INSTRUMENTED_TAILS = ["N287WN", "N246WN", "N220WN", "N235WN"] as const;
+
+/** All fleet tails — instrumented planes first, then placeholders. */
+export const TAILS = [
+  "N287WN", "N246WN", "N220WN", "N235WN",
+  "N231WN", "N251WN", "N266WN", "N277WN", "N291WN",
+] as const;
+
 export type TailNumber = typeof TAILS[number];
+
+/** Default tail used when a page needs a concrete aircraft but the user hasn't picked one yet. */
+export const DEFAULT_TAIL: TailNumber = TAILS[0];
+
+/** Map from tail number → airworthiness string (fetched once from /api/fleet). */
+export type FleetStatusMap = Record<string, string>;
 
 interface AppState {
   selectedAircraft: TailNumber | null;
   setSelectedAircraft: (tail: TailNumber | null) => void;
+
+  fleetStatusMap: FleetStatusMap;
+  setFleetStatusMap: (map: FleetStatusMap) => void;
 
   chatMessages: ChatMessage[];
   addChatMessage: (msg: ChatMessage) => void;
@@ -36,9 +53,12 @@ interface AppState {
 }
 
 export const useStore = create<AppState>((set) => ({
-  selectedAircraft: "N4798E",
+  selectedAircraft: DEFAULT_TAIL,
 
   setSelectedAircraft: (tail) => set({ selectedAircraft: tail }),
+
+  fleetStatusMap: {},
+  setFleetStatusMap: (map) => set({ fleetStatusMap: map }),
 
   chatMessages: [],
   addChatMessage: (msg) =>

@@ -37,7 +37,7 @@ export default function SetupBanner({
           <BannerRow
             icon={<AlertTriangle className="w-4 h-4 shrink-0" />}
             color="yellow"
-            title="Mock CDF on port 4001 is not serving this project’s fleet data"
+            title="Mock CDF on port 4001 is not serving this project's fleet data"
             detail={
               <>
                 Another process may be using port 4001 (check{" "}
@@ -97,7 +97,7 @@ function BannerRow({
       {icon}
       <div>
         <span className="font-medium">{title}</span>
-        {detail && <span className="text-zinc-400 ml-2">{detail}</span>}
+        {detail && <span className="text-slate-500 ml-2">{detail}</span>}
       </div>
     </div>
   );

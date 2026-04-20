@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Network, Box, Zap, FileText, GitBranch, Activity, RotateCcw, Waypoints } from "lucide-react";
-import { cn, CARD_SURFACE_A, KG_DOCUMENT_NODE_COLOR } from "../lib/utils";
+import { cn, CARD_SURFACE_B, KG_DOCUMENT_NODE_COLOR } from "../lib/utils";
 import { traversalActivityCounts } from "../lib/traversalGraphIds";
 import { useStore } from "../lib/store";
 import type { AgentEvent } from "../lib/types";
@@ -20,7 +20,7 @@ function nodeIcon(node: string) {
     node.startsWith("AssetChildren:") ||
     node.startsWith("AssetSubgraph:")
   )
-    return { icon: <Box className="w-3 h-3" />, color: "text-sky-400", bg: "bg-sky-950/60 border-sky-800/50" };
+    return { icon: <Box className="w-3 h-3" />, color: "text-blue-500", bg: "bg-blue-50 border-blue-200" };
 
   if (
     node.startsWith("Sensor:") ||
@@ -28,7 +28,7 @@ function nodeIcon(node: string) {
     node.startsWith("TimeSeries:") ||
     node.startsWith("Trend:")
   )
-    return { icon: <Activity className="w-3 h-3" />, color: "text-emerald-400", bg: "bg-emerald-950/60 border-emerald-800/50" };
+    return { icon: <Activity className="w-3 h-3" />, color: "text-green-500", bg: "bg-green-50 border-green-200" };
 
   if (
     node.startsWith("Events:") ||
@@ -36,7 +36,7 @@ function nodeIcon(node: string) {
     node.startsWith("FleetSearch:") ||
     node.startsWith("PolicyCompliance:")
   )
-    return { icon: <Zap className="w-3 h-3" />, color: "text-orange-400", bg: "bg-orange-950/60 border-orange-800/50" };
+    return { icon: <Zap className="w-3 h-3" />, color: "text-orange-500", bg: "bg-orange-50 border-orange-200" };
 
   if (
     node.startsWith("Relationships:") ||
@@ -47,47 +47,47 @@ function nodeIcon(node: string) {
     node.startsWith("HAS_COMPONENT:") ||
     node.startsWith("FleetSensorCompare:")
   )
-    return { icon: <GitBranch className="w-3 h-3" />, color: "text-indigo-400", bg: "bg-indigo-950/60 border-indigo-800/50" };
+    return { icon: <GitBranch className="w-3 h-3" />, color: "text-indigo-500", bg: "bg-indigo-50 border-indigo-200" };
 
   if (node.startsWith("File:") || node.startsWith("Documents:"))
-    return { icon: <FileText className="w-3 h-3" />, color: KG_DOCUMENT_NODE_COLOR, bg: "bg-purple-950/60 border-purple-800/50" };
+    return { icon: <FileText className="w-3 h-3" />, color: KG_DOCUMENT_NODE_COLOR, bg: "bg-purple-50 border-purple-200" };
 
   if (node.startsWith("Context:") || node.startsWith("FleetContext:"))
-    return { icon: <Network className="w-3 h-3" />, color: "text-yellow-400", bg: "bg-yellow-950/60 border-yellow-800/50" };
+    return { icon: <Network className="w-3 h-3" />, color: "text-teal-500", bg: "bg-teal-50 border-teal-200" };
 
-  return { icon: <Box className="w-3 h-3" />, color: "text-zinc-400", bg: "bg-zinc-800/60 border-zinc-700/50" };
+  return { icon: <Box className="w-3 h-3" />, color: "text-slate-500", bg: "bg-slate-100 border-slate-200" };
 }
 
 function toolColor(name: string): string {
   const map: Record<string, string> = {
-    // Asset family — sky
-    get_asset:                          "text-sky-400",
-    get_asset_children:                 "text-sky-300",
-    get_asset_subgraph:                 "text-sky-400",
-    // Telemetry family — emerald
-    get_time_series:                    "text-emerald-400",
-    get_datapoints:                     "text-emerald-300",
-    get_time_series_trend:              "text-emerald-400",
-    // Event family — orange
-    get_events:                         "text-orange-400",
-    search_fleet_for_similar_events:    "text-orange-300",
-    // Relationship / graph traversal family — indigo
-    get_relationships:                  "text-indigo-400",
-    get_fleet_policies:                 "text-indigo-300",
-    get_fleet_overview:                 "text-indigo-300",
-    get_engine_type_history:            "text-indigo-400",
-    check_fleet_policy_compliance:      "text-indigo-400",
-    compare_engine_sensor_across_fleet: "text-indigo-400",
-    // Context family — yellow
-    assemble_aircraft_context:          "text-yellow-400",
-    assemble_fleet_context:             "text-yellow-400",
-    // Document family — purple
+    // Asset family — blue-500 (matches asset node)
+    get_asset:                          "text-blue-500",
+    get_asset_children:                 "text-blue-500",
+    get_asset_subgraph:                 "text-blue-500",
+    // Telemetry family — green-500 (matches timeseries node)
+    get_time_series:                    "text-green-500",
+    get_datapoints:                     "text-green-500",
+    get_time_series_trend:              "text-green-500",
+    // Event family — orange-500 (matches event node)
+    get_events:                         "text-orange-500",
+    search_fleet_for_similar_events:    "text-orange-500",
+    // Relationship / graph traversal family — indigo-500
+    get_relationships:                  "text-indigo-500",
+    get_fleet_policies:                 "text-indigo-500",
+    get_fleet_overview:                 "text-indigo-500",
+    get_engine_type_history:            "text-indigo-500",
+    check_fleet_policy_compliance:      "text-indigo-500",
+    compare_engine_sensor_across_fleet: "text-indigo-500",
+    // Context family — teal-500
+    assemble_aircraft_context:          "text-teal-500",
+    assemble_fleet_context:             "text-teal-500",
+    // Document family — purple-500 (matches file node)
     get_linked_documents:               KG_DOCUMENT_NODE_COLOR,
   };
-  return map[name] || "text-zinc-400";
+  return map[name] || "text-slate-500";
 }
 
-const STAGGER_MS = 150;
+const STAGGER_MS = 100;
 
 export default function GraphTraversalPanel({
   events,
@@ -171,27 +171,27 @@ export default function GraphTraversalPanel({
   }, [visibleEvents]);
 
   return (
-    <div className={cn("flex flex-col h-full min-h-0 overflow-hidden rounded-xl", CARD_SURFACE_A)}>
+    <div className={cn("flex flex-col h-full min-h-0 overflow-hidden rounded-xl", CARD_SURFACE_B)}>
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-800 shrink-0">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 shrink-0">
         <div className="flex items-center gap-2 min-w-0">
-          <Waypoints className="w-4 h-4 text-sky-400 shrink-0" />
-          <span className="text-sm font-semibold text-zinc-300">Graph Traversal</span>
+          <Waypoints className="w-4 h-4 text-[#304cb2] shrink-0" />
+          <span className="text-sm font-semibold text-slate-700">Graph Traversal</span>
           {isStreaming && (
-            <span className="flex items-center gap-1 text-xs text-sky-400 animate-pulse shrink-0">
-              <span className="w-1.5 h-1.5 bg-sky-400 rounded-full" />
+            <span className="flex items-center gap-1 text-xs text-red-600 animate-pulse shrink-0">
+              <span className="w-1.5 h-1.5 bg-red-500 rounded-full" />
               traversing...
             </span>
           )}
           {isReplaying && (
-            <span className="flex items-center gap-1 text-xs text-sky-400 animate-pulse shrink-0">
-              <span className="w-1.5 h-1.5 bg-sky-400 rounded-full" />
+            <span className="flex items-center gap-1 text-xs text-red-600 animate-pulse shrink-0">
+              <span className="w-1.5 h-1.5 bg-red-500 rounded-full" />
               replaying...
             </span>
           )}
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          <span className="text-xs text-zinc-600 tabular-nums">
+          <span className="text-xs text-slate-400 tabular-nums">
             {toolCount} tool{toolCount === 1 ? "" : "s"} ·{" "}
             {graphNodeCount !== null ? (
               <>
@@ -207,7 +207,7 @@ export default function GraphTraversalPanel({
             <button
               onClick={onReplay}
               title="Replay graph traversal"
-              className="p-1 rounded text-zinc-500 hover:text-sky-400 hover:bg-sky-950/30 transition-colors"
+              className="p-1 rounded text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
@@ -216,18 +216,18 @@ export default function GraphTraversalPanel({
       </div>
 
       {/* Legend */}
-      <div className="px-3 py-2 border-b border-zinc-800 flex flex-wrap gap-x-3 gap-y-1 shrink-0">
+      <div className="px-3 py-2 border-b border-slate-200 flex flex-wrap gap-x-3 gap-y-1 shrink-0">
         {[
-          { label: "Asset",     color: "text-sky-400"     },
-          { label: "Sensor/TS", color: "text-emerald-400" },
-          { label: "Event",     color: "text-orange-400"  },
-          { label: "Relation",  color: "text-indigo-400"  },
-          { label: "Document",  color: KG_DOCUMENT_NODE_COLOR },
-          { label: "Context",   color: "text-yellow-400"  },
+          { label: "Asset",     color: "text-blue-500"          },
+          { label: "File",  color: KG_DOCUMENT_NODE_COLOR   },
+          { label: "Event",     color: "text-orange-500"        },
+          { label: "TimeSeries", color: "text-green-500"         },
+          { label: "Relation",  color: "text-indigo-500"        },
+          { label: "Context",   color: "text-teal-500"          },
         ].map((l) => (
           <span key={l.label} className="inline-flex items-center gap-0.5 text-xs">
             <span className={l.color}>●</span>
-            <span className="text-zinc-200">{l.label}</span>
+            <span className="text-slate-800">{l.label}</span>
           </span>
         ))}
       </div>
@@ -235,7 +235,7 @@ export default function GraphTraversalPanel({
       {/* Events feed — vertical scroll list */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto p-3 space-y-1.5 font-mono" style={{ minHeight: 0 }}>
         {visibleEvents.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-full text-zinc-700 py-8 text-center">
+          <div className="flex flex-col items-center justify-center h-full text-slate-500 py-8 text-center">
             <Waypoints className="w-8 h-8 mb-3" />
             <p className="text-sm">Displays nodes and edges</p>
             <p className="text-xs mt-1">as they are traversed by the agent</p>
@@ -246,13 +246,13 @@ export default function GraphTraversalPanel({
           if (event.type === "tool_call") {
             return (
               <div key={idx} className="animate-fade-slide-in flex items-center gap-2 py-0.5">
-                <span className="text-zinc-700 text-xs w-5 text-right shrink-0">{event.iteration}</span>
-                <span className="text-zinc-600 text-xs">→</span>
+                <span className="text-slate-500 text-xs w-5 text-right shrink-0">{event.iteration}</span>
+                <span className="text-slate-400 text-xs">→</span>
                 <span className={cn("text-xs font-semibold", toolColor(event.tool_name || ""))}>
                   {event.tool_name}
                 </span>
                 {event.args && Object.keys(event.args).length > 0 && (
-                  <span className="text-zinc-600 text-xs truncate">
+                  <span className="text-slate-400 text-xs truncate">
                     ({Object.values(event.args).slice(0, 2).join(", ")})
                   </span>
                 )}
@@ -263,8 +263,8 @@ export default function GraphTraversalPanel({
           if (event.type === "tool_result") {
             return (
               <div key={idx} className="animate-fade-slide-in flex items-center gap-2 py-0.5 pl-8">
-                <span className="text-zinc-700 text-xs">↳</span>
-                <span className="text-zinc-500 text-xs truncate">{event.summary}</span>
+                <span className="text-slate-500 text-xs">↳</span>
+                <span className="text-slate-400 text-xs truncate">{event.summary}</span>
               </div>
             );
           }

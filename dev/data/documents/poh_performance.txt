@@ -1,159 +1,82 @@
-CESSNA MODEL 172N SKYHAWK
-PILOT'S OPERATING HANDBOOK — SECTION 5: PERFORMANCE
-1978 Edition (FAA Approved)
+BOEING 737-800 NG
+FLIGHT CREW OPERATIONS MANUAL — CHAPTER 5: PERFORMANCE
+Applicable to: CFM56-7B powered 737-800 (Southwest Airlines fleet)
 
-Type: Cessna 172N (1978) · Engine: Lycoming O-320-H2AD
-
-All performance data is FAA-approved and reflects a standard aircraft at gross
-weight (2300 lbs) in standard atmospheric conditions (ISA: 15°C, 29.92 in. Hg)
-unless otherwise noted. Actual performance varies with aircraft weight, density
-altitude, and non-standard temperature. Phoenix (KPHX) density altitude at field
-elevation 1,135 ft MSL can exceed 5,000 ft in summer — compute density altitude
-before every flight.
+All data for ISA (15 °C, 29.92 in Hg) unless noted.
+Actual performance varies with weight, temperature, altitude, and flap setting.
+Always use QRH/QRH or AFM-approved performance software for dispatch.
 
 ================================================================================
-TAKEOFF PERFORMANCE
+TAKEOFF PERFORMANCE (sea level, ISA, MTOW 174,200 lbs)
 ================================================================================
 
-SHORT FIELD TAKEOFF (Flaps 10°):
-  Ground roll (sea level, std day, gross):     890 feet
-  Distance over 50 ft obstacle:               1,625 feet
+Takeoff field length (balanced, Flaps 5):    ~8,500 ft (estimated, std day)
+V1 (typical for MTOW, sea level):            ~155 KIAS (varies with OAT/field elev)
+VR (typical):                                ~157 KIAS
+V2 (typical):                                ~162 KIAS
+Initial climb speed (gear up):               V2 + 10 to V2 + 20 KIAS
 
-NORMAL TAKEOFF (Flaps 0°):
-  Ground roll (sea level, std day, gross):    ~960 feet (estimated; POH lists
-                                              short field as primary data)
-
-Effect of Altitude (approximate):
-  At 2,500 ft density altitude:               +15% ground roll
-  At 5,000 ft density altitude:               +35% ground roll
-  At 7,000 ft density altitude:               +55% ground roll
-
-NOTE: Phoenix Sky Harbor (KPHX) field elevation 1,135 ft MSL. On a summer day at
-40°C (104°F), density altitude at KPHX can be 5,500–6,000 ft. Takeoff distance
-can approach 1,400 ft ground roll and 2,500 ft over 50 ft obstacle.
-
-Rotation Speed:  55 KIAS (Vr)
-Lift-off Speed:  60 KIAS
-Best Angle Clb:  60 KIAS (Vx) — obstacles only
-Best Rate Clmb:  73 KIAS (Vy) — normal climb
+At PHX (field elevation 1,135 ft MSL) in summer (OAT +40 °C / ISA+25):
+  Density altitude: ~5,000–6,000 ft
+  Takeoff performance penalty: approximately 20–25% field length increase.
+  Derate / assumed temperature takeoff recommended; verify with performance tool.
 
 ================================================================================
 CLIMB PERFORMANCE
 ================================================================================
 
-At Sea Level, Gross Weight, Full Power:
-  Rate of Climb:    770 fpm
-  Calibrated AS:    73 KIAS (Vy)
+Typical climb profile (standard NADP2):
+  Gear up: V2 + 10 to 1,000 ft AAL
+  Flap retraction: per schedule
+  Climb speed clean: 280 KIAS / M0.78 at cruise altitude
 
-Density Altitude vs. Rate of Climb:
-  At 4,000 ft DA:   ~580 fpm
-  At 8,000 ft DA:   ~360 fpm
-  At 12,000 ft DA:  ~120 fpm
-
-Service Ceiling:   14,200 ft (100 fpm climb rate)
-Absolute Ceiling:  ~15,000 ft (0 fpm)
-
-Cruise Climb:      80–85 KIAS (recommended for engine cooling; lower CHT than Vy)
+Initial climb thrust (standard day, MTOW):   2 × 27,300 lbf
+Rate of climb at FL100 (MTOW):               ~2,500 fpm
+Rate of climb at FL350 (mid-cruise weight):  ~1,200 fpm
 
 ================================================================================
 CRUISE PERFORMANCE
 ================================================================================
 
-Altimeter:    8,000 ft MSL (standard IFR cruise altitude for Southwest routes)
-
-  75% Power (2450 RPM):     122 KTAS     ~9.7 gph     range ~520 nm (43 gal usable)
-  65% Power (2350 RPM):     114 KTAS     ~8.4 gph     range ~590 nm
-  55% Power (2200 RPM):     105 KTAS     ~7.5 gph     range ~640 nm
-
-At 4,000 ft MSL (common VFR cruise altitude):
-  75% Power:                115 KTAS     ~9.5 gph
-  65% Power:                108 KTAS     ~8.2 gph
-
-Economy Cruise (55% power): Recommended for maximum engine longevity and lowest
-  CHT/EGT — particularly important for H2AD variant.
-
-FUEL FLOW AT CRUISE:
-  Full rich:         11–12 gph (all altitudes)
-  Best power:         9.5–10.5 gph (50° ROP)
-  Best economy:       7.5–8.5 gph (peak EGT or 50° LOP)
-  Lean of peak (LOP): 7.0–7.5 gph (advanced leaning — verify engine is approved)
+Typical cruise altitude:   FL350–FL390 (step-climb as fuel burns off)
+Long range cruise (LRC):   M0.785 (approximately 450 KTAS at FL370)
+High speed cruise:         M0.82 (VMO)
+Fuel flow per engine (typical cruise, FL370, M0.78, ISA):  ~2,200–2,400 lbs/hr
+                           (Total approx. 4,400–4,800 lbs/hr)
 
 ================================================================================
 RANGE AND ENDURANCE
 ================================================================================
 
-  Usable Fuel: 43 gallons
+Design range at MTOW:   ~2,900 nm (typical airline payload, NBAA IFR reserves)
+Range with max payload:  ~2,060 nm
+Maximum endurance:       ~7.5 hours (fuel exhaustion only; reserve not included)
 
-  Range (no reserves):
-    75% power at 8,000 ft:    ~520 nm (4.3 hours)
-    65% power at 8,000 ft:    ~590 nm (5.2 hours)
-    55% power at 8,000 ft:    ~650 nm (6.2 hours)
-
-  FAR 91 Day VFR Reserve:    30 minutes at cruise power (add ~50 nm to required fuel)
-  FAR 91 IFR Reserve:        45 minutes at cruise power
-
-  Practical Mission Range (with reserves, 45-min fuel):
-    Short hop KPHX–KSDL:      15 nm (15 min; trivial fuel)
-    KPHX–KPRC:                85 nm (45 min at 115 KTAS)
-    KPHX–KTUS:               100 nm (50 min)
-    KPHX–KGCN:               200 nm (100 min) — easily within range
-    KPHX–KLAS:               250 nm (130 min) — doable with reserve planning
+Southwest Airlines typical sector: 400–1,200 nm; fuel reserves per FAR 121.
 
 ================================================================================
-LANDING PERFORMANCE
+LANDING PERFORMANCE (typical landing weight ~135,000 lbs)
 ================================================================================
 
-SHORT FIELD LANDING (Full flaps, 61 KIAS over threshold):
-  Ground roll:          520 feet
-  Distance over 50 ft obstacle: 1,280 feet
+Approach speed (VREF + additive):
+  Flaps 30:   ~137 KIAS at 135,000 lbs (VREF varies with gross weight)
+  Flaps 40:   ~130 KIAS at 135,000 lbs
 
-NORMAL LANDING (Flaps 20°–30°):
-  Approach speed:       65–70 KIAS
-  Ground roll:          ~600 feet
-
-Effect of Altitude:
-  At 5,000 ft density altitude: landing distance increases ~25%
-  (air is less dense; true airspeed higher at same IAS)
-
-Effect of Wind:
-  Headwind: reduces landing distance significantly
-  Tailwind: INCREASES landing distance — limit tailwind to 10 knots max
+Landing field length (flaps 40, autobrake 3, dry):   ~5,200 ft (estimated)
+Maximum demonstrated crosswind (landing):             38 kts
 
 ================================================================================
-GLIDE PERFORMANCE (ENGINE INOPERATIVE)
+HOT AND HIGH OPERATIONS (KPHX NOTE)
 ================================================================================
 
-Best Glide Speed:    65 KIAS (flaps up)
-Glide Ratio:         ~9:1 (approximately)
+Phoenix Sky Harbor (KPHX) is a high-density-altitude environment in summer.
+Operations above 40 °C OAT at KPHX may require:
+  - Payload reduction or fuel reduction
+  - De-rated takeoff thrust
+  - Engine performance monitoring for EGT limit proximity
 
-Distance from altitude:
-  From 1,000 ft AGL:   ~1.5 nm glide distance
-  From 5,000 ft AGL:   ~7.5 nm
-  From 8,000 ft AGL:   ~12 nm
-
-Phoenix Departure Profile: After typical KPHX departure, reach 6,000 ft MSL
-  (4,800 ft AGL) within ~10 nm. From that point, ~7–8 nm glide range.
-  Phoenix metro area (extensive flat desert/urban) provides abundant emergency
-  landing options at any point along typical departure routes.
-
-================================================================================
-DENSITY ALTITUDE EFFECTS (PHOENIX — KPHX SPECIFIC)
-================================================================================
-
-KPHX Field Elevation: 1,135 ft MSL
-
-Summer Operations (June–September):
-  Standard temp at 1,135 ft: ~18°C
-  Phoenix summer temp:       38–45°C
-  
-  Density Altitude at 40°C:  ~5,000 ft
-  Density Altitude at 45°C:  ~5,600 ft
-
-  At 5,000 ft density altitude:
-    Takeoff ground roll:      ~1,200 ft (vs. 890 ft sea level)
-    Rate of climb:            ~450–550 fpm (vs. 770 fpm sea level)
-    Cruise speed penalty:     ~5 KTAS
-
-CAUTION: Morning or evening departures strongly recommended in summer.
-  Midday DA at KPHX in July routinely exceeds 5,500 ft.
-  Full gross weight operations should be avoided in extreme heat.
+High OAT increases the EGT margin consumed during takeoff. Engines operating
+repeatedly at high-OAT high-thrust settings show accelerated HPT blade degradation.
+Consistent EGT deviation trending upward at KPHX operations in summer is a leading
+indicator tracked via ACARS trend monitoring and evaluated during A-check and
+scheduled borescope inspection intervals.

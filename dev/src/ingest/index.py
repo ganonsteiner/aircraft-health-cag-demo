@@ -1,9 +1,9 @@
 """
-Ingestion Orchestrator — Desert Sky Aviation Fleet.
+Ingestion Orchestrator — Southwest Airlines 737 Fleet.
 
 Runs all ingestion stages in order:
-  1. Assets      — 4-aircraft hierarchy + fleet owner node
-  2. Documents   — ET documents (POH, ADs, SBs)
+  1. Assets      — 12-aircraft hierarchy + fleet owner node
+  2. Documents   — ET documents (AMM, ADs, SBs)
   3. Flights     — OT sensor data, per-tail CSVs, flight events
   4. Maintenance — IT maintenance records, per-tail CSVs
   5. Fleet graph — policies, fleet owner
@@ -27,7 +27,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent / "scripts"))
 
 def run_ingestion() -> None:
     start = time.time()
-    print("\n✈  Desert Sky Aviation — Fleet Ingestion Pipeline\n")
+    print("\n✈  Southwest Airlines — Fleet Ingestion Pipeline\n")
 
     print("Stage 1/5: Assets — 4-aircraft hierarchy + fleet owner")
     from .ingest_assets import ingest_assets

@@ -30,12 +30,32 @@ import {
   type ToneClasses,
 } from "../lib/utils";
 import { api } from "../lib/api";
-import { TAILS, type TailNumber } from "../lib/store";
+import { useStore, TAILS, DEFAULT_TAIL, type TailNumber } from "../lib/store";
+import { MenuSelect } from "./MenuSelect";
 import type { AircraftStatus, Squawk } from "../lib/types";
+
+function airworthinessDotClass(aw: string | undefined): string {
+  if (aw === "NOT_AIRWORTHY") return "bg-red-500";
+  if (aw === "CAUTION" || aw === "FERRY_ONLY") return "bg-orange-500";
+  if (aw === "AIRWORTHY") return "bg-emerald-500";
+  return "bg-slate-300";
+}
+
+function tailOption(tail: string, aw: string | undefined) {
+  return {
+    value: tail as TailNumber,
+    label: (
+      <span className="flex items-center gap-1.5">
+        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${airworthinessDotClass(aw)}`} />
+        {tail}
+      </span>
+    ),
+  };
+}
 
 /** Inset from card edges; reserve matches bottom-2 + line + gap (~pb-8 after caller padding). */
 const ASSISTANT_FOOTER_ROW =
-  "pointer-events-none absolute left-2 bottom-2 z-10 inline-flex shrink-0 items-center gap-0.5 text-xs leading-none text-sky-400 opacity-0 transition-opacity duration-150 group-hover/card:pointer-events-auto group-hover/card:opacity-100";
+  "pointer-events-none absolute left-2 bottom-2 z-10 inline-flex shrink-0 items-center gap-0.5 text-xs leading-none text-[#304cb2] opacity-0 transition-opacity duration-150 group-hover/card:pointer-events-auto group-hover/card:opacity-100";
 
 type AirworthinessState = "AIRWORTHY" | "FERRY_ONLY" | "CAUTION" | "NOT_AIRWORTHY" | "UNKNOWN";
 
@@ -53,7 +73,9 @@ function oilLifeParts(status: AircraftStatus): OilLifeParts {
   const oilDays = status.oilDaysUntilDue;
 
   const signedOilHours = oilOver > 0 ? -oilOver : oilUntil;
-  const hasOilHorizon = oilOver > 0 || oilUntil !== 0 || oilDays !== null;
+  // tachTracked: oilUntil=0 with no overdue means no tach interval in maintenance record
+  const tachTracked = oilOver > 0 || oilUntil !== 0;
+  const hasOilHorizon = tachTracked || oilDays !== null;
 
   const nbsp = "\u00a0";
   /** Compact "d" here only — annual and other copy still use full "days" where needed. */
@@ -63,7 +85,7 @@ function oilLifeParts(status: AircraftStatus): OilLifeParts {
     return `${sign}${Math.abs(d)}${nbsp}d`;
   };
 
-  const hoursLine = hasOilHorizon
+  const hoursLine = tachTracked
     ? formatSignedOilHoursCompact(signedOilHours, nbsp)
     : `—${nbsp}hr`;
   const daysLine = hasOilHorizon ? formatSignedDays(oilDays) : `—${nbsp}d`;
@@ -81,7 +103,7 @@ function oilLifeParts(status: AircraftStatus): OilLifeParts {
 
 /** Prefer one row (hours / d); flex-wrap only if the tile is too narrow. */
 function OilLifeMainValue({ parts }: { parts: OilLifeParts }) {
-  const c = parts.tone.tone === "unknown" ? "text-zinc-200" : parts.tone.text;
+  const c = parts.tone.tone === "unknown" ? "text-slate-800" : parts.tone.text;
   const nbsp = "\u00a0";
   return (
     <div
@@ -142,6 +164,9 @@ function formatBannerSquawks(status: AircraftStatus): string {
 }
 
 function buildAirworthinessBannerLine2(status: AircraftStatus): string {
+  if (status.groundingSquawkCount > 0) {
+    return "Engine #1 failure — aircraft out of service";
+  }
   return `${formatBannerAnnual(status)} · ${formatBannerOil(status)} · ${formatBannerSquawks(status)}`;
 }
 
@@ -150,11 +175,13 @@ function ClickPanel({
   chatHint,
   onClick,
   className,
+  footerClassName,
   children,
 }: {
   chatHint: string;
   onClick: () => void;
   className?: string;
+  footerClassName?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -165,13 +192,13 @@ function ClickPanel({
       aria-label={chatHint}
       className={cn(
         "relative block w-full min-w-0 text-left cursor-pointer group/card",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#304cb2]",
         className,
         "pb-8"
       )}
     >
       <div className="min-w-0">{children}</div>
-      <div className={ASSISTANT_FOOTER_ROW}>
+      <div className={cn(ASSISTANT_FOOTER_ROW, footerClassName)}>
         <MessageSquare className="w-3 h-3 shrink-0" aria-hidden />
         <span>Ask in AI Assistant</span>
       </div>
@@ -186,7 +213,9 @@ interface Props {
 }
 
 export default function StatusDashboard({ selectedAircraft, onSelectAircraft, onOpenAssistant }: Props) {
-  const tail = selectedAircraft ?? "N4798E";
+  const tail = selectedAircraft ?? DEFAULT_TAIL;
+  const { fleetStatusMap } = useStore();
+  const tailOptions = TAILS.map((t) => tailOption(t, fleetStatusMap[t]));
   const [status, setStatus] = useState<AircraftStatus | null>(null);
   const [squawks, setSquawks] = useState<Squawk[]>([]);
   const [loading, setLoading] = useState(true);
@@ -207,37 +236,17 @@ export default function StatusDashboard({ selectedAircraft, onSelectAircraft, on
   const open = onOpenAssistant ?? (() => {});
 
   return (
-    <div
-      className={cn(
-        "flex flex-col flex-1 min-h-0 w-full min-w-0 pb-6",
-        MAIN_TAB_CONTENT_FRAME,
-        TAB_PAGE_TOP_INSET
-      )}
-    >
-      <div className={cn("shrink-0 mb-3", TAB_PAGE_READABLE_COLUMN)}>
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1 flex-wrap">
-            {TAILS.map((t) => (
-              <button
-                key={t}
-                type="button"
-                onClick={() => onSelectAircraft(t)}
-                className={cn(
-                  "px-2.5 py-0.5 rounded-full text-xs font-medium border transition-colors",
-                  tail === t
-                    ? "bg-sky-600 text-white border-sky-500"
-                    : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
-                )}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
+    <div className="flex flex-1 min-h-0 flex-col overflow-y-auto w-full">
+      <div className={cn("flex flex-col min-w-0 pb-6", MAIN_TAB_CONTENT_FRAME, TAB_PAGE_TOP_INSET)}>
+        <div className={cn("shrink-0 mb-3", TAB_PAGE_READABLE_COLUMN)}>
+          <MenuSelect
+            value={tail}
+            options={tailOptions}
+            onChange={(v) => onSelectAircraft(v as TailNumber)}
+            ariaLabel="Select aircraft"
+          />
         </div>
-      </div>
-
-      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain w-full min-w-0">
-        <div className={cn(TAB_PAGE_READABLE_COLUMN, "pb-6")}>
+        <div className={TAB_PAGE_READABLE_COLUMN}>
           {error ? (
             <ErrorState message={error} />
           ) : loading || !status || status.tail !== tail ? (
@@ -263,7 +272,11 @@ function DashboardContent({
   const airworthiness = deriveAirworthiness(status);
   const smohPct = Math.min(100, status.engineSMOHPercent);
   const smohBarColor =
-    smohPct >= 85 ? "bg-red-500" : smohPct >= 65 ? "bg-yellow-500" : "bg-emerald-500";
+    smohPct >= 85 ? "bg-red-500" : smohPct >= 65 ? "bg-orange-500" : "bg-emerald-500";
+  const smoh2Pct = Math.min(100, status.engine2SMOHPercent ?? 0);
+  const smoh2BarColor =
+    smoh2Pct >= 85 ? "bg-red-500" : smoh2Pct >= 65 ? "bg-orange-500" : "bg-emerald-500";
+  const eng1Failed = airworthiness === "NOT_AIRWORTHY";
   const open = onOpenAssistant;
 
   const nbsp = "\u00a0";
@@ -345,39 +358,56 @@ function DashboardContent({
       <ClickPanel
         chatHint="Ask about engine time, TBOH, and H2AD maintenance in the AI Assistant"
         onClick={open}
-        className={cn("rounded-xl p-4 hover:border-zinc-700", CARD_SURFACE_B)}
+        className={cn("rounded-xl p-4 hover:border-slate-200", CARD_SURFACE_B)}
       >
-        <div className="flex justify-between items-baseline gap-3 mb-3">
-          <div className="min-w-0 flex items-baseline gap-1.5 flex-wrap">
-            <span className="text-sm font-medium text-zinc-300 shrink-0">Engine Life</span>
-            <span className="text-xs text-zinc-500 shrink-0" aria-hidden>
-              ·
-            </span>
-            <span className="text-xs text-zinc-500 min-w-0 truncate" title="Lycoming O-320-H2AD">
-              Lycoming O-320-H2AD
-            </span>
-          </div>
-          <span className="text-sm tabular-nums shrink-0">
-            <span className="text-zinc-300 font-medium">
-              {status.engineSMOH.toFixed(0)} / {status.engineTBO} hr
-            </span>
-            <span className="text-zinc-500 font-normal">
-              {"\u00a0"}·{"\u00a0"}
-              {smohPct.toFixed(0)}%
-            </span>
-          </span>
+        <div className="flex items-baseline gap-1.5 mb-3">
+          <span className="text-sm font-medium text-slate-700">Engine Life</span>
+          <span className="text-xs text-slate-400" aria-hidden>·</span>
+          <span className="text-xs text-slate-400">CFM56-7B</span>
         </div>
-        <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
-          <div
-            className={cn("h-full rounded-full transition-all duration-700", smohBarColor)}
-            style={{ width: `${smohPct}%` }}
-          />
+        <div className="space-y-3">
+          <div>
+            <div className="flex justify-between items-baseline gap-3 mb-1.5">
+              <span className="text-xs text-slate-500">Engine #1</span>
+              {eng1Failed ? (
+                <span className="text-xs font-semibold text-red-600">FAILED</span>
+              ) : (
+                <span className="text-xs tabular-nums text-slate-500">
+                  {status.engineSMOH.toFixed(0)} / {status.engineTBO} hr
+                  {"\u00a0"}·{"\u00a0"}{smohPct.toFixed(0)}%
+                </span>
+              )}
+            </div>
+            <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div
+                className={cn("h-full rounded-full transition-all duration-700", eng1Failed ? "bg-red-500 w-full" : smohBarColor)}
+                style={eng1Failed ? undefined : { width: `${smohPct}%` }}
+              />
+            </div>
+          </div>
+          {(status.engine2SMOH ?? 0) > 0 && (
+            <div>
+              <div className="flex justify-between items-baseline gap-3 mb-1.5">
+                <span className="text-xs text-slate-500">Engine #2</span>
+                <span className="text-xs tabular-nums text-slate-500">
+                  {(status.engine2SMOH ?? 0).toFixed(0)} / {status.engine2TBO ?? 30000} hr
+                  {"\u00a0"}·{"\u00a0"}{smoh2Pct.toFixed(0)}%
+                </span>
+              </div>
+              <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  className={cn("h-full rounded-full transition-all duration-700", smoh2BarColor)}
+                  style={{ width: `${smoh2Pct}%` }}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </ClickPanel>
 
       {squawks.length > 0 && (
         <div className="space-y-2">
-          <h2 className="text-xs font-semibold text-zinc-500 uppercase tracking-widest flex items-center gap-2">
+          <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-widest flex items-center gap-2">
             <AlertTriangle className="w-3.5 h-3.5 text-yellow-400/70" aria-hidden />
             Open Squawks
           </h2>
@@ -412,13 +442,13 @@ function DashboardContent({
       <ClickPanel
         chatHint="Ask about maintenance history and upcoming items in the AI Assistant"
         onClick={open}
-        className={cn("rounded-xl p-4 hover:border-zinc-700", CARD_SURFACE_B)}
+        className={cn("rounded-xl p-4 hover:border-slate-200", CARD_SURFACE_B)}
       >
         <div className="flex items-center gap-2 mb-1">
-          <Wrench className="w-4 h-4 text-zinc-500" />
-          <span className="text-sm font-medium text-zinc-400">Last Maintenance</span>
+          <Wrench className="w-4 h-4 text-slate-400" />
+          <span className="text-sm font-medium text-slate-500">Last Maintenance</span>
         </div>
-        <p className="text-lg font-semibold text-zinc-200">
+        <p className="text-lg font-semibold text-slate-800">
           {formatDate(status.lastMaintenanceDate)}
         </p>
       </ClickPanel>
@@ -455,13 +485,13 @@ const BANNER_STYLE: Record<
   },
   NOT_AIRWORTHY: {
     Icon: XCircle,
-    line1: "NOT AIRWORTHY",
+    line1: "Grounded",
     hoverBorder: "hover:border-red-600",
   },
   UNKNOWN: {
     Icon: Info,
     line1: "UNKNOWN",
-    hoverBorder: "hover:border-zinc-600",
+    hoverBorder: "hover:border-slate-300",
   },
 };
 
@@ -478,6 +508,7 @@ function AirworthinessBanner({
   const tone = toneForAirworthiness(state);
   const Icon = cfg.Icon;
   const line2 = buildAirworthinessBannerLine2(status);
+  const grounded = state === "NOT_AIRWORTHY";
 
   return (
     <ClickPanel
@@ -485,10 +516,11 @@ function AirworthinessBanner({
       onClick={onOpenAssistant}
       className={cn(
         "p-4 rounded-xl transition-colors",
-        tone.bannerPanel,
-        tone.text,
-        cfg.hoverBorder
+        grounded
+          ? "bg-red-600 text-white border border-red-700 border-l-[3px] border-l-red-800 hover:border-red-900"
+          : cn(tone.bannerPanel, tone.text, cfg.hoverBorder)
       )}
+      footerClassName={grounded ? "text-white" : undefined}
     >
       <div className="flex items-start gap-3">
         <Icon className="w-5 h-5 shrink-0 mt-0.5" aria-hidden />
@@ -527,22 +559,22 @@ function NeutralTimeCard({
         "relative flex flex-col rounded-xl p-3 text-left w-full min-h-0 h-full cursor-pointer transition-all group/card",
         "items-stretch min-w-0",
         CARD_SURFACE_B,
-        "hover:border-zinc-700",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-500",
+        "hover:border-slate-200",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#304cb2]",
         "pb-8"
       )}
     >
       <div className="min-w-0 flex-1 flex flex-col min-h-0">
-        <div className="flex items-center gap-1.5 mb-1 text-zinc-400 w-full min-w-0">
+        <div className="flex items-center gap-1.5 mb-1 text-slate-500 w-full min-w-0">
           {icon}
           <span className="text-[10px] font-semibold uppercase tracking-wide truncate">{title}</span>
         </div>
-        <p className="text-lg sm:text-xl font-bold tabular-nums text-zinc-200 leading-tight text-left w-full min-w-0 whitespace-nowrap">
+        <p className="text-lg sm:text-xl font-bold tabular-nums text-slate-800 leading-tight text-left w-full min-w-0 whitespace-nowrap">
           {value.toFixed(1)}
           {"\u00a0"}
           hr
         </p>
-        <p className="text-xs text-zinc-600 mt-0.5">{caption}</p>
+        <p className="text-xs text-slate-400 mt-0.5">{caption}</p>
       </div>
       <div className={ASSISTANT_FOOTER_ROW}>
         <MessageSquare className="w-3 h-3 shrink-0" aria-hidden />
@@ -583,7 +615,7 @@ function StatCard({
         "relative flex flex-col rounded-xl p-3 text-left w-full min-h-0 h-full cursor-pointer transition-all group/card",
         "items-stretch min-w-0",
         tone.panel,
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-500",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#304cb2]",
         "pb-8"
       )}
     >
@@ -597,13 +629,13 @@ function StatCard({
             className={cn(
               valueClassName ?? "text-lg sm:text-xl font-bold tabular-nums leading-tight",
               "text-left w-full min-w-0 whitespace-nowrap",
-              tone.tone === "unknown" ? "text-zinc-200" : tone.text
+              tone.tone === "unknown" ? "text-slate-800" : tone.text
             )}
           >
             {value}
           </p>
         )}
-        <p className="text-xs text-zinc-500 mt-0.5 text-left break-words">{sub}</p>
+        <p className="text-xs text-slate-400 mt-0.5 text-left break-words">{sub}</p>
       </div>
       <div className={ASSISTANT_FOOTER_ROW}>
         <MessageSquare className="w-3 h-3 shrink-0" aria-hidden />
@@ -618,10 +650,10 @@ function DashboardSkeleton() {
     <div className="space-y-6" aria-busy="true">
       <div className={cn("rounded-xl p-4 pb-8 min-h-[5.5rem]", CARD_SURFACE_B)}>
         <div className="flex gap-3 animate-pulse">
-          <div className="w-5 h-5 rounded-full bg-zinc-800 shrink-0 mt-0.5" />
+          <div className="w-5 h-5 rounded-full bg-slate-100 shrink-0 mt-0.5" />
           <div className="flex-1 space-y-2 min-w-0">
-            <div className="h-4 bg-zinc-800 rounded w-40 max-w-full" />
-            <div className="h-3 bg-zinc-800/80 rounded w-full max-w-md" />
+            <div className="h-4 bg-slate-100 rounded w-40 max-w-full" />
+            <div className="h-3 bg-slate-100 rounded w-full max-w-md" />
           </div>
         </div>
       </div>
@@ -631,24 +663,24 @@ function DashboardSkeleton() {
             key={i}
             className={cn("rounded-xl p-3 pb-8 min-h-[5.5rem] animate-pulse", CARD_SURFACE_B)}
           >
-            <div className="h-3 bg-zinc-800 rounded w-24 mb-2" />
-            <div className="h-8 bg-zinc-800 rounded w-28 mb-2" />
-            <div className="h-3 bg-zinc-800/80 rounded w-16" />
+            <div className="h-3 bg-slate-100 rounded w-24 mb-2" />
+            <div className="h-8 bg-slate-100 rounded w-28 mb-2" />
+            <div className="h-3 bg-slate-100 rounded w-16" />
           </div>
         ))}
       </div>
       <div className={cn("rounded-xl p-4 min-h-[6.5rem] space-y-3 animate-pulse", CARD_SURFACE_B)}>
         <div className="flex justify-between gap-4">
-          <div className="h-4 bg-zinc-800 rounded flex-1 max-w-xs" />
-          <div className="h-4 bg-zinc-800 rounded w-28 shrink-0" />
+          <div className="h-4 bg-slate-100 rounded flex-1 max-w-xs" />
+          <div className="h-4 bg-slate-100 rounded w-28 shrink-0" />
         </div>
-        <div className="h-3 bg-zinc-800 rounded-full w-full" />
-        <div className="h-3 bg-zinc-800/80 rounded w-full max-w-lg" />
+        <div className="h-3 bg-slate-100 rounded-full w-full" />
+        <div className="h-3 bg-slate-100 rounded w-full max-w-lg" />
       </div>
       <div className={cn("rounded-xl p-4 min-h-[5.5rem] animate-pulse", CARD_SURFACE_B)}>
-        <div className="h-4 bg-zinc-800 rounded w-36 mb-3" />
-        <div className="h-6 bg-zinc-800 rounded w-28" />
-        <div className="h-3 bg-zinc-800/80 rounded w-44 mt-2" />
+        <div className="h-4 bg-slate-100 rounded w-36 mb-3" />
+        <div className="h-6 bg-slate-100 rounded w-28" />
+        <div className="h-3 bg-slate-100 rounded w-44 mt-2" />
       </div>
     </div>
   );
@@ -656,11 +688,11 @@ function DashboardSkeleton() {
 
 function ErrorState({ message }: { message: string }) {
   return (
-    <div className="flex flex-col items-center justify-center py-20 text-zinc-500">
+    <div className="flex flex-col items-center justify-center py-20 text-slate-400">
       <XCircle className="w-8 h-8 mb-3 text-red-500" />
-      <p className="font-medium text-zinc-300">Could not load aircraft status</p>
-      <p className="text-sm mt-1 font-mono text-zinc-600 max-w-md text-center">{message}</p>
-      <p className="text-xs mt-3 text-zinc-700">
+      <p className="font-medium text-slate-700">Could not load aircraft status</p>
+      <p className="text-sm mt-1 font-mono text-slate-400 max-w-md text-center">{message}</p>
+      <p className="text-xs mt-3 text-slate-500">
         Make sure the mock CDF server (port 4001) and API server (port 8080) are running.
       </p>
     </div>

@@ -32,9 +32,10 @@ def write_flight_csv(tail: str) -> Path:
 
     fieldnames = [
         "timestamp", "hobbs_start", "hobbs_end", "tach_start", "tach_end",
-        "route", "duration", "oil_pressure_min", "oil_pressure_max",
-        "oil_temp_max", "cht_max", "egt_max", "fuel_used_gal", "cycles",
-        "pilot_notes", "tail", "flight_index",
+        "route", "duration",
+        "egt_deviation", "n1_vibration", "n2_speed", "fuel_flow_kgh",
+        "oil_pressure_min", "oil_pressure_max", "oil_temp_max",
+        "cycles", "pilot_notes", "tail", "flight_index",
     ]
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -49,8 +50,8 @@ def write_flight_csv(tail: str) -> Path:
 
 def main() -> None:
     anchor = get_demo_anchor()
-    env_used = os.environ.get("DESERT_SKY_DEMO_DATE", "").strip()
-    src = "DESERT_SKY_DEMO_DATE" if env_used else "UTC today"
+    env_used = os.environ.get("SW_DEMO_DATE", "").strip()
+    src = "SW_DEMO_DATE" if env_used else "UTC today"
     print(f"Demo anchor (UTC date): {anchor.date().isoformat()} (source: {src})")
     print("Generating per-tail flight CSVs...")
     for tail in TAILS:

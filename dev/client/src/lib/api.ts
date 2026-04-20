@@ -9,6 +9,10 @@ import type {
   ComponentNode,
   GraphData,
   OperationalPolicy,
+  TimeseriesResponse,
+  InsightsResponse,
+  PredictiveRisk,
+  Suggestion,
 } from "./types";
 
 const BASE = "/api";
@@ -100,4 +104,29 @@ export const api = {
     get<ComponentNode[]>(withTail("/components", tail), init),
 
   graph: () => get<GraphData>("/graph"),
+
+  timeseries: (tail: string, metric: string, limit?: number) =>
+    get<TimeseriesResponse>(
+      withTail("/timeseries", tail, { metric, limit })
+    ),
+
+  insights: () => get<InsightsResponse>("/insights"),
+
+  refreshInsights: (force = false) =>
+    fetch(`/api/insights/refresh${force ? "?force=true" : ""}`, { method: "POST" }).then((r) => r.json()),
+
+  predictive: (tail: string) =>
+    get<PredictiveRisk>(withTail("/predictive", tail)),
+
+  refreshPredictive: (tail: string, force = false) =>
+    fetch(`/api/predictive/refresh?aircraft=${tail}${force ? "&force=true" : ""}`, { method: "POST" }).then((r) => r.json()),
+
+  suggestions: (aircraft?: string) =>
+    get<Suggestion[]>(aircraft ? `/suggestions?aircraft=${aircraft}` : "/suggestions"),
+
+  refreshSuggestions: (force = false) =>
+    fetch(`/api/suggestions/refresh${force ? "?force=true" : ""}`, { method: "POST" }).then((r) => r.json()),
+
+  refreshAircraftSuggestions: (tail: string, force = false) =>
+    fetch(`/api/suggestions/refresh?aircraft=${tail}${force ? "&force=true" : ""}`, { method: "POST" }).then((r) => r.json()),
 };

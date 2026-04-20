@@ -24,13 +24,17 @@ Keep consistent with this structure:
 - All CDF routes POST, response envelope always { "items": [...] }
 
 ## Fleet
-Operator: Desert Sky Aviation (flight school), KPHX  
-Four 1978 Cessna 172N Skyhawks; engine type Lycoming O-320-H2AD (shared across fleet)
+Operator: Southwest Airlines, Boeing 737-800 NG fleet  
+Engine: CFM International CFM56-7B27E (shared across fleet)
 
-- N4798E
-- N2251K
-- N8834Q
-- N1156P
+Instrumented tails (full flight telemetry + maintenance):
+- N287WN — NOT_AIRWORTHY (Engine #1 CFM56-7B failure ~30 days ago)
+- N246WN — CAUTION (EGT deviation +14 °C and rising; pattern matches N287WN pre-failure)
+- N220WN — AIRWORTHY
+- N235WN — AIRWORTHY
+
+Placeholder tails (asset + maintenance records only, no flight telemetry):
+- N231WN, N251WN, N266WN, N277WN, N291WN
 
 All fleet information is stored in a single Knowledge Graph.
 
@@ -61,12 +65,12 @@ Primary tools (see `src/agent/tools.py`):
 4. search_fleet_for_similar_events(description): keyword match
    across pilot_notes, squawk descriptions
 
-## N1156P causal story
+## N287WN causal story
 Told through chronological timestamped events only:
-- Flight events with deteriorating pilot_notes over 6 months
-- Escalating squawk events
-- EngineFailure event at failure date
-- Post-accident inspection event with findings in description
+- Flight events with deteriorating pilot_notes over 8 months (EGT rise, vibration)
+- Escalating squawk events (maintenance advisories, grounding)
+- EngineFailure event at failure date (compressor blade fracture, emergency diversion)
+- Post-incident borescope / teardown event with findings in description
 No graph edges assert causation — timeline is the causal chain.
 
 ## Code standards
@@ -83,7 +87,7 @@ No graph edges assert causation — timeline is the causal chain.
 ## CogniteClient (Python)
 config = ClientConfig(
     client_name="cdf-demo",
-    project="desert_sky",
+    project="southwest_airlines",
     base_url="http://localhost:4001",
     credentials=Token("mock-token")
 )

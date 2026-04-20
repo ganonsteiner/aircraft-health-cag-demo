@@ -11,13 +11,33 @@ import {
   toneClasses,
 } from "../lib/utils";
 import { api } from "../lib/api";
-import { useStore, TAILS } from "../lib/store";
+import { useStore, TAILS, DEFAULT_TAIL, type TailNumber } from "../lib/store";
+import { MenuSelect } from "./MenuSelect";
 import type { ComponentNode, MaintenanceRecord } from "../lib/types";
+
+function airworthinessDotClass(aw: string | undefined): string {
+  if (aw === "NOT_AIRWORTHY") return "bg-red-500";
+  if (aw === "CAUTION" || aw === "FERRY_ONLY") return "bg-orange-500";
+  if (aw === "AIRWORTHY") return "bg-emerald-500";
+  return "bg-slate-300";
+}
+
+function tailOption(tail: string, aw: string | undefined) {
+  return {
+    value: tail as TailNumber,
+    label: (
+      <span className="flex items-center gap-1.5">
+        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${airworthinessDotClass(aw)}`} />
+        {tail}
+      </span>
+    ),
+  };
+}
 interface Props {
   active: boolean;
 }
 
-/** Strip leading `N4798E — ` style prefix from CDF asset names; tail is already shown in the page strip. */
+/** Strip leading `N287WN — ` style prefix from CDF asset names; tail is already shown in the page strip. */
 function componentDisplayName(name: string, tail: string): string {
   const escaped = tail.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const stripped = name.replace(new RegExp(`^${escaped}\\s*[\\u2014\\-–]\\s*`), "").trim();
@@ -34,13 +54,14 @@ function buildTree(nodes: ComponentNode[]): Map<string | null, ComponentNode[]> 
   return tree;
 }
 
-function statusDot(status: ComponentNode["status"]) {
+function statusDot(status: ComponentNode["status"], failed?: boolean) {
+  if (failed) return "bg-red-500";
   if (status === "overdue") return "bg-red-500";
   if (status === "due_soon") return "bg-yellow-400";
   return "bg-emerald-500";
 }
 
-/** Same relative component on another aircraft (N4798E-ENGINE → N2251K-ENGINE). Unknown ids → root. */
+/** Same relative component on another aircraft (N287WN-ENGINE-1 → N246WN-ENGINE-1). Unknown ids → root. */
 function mapComponentExternalIdForTailChange(
   id: string,
   fromTail: string,
@@ -61,8 +82,9 @@ function componentsBelongToTail(nodes: ComponentNode[], aircraftTail: string): b
 }
 
 export default function AircraftComponents({ active }: Props) {
-  const { selectedAircraft, setSelectedAircraft } = useStore();
-  const tail = selectedAircraft ?? "N4798E";
+  const { selectedAircraft, setSelectedAircraft, fleetStatusMap } = useStore();
+  const tail = selectedAircraft ?? DEFAULT_TAIL;
+  const tailOptions = TAILS.map((t) => tailOption(t, fleetStatusMap[t]));
   const [components, setComponents] = useState<ComponentNode[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -174,6 +196,7 @@ export default function AircraftComponents({ active }: Props) {
     if (!children) return null;
     return children.map((node) => {
       const hasChildren = tree.has(node.externalId);
+      const isFailed = node.metadata?.component_status === "failed";
       return (
         <div key={node.externalId}>
           <button
@@ -183,31 +206,38 @@ export default function AircraftComponents({ active }: Props) {
             className={cn(
               "w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-left text-sm transition-colors group",
               selectedId === node.externalId
-                ? "bg-sky-950/50 border border-sky-800/50 text-sky-100"
-                : "hover:bg-zinc-900/80 border border-transparent"
+                ? "bg-blue-50 border border-blue-200 text-blue-800"
+                : "hover:bg-white border border-transparent"
             )}
           >
-            <span className={cn("w-2 h-2 rounded-full shrink-0", statusDot(node.status))} />
+            <span className={cn("w-2 h-2 rounded-full shrink-0", statusDot(node.status, isFailed))} />
             <span className="flex-1 min-w-0">
-              <span className="text-zinc-200 font-medium truncate block">
-                {componentDisplayName(node.name, tail)}
+              <span className="flex items-center gap-1.5 min-w-0">
+                <span className="text-slate-800 font-medium truncate">
+                  {componentDisplayName(node.name, tail)}
+                </span>
+                {isFailed && (
+                  <span className="shrink-0 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-red-100 text-red-700 border border-red-200">
+                    FAILED
+                  </span>
+                )}
               </span>
-              <span className="text-xs text-zinc-500 font-mono truncate block">{node.externalId}</span>
+              <span className="text-xs text-slate-400 font-mono truncate block">{node.externalId}</span>
             </span>
             {(node.maintenanceCount > 0 || hasChildren) && (
               <div className="flex items-center gap-2 shrink-0">
                 {node.maintenanceCount > 0 && (
-                  <span className="text-xs text-zinc-600">{node.maintenanceCount}</span>
+                  <span className="text-xs text-slate-400">{node.maintenanceCount}</span>
                 )}
                 {hasChildren && (
-                  <ChevronRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-zinc-400" />
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-500" />
                 )}
               </div>
             )}
           </button>
           {/* Children indented with a left border connector line */}
           {hasChildren && (
-            <div className="ml-5 pl-3 border-l border-zinc-700/60">
+            <div className="ml-5 pl-3 border-l border-slate-200">
               {renderTree(node.externalId, depth + 1)}
             </div>
           )}
@@ -221,41 +251,23 @@ export default function AircraftComponents({ active }: Props) {
   const treeSkeletonMargins = [0, 0, 20, 20, 40, 20, 20, 0];
 
   return (
-    <div
-      className={cn(
-        "flex flex-1 min-h-0 flex-col overflow-hidden pb-6",
-        MAIN_TAB_CONTENT_FRAME,
-        TAB_PAGE_TOP_INSET
-      )}
-    >
+    <div className="flex flex-1 min-h-0 flex-col overflow-y-auto w-full">
+      <div className={cn("flex flex-1 min-h-0 flex-col pb-6", MAIN_TAB_CONTENT_FRAME, TAB_PAGE_TOP_INSET)}>
       <div className="shrink-0 mb-3">
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1 flex-wrap">
-            {TAILS.map((t) => (
-              <button
-                key={t}
-                type="button"
-                onClick={() => setSelectedAircraft(t)}
-                className={cn(
-                  "px-2.5 py-0.5 rounded-full text-xs font-medium border transition-colors",
-                  tail === t
-                    ? "bg-sky-600 text-white border-sky-500"
-                    : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-zinc-500"
-                )}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-        </div>
+        <MenuSelect
+          value={tail}
+          options={tailOptions}
+          onChange={(v) => setSelectedAircraft(v as TailNumber)}
+          ariaLabel="Select aircraft"
+        />
       </div>
 
       <div className="flex-1 flex gap-4 overflow-hidden min-h-0">
         <div className={cn("flex-1 min-w-0 rounded-xl overflow-y-auto", CARD_SURFACE_B)}>
-          <div className="px-4 py-3 border-b border-zinc-800 flex items-center justify-between gap-3 flex-wrap">
+          <div className="px-4 py-3 border-b border-slate-200 flex items-center justify-between gap-3 flex-wrap">
             <div className="flex items-center gap-2 min-w-0">
-              <Puzzle className="w-3.5 h-3.5 text-zinc-500 shrink-0" aria-hidden />
-              <span className="text-xs font-semibold text-zinc-500 uppercase tracking-widest">
+              <Puzzle className="w-3.5 h-3.5 text-slate-400 shrink-0" aria-hidden />
+              <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
                 Aircraft Components
               </span>
             </div>
@@ -265,7 +277,7 @@ export default function AircraftComponents({ active }: Props) {
                 { label: "Due soon", color: "bg-yellow-400" },
                 { label: "Overdue", color: "bg-red-500" },
               ].map((l) => (
-                <span key={l.label} className="flex items-center gap-1.5 text-xs text-zinc-500">
+                <span key={l.label} className="flex items-center gap-1.5 text-xs text-slate-400">
                   <span className={cn("w-2 h-2 rounded-full shrink-0", l.color)} />
                   {l.label}
                 </span>
@@ -282,12 +294,12 @@ export default function AircraftComponents({ active }: Props) {
                     className="flex items-center gap-2 px-3 py-2.5 rounded-lg animate-pulse"
                     style={{ marginLeft: ml }}
                   >
-                    <div className="w-2 h-2 rounded-full bg-zinc-800 shrink-0" />
+                    <div className="w-2 h-2 rounded-full bg-slate-100 shrink-0" />
                     <div className="flex-1 space-y-1.5 min-w-0">
-                      <div className="h-3.5 bg-zinc-800 rounded w-32 max-w-[70%]" />
-                      <div className="h-3 bg-zinc-800/80 rounded w-28 max-w-[55%]" />
+                      <div className="h-3.5 bg-slate-100 rounded w-32 max-w-[70%]" />
+                      <div className="h-3 bg-slate-100 rounded w-28 max-w-[55%]" />
                     </div>
-                    <div className="w-3.5 h-3.5 rounded bg-zinc-800 shrink-0" />
+                    <div className="w-3.5 h-3.5 rounded bg-slate-100 shrink-0" />
                   </div>
                 ))}
               </div>
@@ -313,16 +325,23 @@ export default function AircraftComponents({ active }: Props) {
             {/* Component card */}
             <div className={cn("rounded-xl p-4", CARD_SURFACE_B)}>
               <div className="flex items-start gap-2 mb-3">
-                <span className={cn("w-2.5 h-2.5 rounded-full mt-1 shrink-0", statusDot(selectedComp.status))} />
-                <div className="min-w-0">
-                  <p className="font-semibold text-zinc-100 text-sm leading-tight">
-                    {componentDisplayName(selectedComp.name, tail)}
-                  </p>
-                  <p className="text-xs font-mono text-zinc-500 mt-0.5">{selectedComp.externalId}</p>
+                <span className={cn("w-2.5 h-2.5 rounded-full mt-1 shrink-0", statusDot(selectedComp.status, selectedComp.metadata?.component_status === "failed"))} />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <p className="font-semibold text-slate-900 text-sm leading-tight">
+                      {componentDisplayName(selectedComp.name, tail)}
+                    </p>
+                    {selectedComp.metadata?.component_status === "failed" && (
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-red-100 text-red-700 border border-red-200">
+                        FAILED
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs font-mono text-slate-400 mt-0.5">{selectedComp.externalId}</p>
                 </div>
               </div>
               {selectedComp.description && (
-                <p className="text-xs text-zinc-500 mb-3">{selectedComp.description}</p>
+                <p className="text-xs text-slate-400 mb-3">{selectedComp.description}</p>
               )}
               <div className="space-y-2 text-xs">
                 <DetailRow
@@ -380,9 +399,9 @@ export default function AircraftComponents({ active }: Props) {
 
             {/* Maintenance history for this component — Tier A shell, Tier B rows */}
             <div className={cn("flex-1 rounded-xl overflow-hidden flex flex-col", CARD_SURFACE_A)}>
-              <div className="px-4 py-3 border-b border-zinc-800 flex items-center gap-2">
-                <Wrench className="w-3.5 h-3.5 text-zinc-500 shrink-0" aria-hidden />
-                <span className="text-xs font-semibold text-zinc-500 uppercase tracking-widest">
+              <div className="px-4 py-3 border-b border-slate-200 flex items-center gap-2">
+                <Wrench className="w-3.5 h-3.5 text-slate-400 shrink-0" aria-hidden />
+                <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
                   Maintenance History
                 </span>
               </div>
@@ -394,7 +413,7 @@ export default function AircraftComponents({ active }: Props) {
                     ))}
                   </div>
                 ) : compHistory.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center py-12 text-zinc-600 text-center px-4">
+                  <div className="flex flex-col items-center justify-center py-12 text-slate-400 text-center px-4">
                     <Wrench className="w-8 h-8 mb-2" />
                     <p className="text-xs">No maintenance records for this component</p>
                   </div>
@@ -405,10 +424,10 @@ export default function AircraftComponents({ active }: Props) {
                         key={rec.externalId || i}
                         className={cn("p-3 rounded-lg", CARD_SURFACE_B)}
                       >
-                        <p className="text-xs text-zinc-200 leading-snug">
+                        <p className="text-xs text-slate-800 leading-snug">
                           {rec.description || rec.subtype || rec.type}
                         </p>
-                        <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-1 text-xs text-zinc-600">
+                        <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-1 text-xs text-slate-400">
                           <span className="whitespace-nowrap">
                             {(() => {
                               const d =
@@ -434,13 +453,14 @@ export default function AircraftComponents({ active }: Props) {
             </div>
           </>
         ) : (
-          <div className={cn("flex-1 flex flex-col items-center justify-center rounded-xl text-zinc-600 text-center p-8", CARD_SURFACE_A)}>
+          <div className={cn("flex-1 flex flex-col items-center justify-center rounded-xl text-slate-400 text-center p-8", CARD_SURFACE_A)}>
             <Puzzle className="w-10 h-10 mb-3" />
             <p className="text-sm">Select a component</p>
             <p className="text-xs mt-1">to view maintenance history</p>
           </div>
         )}
         </div>
+      </div>
       </div>
     </div>
   );
@@ -460,10 +480,10 @@ function DetailRow({
       ? "text-red-400"
       : valueTone === "warn"
         ? "text-yellow-400"
-        : "text-zinc-300";
+        : "text-slate-700";
   return (
     <div className="flex items-start gap-2">
-      <span className="text-zinc-600 w-28 shrink-0">{label}</span>
+      <span className="text-slate-400 w-28 shrink-0">{label}</span>
       <span className={cn("font-mono min-w-0 flex-1", valueClass)}>{value}</span>
     </div>
   );

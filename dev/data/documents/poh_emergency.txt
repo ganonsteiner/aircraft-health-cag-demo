@@ -1,216 +1,103 @@
-CESSNA MODEL 172N SKYHAWK
-PILOT'S OPERATING HANDBOOK — SECTION 3: EMERGENCY PROCEDURES
-1978 Edition (FAA Approved)
+BOEING 737-800 NG
+FLIGHT CREW OPERATIONS MANUAL — CHAPTER 3: EMERGENCY PROCEDURES
+Applicable to: CFM56-7B powered 737-800 (Southwest Airlines fleet)
 
-Type: Cessna 172N (1978) · Engine: Lycoming O-320-H2AD
-
-WARNING: Emergency procedures in this section are the recommended procedures for
-coping with the emergencies listed. It is the pilot's responsibility to be familiar
-with these procedures.
+WARNING: Accomplish emergency procedures from memory where noted (M).
+         Non-normal checklist items are completed from the QRH.
 
 ================================================================================
-ENGINE FAILURE DURING TAKEOFF ROLL
+ENGINE FAILURE DURING TAKEOFF ROLL (below V1)
 ================================================================================
 
-1. Throttle ..................................... IDLE
-2. Brakes ....................................... APPLY FIRMLY
-3. Wing Flaps ................................... RETRACT (if extended)
-4. Mixture ..................................... IDLE CUTOFF
-5. Ignition Switch .............................. OFF
-6. Master Switch ................................ OFF
+1. Thrust levers ........................................ IDLE (M)
+2. Brakes ................................................ APPLY MAX (M)
+3. Speed brakes .......................................... ARM confirmed deployed (M)
+4. Reverse thrust ....................................... MAX (M), as available
+5. If runway remaining insufficient: field arrest or overrun procedures
+6. After stopping: engine fire/fuel leak — shutdown if required (QRH)
 
 ================================================================================
-ENGINE FAILURE IMMEDIATELY AFTER TAKEOFF
+ENGINE FAILURE / FIRE AFTER V1
 ================================================================================
 
-1. Airspeed ..................................... 65 KIAS (flaps up)
-                                                60 KIAS (flaps down)
-2. Mixture ...................................... IDLE CUTOFF
-3. Fuel Selector Valve .......................... OFF
-4. Ignition Switch .............................. OFF
-5. Wing Flaps ................................... AS REQUIRED (do not extend above 20°
-                                                if time permits, extend fully for
-                                                shortest landing)
-6. Master Switch ................................ OFF
-7. Land straight ahead; avoid turns if altitude permits
-
-NOTE: If altitude permits, attempt restart per ENGINE FAILURE DURING FLIGHT procedure.
-      With altitude below 1,000 ft AGL, land straight ahead. Do not attempt a 180.
+1. Continue takeoff — maintain runway heading (M)
+2. At positive rate: gear UP (M)
+3. At acceleration altitude:
+   a. Thrust lever (affected engine) ..................... CLOSE (M)
+   b. Engine fuel control switch ......................... CUTOFF (M)
+4. If engine fire warning persists:
+   a. Engine fire switch ................................. PULL (M)
+   b. After 30 seconds: rotate to ARM, then discharge (M)
+5. Accomplish Non-Normal Checklist: ENGINE FIRE / ENGINE SEVERE DAMAGE (QRH)
 
 ================================================================================
-ENGINE FAILURE DURING FLIGHT (RESTART ATTEMPT)
+ENGINE SURGE / STALL IN FLIGHT
 ================================================================================
 
-1. Airspeed ..................................... 65 KIAS (best glide)
-   Glide ratio: approximately 9:1 (clean configuration, 65 KIAS)
-
-2. Carburetor Heat .............................. ON (check for carb ice)
-3. Fuel Selector Valve .......................... BOTH
-4. Mixture ...................................... RICH
-5. Primer ....................................... IN AND LOCKED
-6. Ignition Switch .............................. BOTH (or L, then R)
-7. Throttle ..................................... 1/4 OPEN
-
-If engine does not restart:
-8. Mixture ...................................... IDLE CUTOFF
-9. Fuel Selector Valve .......................... OFF
-10. Ignition Switch ............................. OFF
-11. Wing Flaps .................................. AS REQUIRED
-12. Master Switch ............................... OFF (retain battery for radio/lights)
-13. Execute emergency landing (see EMERGENCY LANDING WITHOUT ENGINE POWER)
+1. Thrust lever (affected) .............................. REDUCE to idle
+2. If surge persists: engine shutdown procedure (QRH)
+3. If EGT exceedance occurred: maintenance inspection required before next flight
+4. Monitor N2, N1, EGT deviations, oil pressure
 
 ================================================================================
-ENGINE FIRE DURING START
+HIGH OIL TEMPERATURE / OIL PRESSURE LOSS
 ================================================================================
 
-If fire is ingested into the engine:
-1. Starter ...................................... CONTINUE CRANKING (to blow fire out)
-2. Throttle ..................................... FULL OPEN
-3. Mixture ...................................... IDLE CUTOFF
-
-If fire persists:
-4. Ignition Switch .............................. OFF
-5. Master Switch ................................ OFF
-6. Fuel Selector Valve .......................... OFF
-7. Evacuate aircraft; use fire extinguisher
+1. Thrust lever (affected) .............................. REDUCE
+2. Oil pressure gauge ................................... MONITOR
+3. If oil pressure below minimum or oil temp above 155 °C:
+   a. Prepare for engine shutdown (QRH ENGINE OIL PRESSURE LOW)
+4. Do not exceed oil temperature limits even if pressure appears normal
 
 ================================================================================
-ENGINE FIRE IN FLIGHT
+ELEVATED EGT DEVIATION (in-flight ACARS alert or EICAS message)
 ================================================================================
 
-1. Mixture ...................................... IDLE CUTOFF
-2. Fuel Selector Valve .......................... OFF
-3. Master Switch ................................ OFF
-4. Cabin Vents/Heat ............................. CLOSED
-5. Airspeed ..................................... 100 KIAS (to blow out fire)
-   — If fire extinguished: increase speed to determine if resumed glide is
-     possible. Do not attempt restart.
-   — If fire persists: sideslip to keep flames away from cabin.
-6. Execute emergency landing
+1. Thrust lever (affected) .............................. REDUCE as required
+2. Monitor EGT deviation trend via ACARS
+3. If deviation exceeds +20 °C or increases >5 °C in <10 flights:
+   a. Initiate descent to lower altitude as practicable
+   b. Notify maintenance on arrival — borescope inspection required
+4. If EGT continues to rise uncontrolled: engine shutdown procedure (QRH)
 
 ================================================================================
-ELECTRICAL FIRE IN FLIGHT
+ENGINE FIRE — CONFIRMED IN FLIGHT
 ================================================================================
 
-1. Master Switch ................................ OFF
-2. All other switches ........................... OFF
-3. Vents/Cabin Air/Heat ......................... CLOSED
-4. Fire Extinguisher ............................ ACTIVATE (if fire persists in cabin)
-5. Land as soon as possible
-
-After fire extinguished:
-6. Vents ........................................ OPEN (clear fumes)
-7. Master Switch ................................ ON (if essential)
-8. Circuit Breakers ............................. CHECK; do not reset tripped breakers
+1. Thrust lever (affected) .............................. IDLE (M)
+2. A/T arm switch (affected) ............................ OFF (M)
+3. Engine fuel control switch ........................... CUTOFF (M)
+4. Engine fire switch ................................... PULL (M)
+5. If fire persists after 30 s: bottle discharge (alternate) (M)
+6. Land at nearest suitable airport
+7. After landing: fire services — do not use reverse on affected engine
 
 ================================================================================
-CABIN FIRE
+PRECAUTIONARY / EMERGENCY LANDING
 ================================================================================
 
-1. Master Switch ................................ OFF
-2. Vents/Cabin Air/Heat ......................... CLOSED
-3. Fire Extinguisher ............................ ACTIVATE
-4. Land as soon as possible
-5. After landing: open windows and doors to clear fumes before exiting
+1. Squawk 7700 and declare emergency ATC
+2. Passenger announcement — brace position if required
+3. QRH: appropriate abnormal/emergency checklist
+4. Fuel dump if available and time permits
+5. Fly landing profile for gross weight; VREF + wind additive applies
+6. After landing: maintenance inspection before next flight; file ASR/MOR
 
 ================================================================================
-WING FLAP FAILURE
+CABIN PRESSURE LOSS (rapid / explosive)
 ================================================================================
 
-Asymmetric Flap (one flap only):
-1. Throttle ..................................... AS REQUIRED
-2. Airspeed ..................................... REDUCE to 85 KIAS or below
-3. Use ailerons to maintain wings level
-4. Land at lowest practical speed; expect higher than normal roll tendency on
-   the side with extended flap.
-
-Flap Failure (flaps stuck down):
-1. Approach and land at minimum practical airspeed
-2. Approach at 65 KIAS (flaps down)
-3. Expect higher drag, faster descent rate
-
-Flap Failure (flaps stuck up):
-1. Approach at 65–70 KIAS
-2. Landing roll will be extended — plan for longer landing distance
+1. Oxygen masks — don (M, < 5 seconds)
+2. Crew oxygen switch ................................. ON (M)
+3. Initiate emergency descent (M): Mach/speed brakes, thrust IDLE
+4. Target 10,000 ft or MEA, whichever is higher
+5. Notify ATC: emergency descent
+6. QRH: EMERGENCY DESCENT checklist
 
 ================================================================================
-EMERGENCY LANDING WITHOUT ENGINE POWER
+NOTES
 ================================================================================
 
-1. Airspeed ..................................... 65 KIAS (best glide, flaps up)
-2. Suitable landing area ....................... SELECT
-3. Carburetor Heat .............................. ON
-4. Fuel Selector Valve .......................... BOTH
-5. Mixture ...................................... RICH
-6. Ignition Switch .............................. BOTH
-7. Mayday ....................................... TRANSMIT (121.5 MHz, squawk 7700)
-8. Transponder .................................. 7700 (emergency)
-9. When landing assured:
-   a. Wing Flaps ................................ AS REQUIRED (20°–40°)
-   b. Mixture ................................... IDLE CUTOFF
-   c. Fuel Selector Valve ....................... OFF
-   d. Ignition Switch ........................... OFF
-   e. Seat Belts/Shoulder Harnesses ............. SECURE AND TIGHT
-   f. Master Switch ............................. OFF (just before touchdown)
-   g. Land into wind if possible; avoid obstacles
-
-NOTE: Best glide speed 65 KIAS gives approximately 9:1 glide ratio.
-      From 8,000 ft MSL (typical cruise altitude at KPHX), glide range is
-      approximately 11–13 nm. Phoenix area terrain is favorable for off-airport
-      landings in open desert.
-
-================================================================================
-DITCHING (OVER WATER)
-================================================================================
-
-1. Radio/ELT .................................... TRANSMIT MAYDAY; activate ELT if time
-2. Heavy Objects ................................ SECURE OR JETTISON
-3. Approach: Into wind if possible, along swells if large swells present
-4. Flaps ....................................... 30° (full)
-5. Power ....................................... AS AVAILABLE
-6. Seats ....................................... UPRIGHT AND LOCKED
-7. Belts ........................................ TIGHT
-8. Doors ....................................... UNLATCH (prevent jamming on impact)
-9. Touch down at minimum airspeed, wings level, nose slightly high
-10. Vacate aircraft immediately; life preservers on
-
-================================================================================
-INADVERTENT SPIRAL DIVE / UNUSUAL ATTITUDE RECOVERY
-================================================================================
-
-1. Throttle ..................................... IDLE
-2. Wings ........................................ LEVEL with aileron/rudder
-3. Pull out smoothly — do NOT pull while banked (risk of exceeding Va or Va-equivalent)
-4. Trim ........................................ NEUTRAL
-5. Resume normal flight
-
-================================================================================
-AMMETER / ALTERNATOR FAILURE
-================================================================================
-
-Low voltage or zero charge indication:
-1. Ammeter ...................................... CHECK (should show slight positive charge)
-2. ALT CB ....................................... CHECK; reset once if tripped
-3. Alternator Field CB .......................... CHECK; reset once if tripped
-4. If no charge:
-   a. All non-essential electrical equipment . OFF
-   b. Land as soon as practical
-   c. Battery endurance (typical): 30 minutes with minimal load
-
-================================================================================
-LOSS OF OIL PRESSURE
-================================================================================
-
-1. If oil pressure drops below 25 psi at cruise:
-   — Land as soon as practical
-   — Do NOT operate engine at high power with low oil pressure
-2. If oil pressure drops to zero:
-   — Reduce power immediately
-   — Land as soon as possible
-   — Engine seizure imminent if pressure is truly zero
-
-WARNING: O-320-H2AD engines are particularly sensitive to oil system anomalies
-due to the barrel lifter design. Any oil pressure indication below 60 psi in
-cruise should prompt immediate descent and precautionary landing. Consult
-maintenance records for AD 80-04-03 R2 compliance and recent oil filter
-inspection results.
+(M) = Memory item — accomplished from memory before QRH.
+All procedures are abbreviated for demo reference only.
+Full crew coordination and QRH compliance required in operations.

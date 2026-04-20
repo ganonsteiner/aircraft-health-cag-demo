@@ -2,9 +2,9 @@
 
 Demo project showcasing Cognite Data Fusion (CDF) architecture and Context Augmented Generation (CAG). The generic UI shows how a fleet of aircraft would typically be managed while the AI Assistant shows the value of CAG and its ability to connect the dots between a number of data sources and formats.
 
-**Operator:** Desert Sky Aviation — flight school, KPHX  
-**Fleet:** Four 1978 Cessna 172N Skyhawks (N4798E, N2251K, N8834Q, N1156P)  
-**Engine:** Lycoming O-320-H2AD (shared across fleet)  
+**Operator:** Southwest Airlines — Boeing 737-800 NG fleet  
+**Fleet:** 9 Boeing 737-800s (4 instrumented, 5 placeholder); engine CFM56-7B27E  
+**Story:** N287WN suffered Engine #1 failure (compressor blade fracture); N246WN shows matching pre-failure sensor trends  
 **Stack:** Python (FastAPI) + React/TypeScript
 
 Application code lives in [`dev/`](dev/). Commands below assume your shell’s working directory is `dev/` (from the repository root: `cd dev`).
@@ -169,18 +169,20 @@ No code changes needed. The `cognite-sdk` client works against both.
 
 | Aircraft | Status | Notes |
 |----------|--------|-------|
-| N4798E | Airworthy | Cleared for normal operations |
-| N2251K | Ferry only | Oil change is slightly past due on tach time; ferry to maintenance is authorized, no other flying |
-| N8834Q | Caution | Recent flights show elevated CHT and a rough mag check... extra scrutiny warranted after N1156P's recent failure |
-| N1156P | Not airworthy | Catastrophic engine failure; connecting rod failure with chronic lean detonation confirmed at teardown; engine condemned |
+| N287WN | Not airworthy | Engine #1 CFM56-7B failure — compressor blade fracture; emergency diversion ~30 days ago; grounded for engine replacement |
+| N246WN | Caution | EGT deviation +14 °C and rising, N1 vibration 1.9 units; pattern matches N287WN pre-failure telemetry window |
+| N220WN | Airworthy | Normal operations |
+| N235WN | Airworthy | Normal operations |
+| N231WN, N251WN, N266WN, N277WN, N291WN | Airworthy | Asset + maintenance records only; no flight telemetry |
 
 ## Fleet Policies
 
 Policies are stored as nodes in the knowledge graph and retrieved by the agent at query time.
 
-- **Oil change grace** — ferry permitted if overdue ≤5 tach hours
-- **Annual inspection** — no grace period (FAR 91.409)
-- **Oil analysis** — every third oil change or annually
+- **Engine borescope** — every 500 EFH or on-condition (EGT deviation >+10 °C, N1 vibration >2.0 units)
+- **EGT deviation** — advisory at +10 °C, inspection at +15 °C, ground at +20 °C
+- **A-check** — every 500–600 flight hours or 45 calendar days
+- **AD compliance** — mandatory per 14 CFR 39; CFM56-7B and 737-800 applicable ADs tracked
 
 ## Project Structure
 

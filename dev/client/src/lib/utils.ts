@@ -27,17 +27,20 @@ export type ToneClasses = {
 // Surface tier tokens
 // ---------------------------------------------------------------------------
 
-/** 1px zinc stroke — identical for Tier A and Tier B; only fill differs. */
-const CARD_SURFACE_OUTLINE = "border border-zinc-800";
+/** 1px stroke — identical for Tier A and Tier B; only fill differs.
+ *  Uses the themed --border token (cooler/darker than slate-200) so edges read
+ *  cleanly against both canvas and card fills. */
+const CARD_SURFACE_OUTLINE = "border border-border";
 
-/** Tier A — layout container. Matches page background (bg-zinc-950).
- *  Use only for genuine layout frames (aircraft cards on fleet, graph traversal).
- *  Do NOT wrap item lists in a Tier A shell. */
-export const CARD_SURFACE_A = `${CARD_SURFACE_OUTLINE} bg-zinc-950`;
+/** Tier A — layout shell (one step up from the page canvas).
+ *  Uses `bg-muted` so a shell is always visibly distinct from the page, never
+ *  a perfect color match. For transparent-looking layout frames and shells
+ *  that wrap Tier B content. */
+export const CARD_SURFACE_A = `${CARD_SURFACE_OUTLINE} bg-muted`;
 
 /** Tier B — content card / subject. The readable unit. Standalone cards and
  *  items inside a Tier A container both use this surface. */
-export const CARD_SURFACE_B = `${CARD_SURFACE_OUTLINE} bg-zinc-900`;
+export const CARD_SURFACE_B = `${CARD_SURFACE_OUTLINE} bg-card`;
 
 /**
  * Tab page body: same max width as header/tab bar, symmetric horizontal padding so the column
@@ -59,7 +62,7 @@ export const TAB_PAGE_TOP_INSET = "pt-3 sm:pt-4";
 export const TAB_PAGE_READABLE_COLUMN = "max-w-4xl mx-auto w-full min-w-0";
 
 /** Tier C — inline chip / metric, nested inside a Tier B card. */
-export const CARD_SURFACE_C = "border border-zinc-700/50 bg-zinc-800/70";
+export const CARD_SURFACE_C = "border border-border bg-muted";
 
 /** @deprecated Use CARD_SURFACE_C */
 export const NEUTRAL_METRIC_SURFACE = CARD_SURFACE_C;
@@ -67,46 +70,53 @@ export const NEUTRAL_METRIC_SURFACE = CARD_SURFACE_C;
 /** @deprecated Use CARD_SURFACE_B */
 export const NEUTRAL_CARD_SURFACE = CARD_SURFACE_B;
 
+// Tone palette: card-sized surfaces (panel, bannerPanel) stay visually quiet
+// on the light app background — no tinted fills, only colored text + border
+// accents. Small semantic pills (badge) keep a subtle tint because they're
+// inline markers, not full cards.
+// Design rule: cards WITHOUT a left accent keep neutral borders (CARD_SURFACE_B).
+// Cards WITH a left accent get a thin colored border on ALL four sides so the
+// accent looks intentional rather than isolated. Use *-300 for the thin sides
+// (clearly visible as colored, unlike nearly-invisible *-200) and *-500 for
+// the 3px left accent. Side-specific utilities win over the global
+// `* { border-color: var(--border) }` reset in index.css.
 const TONE_CLASS: Record<Tone, Omit<ToneClasses, "tone">> = {
   ok: {
-    text: "text-emerald-400",
-    panel: "border border-emerald-800/45 bg-emerald-950/70",
-    bannerPanel:
-      "border border-emerald-600/60 bg-emerald-950/70 border-l-[3px] border-l-emerald-600/60",
-    border: "border-emerald-800/45",
-    badge: "text-emerald-300 bg-emerald-950/70 border-emerald-700/60",
-    dot: "bg-emerald-400",
+    text: "text-emerald-700",
+    panel: CARD_SURFACE_B,
+    bannerPanel: "border border-emerald-300 bg-card border-l-[3px] border-l-emerald-500",
+    border: "border-slate-200",
+    badge: "text-emerald-700 bg-emerald-50 border-emerald-200",
+    dot: "bg-emerald-500",
   },
   warn: {
-    text: "text-yellow-400",
-    panel: "border border-yellow-800/45 bg-yellow-950/70",
-    bannerPanel:
-      "border border-yellow-600/60 bg-yellow-950/70 border-l-[3px] border-l-yellow-600/60",
-    border: "border-yellow-800/45",
-    badge: "text-yellow-300 bg-yellow-950/70 border-yellow-700/60",
-    dot: "bg-yellow-400",
+    text: "text-orange-700",
+    panel: CARD_SURFACE_B,
+    bannerPanel: "border border-orange-300 bg-card border-l-[3px] border-l-orange-500",
+    border: "border-slate-200",
+    badge: "text-orange-700 bg-orange-50 border-orange-200",
+    dot: "bg-orange-500",
   },
   bad: {
-    text: "text-red-400",
-    panel: "border border-red-800/45 bg-red-950/70",
-    bannerPanel: "border border-red-600/60 bg-red-950/70 border-l-[3px] border-l-red-600/60",
-    border: "border-red-800/45",
-    badge: "text-red-300 bg-red-950/70 border-red-800/60",
+    text: "text-red-700",
+    panel: CARD_SURFACE_B,
+    bannerPanel: "border border-red-300 bg-card border-l-[3px] border-l-red-500",
+    border: "border-slate-200",
+    badge: "text-red-700 bg-red-50 border-red-200",
     dot: "bg-red-500",
   },
   unknown: {
-    text: "text-zinc-400",
+    text: "text-slate-500",
     panel: CARD_SURFACE_B,
-    /** Same zinc stroke as CARD_SURFACE_B; thicker left edge matches semantic banners. */
-    bannerPanel: `${CARD_SURFACE_B} border-l-[3px] border-l-zinc-800`,
-    border: "border-zinc-800",
-    badge: "text-zinc-400 bg-zinc-800/70 border-zinc-600/45",
-    dot: "bg-zinc-400",
+    bannerPanel: `border border-slate-300 bg-card border-l-[3px] border-l-slate-400`,
+    border: "border-slate-200",
+    badge: "text-slate-500 bg-slate-50 border-slate-200",
+    dot: "bg-slate-400",
   },
 };
 
 /** Color shared with the Knowledge Graph document node. Changing either updates both. */
-export const KG_DOCUMENT_NODE_COLOR = "text-purple-400";
+export const KG_DOCUMENT_NODE_COLOR = "text-purple-500";
 export const AD_ACCENT_TEXT = KG_DOCUMENT_NODE_COLOR;
 
 export function toneClasses(tone: Tone): ToneClasses {
@@ -156,7 +166,7 @@ export function toneForOilLife(input: OilLifeToneInput): ToneClasses {
   if (!hasAnySignal) return toneClasses("unknown");
 
   const almostDueTach =
-    Number.isFinite(oilTachHoursUntilDue) && oilTachHoursUntilDue >= 0 && oilTachHoursUntilDue <= 5;
+    Number.isFinite(oilTachHoursUntilDue) && oilTachHoursUntilDue > 0 && oilTachHoursUntilDue <= 5;
   const almostDueCalendar =
     oilDaysUntilDue !== null && Number.isFinite(oilDaysUntilDue) && oilDaysUntilDue >= 0 && oilDaysUntilDue <= 30;
 
@@ -299,21 +309,22 @@ export function formatAdReferenceLine(ref: string): string {
   return `AD ${t}`;
 }
 
-/** Squawk/symptom row: Tier B card with severity left accent. */
+/** Squawk/symptom row: Tier B card with severity left accent.
+ *  Accented rows get a thin matching border on all four sides so the accent
+ *  reads as intentional. Cosmetic/neutral rows keep the default neutral border. */
 export function severityRowClass(severity: string): string {
-  const base = `${CARD_SURFACE_B} rounded-lg`;
   switch (severity.toLowerCase()) {
     case "grounding":
     case "critical":
-      return `${base} border-l-[3px] border-l-red-500/60 text-zinc-200`;
+      return `${CARD_SURFACE_B} rounded-lg border-red-300 border-l-[3px] border-l-red-500 text-slate-800`;
     case "non-grounding":
     case "caution":
     case "warning":
-      return `${base} border-l-[3px] border-l-yellow-500/55 text-zinc-200`;
+      return `${CARD_SURFACE_B} rounded-lg border-orange-300 border-l-[3px] border-l-orange-500 text-slate-800`;
     case "cosmetic":
-      return `${base} border-l-[3px] border-l-zinc-500/40 text-zinc-300`;
+      return `${CARD_SURFACE_B} rounded-lg border-l-[3px] border-l-slate-300 text-slate-700`;
     default:
-      return `${base} border-l-[3px] border-l-zinc-500/40 text-zinc-300`;
+      return `${CARD_SURFACE_B} rounded-lg border-l-[3px] border-l-slate-300 text-slate-700`;
   }
 }
 
@@ -321,17 +332,17 @@ export function severityRowClass(severity: string): string {
 export function severityPillClass(severity: string): string {
   switch (severity.toLowerCase()) {
     case "grounding":
-      return "text-red-300 bg-red-950/70 border-red-800/60";
+      return "text-red-700 bg-red-50 border-red-200";
     case "non-grounding":
-      return "text-yellow-300 bg-yellow-950/70 border-yellow-800/60";
+      return "text-orange-700 bg-orange-50 border-orange-200";
     case "cosmetic":
-      return "text-zinc-400 bg-zinc-800/70 border-zinc-600/45";
+      return "text-slate-500 bg-slate-50 border-slate-200";
     case "caution":
     case "warning":
-      return "text-yellow-300 bg-yellow-950/70 border-yellow-800/60";
+      return "text-orange-700 bg-orange-50 border-orange-200";
     case "critical":
-      return "text-red-300 bg-red-950/70 border-red-800/60";
+      return "text-red-700 bg-red-50 border-red-200";
     default:
-      return "text-zinc-400 bg-zinc-800/70 border-zinc-600/45";
+      return "text-slate-500 bg-slate-50 border-slate-200";
   }
 }
